@@ -1,0 +1,18 @@
+@media(max-width:767px) {
+	.categoriesBox .cat-slide:nth-child(n+3), .aboutAvvatarBox:nth-child(n+4) {
+		margin-top: 30px;
+	}
+	.aboutAvvatarBox p {
+		font-size: 12px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.categoriesBox .cat-slide:nth-child(n+4) {
+		margin-top: 30px;
+	}
+
+	.categorySlider.owl-carousel {
+		display: flex !important;
+	}
+}

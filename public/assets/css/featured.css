@@ -1,0 +1,88 @@
+.yellowBg {
+	background-color: #F7BC2A
+}
+
+.yellowText {
+	color: #F7BC2A
+}
+
+.blackBg {
+	background-color: #000
+}
+
+.blackText {
+	color: #000
+}
+
+section {
+	padding: 60px 0;
+}
+
+.patternBgTop {
+	background-image: url(../images/new/bg-top-element.png), url(../images/new/bg-bottom-element.png);
+	background-repeat: no-repeat;
+	background-position: top left, bottom right;
+	background-size: 320px;
+}
+
+.centerImgText {
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	-webkit-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+
+.centerImgText p {
+	color: #000;
+}
+
+.fintessBox {
+	background-color: #000;
+	-webkit-transition: all 0.2s linear;
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+.fintessBox img {
+	-webkit-filter: invert(2) grayscale(100%);
+	filter: invert(2) grayscale(100%);
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+.commonImgTextBox .knowMore {
+	bottom: -30px;
+	-webkit-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+	cursor: pointer;
+}
+
+.knowMore:hover a {
+	color: #fff;
+}
+
+.commonImgTextBox:hover .knowMore {
+	bottom: 0
+}
+
+.commonImgTextBox:hover .centerImgText {
+	opacity: 1;
+}
+
+.fintessBox:hover img {
+	-webkit-filter: none;
+	filter: none;
+}
+
+.fintessBox:hover {
+	background-color: #FFF2D1;
+}
+
+.bestSellerWrapper .owl-carousel .owl-stage-outer {
+	padding: 20px;
+}
+
+.aboutAvaatarWrapper {}
