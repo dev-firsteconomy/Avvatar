@@ -211,6 +211,11 @@ class HomeController extends Controller
         return view('frontend.aboutus');
     }
 
+    public function aboutParagFoods()
+    {
+        return view('frontend.about-paragfoods');
+    }
+
     public function collaboration(){
         return view('frontend.collaboration');
     }

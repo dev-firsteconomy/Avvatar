@@ -156,7 +156,7 @@
 	<section class="bestSellerWrapper patternBgTop">
 		<div class="container">
 			<div class="heading text-center mb-5">
-				<h2 class="title">Best Sellers</h2><!-- End .title -->
+				<h2 class="title text-uppercase"><span class="fw-bold">Best Selling</span> Products</h2><!-- End .title -->
 			</div><!-- End .heading -->
 		</div><!-- End .container -->
 
@@ -263,6 +263,164 @@
 		</div><!-- End .container-fluid -->
 	</section>
 
+	<section class="productJourney p-0 position-relative">
+		<div class="container-fluid">
+			<div class="heading position-absolute text-center mb-3 mb-md-5">
+				<h2 class="title text-uppercase yellowText"><span class="fw-bold">Journey of</span> the Product</h2><!-- End .title -->
+				<p>From our daily farm to your shaker, fresh and pure.</p>
+			</div><!-- End .heading -->
+
+			<div class="row">
+				<div class="productJourneyBox col-6 col-md-3 text-center">
+					<img src="assets/images/new/homepage/dairyFarm.png" class="m-auto img-fluid" alt="">
+					<h4 class="mt-1 mt-md-2 fw-bold">Dairy Farm</h4>
+				</div>
+				<div class="productJourneyBox col-6 col-md-3 text-center">
+					<img src="assets/images/new/homepage/cheesePlant.png" class="m-auto img-fluid" alt="">
+					<h4 class="mt-1 mt-md-2 fw-bold">Cheese Plant</h4>
+				</div>
+				<div class="productJourneyBox col-6 col-md-3 text-center">
+					<img src="assets/images/new/homepage/wheyPlant.png" class="m-auto img-fluid" alt="">
+					<h4 class="mt-1 mt-md-2 fw-bold">Whey Farm</h4>
+				</div>
+				<div class="productJourneyBox col-6 col-md-3 text-center">
+					<img src="assets/images/new/homepage/shaker.png" class="m-auto img-fluid" alt="">
+					<h4 class="mt-1 mt-md-2 fw-bold">Shakaer</h4>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="bestSellerWrapper patternBgTop">
+		<div class="container">
+			<div class="heading text-center mb-5">
+				<h2 class="title text-uppercase"><span class="fw-bold">Featured</span> Products</h2><!-- End .title -->
+			</div><!-- End .heading -->
+		</div><!-- End .container -->
+
+		<div class="container">
+			<div class="tab-content tab-content-carousel">
+				<div class="tab-pane p-0 fade show active" id="products-featured-tab" role="tabpanel" aria-labelledby="products-featured-link">
+					<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
+							"nav": false, 
+							"dots": true,
+							"margin": 20,
+							"loop": false,
+							"responsive": {
+								"0": {
+									"items":2
+								},
+								"480": {
+									"items":2
+								},
+								"768": {
+									"items":3
+								},
+								"992": {
+									"items":4
+								},
+								"1200": {
+									"items":4
+								},
+								"1600": {
+									"items":4,
+									"nav": true
+								}
+							}
+						}'>
+
+						@if(isset($bestSellers) && $bestSellers->isNotEmpty())
+						@foreach ($bestSellers as $product)
+						<div class="product productBox product-7 text-center">
+							<figure class="product-media">
+								<?php 
+											$url = $product->images()->first();
+											if($url)
+											{
+												$url = $product->images()->first()->image;
+											}
+											else {
+												$url = '/images/no-image.jpg';
+											}
+										?>
+								@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
+								<a href="{{url('product/' .$product->slug)}}">
+									<img src="{{asset($url)}}" alt="{!! @$product->meta_description !!}" class="product-image">
+								</a>
+
+								<div class="product-action-vertical">
+									@if(is_user_logged_in())
+									<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
+									@else
+									<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
+									@endif
+								</div><!-- End .product-action-vertical -->
+							</figure><!-- End .product-media -->
+							<?php
+							// $availableColors = $product->sizesstock()->groupBy('color_id')->get();
+							?>
+							<div class="product-body">
+								<!--
+								<div class="product-cat">
+									<a href="{{route('categories',$product->category->slug)}}">{{$product->category->title}}</a>
+								</div>
+								-->
+								@if(isset($availableColors) && $availableColors->isNotEmpty())
+								<div class="product-color row justify-content-center">
+									@foreach($availableColors as $color)
+									<div class="radio has-color">
+										<label>
+											<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions-{{$product->id}}">
+											<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
+										</label>
+									</div>
+									@endforeach
+								</div><!-- End .product-cat -->
+								@endif
+								<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a></h3><!-- End .product-title -->
+								<div class="product-price">
+									<div class="w-100">
+										<span class="new-price">₹ {{round($product->discounted_amt) }}</span> @if($product->discounted_amt != $product->price)<span class="old-price">₹ {{round($product->price)}}</span> @endif
+									</div>
+									<!--									<small>(MRP incl Taxes)</small>-->
+								</div><!-- End .product-price -->
+								<div class="atc-container">
+									<div class="mb-0">
+										<a href="{{route('product',$product->slug)}}" class="btn-cart"><span class="product{{$product->id}}">Add to cart</span></a>
+									</div>
+								</div>
+							</div><!-- End .product-body -->
+						</div><!-- End .product -->
+						@endforeach
+						@endif
+
+
+					</div><!-- End .owl-carousel -->
+				</div><!-- .End .tab-pane -->
+			</div><!-- End .tab-content -->
+		</div><!-- End .container-fluid -->
+	</section>
+
+	<section class="reconstructSection">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-8">
+					<div class="reconstructContent">
+						<div class="reconstructContentHeading">
+							<h3>It’s time to</h3>
+							<h2 class="fw-bold">#ReconstructYourself</h2>
+						</div>
+						<p>Avvatar is the purest whey you’ll ever consume. It’s the freshest you’ll ever get. Milked, processed and packed within 24 hours. It is 100% vegetarian, made from fresh cow’s milk and manufactured with multiple stringent quality tests.</p>
+						<p>Mix in water, add to a smoothie or milk or liquid of your choice and consume within 90 mins of training for optimal benefits. A perfect product for gym goers, body builders, cross-fit athletes, endurance runners and fitness freaks.</p>
+						<div class="knowMoreButton">
+							<a href="#">Know More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section class="categoriesWrapper patternBgTop">
 		<div class="container">
 			<div class="heading mb-5 text-center">
@@ -302,11 +460,17 @@
                 }'>
 				-->
 				<div class="row justify-content-center">
-					<div class="col-md-9">
+					<div class="col-md-11 col-lg-9">
 						<div class="row categorySlider owl-carousel justify-content-center">
 							@foreach($categories as $category)
 							<div class="col-md-4 cat-slide">
-								<a href="{{url('categories/' . $category->slug)}}"><img src="{{url(@$category->photo)}}" alt="{{$category->slug}}">{{$category->title}}</a>
+								<a href="{{url('categories/' . $category->slug)}}">
+									<img src="{{url(@$category->photo)}}" class="m-0" alt="{{$category->slug}}">
+									<div class="knowMore py-2 fw-bold text-center blackText">
+										{{$category->title}}<span class="icon-arrow-right"></span>
+									</div>
+
+								</a>
 							</div>
 							@endforeach
 						</div>
@@ -318,7 +482,110 @@
 		</div>
 	</section>
 
+	<section class="authenticateAvatar p-0 position-relative">
+		<div class="heading position-absolute text-center mb-5">
+			<h2 class="whiteText title text-uppercase"><span class="fw-bold">authenticate </span> your Avvatar!</h2>
+			<p class="whiteText">Scratch the label on the lid to unveil the unique verification code.</p>
+			<a class="text-uppercase commonButton-yellow">Authenticate Now</a>
+		</div><!-- End .heading -->
+		<img src="assets/images/new/homepage/authenticateBg.png" class="img-fluid">
+	</section>
 
+	<section class="loyaltyProgram">
+		<div class="container-fluid">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-md-3  d-none d-md-block">
+					<img src="assets/images/new/homepage/loyalty-1.png" class="img-fluid">
+				</div>
+				<div class="col-md-6 ">
+					<div class="heading text-center">
+						<h2 class="title text-uppercase"><span class="fw-bold">Loyalty </span> Programme</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+							exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+							dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+						<a class="text-uppercase commonButton">Earn Rewards</a>
+					</div><!-- End .heading -->
+				</div>
+				<div class="col-md-3  d-none d-md-block">
+					<img src="assets/images/new/homepage/loyalty-2.png" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="blogList patternBgTop">
+		<div class="container">
+			<div class="heading mb-5 text-center">
+				<h2 class="title text-uppercase"><span class="fw-bold">Blogs</span></h2>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 blogCardOuter">
+					<div class="blogCard bg-gray">
+						<img src="assets/images/new/blog.png" class="w-100 img-fluid">
+						<div class="blogCardContent d-flex flex-column gap-3 p-2 px-3">
+							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
+							<p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+							<a class="commonButton-yellow m-0 mb-2">Know More</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 blogCardOuter ">
+					<div class="blogCard bg-gray">
+						<img src="assets/images/new/blog.png" class="w-100 img-fluid">
+						<div class="blogCardContent d-flex flex-column gap-3 p-2 px-3">
+							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
+							<p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+							<a class="commonButton-yellow m-0 mb-2">Know More</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 blogCardOuter">
+					<div class="blogCard bg-gray">
+						<img src="assets/images/new/blog.png" class="w-100 img-fluid">
+						<div class="blogCardContent d-flex flex-column gap-3 p-2 px-3">
+							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
+							<p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+							<a class="commonButton-yellow m-0 mb-2">Know More</a>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="mt-4 text-center">
+				<a class="commonButton-yellow m-0">View All</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="reconstructSection educateSection">
+		<div class="container">
+			<div class="row justify-content-end">
+				<div class="col-lg-8">
+					<div class="reconstructContent">
+						<div class="reconstructContentHeading">
+							<h2 class="fw-bold text-uppercase whiteText">Educate yourself</h2>
+							<h2 class=" text-uppercase whiteText">by speaking to our expert</h2>
+						</div>
+						<p class="whiteText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+							exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+							dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+						<div class="knowMoreButton">
+							<a href="#" class="commonButton-yellow">Know More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<section class="newArriwalsWrapper patternBgTop">
 		<div class="container">
@@ -348,10 +615,10 @@
                                 "items":4
                             },
                             "1200": {
-                                "items":5
+                                "items":4
                             },
                             "1600": {
-                                "items":6,
+                                "items":4,
                                 "nav": true
                             }
                         }
@@ -427,7 +694,20 @@
 		</div><!-- End .container-fluid -->
 	</section>
 
+	<section class="signupPatch">
+		<div class="container">
+			<div class="heading mb-5 text-center">
+				<h2 class="title text-uppercase">Sign up for the <span class="fw-bold">purest & freshest whey!</span></h2>
+			</div>
 
+			<div class="row justify-content-center">
+				<div class="col-md-4 text-center">
+					<input type="email" class="form-control" placeholder="Email ID">
+					<button type="submit" href="#" class="mt-1 commonButton">Know More</button>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<div class="icon-boxes-container pb-0">
 		<div class="container">

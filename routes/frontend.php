@@ -21,7 +21,8 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/giftcard','HomeController@giftcard')->name('giftcard');
     Route::get('/faq','HomeController@faq');
     Route::get('/contact','HomeController@contact');
-    Route::get('/about-us','HomeController@aboutus');
+    Route::get('/about-avvatar','HomeController@aboutus');
+    Route::get('/about-us-parag-foods','HomeController@aboutParagFoods');
     Route::get('/collaboration','HomeController@collaboration');
 
     Route::get('/terms-and-conditions','HomeController@termsAndCondition');

@@ -3,7 +3,7 @@
 }
 
 .yellowText {
-	color: #F7BC2A
+	color: #F7BC2A;
 }
 
 .blackBg {
@@ -14,6 +14,10 @@
 	color: #000
 }
 
+.whiteText {
+	color: #fff
+}
+
 section {
 	padding: 60px 0;
 }
@@ -22,10 +26,10 @@ section {
 	background-image: url(../images/new/bg-top-element.png), url(../images/new/bg-bottom-element.png);
 	background-repeat: no-repeat;
 	background-position: top left, bottom right;
-	background-size: 320px;
+	background-size: 400px;
 }
 
-.centerImgText {
+.product-journey-bg .centerImgText {
 	top: 50%;
 	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
@@ -85,4 +89,246 @@ section {
 	padding: 20px;
 }
 
-.aboutAvaatarWrapper {}
+.reconstructSection,
+.loyaltyProgram,
+.productJourneyBox,
+.signupPatch,
+.prductUserbg {
+	background-image: url(../images/new/homepage/product-journey-bg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.productJourney .heading p {
+	color: #fff;
+}
+
+.productJourneyBox {
+	position: relative;
+	padding: 200px 0 50px;
+}
+
+.productJourneyBox:nth-child(1) {
+	background-image: url(../images/new/homepage/journey-1.png);
+}
+
+.productJourneyBox:nth-child(2) {
+	background-image: url(../images/new/homepage/journey-2.png);
+}
+
+.productJourneyBox:nth-child(3) {
+	background-image: url(../images/new/homepage/journey-3.png);
+}
+
+.productJourneyBox:nth-child(4) {
+	background-image: url(../images/new/homepage/journey-4.png);
+}
+
+.productJourneyBox img {
+	width: 180px;
+	position: relative;
+	z-index: 2;
+}
+
+.productJourneyBox h4 {
+	color: #fff;
+	font-size: 30px;
+	position: relative;
+	z-index: 2;
+}
+
+.productJourneyBox:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.productJourneyBox + .productJourneyBox:after {
+	content: '';
+	position: absolute;
+	top: auto;
+	width: 120px;
+	height: 100px;
+	background-image: url(../images/new/homepage/journeyArrow.png);
+	background-repeat: no-repeat;
+	background-size: 91px;
+	left: -15%;
+	bottom: 14%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.reconstructSection {
+	background-image: url(../images/new/homepage/reconstructBanner.png);
+}
+
+.reconstructContentHeading h3 {
+	margin-bottom: 0;
+	font-size: 4.5rem;
+}
+
+.reconstructContentHeading h2 {
+	font-size: 7rem;
+	margin: 0;
+	display: inline-block;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #fff;
+}
+
+.reconstructContent p {
+	margin-top: 20px;
+	font-size: 1.8rem;
+	color: #000;
+}
+
+.reconstructContent .knowMoreButton a,
+.commonButton,
+.commonButton-yellow {
+	font-weight: 700;
+	background-color: #333333;
+	color: #fff;
+	border: 1px solid #333333;
+	padding: 0.4rem 1.8rem;
+	text-transform: uppercase;
+	font-size: 18px;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.commonButton-yellow {
+	background-color: #F7BC2A;
+	border: 1px solid #F7BC2A;
+	color: #333333;
+}
+
+.reconstructContent .knowMoreButton a:hover,
+.commonButton:hover {
+	background-color: #fff;
+	border: 1px solid #fff;
+	color: #333333;
+}
+
+.commonButton-yellow:hover {
+	background-color: #333333;
+	border: 1px solid #333333;
+	color: #F7BC2A;
+}
+
+.categorySlider .knowMore {
+	background-color: #333333;
+	color: #fff;
+	-webkit-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+
+.categorySlider:hover .knowMore {
+	background-color: #F7BC2A;
+	color: #000;
+}
+
+.authenticateAvatar .heading {
+	width: 90%;
+	top: 10%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.loyaltyProgram {
+	background-image: url(../images/new/homepage/loyaltybg.png);
+	padding: 20px 0;
+}
+
+.blogCardContent h2 {
+	font-size: 18px;
+	line-height: 1.4;
+}
+
+.blogCardContent p {
+	line-height: 1.4;
+}
+
+.blogCardContent h2,
+.blogCardContent p {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.blogCardContent .commonButton-yellow {
+	padding: 0.3rem 1.6rem;
+	font-size: 14px;
+	max-width: -webkit-max-content;
+	max-width: -moz-max-content;
+	max-width: max-content;
+}
+
+.educateSection {
+	background-image: url(../images/new/homepage/eductaeBg.png);
+}
+
+.educateSection .reconstructContentHeading h2 {
+	font-size: 4rem;
+}
+
+.educateSection .reconstructContent p {
+	color: #fff
+}
+
+.productJourney .heading {
+	width: 90%;
+	top: 10%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	z-index: 2;
+}
+
+.signupPatch {
+	background-image: url(../images/new/homepage/signupPatchBg.png);
+}
+
+.signupPatch input {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid #000;
+	border-radius: 0;
+	color: #000;
+	text-align: center;
+	font-size: 18px;
+}
+
+.signupPatch input::-webkit-input-placeholder {
+	color: #000 !important;
+}
+
+.signupPatch input:-ms-input-placeholder {
+	color: #000 !important;
+}
+
+.signupPatch input::placeholder {
+	color: #000 !important;
+}
+
+.productUsers {
+	background-image: url(../images/new/about/prductUserbg.png);
+	padding: 40px 0;
+}
+
+.aboutAvvatarBox p {
+	font-weight: 500;
+	color: #000;
+}
+
+.aboutParafFood.patternBgTop {
+	background-image: url(../images/new/bg-bottom-left-element.png), url(../images/new/bg-top-right-element.png);
+	background-position: bottom left, top right;
+}
