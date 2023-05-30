@@ -732,6 +732,30 @@
 			})
 		 }
 	</script>
+	
+	<script>
+		const video = document.getElementById("video");
+		const circlePlayButton = document.getElementById("circle-play-b");
+		const videoContent = document.getElementById("videoContent");
+
+		function togglePlay() {
+			if (video.paused || video.ended) {
+				video.play();
+			} else {
+				video.pause();
+			}
+		}
+
+		circlePlayButton.addEventListener("click", togglePlay);
+		video.addEventListener("playing", function () {
+			videoContent.style.opacity = 0;
+			circlePlayButton.style.opacity = 0;
+		});
+		video.addEventListener("pause", function () {
+			videoContent.style.opacity = 1;
+			circlePlayButton.style.opacity = 1;
+		});
+	</script>
 
 </body>
 

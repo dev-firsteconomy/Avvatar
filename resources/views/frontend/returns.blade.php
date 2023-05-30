@@ -19,45 +19,28 @@
 
 		    <div class="page-content pb-3">
 		        <div class="container">
-		            <div class="row">
-		                <div class="col-sm-12 PageContent">
-                            <p><h6>Exchange:</h6></p>
-                            <p>We are trying hard to serve your order to your appropriate products and sizes. In case if you received the wrong product or it's unfit to your size, you can exchange your product within <strong>7 days of delivery</strong>.</p>
-                            <ul style="list-style-type: disc;list-style-position: inside;">
-                             <li style="margin-bottom: 15px;">Your Pickup will be arranged by zehna within 2-3 working days of your request.</li>
-                             <li style="margin-bottom: 15px;">All Products must be unused, unwashed and returned with the original packing &amp; tags when we receive it.</li>
-                            </ul>
-                            <p>In case, the order does not meet the above conditions exchange request will not be processed and your order will be sent back to your picked up address.</p>
-                            <p><strong>*In case of an exchange, if the size is not available, you can place a refund request which will proceed as refund policy. No other product can be exchanged on behalf of the same.</strong></p>
-                            <p><h6><span style="text-decoration: underline;">Returns</span>:</h6></p>
-                            <p>We are working hard to provide you the latest fashion at affordable rates with Best quality fabric. If you didn't like the product or it's not to your expectations simply return the product within <strong>7 days of delivery</strong>.</p>
-                            <p>We can arrange a pick-up for you with an easy online return process.</p>
-                            <ul style="list-style-type: disc;list-style-position: inside;">
-                             <li style="margin-bottom: 15px;">Login to your <strong>My Orders</strong>&nbsp;section at zehna.in</li>
-                             <li style="margin-bottom: 15px;">Select the Order and click <strong>Return Product</strong>&nbsp;</li>
-                            </ul>
-                            <p>or</p>
-                            <p>To return the product now, <a href="http://zehna.in/user" target="_blank" rel="noopener"><strong>Click Here</strong></a>.</p>
-                            <p>*Shipping Charges and COD charges charged at the time of placing the order is non- refundable.</p>
-                            <p>*We shall charge you shipping charges of Rs.100 in case of reverse pick up the same shall be deducted from your refund.</p>
-                            <p><strong>Important Points to remember,</strong></p>
-                            <ul style="list-style-type: disc;list-style-position: inside;">
-                             <li style="margin-bottom: 15px;">Return request needs to be within 7 days of the delivery date.</li>
-                             <li style="margin-bottom: 15px;">Your Pickup will be done in 2-3 working days.</li>
-                             <li style="margin-bottom: 15px;">All returned products must be unused or unwashed or undamaged and return with the original packing and tags when we receive it. Items without tags will not be accepted.</li>
-                             <li style="margin-bottom: 15px;">The refund is subject to your returns met the above conditions else returns will not be accepted.</li>
-                            </ul>
-                            <p>In case you receive a damaged / defective product, we should be notified within 24 hours of delivery. Also, we request you to email us a photograph of the damaged / defective product. In case you fail to intimate about the same, return might not be processed.</p>
-                            <h4><strong>Refund Policy</strong></h4>
-                            <p><strong>Amount Refund</strong><strong>:</strong></p>
-                            <p>1.&nbsp;If you cancel the Order, the full amount will be refunded to you includes shipping charges and COD charges if any.</p>
-                            <p>2.&nbsp;If you return the product, <strong>shipping charges</strong> and <strong>COD charges</strong> charged at the time while placing the order will be deducted. Also, the <strong>Reverse Shipping</strong> charges of Rs.100 will be charged and the balance amount will be refunded to you.</p>
-                            <p><strong>Mode of Refund:</strong></p>
-                            <p>1.&nbsp;Prepaid Orders: The amount will be refunded to the same account from which order has been placed. Once we received the product, the amount will be processed in 1-2 working days. Your money will be reflected in your account in 5-7 working days.</p>
-                            <!-- <p>2.&nbsp;COD Orders: The amount will be transferred to the Bank Account mentioned while placing the Return Request and your amount will be reflected in your account within 7 working days of the details.</p> -->
-
-						</div>
-		            </div>
+		            <div class="policy-terms">
+						<div class="policy-terms">
+							<div class="warp-inner2">
+							  <p><b>
+							Customer Service</b><br>Your order is as important to us as it is to you. Our in-house Consumer Service department will be happy to assist you with any queries or other issues relating to your order. Please email us at <a href="mailto:customercare@paragmilkfoods.com">customercare@paragmilkfoods.com</a> or call us at 1800 1033 611 during standard business hours 10am-6pm IST, and a representative will be in touch with you. Remember, all queries are answered in the order in which they are received, and as a result, delays occur from time to time. Requests made outside of standard weekday business hours will be addressed as soon as possible.</p>
+							
+							<p><b>Shipping Locations<br></b>Our shipper, cannot ship to any box-type address including PO/APO/FPO. Any orders placed with these addresses will not be accepted. Additionally, we will only ship to pin codes mentioned on our website.</p>
+							
+							<p><b>Return Policy<br></b>Avvatar India may accept returns of products purchased directly from Avvatar India through the Site only when all of the following conditions are satisfied:
+							
+							<ul>
+								<li>The products must be received by Avvatar India within 7 days of your delivery; no returns will be accepted after this time period</li>
+								<li>You must provide your Purchase Order number as received when your order was placed through the Site</li>
+								<li>Dietary supplements and other consumable product returns are only accepted if it was purchased through www.avvatarindia.com for which the product is been physically damaged during shipping &amp; also if you found some unusual defects in the products during the time of receiving the product.</li>
+							</ul>
+							
+							<p>If you need to make a return, please call us during normal business hours (10am-6pm IST) before sending the product back. You will be asked to provide your Purchase Order number as received when an order was placed on the Site. Once we determine that your merchandise is eligible for return (see Return Policy), you will be issued a Return Authorization Number and given instructions on how to complete the process.</p>
+							
+							<p>All reimbursements will be made to the credit card used for the original purchase only after the investigation is done &amp; the after the final decision taken by Avvatar.</p><p></p>Please allow at least 15-20 days for the reimbursement credit to appear on your bank account.<p><b>Damaged, Lost or Stolen Merchandise<br></b>We make every effort to safely secure and ship your order, but understand that, on rare occasion, merchandise can be damaged in transit. If you feel that your order was damaged during delivery, report it immediately and a representative will contact you. We are not responsible for lost or stolen merchandise.<br></p>
+							</div>
+						  </div>
+					  </div>
 
 		        </div><!-- End .container -->
 

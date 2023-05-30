@@ -15,111 +15,14 @@
 		<div class="container">
 			<ol class="breadcrumb ">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">About Us</li>
+				<li class="breadcrumb-item" aria-current="page"><a href="/about-avvatar">About Us - Avvatar</a></li>
+				<li class="breadcrumb-item active" aria-current="page">About Us - Parag Foods</li>
 			</ol>
 		</div><!-- End .container -->
 	</nav><!-- End .breadcrumb-nav -->
 
 	<div class="page-content pb-0">
-		<section class="aboutAvvatar">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-md-6">
-						<h3 class="fw-bold">Origin of Avvatar</h3>
-						<img src="assets/images/new/about/origin-avvatar.png" class="my-3 d-md-none img-fluid" alt="aboutBanner">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-					</div>
-					<div class="col-md-6 order-md-first">
-						<img src="assets/images/new/about/origin-avvatar.png" class="d-none d-md-block img-fluid" alt="aboutBanner">
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="aboutAvvatar">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-md-6">
-						<h3 class="fw-bold">Promises Transformation</h3>
-						<img src="assets/images/new/about/promisesTransformation.png" class="my-3 d-md-none img-fluid" alt="aboutBanner">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-					</div>
-					<div class="col-md-6">
-						<img src="assets/images/new/about/promisesTransformation.png" class="d-none d-md-block img-fluid" alt="aboutBanner">
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="optimalBenfits pb-0">
-			<img src="assets/images/new/about/optimalBenefitsBanner.png" class="img-fluid" alt="aboutBanner">
-
-			<div class="productUsers">
-				<div class="container">
-					<div class="heading text-center">
-						<h2 class="title text-uppercase">Product <span class="fw-bold">Users</span></h2>
-						<p>A perfect product for Gym goers, Body builders, Cross-Fit athletes, Endurance runners and fitness freaks.</p>
-					</div>
-
-					<div class="row aboutAvaatarIcons">
-						<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-							<img src="assets/images/new/about/Icon-1.png" alt="" class="img-fluid">
-							<p class="mb-0">Gym-Gores</p>
-						</div>
-						<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-							<img src="assets/images/new/about/Icon-2.png" alt="" class="img-fluid">
-							<p class="mb-0">Boxers</p>
-						</div>
-						<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-							<img src="assets/images/new/about/Icon-3.png" alt="" class="img-fluid">
-							<p class="mb-0">Runners</p>
-						</div>
-						<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-							<img src="assets/images/new/about/Icon-4.png" alt="" class="img-fluid">
-							<p class="mb-0">Cyclists</p>
-						</div>
-						<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-							<img src="assets/images/new/about/Icon-5.png" alt="" class="img-fluid">
-							<p class="mb-0">Swimmers</p>
-						</div>
-						<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-							<img src="assets/images/new/about/Icon-6.png" alt="" class="img-fluid">
-							<p class="mb-0">Footballers</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="productJourney p-0 position-relative">
-			<div class="container-fluid">
-				<div class="heading position-absolute text-center mb-3 mb-md-5">
-					<h2 class="title text-uppercase yellowText"><span class="fw-bold">Journey of</span> the Product</h2><!-- End .title -->
-					<p>From our daily farm to your shaker, fresh and pure.</p>
-				</div><!-- End .heading -->
-
-				<div class="row">
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/dairyFarm.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Dairy Farm</h4>
-					</div>
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/cheesePlant.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Cheese Plant</h4>
-					</div>
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/wheyPlant.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Whey Farm</h4>
-					</div>
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/shaker.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Shakaer</h4>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="aboutParafFood patternBgTop">
+		<section class="aboutParafFood patternBgPageTop">
 			<div class="container">
 				<div class="heading text-center mb-3 mb-md-5">
 					<h2 class="title text-uppercase">About <span class="fw-bold">Parag Foods</span></h2>
@@ -133,13 +36,203 @@
 								and scientific knowledge in support of the development and promotion of quality cow’s milk and milk products,
 								to offer consumers nutrition, health and well-being. Parag Milk Foods Ltd., has its presence in the international market
 								with products exported to more than 21 countries.</p>
-							<a href="#" class="commonButton-yellow">Know More</a>
+
+							<p class="mt-3 mb-0">Parag Milk Foods Ltd, founded in 1992, is one of India's elite private sector dairy company, with a diverse portfolio in
+								over 15 consumer centric product categories. We pride ourselves for providing the best global source of expertise
+								and scientific knowledge in support of the development and promotion of quality cow’s milk and milk products,
+								to offer consumers nutrition, health and well-being. Parag Milk Foods Ltd., has its presence in the international market
+								with products exported to more than 21 countries.</p>
+							<!--							<a href="#" class="commonButton-yellow">Know More</a>-->
 						</div>
 					</div>
 				</div>
 
 			</div>
 		</section>
+
+		<section class="aboutFounder">
+			<div class="container">
+				<div class="aboutFounderBox bg-gray">
+					<div class="row align-items-center">
+						<div class="col-lg-6 order-md-2 order-lg-2">
+							<div class="heading">
+								<h2 class="title text-uppercase">About <span class="fw-bold">our founder</span></h2>
+								<span class="line"></span>
+							</div>
+							<div class="aboutContent">
+								<img src="assets/images/new/about/founder.png" class="my-3 d-lg-none img-fluid" alt="aboutBanner">
+								<h3><span class="fw-bold">Mr. Devendra Shah</span> (Founder & Chairman)</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit labore, accusantium hic dolore consectetur quam eius, atque est? Doloribus, labore ex nostrum doloremque quis tenetur consequuntur soluta hic ipsum voluptates accusamus a voluptatem, explicabo, fugit odio sit? Aliquid, omnis, commodi quia fugit nostrum similique inventore veniam, minima, non velit doloremque esse. Mollitia exercitationem, ipsum dolorum consequuntur ratione vitae iure impedit possimus illum, ipsam ab, unde ad distinctio. Repellat blanditiis</p>
+							</div>
+						</div>
+						<div class="col-lg-6 order-md-1 order-lg-2">
+							<img src="assets/images/new/about/founder.png" class="my-3 d-none d-lg-block img-fluid" alt="aboutBanner">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="factoryParagFoods p-0">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<div class="videoBannerSection aboutUs">
+							<!--							<img src="" alt="">-->
+							<div class="video-container" id="video-container">
+								<video id="video" preload="metadata" poster="assets/images/new/about/cideoPlaceholderAboutVideo.png">
+									<source src="//cdn.jsdelivr.net/npm/big-buck-bunny-1080p@0.0.6/video.mp4" type="video/mp4">
+								</video>
+
+								<div class="videoContent d-flex flex-column justify-content-center" id="videoContent">
+									<h3 class="text-white">Take a look at our</h3>
+									<h2 class="text-uppercase text-white d-inline-flex">factory</h2>
+									<div title="Play video" class="play-gif" id="circle-play-b">
+										<span class="text text-uppercase text-white">Play video</span>
+										<div class="svgIcon">
+											<div class="svgIconImg">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+													<path d="M40 0a40 40 0 1040 40A40 40 0 0040 0zM26 61.56V18.44L64 40z" />
+												</svg>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="brandPillars patternBrand">
+			<div class="container">
+				<div class="heading text-center mb-3 mb-md-5">
+					<h2 class="title text-uppercase">parag brand <span class="fw-bold">pillars</span></h2>
+				</div><!-- End .heading -->
+
+				<div class="row justify-content-center">
+					<div class="col-md-4 brandPillarsBox">
+						<div class="brandPillars position-relative">
+							<img src="assets/images/new/about/godness.png" class="img-fluid" alt="">
+							<div class="brandPillarsContent">
+								<p class="text-uppercase text-white fw-bold">Goodness </p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 brandPillarsBox">
+						<div class="brandPillars position-relative">
+							<img src="assets/images/new/about/innovation.png" class="img-fluid" alt="">
+							<div class="brandPillarsContent">
+								<p class="text-uppercase text-white fw-bold">Innovations to inspire you </p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 brandPillarsBox">
+						<div class="brandPillars position-relative">
+							<img src="assets/images/new/about/environmental.png" class="img-fluid" alt="">
+							<div class="brandPillarsContent">
+								<p class="text-uppercase text-white fw-bold">environmental sustainability </p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 brandPillarsBox">
+						<div class="brandPillars position-relative">
+							<img src="assets/images/new/about/ambition.png" class="img-fluid" alt="">
+							<div class="brandPillarsContent">
+								<p class="text-uppercase text-white fw-bold">ambition </p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 brandPillarsBox">
+						<div class="brandPillars position-relative">
+							<img src="assets/images/new/about/nutrition.png" class="img-fluid" alt="">
+							<div class="brandPillarsContent">
+								<p class="text-uppercase text-white fw-bold">nutrition </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="keyFacts">
+			<div class="container">
+				<div class="heading text-center mb-3 mb-md-5">
+					<h2 class="title text-uppercase text-white">Key <span class="fw-bold yellowText">Facts</span></h2>
+				</div><!-- End .heading -->
+
+				<div class="row justify-content-center">
+					<div class="col-6 col-md-4 keyFactsBoxOuter">
+						<div class="keyFactsBox text-center">
+							<h3 class="text-uppercase fw-bold yellowText"><span>2400</span> cR</h3>
+							<p class="mb-0 text-white">Sales <br>Turnover</p>
+						</div>
+					</div>
+					<div class="col-6 col-md-4 keyFactsBoxOuter">
+						<div class="keyFactsBox text-center">
+							<h3 class="text-uppercase fw-bold yellowText"><span>2</span> million</h3>
+							<p class="mb-0 text-white">Liters of Milk <br>Produced Daily</p>
+						</div>
+					</div>
+					<div class="col-6 col-md-4 keyFactsBoxOuter">
+						<div class="keyFactsBox text-center">
+							<h3 class="text-uppercase fw-bold yellowText"><span>2</span> facilities</h3>
+							<p class="mb-0 text-white">In Asia with <br>UHT Technology</p>
+						</div>
+					</div>
+					<div class="col-6 col-md-4 keyFactsBoxOuter">
+						<div class="keyFactsBox text-center">
+							<h3 class="text-uppercase fw-bold yellowText"><span>4</span> lakh</h3>
+							<p class="mb-0 text-white">Liter of Whey <br>Liquid Processing</p>
+						</div>
+					</div>
+					<div class="col-6 col-md-4 keyFactsBoxOuter">
+						<div class="keyFactsBox text-center">
+							<h3 class="text-uppercase fw-bold yellowText"><span>21</span> countries</h3>
+							<p class="mb-0 text-white">Our Export <br>Destiations</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="brandAdvantages">
+			<div class="container">
+				<div class="heading text-center mb-3 mb-md-5">
+					<h2 class="title text-uppercase">Parag Brand <span class="fw-bold">Advantages</span></h2>
+				</div><!-- End .heading -->
+
+				<div class="row brandAdvantageBox">
+					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
+						<img src="" alt="" class="img-fluid">
+						<h3>A Stock Exchange <br class="d-none d-md-block"> Listed Company</h3>
+					</div>
+					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
+						<img src="" alt="" class="img-fluid">
+						<h3>ISO 22000 <br class="d-none d-md-block"> Certified Facility</h3>
+					</div>
+					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
+						<img src="" alt="" class="img-fluid">
+						<h3>India’s 1st Whey <br class="d-none d-md-block"> Manufacturing Plant</h3>
+					</div>
+					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
+						<img src="" alt="" class="img-fluid">
+						<h3>Fully <br class="d-none d-md-block"> Automated Plant</h3>
+					</div>
+					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
+						<img src="" alt="" class="img-fluid">
+						<h3>World Class <br class="d-none d-md-block"> Quality Norms</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
 	</div>
 </main>
 @endsection

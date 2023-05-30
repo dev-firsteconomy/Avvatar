@@ -2,13 +2,15 @@
 	<div class="footer-middle">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-6 col-lg-2">
+				<div class="col-sm-6 col-md-2 col-lg-2">
 					<div class="widget widget-about">
-						<img src="{{URL::asset('assets/images/new/logo.png')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
+						<a href="/">
+							<img src="{{URL::asset('assets/images/new/logo.png')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
+						</a>
 					</div><!-- End .widget about-widget -->
 				</div><!-- End .col-sm-6 col-lg-3 -->
 
-				<div class="col-sm-6 col-lg-4">
+				<div class="col-sm-6 col-md-3 col-lg-4">
 					<div class="widget">
 						<h4 class="widget-title">Products</h4><!-- End .widget-title -->
 
@@ -23,24 +25,24 @@
 					</div><!-- End .widget -->
 				</div><!-- End .col-sm-6 col-lg-3 -->
 
-				<div class="col-sm-6 col-lg-3">
+				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="widget">
 						<h4 class="widget-title">Information</h4><!-- End .widget-title -->
 
 						<ul class="widget-list d-lg-flex flex-wrap">
-							<li><a href="#">About Us</a></li>
+							<li><a href="/about-avvatar">About Us</a></li>
 							<li><a href="#">Blogs</a></li>
 							<li><a href="#">Why Avvatar</a></li>
-							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="/privacy-policy">Privacy Policy</a></li>
 							<li><a href="#">Authenticate</a></li>
-							<li><a href="#">Terms of Use</a></li>
+							<li><a href="/terms-of-use">Terms of Use</a></li>
 							<li><a href="#">Media</a></li>
-							<li><a href="#">Return Policy</a></li>
+							<li><a href="/returns-policy">Return Policy</a></li>
 						</ul><!-- End .widget-list -->
 					</div><!-- End .widget -->
 				</div><!-- End .col-sm-6 col-lg-3 -->
 
-				<div class="col-sm-6 col-lg-3">
+				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="widget">
 						<h4 class="widget-title">Follow Us On</h4><!-- End .widget-title -->
 
@@ -59,10 +61,18 @@
 
 	<div class="footer-bottom">
 		<div class="container">
-			<p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
-			<figure class="footer-payments">
-				<img src="{{URL::asset('assets/images/payments.png')}}" alt="Payment methods" width="272" height="20">
+			<div class="row">
+				<div class="col-md-6">
+					<p class="footer-copyright">Copyright © 2019 Avvatar. All Rights Reserved.</p><!-- End .footer-copyright -->
+				</div>
+				<div class="col-md-6">
+					<figure class="footer-payments">
+				<p class="footer-copyright">Design by <a href="" class="yellowText">WRM</a></p>
 			</figure><!-- End .footer-payments -->
+				</div>
+				
+			
+			</div>
 		</div><!-- End .container -->
 	</div><!-- End .footer-bottom -->
 </footer><!-- End .footer -->

@@ -14,7 +14,8 @@
 			@endforeach
 		</ul>
 	</div>
-	<div class="">
+	
+	<div class="d-none">
 		<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow owl-light owl-nav-inside" data-toggle="owl" data-owl-options='{"nav": false}'>
 			@foreach ($banners as $item)
 			<a href="{{$item->link}}" class="w-100">
@@ -29,6 +30,35 @@
 
 		<span class="slider-loader text-white"></span><!-- End .slider-loader -->
 	</div><!-- End .intro-slider-container -->
+	
+	<div class="homeBannerSection">
+		<div class="video-container" id="video-container">
+			<video id="video" preload="metadata" class="bannerVideoHome" poster="assets/images/new/homepage/homeBanner.png">
+				<source src="//cdn.jsdelivr.net/npm/big-buck-bunny-1080p@0.0.6/video.mp4" type="video/mp4">
+			</video>
+			
+			<div class="container">
+				<div class="videoContent d-flex flex-column justify-content-center" id="videoContent">
+					<h3 class="text-white">Unleash your</h3>
+					<h2 class="text-uppercase text-white d-inline-flex">inner strength</h2>
+					<p class="text-white">With our premium Indian whey <br> protein supplemets</p>
+					<div title="Play video" class="play-gif" id="circle-play-b">
+						<span class="text text-uppercase text-white">Play video</span>
+						<div class="svgIcon">
+							<div class="svgIconImg">
+								<img src="assets/images/new/play-button.png" alt="" class="img-fluid">
+<!--
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+									<path d="M40 0a40 40 0 1040 40A40 40 0 0040 0zM26 61.56V18.44L64 40z" />
+								</svg>
+-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!--
 	<div class="container">

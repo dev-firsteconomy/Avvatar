@@ -3480,7 +3480,7 @@ a {
 p {
 	margin-bottom: 0;
 	font-size: 1.4rem;
-	font-weight: 300;
+	font-weight: 400;
 	font-family: 'Montserrat';
 	letter-spacing: 0;
 	color: #000
@@ -6365,6 +6365,7 @@ p {
 
 @media screen and (min-width: 992px) {
 
+	/*
 	.footer-bottom .container,
 	.footer-bottom .container-fluid {
 		-webkit-box-orient: horizontal;
@@ -6372,6 +6373,7 @@ p {
 		-ms-flex-direction: row;
 		flex-direction: row
 	}
+*/
 
 	.footer-copyright {
 		margin-bottom: 0;
@@ -21723,7 +21725,7 @@ button:focus {
 	}
 
 	.widget-list li {
-		padding: 8px 15px !important;
+		padding: 8px 0px 0 !important;
 		margin-bottom: 0px;
 	}
 
@@ -22121,3 +22123,5 @@ input[type=radio] {
 	color: #fff;
 	letter-spacing: 0.5px;
 }
+
+.aboutFounderBox

@@ -25,9 +25,9 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/about-us-parag-foods','HomeController@aboutParagFoods');
     Route::get('/collaboration','HomeController@collaboration');
 
-    Route::get('/terms-and-conditions','HomeController@termsAndCondition');
-    Route::get('/shipping-policy','HomeController@shipping');
-    Route::get('/returns-exchange-refund','HomeController@returns');
+    Route::get('/terms-of-use','HomeController@termsAndCondition');
+//    Route::get('/shipping-returns-policy','HomeController@shipping');
+    Route::get('/returns-policy','HomeController@returns');
     Route::get('/privacy-policy','HomeController@privacy');
     Route::get('/cancellation-policy','HomeController@cancellation');
     // Route::get('/payment','HomeController@payment');

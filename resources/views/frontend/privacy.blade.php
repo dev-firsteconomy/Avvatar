@@ -20,37 +20,39 @@
 		    <div class="page-content pb-3">
 		        <div class="container">
 		            <div class="row">
-		                <div class="col-sm-12 PageContent">
-							<p><h6>User’s information and privacy:</h6></p>
-							<p>We are committed to protecting all information that you share with us. We have accordingly developed this privacy policy to protect your personal information and keep it confidential. We ensure that your personal information is secure online.</p>
-							<p>We seek to protect your rights of privacy on systems and the site (www.zehna.in). However, we would not be liable for any unauthorized or unlawful disclosures of your personal and confidential information made by you or any third parties who are not subject to our control.</p>
-							<p><h6>Cookies:</h6></p>
-							<p>Like many other transactional websites, we may use “cookies” to improve your experience on our website and to save your time. Cookies are little tags that we assign to your computer when you first visit our website to enable us to recognize you when you return to the website.</p>
-							<p><h6>Personal Information provided by You is used only:</h6></p>
-							<ul style="list-style-type: disc;list-style-position: inside;">
-							 <li style="margin-bottom: 15px;">to facilitate Your use of the Website;</li>
-							 <li style="margin-bottom: 15px;">to respond to Your inquiries or fulfill Your requests for information about the various services;</li>
-							 <li style="margin-bottom: 15px;">to provide you with information about our products/services and to send You information, materials, and offers;</li>
-							 <li style="margin-bottom: 15px;">to improve the services, content, and advertising on the Website</li>
-							 <li style="margin-bottom: 15px;">to send you important information regarding the Website, changes to Website’s terms, conditions, and policies and/or other administrative information;</li>
-							 <li style="margin-bottom: 15px;">to personalize your experience on the Website by presenting advertising, products and offers tailored to You;</li>
-							 <li style="margin-bottom: 15px;">to help You address Your problems with the Website including addressing any technical problems;</li>
-							 <li style="margin-bottom: 15px;">if You purchase any product from the Website, to complete and fulfill Your purchase, for example, to have Your payments processed, communicate with You regarding Your purchase and provide</li>
-							 <li style="margin-bottom: 15px;">You with related customer service;</li>
-							 <li style="margin-bottom: 15px;">for proper administering of the Website;</li>
-							 <li style="margin-bottom: 15px;">to resolve disputes; troubleshoot problems; help promote a safe service; collect money;</li>
-							 <li style="margin-bottom: 15px;">to conduct internal reviews and data analysis for the Website (e.g., to determine the number of visitors to specific pages within the Website);</li>
-							</ul>
-							<p><h6>Security:</h6></p>
-							<p>The security of your personal information is very important to the Company. We have aligned physical, administrative and technical safeguards designed to protect your personal information from unauthorized access. Also, the Company uses standard security protocols and mechanisms to exchange the transmission of sensitive data such as credit card details. In the event of any breach of your personal information, the Company will notify you of it by email or fax and will restore the integrity of the data system.</p>
-							<p><h6>Advertising:</h6></p>
-							<p>The Company uses some third parties to administer a limited set of advertisements on our website and portals. During this process, no personal information is leaked. However, aggregate profile information, such as the user community, may be used in the selection of advertising to make sure that it has relevance to the user.</p>
-							<p><h6>Use of Services:</h6></p>
-							<p>Your use of services on zehna.in and your provision of information in connection with these services is purely voluntary. You will always have the option of whether to perform the transaction and provide this information or not. However, to open an online service account or perform a service transaction, you will be required to provide some personal information. Whether to perform the transaction is up to you.</p>
-							<p>If you choose to provide us with personal information, we will use that information to help us get you the product or information you have requested.</p>
-							<p><h6>Important Disclaimer:</h6></p>
-							<p>Although the Company provides full security and secrecy to your personal information, we urge you to be careful with very sensitive information and do not share it with any third party claiming to be related to the Company on separate emails/phone calls, etc. The Company disclaims any and all liabilities towards any such claims that have arisen due to your own negligence or willful misconduct and the Company takes no responsibility for the same.</p>
-						</div>
+		                <div class="policy-terms">
+							<div class="warp-inner2">
+							  <p>Parag Milk Foods Ltd. and its subsidiaries and divisions respect your privacy. This Privacy Policy outlines the manner your data is collected and used by us. You are advised to please read the Privacy Policy carefully. By accessing the services provided by Avvatarindia.com you agree to the collection and use of your data by Avvatarindia.com in the manner provided in this Privacy Policy. If you have questions or concerns regarding this statement, you can email us at&nbsp;<a href="mailto:customercare@paragmilkfoods.com">customercare@paragmilkfoods.com</a></p>
+							  <p>The Policy does not apply to the procedures and practices followed by entities that are not managed, owned or controlled by Avvatarindia.com or to the people that are not engaged, employed or managed by www.avvatarindia.com</p>
+							  <p>Through this document, we wish to make you feel at ease while using our websites, and not hesitate while sharing important information with us. We like to make you aware that by using our websites you are agreeing to the collection of certain data.</p>
+							  <p>Parag Milk Foods Ltd. may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.</p>
+							  <p>Do feel free to contact us with your questions or concerns about privacy on this website.</p>
+							  <p>We may collect the following information:</p>
+							  <ul>
+								<li>Name and job title</li>
+								<li>Contact information including email address</li>
+								<li>Demographic information such as postcode, preferences and interests</li>
+								<li>Other information relevant to customer surveys and/or offers</li>
+							  </ul>
+							  <p>We require this information to understand your needs and provide you with a better service, and in particular for the following reasons :</p>
+							  <ul>
+								<li>Internal record keeping</li>
+								<li>We may use the information to improve our products and services</li>
+								<li>We may periodically send promotional emails about new products, special offers or other information which we think you may find interesting using the email address which you have provided</li>
+								<li>From time to time, we may also use your information to contact you for market research purposes. We may contact you by email, phone, fax or mail. We may use the information to customise the website according to your interests</li>
+							  </ul>
+							  <p>We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.</p>
+							  <p>Our website may contain links to other websites of interest. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question. You may terminate your account at any time by writing to us at <a href="mailto:customercare@paragmilkfoods.com">customercare@paragmilkfoods.com</a> from the email ID you have used for creating your account login, and mentioning Please close my account in the subject line. We will disable access to your account within 2 working days of receiving your mail. However, your information may remain stored in archive on our servers even after the deletion or termination of your account.</p>
+							  <p>You can offer your views, suggestions, if any, by submitting your details in the Contact Us Form on our Website or You can write to us at:</p>
+							  <p><b>Address –</b></p>
+							  <p>Parag Milk Foods Ltd.<br>
+								20th Floor Nirmal Building, <br>
+								Nariman Point, <br>
+								Mumbai-400021<br>
+								<span class="fw-bold">Email:</span> customercare@paragmilkfoods.com<br>
+								<span class="fw-bold">Tel:</span> +91 22 4300 5555 </p>
+							</div>
+						  </div>
 		            </div>
 
 		        </div><!-- End .container -->
