@@ -87,35 +87,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
+
         $data=$request->all();
 
-        $this->validate($request,[
+        $this->validate($request,[  
              'category_id'=>'required',
              'name'=>'required',
-             'design'=>'required',
              'hsn'=>'required',
-             'fabric'=>'required',
-             'orientation'=>'required',
              'price'=>'required',
              'min_qty'=>'required',
-             'stock_quantities'=>"required",
              'description'=>'required',
              'additional_information'=>'required',
              'related_products'=>'required',
-              "sizes"    => "required|array",
-              'sizes.*'  =>'required',
-              "colors"   => "required|array",
-              'colors.*'=>'required',
-             'images'=>'required',             
-             'status'=>'required',            
-             'discount'=>'required',             
+             'images'=>'required',
+             'status'=>'required',
+             'discount'=>'required'
+            //  'stock_quantities'=>"required",
+            //  "colors"   => "required|array",
+            //  'colors.*'=>'required',
+            //  'sizes.*'  =>'required',
+            //  "sizes"    => "required|array",
+            //  'orientation'=>'required',
+            //  'fabric'=>'required',
+            //  'design'=>'required',
         ]);
 
-        $slug=Str::slug($request->name);
+        $slug = Str::slug($request->name);
         $count= Product::where('slug',$slug)->count();
+
         if($count>0)
         {
-            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
+            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
         }
 
         $data['slug']=$slug;
@@ -173,15 +176,15 @@ class ProductController extends Controller
                $colors = $request->colors;
                $quantities = $request->stock_quantities;
                
-               foreach($sizes as $key => $size)
-               {
+                foreach($sizes as $key => $size)
+                {
                     $prodStock = new ProductStock;
                     $prodStock->product_id=$status->id;
                     $prodStock->size_id=$size;
                     $prodStock->color_id=$colors[$key];
                     $prodStock->stock_qty= $quantities[$key];
                     $prodStock->save();
-               }
+                }
            }
 
            if($request->colorsImages)
@@ -204,7 +207,6 @@ class ProductController extends Controller
 
         //    if ($request->hasFile('images')) 
         //    {
-                
         //    }    
         
         //Application

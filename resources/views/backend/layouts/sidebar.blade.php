@@ -270,13 +270,13 @@
                   <a class="collapse-item" href="{{route('banner.index')}}">Banners</a>
                   <a class="collapse-item" href="{{route('category.index')}}">Categories</a>
                   <a class="collapse-item" href="{{route('cities.index')}}"><span>Cities</span></a>
-                  <a class="collapse-item" href="{{route('colors.index')}}">Colors</a>
-                  <a class="collapse-item" href="{{route('fabrics.index')}}">Fabrics</a>
+                  <!-- <a class="collapse-item" href="{{route('colors.index')}}">Colors</a> -->
+                  <!-- <a class="collapse-item" href="{{route('fabrics.index')}}">Fabrics</a> -->
                   <a class="collapse-item" href="{{route('orderstatus.index')}}">Order Statuses</a>
-                  <a class="collapse-item" href="{{route('orientations.index')}}"><span>Orientations</span></a>  
+                  <!-- <a class="collapse-item" href="{{route('orientations.index')}}"><span>Orientations</span></a>   -->
                   <a class="collapse-item" href="{{route('pincodes.index')}}"><span>Pincodes</span></a>  
                   <a class="collapse-item" href="{{route('sizes.index')}}">Sizes</a>                
-                  <a class="collapse-item" href="{{route('sizecharts.index')}}">Size Chart</a>                  
+                  <!-- <a class="collapse-item" href="{{route('sizecharts.index')}}">Size Chart</a>                   -->
                   <a class="collapse-item" href="{{route('states.index')}}"><span>States</span></a>
                   
                   
