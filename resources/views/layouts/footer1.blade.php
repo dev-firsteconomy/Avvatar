@@ -15,12 +15,12 @@
 						<h4 class="widget-title">Products</h4><!-- End .widget-title -->
 
 						<ul class="widget-list d-lg-flex flex-wrap">
-							<li><a href="about.html">Whey Protien Isorich</a></li>
-							<li><a href="#">Mass Gainer</a></li>
-							<li><a href="#">Whey Protien Blend</a></li>
+							<li><a href="/categories/whey-protein-isorich-2305255413-594">Whey Protien Isorich</a></li>
+							<li><a href="/categories/mass-gainer">Mass Gainer</a></li>
+							<li><a href="categories/whey-protein-blend">Whey Protien Blend</a></li>
 							<li><a href="contact.html">Pre Workout Series</a></li>
-							<li><a href="login.html">Muscle Gainer</a></li>
-							<li><a href="login.html">Colthing & Accessories</a></li>
+							<li><a href="categories/muscle-gainer">Muscle Gainer</a></li>
+							<li><a href="categories/clothing-accessories">Colthing & Accessories</a></li>
 						</ul><!-- End .widget-list -->
 					</div><!-- End .widget -->
 				</div><!-- End .col-sm-6 col-lg-3 -->
@@ -47,11 +47,11 @@
 						<h4 class="widget-title">Follow Us On</h4><!-- End .widget-title -->
 
 						<div class="social-icons">
-							<a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-							<a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-							<a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-							<a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-							<a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+							<a href="https://www.facebook.com/avvatarindia" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+							<a href="https://twitter.com/AvvatarIndia" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+							<a href="https://www.instagram.com/avvatarindia" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+							<a href="https://www.youtube.com/channel/UCEVdp_QlCBxk1VImLyWC2GA/featured" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+							<a href="https://wa.me/917756072076" class="social-icon" title="whatsapp" target="_blank"><i class="icon-whatsapp"></i></a>
 						</div>
 					</div><!-- End .widget -->
 				</div><!-- End .col-sm-6 col-lg-3 -->
@@ -67,11 +67,11 @@
 				</div>
 				<div class="col-md-6">
 					<figure class="footer-payments">
-				<p class="footer-copyright">Design by <a href="" class="yellowText">WRM</a></p>
-			</figure><!-- End .footer-payments -->
+						<p class="footer-copyright">Design by <a href="" class="yellowText">WRM</a></p>
+					</figure><!-- End .footer-payments -->
 				</div>
-				
-			
+
+
 			</div>
 		</div><!-- End .container -->
 	</div><!-- End .footer-bottom -->

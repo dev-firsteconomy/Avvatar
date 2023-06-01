@@ -23,6 +23,8 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/contact','HomeController@contact');
     Route::get('/about-avvatar','HomeController@aboutus');
     Route::get('/about-us-parag-foods','HomeController@aboutParagFoods');
+    Route::get('/product-categories','HomeController@productCategories');
+    Route::get('/blogs','HomeController@blogs');
     Route::get('/collaboration','HomeController@collaboration');
 
     Route::get('/terms-of-use','HomeController@termsAndCondition');
@@ -74,9 +76,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         return view('user.pages.wishlist');
     })->name('wishlist')->middleware('user');
 
-    // Route::get('/category',function(){
-    //     return view('frontend.category');
-    // });
+//     Route::get('/categories',function(){
+//         return view('frontend.category');
+//     });
     // Route::get('/coming-soon',function(){
     //     return view('frontend.coming-soon');
     // });

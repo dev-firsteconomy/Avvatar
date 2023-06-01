@@ -14,7 +14,7 @@
 			@endforeach
 		</ul>
 	</div>
-	
+
 	<div class="d-none">
 		<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow owl-light owl-nav-inside" data-toggle="owl" data-owl-options='{"nav": false}'>
 			@foreach ($banners as $item)
@@ -30,13 +30,13 @@
 
 		<span class="slider-loader text-white"></span><!-- End .slider-loader -->
 	</div><!-- End .intro-slider-container -->
-	
+
 	<div class="homeBannerSection">
 		<div class="video-container" id="video-container">
 			<video id="video" preload="metadata" class="bannerVideoHome" poster="assets/images/new/homepage/homeBanner.png">
 				<source src="//cdn.jsdelivr.net/npm/big-buck-bunny-1080p@0.0.6/video.mp4" type="video/mp4">
 			</video>
-			
+
 			<div class="container">
 				<div class="videoContent d-flex flex-column justify-content-center" id="videoContent">
 					<h3 class="text-white">Unleash your</h3>
@@ -47,7 +47,7 @@
 						<div class="svgIcon">
 							<div class="svgIconImg">
 								<img src="assets/images/new/play-button.png" alt="" class="img-fluid">
-<!--
+								<!--
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
 									<path d="M40 0a40 40 0 1040 40A40 40 0 0040 0zM26 61.56V18.44L64 40z" />
 								</svg>
@@ -186,9 +186,9 @@
 	<section class="bestSellerWrapper patternBgTop">
 		<div class="container">
 			<div class="heading text-center mb-5">
-				<h2 class="title text-uppercase"><span class="fw-bold">Best Selling</span> Products</h2><!-- End .title -->
-			</div><!-- End .heading -->
-		</div><!-- End .container -->
+				<h2 class="title text-uppercase"><span class="fw-bold">Best Selling</span> Products</h2>
+			</div>
+		</div>
 
 		<div class="container">
 			<div class="tab-content tab-content-carousel">
@@ -196,14 +196,17 @@
 					<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
 							"nav": false, 
 							"dots": true,
-							"margin": 20,
+							"navText": [
+								"<i class=icon-angle-left></i>",
+								"<i class=icon-angle-right></i>"
+							],
+							"margin": 10,
 							"loop": false,
 							"responsive": {
 								"0": {
-									"items":2
-								},
-								"480": {
-									"items":2
+									"items":2,
+									"nav": true, 
+									"dots": false
 								},
 								"768": {
 									"items":3
@@ -212,11 +215,8 @@
 									"items":4
 								},
 								"1200": {
-									"items":4
-								},
-								"1600": {
 									"items":4,
-									"nav": true
+									"margin": 20
 								}
 							}
 						}'>
@@ -334,14 +334,13 @@
 					<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
 							"nav": false, 
 							"dots": true,
-							"margin": 20,
+							"margin": 10,
 							"loop": false,
 							"responsive": {
 								"0": {
-									"items":2
-								},
-								"480": {
-									"items":2
+									"items":2,
+									"nav": true, 
+									"dots": false
 								},
 								"768": {
 									"items":3
@@ -350,11 +349,8 @@
 									"items":4
 								},
 								"1200": {
-									"items":4
-								},
-								"1600": {
 									"items":4,
-									"nav": true
+									"margin": 20
 								}
 							}
 						}'>
@@ -460,35 +456,6 @@
 
 		<div class="container">
 			<div class="categoriesBox">
-				<!--
-				<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
-                    "nav": false, 
-                    "dots": true,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":4
-                        },
-                        "1600": {
-                            "items":5,
-                            "nav": true
-                        }
-                    }
-                }'>
-				-->
 				<div class="row justify-content-center">
 					<div class="col-md-11 col-lg-9">
 						<div class="row categorySlider owl-carousel justify-content-center">
@@ -506,8 +473,6 @@
 						</div>
 					</div>
 				</div>
-				<!--				</div>-->
-				<!-- End .owl-carousel -->
 			</div>
 		</div>
 	</section>
@@ -518,7 +483,12 @@
 			<p class="whiteText">Scratch the label on the lid to unveil the unique verification code.</p>
 			<a class="text-uppercase commonButton-yellow">Authenticate Now</a>
 		</div><!-- End .heading -->
-		<img src="assets/images/new/homepage/authenticateBg.png" class="img-fluid">
+		<!--		<img src="assets/images/new/homepage/authenticateBg.png" class="img-fluid">-->
+		<picture>
+			<source media="(max-width:767px)" srcset="assets/images/new/homepage/authenticateMobileBg.png">
+			<source media="(min-width:768px)" srcset="assets/images/new/homepage/authenticateBg.png">
+			<img src="assets/images/new/about/about-banner.png" class="img-fluid" alt="aboutBanner">
+		</picture>
 	</section>
 
 	<section class="loyaltyProgram">
@@ -538,7 +508,7 @@
 					</div><!-- End .heading -->
 				</div>
 				<div class="col-md-3  d-none d-md-block">
-					<img src="assets/images/new/homepage/loyalty-2.png" class="img-fluid">
+					<img src="assets/images/new/homepage/loyalty-2.png" class="float-end img-fluid">
 				</div>
 			</div>
 		</div>
@@ -735,6 +705,14 @@
 					<input type="email" class="form-control" placeholder="Email ID">
 					<button type="submit" href="#" class="mt-1 commonButton">Know More</button>
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="instagramFeed patternBgTop">
+		<div class="container">
+			<div class="heading text-center mb-5">
+				<h2 class="title text-uppercase"><span class="fw-bold">Instagram</span> feed</h2>
 			</div>
 		</div>
 	</section>

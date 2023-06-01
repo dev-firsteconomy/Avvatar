@@ -1,8 +1,11 @@
 @media(max-width:767px) {
 
 	.patternBgTop,
+	.patternBgTopReverse,
 	.aboutParafFood.patternBgPageTop,
-	.patternBrand {
+	.patternBrand,
+	.aboutParafFood.patternBgTop,
+	.goodnessAvvatar.patternBgTop {
 		background-size: 200px;
 	}
 
@@ -11,7 +14,9 @@
 	.blogCardOuter:nth-child(n+2),
 	.brandPillarsBox:nth-child(n+2),
 	.keyFactsBoxOuter:nth-child(n+3),
-	.brandAdvantage:nth-child(n+3) {
+	.brandAdvantage:nth-child(n+3),
+	.contactPatchBox:nth-child(n+2),
+	.goodnessAvatarBoxOuter:nth-child(n+2) {
 		margin-top: 30px;
 	}
 
@@ -127,11 +132,33 @@
 	.social-icons {
 		margin-top: 20px;
 	}
+
+	.homeBannerSection .videoContent h3 {
+		font-size: 24px;
+	}
+
+	.homeBannerSection .videoContent h2 {
+		font-size: 30px;
+	}
+
+	.homeBannerSection .videoContent p {
+		font-size: 18px;
+	}
+
+	.bestSellerWrapper .owl-carousel .owl-stage-outer {
+		padding: 10px 0;
+	}
 }
 
 @media only screen and (min-width : 768px) {
 	.brandAdvantage {
 		width: 18%;
+	}
+
+	.categorySlider.owl-carousel {
+		display: -webkit-box !important;
+		display: -ms-flexbox !important;
+		display: flex !important;
 	}
 }
 
@@ -225,6 +252,27 @@
 	.svgIcon:before {
 		width: 100px;
 	}
+
+	.home-menu-section li {
+		width: 16%;
+		margin-right: 0;
+	}
+
+
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1199px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+	.productJourneyBox img {
+		width: 150px;
+	}
+
+	.productJourneyBox + .productJourneyBox:after {
+		height: 88px;
+	}
+
+	.patternBgTop {
+		background-size: 250px;
+	}
 }
 
 @media (min-width: 1200px) {
@@ -232,12 +280,6 @@
 	.categoriesBox .cat-slide:nth-child(n+4),
 	.brandPillarsBox:nth-child(n+4) {
 		margin-top: 30px;
-	}
-
-	.categorySlider.owl-carousel {
-		display: -webkit-box !important;
-		display: -ms-flexbox !important;
-		display: flex !important;
 	}
 
 	.title {
@@ -265,7 +307,12 @@
 	}
 }
 
+
 @media screen and (min-width: 1600px) {
+	.container {
+		max-width: 1450px;
+	}
+
 	.container-fluid {
 		padding-left: 5px;
 		padding-right: 5px;
@@ -274,5 +321,15 @@
 	.productJourneyBox + .productJourneyBox:after {
 		background-size: 112px;
 		left: -11%;
+	}
+
+	.reconstructSection {
+		padding: 100px 0;
+	}
+}
+
+@media screen and (min-width: 1920px) {
+	.container {
+		max-width: 1550px;
 	}
 }

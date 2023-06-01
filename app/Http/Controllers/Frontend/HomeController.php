@@ -215,6 +215,17 @@ class HomeController extends Controller
     {
         return view('frontend.about-paragfoods');
     }
+	
+	public function blogs()
+    {
+        return view('frontend.blogs');
+    }
+	
+	public function productCategories()
+    {
+		$categories = Category::where('status','1')->where('is_parent',1)->where('is_giftcard',0)->orderBy('title','ASC')->get();
+        return view('frontend.product-categories',compact('categories'));
+    }
 
     public function collaboration(){
         return view('frontend.collaboration');

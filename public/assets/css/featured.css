@@ -22,11 +22,16 @@ section {
 	padding: 60px 0;
 }
 
-.patternBgTop {
+.patternBgTop, .patternBgTopReverse {
 	background-image: url(../images/new/bg-top-element.png), url(../images/new/bg-bottom-element.png);
 	background-repeat: no-repeat;
 	background-position: top left, bottom right;
 	background-size: 400px;
+}
+
+.patternBgTopReverse {
+	background-image: url(../images/new/bg-top-right-element.png), url(../images/new/bg-bottom-left-element);
+	background-position: top right, bottom left;
 }
 
 .product-journey-bg .centerImgText {
@@ -86,7 +91,7 @@ section {
 }
 
 .bestSellerWrapper .owl-carousel .owl-stage-outer {
-	padding: 20px;
+	padding: 20px 0;
 }
 
 .reconstructSection,
@@ -201,6 +206,7 @@ section {
 	transition: all 0.2s;
 	margin-top: 20px;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .commonButton-yellow {
@@ -229,7 +235,7 @@ section {
 	transition: all 0.2s linear;
 }
 
-.categorySlider:hover .knowMore {
+.categorySlider .cat-slide:hover .knowMore {
 	background-color: #F7BC2A;
 	color: #000;
 }
@@ -329,11 +335,14 @@ section {
 	color: #000;
 }
 
-.aboutParafFood.patternBgTop {
+.aboutParafFood.patternBgTop,
+.goodnessAvvatar.patternBgTop {
 	background-image: url(../images/new/bg-bottom-left-element.png), url(../images/new/bg-top-right-element.png);
 	background-position: bottom left, top right;
 	background-size: 300px;
 }
+
+
 
 .aboutParafFood.patternBgPageTop {
 	background-image: url(../images/new/bg-top-right-element.png);
@@ -700,6 +709,7 @@ span.sr-only {
 
 .accordion-button:focus {
 	background-color: transparent;
+	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 
@@ -711,4 +721,78 @@ span.sr-only {
 
 .accordion-flush .accordion-collapse {
 	border-top: 1px solid #dee2e6;
+}
+
+.contactUsForm form {
+	margin-top: 30px;
+}
+
+.contactUsForm input.form-control {
+	padding-left: 0;
+	padding-right: 0;
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid #333;
+}
+
+.contactUsForm textarea.form-control {
+	border-color: #333;
+}
+
+.contactPatch {
+	background-color: #333;
+}
+
+.contactPatchBox h3 {
+	border-bottom: 1px solid #333;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.contactPatchBox p {
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
+.addressBox {
+	margin-top: 30px;
+}
+
+.addressBox h3 {
+	border-bottom: 1px solid #333;
+	padding-bottom: 10px;
+	font-size: 26px;
+	font-weight: 700;
+}
+
+.addressContact {
+	margin-top: 10px;
+}
+
+.owl-simple .owl-nav [class*='owl-'] {
+	width: 25px;
+	height: 25px;
+	margin: 0;
+	margin-top: auto;
+	color: #000;
+	font-size: 20px;
+	background: #F7BC2A;
+	border-radius: 0;
+}
+
+.owl-simple .owl-nav .owl-prev {
+	left: 0;
+}
+
+.owl-simple .owl-nav .owl-next {
+	right: 0;
+}
+
+.goodnessAvatarBox {
+	padding: 10px 10px;
+}
+
+.goodnessAvatarBox h3 {
+	font-size: 18px;
+	line-height: 1.2;
 }
