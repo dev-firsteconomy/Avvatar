@@ -122,7 +122,7 @@
 
                                 <div class="widget widget-collapsible">
                                     <h3 class="widget-title">
-                                        <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
+                                        <a data-bs-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
                                             Size
                                         </a>
                                     </h3><!-- End .widget-title -->
@@ -143,12 +143,12 @@
                                     </div><!-- End .collapse -->
                                 </div><!-- End .widget -->
 
-                                <div class="widget widget-collapsible">
+                                <!-- <div class="widget widget-collapsible">
                                     <h3 class="widget-title">
                                         <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true" aria-controls="widget-3">
                                             Colour
                                         </a>
-                                    </h3><!-- End .widget-title -->
+                                    </h3>
 
                                     <div class="collapse " id="widget-3">
                                         <div class="widget-body">
@@ -160,21 +160,21 @@
                                                             <div class="custom-color" data-toggle="tooltip" title="{{$item->name}}"><span style="background-color:{{$item->code}}" ></span></div>
                                                         </label>
                                                     </div>
-                                                   <!-- <input style="background: {{$item->code}}" type="radio" id="color-{{$item->id}}"  name="color-{{$item->id}}" class="customFilterData" value="{{$item->id}}"> -->
+                                                   
                                                    {{-- <a href="javascript:void(0);" class="customFilterData" style="background: {{$item->code}}" id="color-{{$item->id}}" name="color-{{$item->id}}" value="{{$item->id}}"></a> --}}
                                                 @endforeach
                                                 
-                                            </div><!-- End .filter-colors -->
-                                        </div><!-- End .widget-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .widget -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
 
-                                <div class="widget widget-collapsible">
+                                <!-- <div class="widget widget-collapsible">
                                     <h3 class="widget-title">
                                         <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
                                             Fabric
                                         </a>
-                                    </h3><!-- End .widget-title -->
+                                    </h3>
 
                                     <div class="collapse " id="widget-4">
                                         <div class="widget-body">
@@ -184,20 +184,20 @@
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input customFilterData" id="fabric-{{$item->id}}" data-id="{{$item->id}}">
                                                             <label class="custom-control-label" for="fabric-{{$item->id}}">{{$item->name}}</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                    </div><!-- End .filter-item -->
+                                                        </div>
+                                                    </div>
                                                 @endforeach
-                                            </div><!-- End .filter-items -->
-                                        </div><!-- End .widget-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .widget -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
 
-                                <div class="widget widget-collapsible">
+                                <!-- <div class="widget widget-collapsible">
                                     <h3 class="widget-title">
                                         <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
                                             Orientations
                                         </a>
-                                    </h3><!-- End .widget-title -->
+                                    </h3>
 
                                     <div class="collapse " id="widget-5">
                                         <div class="widget-body">
@@ -207,17 +207,17 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input customFilterData" id="orientation-{{$item->id}}" data-id="{{$item->id}}" name="customOrientation">
                                                             <label class="custom-control-label" for="orientation-{{$item->id}}">{{$item->name}}</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                    </div><!-- End .filter-item -->
+                                                        </div>
+                                                    </div>
                                                 @endforeach
-                                            </div><!-- End .filter-items -->
-                                        </div><!-- End .widget-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .widget -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
 
                                 <div class="widget widget-collapsible">
                                     <h3 class="widget-title">
-                                        <a data-toggle="collapse" href="#widget-6" role="button" aria-expanded="false" aria-controls="widget-6">
+                                        <a data-bs-toggle="collapse" href="#widget-6" role="button" aria-expanded="false" aria-controls="widget-6">
                                             Price
                                         </a>
                                     </h3><!-- End .widget-title -->

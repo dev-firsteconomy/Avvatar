@@ -2,202 +2,78 @@
 @section('content')
 
 
-		<main class="main">
-		    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
-		        <div class="container">
-		            <h1 class="page-title">Cancellation Policy<span></span></h1>
-		        </div><!-- End .container -->
-		    </div><!-- End .page-header -->
-		    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-		        <div class="container">
-		            <ol class="breadcrumb">
-		                <li class="breadcrumb-item"><a href="/">Home</a></li>
-		                <li class="breadcrumb-item active" aria-current="page">Cancellation Policy</li>
-		            </ol>
-		        </div><!-- End .container -->
-		    </nav><!-- End .breadcrumb-nav -->
+<main class="main">
+	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+		<div class="container">
+			<h1 class="page-title">Frequently Ask Questions<span></span></h1>
+		</div><!-- End .container -->
+	</div><!-- End .page-header -->
+	<nav aria-label="breadcrumb" class="breadcrumb-nav">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">FAQs</li>
+			</ol>
+		</div><!-- End .container -->
+	</nav><!-- End .breadcrumb-nav -->
 
-		    <div class="page-content pb-3">
-            <div class="container">
-                	<h2 class="title text-center mb-3">Shipping Information</h2><!-- End .title -->
-        			<div class="accordion accordion-rounded" id="accordion-1">
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading-1">
-					            <h2 class="card-title">
-					                <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-					                    How will my parcel be delivered?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-1">
-					            <div class="card-body">
-					                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+	<div class="page-content pb-3">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="faqBox">
+						<h2 class="title text-center mb-3">Avvatar</h2>
+						<div class="accordion accordion-flush" id="avvatarFaq">
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="flush-headingOne">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+										Accordion Item #1
+									</button>
+								</h2>
+								<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#avvatarFaq">
+									<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="flush-headingTwo">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+										Accordion Item #2
+									</button>
+								</h2>
+								<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#avvatarFaq">
+									<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="flush-headingThree">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+										Accordion Item #3
+									</button>
+								</h2>
+								<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#avvatarFaq">
+									<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading-2">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-					                    Do I pay for delivery?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-1">
-					            <div class="card-body">
-					                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					<div class="faqBox">
+						<h2 class="title text-center mb-3">Whey Protien</h2>
+					</div>
 
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading-3">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-					                    Will I be charged customs fees?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-1">
-					            <div class="card-body">
-					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
+					<div class="faqBox">
+						<h2 class="title text-center mb-3">Muscle Gainer</h2>
+					</div>
 
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading-4">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-					                    My item has become faulty
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-1">
-					            <div class="card-body">
-					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-					</div><!-- End .accordion -->
+					<div class="faqBox">
+						<h2 class="title text-center mb-3">Buying & Returns</h2>
+					</div>
+				</div>
+			</div>
+		</div><!-- End .container -->
 
-                	<h2 class="title text-center mb-3">How to Orders</h2><!-- End .title -->
-        			<div class="accordion accordion-rounded" id="accordion-2">
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading2-1">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-1" aria-expanded="false" aria-controls="collapse2-1">
-					                    How to order on website?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse2-1" class="collapse" aria-labelledby="heading2-1" data-parent="#accordion-2">
-					            <div class="card-body">
-					                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading2-2">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-2" aria-expanded="false" aria-controls="collapse2-2">
-					                    I haven’t received my order
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse2-2" class="collapse" aria-labelledby="heading2-2" data-parent="#accordion-2">
-					            <div class="card-body">
-					                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading2-3">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-3" aria-expanded="false" aria-controls="collapse2-3">
-					                    How can I return an item?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse2-3" class="collapse" aria-labelledby="heading2-3" data-parent="#accordion-2">
-					            <div class="card-body">
-					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-					</div><!-- End .accordion -->
-
-                	<h2 class="title text-center mb-3">Payments</h2><!-- End .title -->
-                	<div class="accordion accordion-rounded" id="accordion-3">
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading3-1">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-1" aria-expanded="false" aria-controls="collapse3-1">
-					                    What payment types can I use?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse3-1" class="collapse" aria-labelledby="heading3-1" data-parent="#accordion-3">
-					            <div class="card-body">
-					                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading3-2">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-2" aria-expanded="false" aria-controls="collapse3-2">
-					                    Can I pay by Gift Card?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse3-2" class="collapse" aria-labelledby="heading3-2" data-parent="#accordion-3">
-					            <div class="card-body">
-					                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading3-3">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-3" aria-expanded="false" aria-controls="collapse3-3">
-					                    I can't make a payment
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse3-3" class="collapse" aria-labelledby="heading3-3" data-parent="#accordion-3">
-					            <div class="card-body">
-					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-
-					    <div class="card card-box card-sm bg-light">
-					        <div class="card-header" id="heading3-4">
-					            <h2 class="card-title">
-					                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-4" aria-expanded="false" aria-controls="collapse3-4">
-					                    Has my payment gone through?
-					                </a>
-					            </h2>
-					        </div><!-- End .card-header -->
-					        <div id="collapse3-4" class="collapse" aria-labelledby="heading3-4" data-parent="#accordion-3">
-					            <div class="card-body">
-					                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. 
-					            </div><!-- End .card-body -->
-					        </div><!-- End .collapse -->
-					    </div><!-- End .card -->
-					</div><!-- End .accordion -->
-                </div>
-
-		        </div><!-- End .container -->
-
-		    </div><!-- End .page-content -->
-		</main>
+	</div>
+</main>
 
 
 

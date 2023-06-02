@@ -56,15 +56,13 @@
             "database/seeds",
             "database/factories"
         ],
-        "files": [
-
-        ]
+        "files": []
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
         },
-        "files":[
+        "files": [
             "app/Http/Helpers.php",
             "app/Helpers/cart.php",
             "app/Helpers/various.php"
