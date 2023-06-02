@@ -221,6 +221,11 @@ class HomeController extends Controller
         return view('frontend.blogs');
     }
 	
+	public function authenticate()
+    {
+        return view('frontend.authenticate');
+    }
+	
 	public function productCategories()
     {
 		$categories = Category::where('status','1')->where('is_parent',1)->where('is_giftcard',0)->orderBy('title','ASC')->get();

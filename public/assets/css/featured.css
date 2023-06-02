@@ -22,7 +22,13 @@ section {
 	padding: 60px 0;
 }
 
-.patternBgTop, .patternBgTopReverse {
+.mobile-menu-wrapper label,
+.mobile-menu-container .social-icon {
+	color: #fff;
+}
+
+.patternBgTop,
+.patternBgTopReverse {
 	background-image: url(../images/new/bg-top-element.png), url(../images/new/bg-bottom-element.png);
 	background-repeat: no-repeat;
 	background-position: top left, bottom right;
@@ -251,6 +257,15 @@ section {
 .loyaltyProgram {
 	background-image: url(../images/new/homepage/loyaltybg.png);
 	padding: 20px 0;
+}
+
+.loyaltyProgram.authectiatePage {
+	background-image: url(../images/new/homepage/loyaltybg-white.png);
+}
+
+.blackPatch {
+	background-color: #333;
+	padding: 5px 20px;
 }
 
 .blogCardContent h2 {
@@ -795,4 +810,34 @@ span.sr-only {
 .goodnessAvatarBox h3 {
 	font-size: 18px;
 	line-height: 1.2;
+}
+
+.instaFeedBox:nth-child(n+5) {
+	margin-top: 30px;
+}
+
+.uniqCode h3 {}
+
+.otpInputBoxes input {
+	width: 50px;
+	height: 50px;
+	border: 0;
+	color: #000;
+	border-bottom: 1px solid #000;
+	padding: 10px;
+	text-align: center;
+}
+
+.imgBoxWrapper h3 {
+	font-size: 24px;
+	text-transform: uppercase;
+}
+
+.imgBoxWrapper p {
+	font-size: 18px;
+}
+
+.input-group-text,
+.authenticateProductForm select {
+	font-size: 16px;
 }

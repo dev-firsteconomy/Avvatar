@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/about-us-parag-foods','HomeController@aboutParagFoods');
     Route::get('/product-categories','HomeController@productCategories');
     Route::get('/blogs','HomeController@blogs');
+    Route::get('/authenticate','HomeController@authenticate');
     Route::get('/collaboration','HomeController@collaboration');
 
     Route::get('/terms-of-use','HomeController@termsAndCondition');

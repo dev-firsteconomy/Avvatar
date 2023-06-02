@@ -16,7 +16,8 @@
 	.keyFactsBoxOuter:nth-child(n+3),
 	.brandAdvantage:nth-child(n+3),
 	.contactPatchBox:nth-child(n+2),
-	.goodnessAvatarBoxOuter:nth-child(n+2) {
+	.goodnessAvatarBoxOuter:nth-child(n+2),
+	.instaFeedBox:nth-child(n+3) {
 		margin-top: 30px;
 	}
 
@@ -276,6 +277,11 @@
 }
 
 @media (min-width: 1200px) {
+
+	.menu li > a {
+		color: #000;
+		font-weight: 400;
+	}
 
 	.categoriesBox .cat-slide:nth-child(n+4),
 	.brandPillarsBox:nth-child(n+4) {

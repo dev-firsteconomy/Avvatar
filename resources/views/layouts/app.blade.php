@@ -707,7 +707,7 @@
 	</script>
 
 	<script>
-		 if ($(window).width() < 767) {
+		if ($(window).width() < 767) {
 			$('.categorySlider').owlCarousel({
 				loop: true,
 				margin: 10,
@@ -720,19 +720,20 @@
 				autoplayHoverPause: true,
 				responsive: {
 					0: {
-					items: 1
+						items: 1
 					},
 					600: {
-					items: 2
+						items: 2
 					},
 					1000: {
-					items: 5
+						items: 5
 					}
 				}
 			})
-		 }
+		}
+
 	</script>
-	
+
 	<script>
 		const video = document.getElementById("video");
 		const circlePlayButton = document.getElementById("circle-play-b");
@@ -747,14 +748,43 @@
 		}
 
 		circlePlayButton.addEventListener("click", togglePlay);
-		video.addEventListener("playing", function () {
+		video.addEventListener("playing", function() {
 			videoContent.style.opacity = 0;
 			circlePlayButton.style.opacity = 0;
 		});
-		video.addEventListener("pause", function () {
+		video.addEventListener("pause", function() {
 			videoContent.style.opacity = 1;
 			circlePlayButton.style.opacity = 1;
 		});
+
+	</script>
+
+	<script>
+		$('.digit-group').find('input').each(function() {
+			$(this).attr('maxlength', 1);
+			$(this).on('keyup', function(e) {
+				var parent = $($(this).parent());
+
+				if (e.keyCode === 8 || e.keyCode === 37) {
+					var prev = parent.find('input#' + $(this).data('previous'));
+
+					if (prev.length) {
+						$(prev).select();
+					}
+				} else if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 39) {
+					var next = parent.find('input#' + $(this).data('next'));
+
+					if (next.length) {
+						$(next).select();
+					} else {
+						if (parent.data('autosubmit')) {
+							parent.submit();
+						}
+					}
+				}
+			});
+		});
+
 	</script>
 
 </body>

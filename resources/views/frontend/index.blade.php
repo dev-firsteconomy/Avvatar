@@ -236,7 +236,8 @@
 											}
 										?>
 								@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-								<a href="{{url('product/' .$product->slug)}}">
+								<!--								<a href="{{url('product/' .$product->slug)}}">-->
+								<a href="#">
 									<img src="{{asset($url)}}" alt="{!! @$product->meta_description !!}" class="product-image">
 								</a>
 
@@ -244,7 +245,7 @@
 									@if(is_user_logged_in())
 									<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
 									@else
-									<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
+									<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
 									@endif
 								</div><!-- End .product-action-vertical -->
 							</figure><!-- End .product-media -->
@@ -269,7 +270,10 @@
 									@endforeach
 								</div><!-- End .product-cat -->
 								@endif
-								<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a></h3><!-- End .product-title -->
+								<h3 class="product-title">
+									<!--									<a href="{{route('product',$product->slug)}}">{{$product->name}}</a>-->
+									<a href="#">{{$product->name}}</a>
+								</h3><!-- End .product-title -->
 								<div class="product-price">
 									<div class="w-100">
 										<span class="new-price">₹ {{round($product->discounted_amt) }}</span> @if($product->discounted_amt != $product->price)<span class="old-price">₹ {{round($product->price)}}</span> @endif
@@ -278,7 +282,11 @@
 								</div><!-- End .product-price -->
 								<div class="atc-container">
 									<div class="mb-0">
-										<a href="{{route('product',$product->slug)}}" class="btn-cart"><span class="product{{$product->id}}">Add to cart</span></a>
+										<!--										<a href="{{route('product',$product->slug)}}" class="btn-cart">-->
+										<a href="#" class="btn-cart">
+											<span class="product{{$product->id}}">Add to cart</span>
+										</a>
+
 									</div>
 								</div>
 							</div><!-- End .product-body -->
@@ -370,7 +378,8 @@
 											}
 										?>
 								@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-								<a href="{{url('product/' .$product->slug)}}">
+								<!--<a href="{{url('product/' .$product->slug)}}">-->
+								<a href="#">
 									<img src="{{asset($url)}}" alt="{!! @$product->meta_description !!}" class="product-image">
 								</a>
 
@@ -378,7 +387,7 @@
 									@if(is_user_logged_in())
 									<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
 									@else
-									<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
+									<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
 									@endif
 								</div><!-- End .product-action-vertical -->
 							</figure><!-- End .product-media -->
@@ -403,7 +412,12 @@
 									@endforeach
 								</div><!-- End .product-cat -->
 								@endif
-								<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a></h3><!-- End .product-title -->
+								<h3 class="product-title">
+									<!--<a href="{{route('product',$product->slug)}}">-->
+									<a href="#">
+										{{$product->name}}
+									</a>
+								</h3><!-- End .product-title -->
 								<div class="product-price">
 									<div class="w-100">
 										<span class="new-price">₹ {{round($product->discounted_amt) }}</span> @if($product->discounted_amt != $product->price)<span class="old-price">₹ {{round($product->price)}}</span> @endif
@@ -412,7 +426,10 @@
 								</div><!-- End .product-price -->
 								<div class="atc-container">
 									<div class="mb-0">
-										<a href="{{route('product',$product->slug)}}" class="btn-cart"><span class="product{{$product->id}}">Add to cart</span></a>
+										<!--<a href="{{route('product',$product->slug)}}" class="btn-cart">-->
+										<a href="#" class="btn-cart">
+											<span class="product{{$product->id}}">Add to cart</span>
+										</a>
 									</div>
 								</div>
 							</div><!-- End .product-body -->
@@ -639,7 +656,8 @@
                                         }
                                     ?>
 								@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-								<a href="{{url('product/' .$product->slug)}}">
+								<!--<a href="{{url('product/' .$product->slug)}}">-->
+								<a href="#">
 									<img src="{{asset($url)}}" alt="{!! @$product->meta_description !!}" class="product-image">
 								</a>
 
@@ -647,7 +665,7 @@
 									@if(is_user_logged_in())
 									<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
 									@else
-									<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
+									<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
 									@endif
 								</div><!-- End .product-action-vertical -->
 							</figure><!-- End .product-media -->
@@ -671,7 +689,12 @@
 									@endforeach
 								</div><!-- End .product-cat -->
 								@endif
-								<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a></h3><!-- End .product-title -->
+								<h3 class="product-title">
+									<!--<a href="{{route('product',$product->slug)}}">-->
+									<a href="#">
+										{{$product->name}}
+									</a>
+								</h3><!-- End .product-title -->
 								<div class="product-price">
 									<div class="w-100">
 										<span class="new-price">₹{{round($product->discounted_amt) }}</span> @if($product->discounted_amt != $product->price)<span class="old-price">₹{{round($product->price)}}</span> @endif
@@ -680,7 +703,10 @@
 								</div><!-- End .product-price -->
 								<div class="atc-container">
 									<div class="mb-0">
-										<a href="{{route('product',$product->slug)}}" class="btn-cart" data-id="{{$product->id}}"><span class="product{{$product->id}}">Add to cart</span></a>
+										<!--<a href="{{route('product',$product->slug)}}" class="btn-cart" data-id="{{$product->id}}">-->
+										<a href="#" class="btn-cart" data-id="{{$product->id}}">
+											<span class="product{{$product->id}}">Add to cart</span>
+										</a>
 									</div>
 								</div>
 							</div><!-- End .product-body -->
@@ -713,6 +739,40 @@
 		<div class="container">
 			<div class="heading text-center mb-5">
 				<h2 class="title text-uppercase"><span class="fw-bold">Instagram</span> feed</h2>
+			</div>
+
+			<div class="row">
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-1.png" class="img-fluid" />
+				</div>
+
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-2.png" class="img-fluid" />
+				</div>
+
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-3.png" class="img-fluid" />
+				</div>
+
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-4.png" class="img-fluid" />
+				</div>
+
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-1.png" class="img-fluid" />
+				</div>
+
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-2.png" class="img-fluid" />
+				</div>
+
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-3.png" class="img-fluid" />
+				</div>
+
+				<div class="col-6 col-md-3 instaFeedBox">
+					<img src="assets/images/new/homepage/insta-4.png" class="img-fluid" />
+				</div>
 			</div>
 		</div>
 	</section>
