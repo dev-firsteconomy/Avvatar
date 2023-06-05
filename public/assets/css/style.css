@@ -17273,7 +17273,7 @@ button:focus {
 }
 
 .checkout .form-control:not(:focus) {
-	background-color: #f9f9f9
+	background-color: #fff;
 }
 
 .checkout textarea.form-control {

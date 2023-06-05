@@ -282,8 +282,8 @@
 								</div><!-- End .product-price -->
 								<div class="atc-container">
 									<div class="mb-0">
-										<!--										<a href="{{route('product',$product->slug)}}" class="btn-cart">-->
-										<a href="#" class="btn-cart">
+										<a href="{{route('product',$product->slug)}}" class="btn-cart">
+											<!--										<a href="#" class="btn-cart">-->
 											<span class="product{{$product->id}}">Add to cart</span>
 										</a>
 
