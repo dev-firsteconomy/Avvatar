@@ -30,7 +30,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $states = State::where('status',1)->get();
+        return view('backend.city.create',compact('states'));
     }
 
     /**
@@ -41,7 +42,9 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        City::create($request->all());
+        request()->session()->flash('success','City Successfully created');
+        return redirect()->route('cities.index');
     }
 
     /**
@@ -61,9 +64,11 @@ class CityController extends Controller
      * @param  \App\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function edit(State $state)
+    public function edit(City $city)
     {
-        //
+        $states = State::where('status',1)->get();
+        $city = City::find($city->id);
+        return view('backend.city.edit',compact('city','states'));
     }
 
     /**
@@ -73,9 +78,11 @@ class CityController extends Controller
      * @param  \App\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, State $state)
+    public function update(Request $request, City $city)
     {
-        //
+        City::where('id',$city->id)->update(['state_id' => $request->state_id, 'name' =>  $request->name,'status' => $request->status]);
+        request()->session()->flash('success','City Successfully updated');
+        return redirect()->route('cities.index');
     }
 
     /**
