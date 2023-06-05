@@ -2,6 +2,7 @@
 
 @section('main-content')
  <!-- DataTales Example -->
+ <div class="container-fluid">
  <div class="card shadow mb-4">
      <div class="row">
          <div class="col-md-12">
@@ -10,7 +11,7 @@
      </div>
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary float-left">City List</h6>
-      {{-- <a href="{{route('coupon.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add State"><i class="fas fa-plus"></i> Add State</a> --}}
+      <a href="{{route('cities.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add City"><i class="fas fa-plus"></i> Add City</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -22,7 +23,7 @@
               <th>Name</th>
               <th>State</th>
               <th>Status</th>
-              {{-- <th>Action</th> --}}
+              <th>Action</th>
             </tr>
           </thead>
        
@@ -40,6 +41,14 @@
                             <span class="badge badge-warning">Inactive</span>
                         @endif
                     </td>
+                    <td>
+                        <a href="{{route('cities.edit',$city->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                        <form method="POST" action="{{route('cities.destroy',[$city->id])}}">
+                          @csrf
+                          @method('delete')
+                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$city->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
                
                 </tr>
             @endforeach
@@ -51,6 +60,7 @@
         @endif
       </div>
     </div>
+</div>
 </div>
 @endsection
 

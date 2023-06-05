@@ -68,8 +68,8 @@
                 <a class="collapse-item" href="{{route('product.index')}}">Products</a>
                 <a class="collapse-item" href="{{route('product.create')}}">Add Product</a>
                 <a class="collapse-item" href="{{url('admin/importProducts')}}">Import Products</a>                
-                <a class="collapse-item" href="{{url('admin/importProductImages')}}">Import Product Images</a>
-                <a class="collapse-item" href="{{url('admin/importProductStocks')}}">Import Product Stocks</a>
+                <!-- <a class="collapse-item" href="{{url('admin/importProductImages')}}">Import Product Images</a>
+                <a class="collapse-item" href="{{url('admin/importProductStocks')}}">Import Product Stocks</a> -->
               </div>
             </div>
         </li>
@@ -92,7 +92,7 @@
           </li> --}}
 
          {{-- Shipping --}}
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#shippingCollapse" aria-expanded="true" aria-controls="shippingCollapse">
               <i class="fas fa-truck"></i>
               <span>Shipping</span>
@@ -104,15 +104,15 @@
                 <a class="collapse-item" href="{{route('shipping.create')}}">Add Shipping</a>
               </div>
             </div>
-        </li>
+        </li> -->
 
         <!--Orders -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="{{route('order.index')}}">
                 <i class="fas fa-hammer fa-chart-area"></i>
                 <span>Orders</span>
             </a>
-        </li>
+        </li> -->
 
           <!-- Reviews -->
           {{-- <li class="nav-item">
@@ -185,7 +185,7 @@
 
 
         <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+        <!-- <hr class="sidebar-divider d-none d-md-block">
         <div class="sidebar-heading">
             Coupon Settings
         </div>
@@ -198,7 +198,7 @@
           <a class="nav-link" href="{{route('offer.index')}}">
               <i class="fas fa-gift"></i>
               <span>Offer</span></a>
-        </li>
+        </li> -->
 
           <hr class="sidebar-divider d-none d-md-block">
           <!-- Heading -->
@@ -213,11 +213,16 @@
                   <span>Users</span></a>
           </li>
 
-          <li class="nav-item">
+          <hr class="sidebar-divider d-none d-md-block">
+          <!-- Heading -->
+          <div class="sidebar-heading">
+              Forms
+          </div>
+          <!-- <li class="nav-item">
               <a class="nav-link" href="{{route('distributor.index')}}">
                   <i class="fas fa-handshake"></i>
                   <span>Sellers</span></a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a class="nav-link" href="{{route('contact.index')}}">
@@ -259,25 +264,25 @@
               <div id="ProductSettingCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Setting Options:</h6>
-                  {{-- <a class="collapse-item" href="{{route('application.index')}}">Application</a>
+                  <a class="collapse-item" href="{{route('category.index')}}">Categories</a>
+                  <a class="collapse-item" href="{{route('cities.index')}}"><span>Cities</span></a>
+                  <a class="collapse-item" href="{{route('states.index')}}"><span>States</span></a>
+            <!--  <a class="collapse-item" href="{{route('application.index')}}">Application</a>
                   <a class="collapse-item" href="{{route('attribute.index')}}">Attribute</a>
                   <a class="collapse-item" href="{{route('characteristic.index')}}">Characteristic</a>
                   <a class="collapse-item" href="{{route('color-palette.index')}}">Color Palette</a>
                   <a class="collapse-item" href="{{route('feature.index')}}">Feature</a>
                   <a class="collapse-item" href="{{route('laminate.index')}}">Laminate</a>
                   <a class="collapse-item" href="{{route('texture.index')}}">Texture</a>
-                  <a class="collapse-item" href="{{route('thickness.index')}}">Thickness</a> --}}
-                  <a class="collapse-item" href="{{route('banner.index')}}">Banners</a>
-                  <a class="collapse-item" href="{{route('category.index')}}">Categories</a>
-                  <a class="collapse-item" href="{{route('cities.index')}}"><span>Cities</span></a>
-                  <!-- <a class="collapse-item" href="{{route('colors.index')}}">Colors</a> -->
-                  <!-- <a class="collapse-item" href="{{route('fabrics.index')}}">Fabrics</a> -->
+                  <a class="collapse-item" href="{{route('thickness.index')}}">Thickness</a> 
+                  <a class="collapse-item" href="{{route('banner.index')}}">Banners</a> 
+                  <a class="collapse-item" href="{{route('colors.index')}}">Colors</a>
+                  <a class="collapse-item" href="{{route('fabrics.index')}}">Fabrics</a>
                   <a class="collapse-item" href="{{route('orderstatus.index')}}">Order Statuses</a>
-                  <!-- <a class="collapse-item" href="{{route('orientations.index')}}"><span>Orientations</span></a>   -->
-                  <a class="collapse-item" href="{{route('pincodes.index')}}"><span>Pincodes</span></a>  
-                  <a class="collapse-item" href="{{route('sizes.index')}}">Sizes</a>                
-                  <!-- <a class="collapse-item" href="{{route('sizecharts.index')}}">Size Chart</a>                   -->
-                  <a class="collapse-item" href="{{route('states.index')}}"><span>States</span></a>
+                  <a class="collapse-item" href="{{route('orientations.index')}}"><span>Orientations</span></a>
+                  <a class="collapse-item" href="{{route('pincodes.index')}}"><span>Pincodes</span></a> 
+                  <a class="collapse-item" href="{{route('sizes.index')}}">Sizes</a>
+                  <a class="collapse-item" href="{{route('sizecharts.index')}}">Size Chart</a>-->
                   
                   
                 </div>

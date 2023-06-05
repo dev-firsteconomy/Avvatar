@@ -173,17 +173,46 @@
 					@enderror
 				</div>
 
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="related_products">Related Products </label>
-							<select name="related_products[]" id="related_products" class="form-control selectpicker " data-live-search="true" data-actions-box="true" title="Choose in the following products..." multiple>
+							<select name="related_products[]" id="related_products" class="form-control selectpicker" data-live-search="true" data-actions-box="true" title="Choose in the following products..." multiple>
 								@foreach($related_products as $key=>$product)
 								<option value='{{$product->id}}'>{{$product->name}}</option>
 								@endforeach
 							</select>
 						</div>
 					</div>
+				</div> -->
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="related_products" class="col-form-label">related_products</label>
+							<select name="related_products" id="related_products" class="form-control">
+								@foreach($related_products as $key=>$product)
+									<option value='{{$product->id}}'>{{$product->name}}</option>
+								@endforeach
+							</select>
+							@error('related_products')
+							<span class="text-danger">{{$message}}</span>
+							@enderror
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+						<label for="offer" class="col-form-label">Offer</label>
+						<select name="offer" class="form-control">
+							<option value=""> Select Offer if any </option>
+							<option value="1">Buy 3 flat at 6500</option>
+							<option value="2">Buy 1 get 2nd at 20%</option>
+							<option value="3">All</option>
+						</select>
+						@error('offer')
+						<span class="text-danger">{{$message}}</span>
+						@enderror
+					</div>
+            	</div>
 				</div>
 
 				<!-- <h5 class="mt-2">Upload Image Color Wise</h5>
@@ -282,7 +311,7 @@
                         
                           <div class="form-group col-md-4">
                             <label>Images<span class="text-danger">*</span></label>
-                            <input class="form-control imageUploader" type="file" id="images" name="images[image_index][]" value="{{ old('images') }}" multiple>
+                            <input class="form-control imageUploader" type="file" id="images" name="images[image][]" value="{{ old('images') }}" multiple>
                             <!-- <input class="form-control imageUploader" type="file" id="images" name="images[{$index}][]" value="{{ old('images') }}" multiple> -->
                           </div>
 
@@ -308,7 +337,6 @@
                   </div>
               </div>
         </div>
-        
         <br><br>
 
 				<div class="row">     
@@ -344,23 +372,22 @@
               </div>
             </div>
 
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="offer" class="col-form-label">Offer</label>
-                <select name="offer" class="form-control">
-                  <option value=""> Select Offer if any </option>
-                  <option value="1">Buy 3 flat at 6500</option>
-                  <option value="2">Buy 1 get 2nd at 20%</option>
-                  <option value="3">All</option>
-                </select>
-                @error('offer')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
-              </div>
-            </div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
+            <!-- <div class="col-md-6">
+				<div class="form-group">
+					<label for="offer" class="col-form-label">Offer</label>
+					<select name="offer" class="form-control">
+						<option value=""> Select Offer if any </option>
+						<option value="1">Buy 3 flat at 6500</option>
+						<option value="2">Buy 1 get 2nd at 20%</option>
+						<option value="3">All</option>
+					</select>
+					@error('offer')
+					<span class="text-danger">{{$message}}</span>
+					@enderror
+				</div>
+            </div> -->
+
+			<div class="col-md-6">
 				<div class="form-group">
 					<label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
 					<select name="status" class="form-control">
@@ -373,6 +400,7 @@
 				</div>
 			</div>
 		</div>
+
 				<br><br>
 				<div class="form-group mb-3 text-center">
 					<button type="reset" class="btn btn-warning">Reset</button>
