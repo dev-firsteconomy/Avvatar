@@ -69,12 +69,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $colors         = Color::where('status',1)->get();
+        $colors          = Color::where('status',1)->get();
         $sizes           = Size::where('status',1)->get();
-        $fabrics           = Fabric::where('status',1)->get();
-        $orientations           = Orientation::where('status',1)->get();
-        $related_products   = Product::orderBy('name')->where('status',1)->where('is_giftcard',0)->get();
-        $categories         = Category::pluck('title','id');
+        $fabrics         = Fabric::where('status',1)->get();
+        $orientations    = Orientation::where('status',1)->get();
+        $related_products= Product::orderBy('name')->where('status',1)->get();
+        $categories      = Category::pluck('title','id');
 
         return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations'));
     }
@@ -87,44 +87,39 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->all();
+        
+        $data = $request->except(['_token','sizeWiseImage_group']);
 
-        $this->validate($request,[
+        // $data=$request->all();
+
+        $this->validate($request,[  
              'category_id'=>'required',
              'name'=>'required',
-             'design'=>'required',
              'hsn'=>'required',
-             'fabric'=>'required',
-             'orientation'=>'required',
              'price'=>'required',
+             'discount'=>'required',
              'min_qty'=>'required',
-             'stock_quantities'=>"required",
+             'tag'=>'required',
              'description'=>'required',
              'additional_information'=>'required',
              'related_products'=>'required',
-              "sizes"    => "required|array",
-              'sizes.*'  =>'required',
-              "colors"   => "required|array",
-              'colors.*'=>'required',
-             'images'=>'required',             
-             'status'=>'required',            
-             'discount'=>'required',             
+             'status'=>'required',
         ]);
 
-        $slug=Str::slug($request->name);
+        $slug = Str::slug($request->name);
         $count= Product::where('slug',$slug)->count();
         if($count>0)
         {
-            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
+            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
         }
 
         $data['slug']=$slug;
         $data['title']=$request->name;
+        $data['related_products']=$request->related_products;
         $data['is_featured']=$request->input('is_featured',0);
         $data['is_new']=$request->input('is_new',0);
         $data['is_bestsellers']=$request->input('is_bestsellers',0);
-        $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
-        $data['orientation']=@$request->orientation && count($request->orientation) ? serialize($request->orientation) :null;
+        // $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
         
         if($request->offer)
         {
@@ -142,106 +137,45 @@ class ProductController extends Controller
         //     $data['image1']= $fileName;
         // }
 
-        // if($request->image2){
-        //     $fileName = rand().time().'.'.$request->image2->getClientOriginalExtension();
-        //     $request->image2->move(base_path('public/images/products'), $fileName);
-        //     $data['image2']= $fileName;
-        // }
-
-        // if($request->image3){
-        //     $fileName = rand().time().'.'.$request->image3->getClientOriginalExtension();
-        //     $request->image3->move(base_path('public/images/products'), $fileName);
-        //     $data['image3']= $fileName;
-        // }
-
-        // if($request->meta_image){
-        //     $fileName = rand().time().'.'.$request->meta_image->getClientOriginalExtension();
-        //     $request->meta_image->move(base_path('public/images/products'), $fileName);
-        //     $data['meta_image']= $fileName;
-        // }
-
-       // dd($data,$request);
-       
         DB::beginTransaction();
         try
         {
            $status = Product::create($data);
 
-           if($request->sizes)
-           {   
-               $sizes = $request->sizes;
-               $colors = $request->colors;
-               $quantities = $request->stock_quantities;
-               
-               foreach($sizes as $key => $size)
-               {
-                    $prodStock = new ProductStock;
-                    $prodStock->product_id=$status->id;
-                    $prodStock->size_id=$size;
-                    $prodStock->color_id=$colors[$key];
-                    $prodStock->stock_qty= $quantities[$key];
-                    $prodStock->save();
-               }
+           if($request->sizeWiseImage_group != null)
+           {
+               $sizeWiseImage_group = $request->sizeWiseImage_group;
+               $this->store_images($sizeWiseImage_group,$status);
            }
 
-           if($request->colorsImages)
-           {
-                foreach(@$request->colorsImages as $key => $color)
-                { 
-                        foreach($request->images[$key] as $image)
-                        {                 
-                                $icon=mt_rand();
-                                $filename=$icon.$image->getClientOriginalName();
-                                $image->move(public_path('/images/products'), $filename); 
-                                $prodImage = new ProductImage;
-                                $prodImage->product_id=$status->id;
-                                $prodImage->color_id = $color;
-                                $prodImage->image = '/images/products/'.$filename;
-                                $prodImage->save();
-                        }
-                }
-            }        
+        //    if($request->sizes)
+        //    {   
+        //        $sizes = $request->sizes;
+        //        $colors = $request->colors;
+        //        $quantities = $request->stock_quantities;
+               
+        //         foreach($sizes as $key => $size)
+        //         {
+        //             $prodStock = new ProductStock;
+        //             $prodStock->product_id=$status->id;
+        //             $prodStock->size_id=$size;
+        //             $prodStock->color_id=$colors[$key];
+        //             $prodStock->stock_qty= $quantities[$key];
+        //             $prodStock->save();
+        //         }
+        //    }
 
-        //    if ($request->hasFile('images')) 
-        //    {
-                
-        //    }    
-        
         //Application
         // if(@$data['applications'] && count($data['applications'])){
         //    $status->applications()->attach($data['applications']);
         // }
-
-        //Attributes
-        // if(@$data['attributes'] && count($data['attributes'])){
-        //    $status->attributes()->attach($data['attributes']);
-        // }
-
         //Characteristics
         // if(@$data['characteristics'] && count($data['characteristics'])){
         //    $status->characteristics()->attach($data['characteristics']);
         // }
-
         //Features
         // if(@$data['features'] && count($data['features'])){
         //    $status->features()->attach($data['features']);
-        // }
-
-        //Laminates
-        // if(@$data['laminates'] && count($data['laminates'])){
-        //    $status->laminates()->attach($data['laminates']);
-        // }
-
-
-        // //Textures
-        // if(@$data['textures'] && count($data['textures'])){
-        //    $status->textures()->attach($data['textures']);
-        //  }
-
-
-        // //Thicknesses
-        // if(@$data['thicknesses'] && count($data['thicknesses'])){
-        //    $status->thicknesses()->attach($data['thicknesses']);
         // }
 
             if($status)
@@ -260,6 +194,46 @@ class ProductController extends Controller
             DB::rollback();
             dd($e);
         }    
+    }
+
+    public function store_images($sizeWiseImage_group,$status)
+    {
+        foreach($sizeWiseImage_group as $item)
+        {
+            // if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
+            if (isset($item['sizes']) && isset($item['stock_quantities']) && $item['sizes'] !== '' && $item['stock_quantities'] !== '')
+            {
+                ProductStock::updateOrCreate([
+                    'product_id'=> (int)$status->id,
+                    'size_id'=> (int)$item['sizes'],
+                    'stock_qty'=> (int)$item['stock_quantities'],
+                ]);
+
+                if(!empty($item['image']))
+                {
+                    if(file_exists($item['image'][0]))
+                    {
+                        foreach($item['image'] as $imageItem)
+                        {
+                            $image = time() . '_'. $imageItem->getClientOriginalName();
+                            $path = base_path('public/images/products');
+                            if (!File::isDirectory($path)) 
+                            {
+                                File::makeDirectory($path, 0777, true, true);
+                            }
+                            $imageItem->move($path,$imageItem);
+                            $fileName = base_path('public/images/products').$image;
+
+                            ProductImage::updateOrCreate([
+                                'product_id' =>$status->id,
+                                'size_id'=> (int)$item['sizes'],
+                                'image'=> $fileName
+                            ]);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -563,7 +537,16 @@ class ProductController extends Controller
 
     public function storeImportProducts(Request $request) 
     {
-        $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
+        if(isset($request) && $request->file('file'))
+        {
+            $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
+        }   
+        else
+        {
+            return redirect()->back()->with('error','Please Enter Valid File');
+        } 
+
+        // $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
         
         foreach($datas[0] as $k => $v)
         {  
@@ -757,7 +740,8 @@ class ProductController extends Controller
         return Excel::download(new ProductImagesExport, 'ProductImages.xlsx');
     }
 
-    public function exportProducts(){
+    public function exportProducts()
+    {
         return Excel::download(new ProductsExport, 'Products.xlsx');
     }
 }

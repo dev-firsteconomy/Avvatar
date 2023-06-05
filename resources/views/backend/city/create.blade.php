@@ -2,23 +2,19 @@
 
 @section('main-content')
 
+<div class="container-fluid">
 <div class="card">
-    <h5 class="card-header">Add Coupon</h5>
+    <h5 class="card-header">Add State</h5>
     <div class="card-body">
-      <form method="post" action="{{route('coupon.store')}}">
-        {{csrf_field()}}
+      <form method="post" action="{{route('cities.store')}}">
+         {{csrf_field()}}
 
-
-
-        <div class="form-group">
-            <label for="distributor_id" class="col-form-label">Distributors  <span class="text-danger">*</span></label>
-            <select name="distributor_id" class="form-control">
-              <option value="">Select Distributor</option>
-
-              @foreach ($distributors as $distributor_id => $distributor )
-
-              <option value="{{$distributor_id}}">{{$distributor }}</option>
-
+         <div class="form-group">
+            <label for="state_id" class="col-form-label">States <span class="text-danger">*</span></label>
+            <select name="state_id" class="form-control">
+              <option value="">Select State</option>
+              @foreach ($states as $item )
+                <option value="{{$item->id}}">{{$item->name }}</option>
               @endforeach
             </select>
             @error('type')
@@ -27,50 +23,30 @@
         </div>
 
         <div class="form-group">
-        <label for="inputTitle" class="col-form-label">Coupon Code <span class="text-danger">*</span></label>
-        <input id="inputTitle" type="text" name="code" placeholder="Enter Coupon Code"  value="{{old('code')}}" class="form-control">
-        @error('code')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-        </div>
-
-        <div class="form-group">
-            <label for="type" class="col-form-label">Type <span class="text-danger">*</span></label>
-            <select name="type" class="form-control">
-                <option value="fixed">Fixed</option>
-                <option value="percent">Percent</option>
-            </select>
-            @error('type')
-            <span class="text-danger">{{$message}}</span>
+          <label for="name" class="col-form-label">State Name <span class="text-danger">*</span></label>
+          <input id="name" type="text" name="name" placeholder="Enter State Name"  value="{{old('name')}}" class="form-control">
+            @error('name')
+              <span class="text-danger">{{$message}}</span>
             @enderror
-        </div>
-
-        <div class="form-group">
-            <label for="inputTitle" class="col-form-label">Value <span class="text-danger">*</span></label>
-            <input id="inputTitle" type="number" name="value" placeholder="Enter Coupon value"  value="{{old('value')}}" class="form-control">
-            @error('value')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
-        </div>
+        </div>        
 
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
           </select>
           @error('status')
-          <span class="text-danger">{{$message}}</span>
+             <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
         <div class="form-group mb-3">
-          <button type="reset" class="btn btn-warning">Reset</button>
            <button class="btn btn-success" type="submit">Submit</button>
         </div>
       </form>
     </div>
 </div>
-
+</div>
 @endsection
 
 @push('styles')
@@ -91,3 +67,4 @@
     });
 </script>
 @endpush
+
