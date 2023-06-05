@@ -1,6 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('main-content')
+<div class="container-fluid">
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="row">
@@ -68,6 +69,7 @@
         @endif
       </div>
     </div>
+</div>
 </div>
 @endsection
 

@@ -537,7 +537,16 @@ class ProductController extends Controller
 
     public function storeImportProducts(Request $request) 
     {
-        $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
+        if(isset($request) && $request->file('file'))
+        {
+            $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
+        }   
+        else
+        {
+            return redirect()->back()->with('error','Please Enter Valid File');
+        } 
+
+        // $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
         
         foreach($datas[0] as $k => $v)
         {  
@@ -731,7 +740,8 @@ class ProductController extends Controller
         return Excel::download(new ProductImagesExport, 'ProductImages.xlsx');
     }
 
-    public function exportProducts(){
+    public function exportProducts()
+    {
         return Excel::download(new ProductsExport, 'Products.xlsx');
     }
 }

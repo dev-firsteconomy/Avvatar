@@ -293,7 +293,8 @@
 				<br> -->
 
         
-        <div class="col-md-12">
+      
+		<div class="col-md-12">
             <label for="color"> Upload Size Wise Images</label>
               <div class="repeater mt-repeater sizeWiseImage">
                   <div data-repeater-list="sizeWiseImage_group">
