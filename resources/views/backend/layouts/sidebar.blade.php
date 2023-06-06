@@ -267,6 +267,7 @@
                   <a class="collapse-item" href="{{route('category.index')}}">Categories</a>
                   <a class="collapse-item" href="{{route('cities.index')}}"><span>Cities</span></a>
                   <a class="collapse-item" href="{{route('states.index')}}"><span>States</span></a>
+                  <a class="collapse-item" href="{{route('flavours.index')}}"><span>Flavours</span></a>
             <!--  <a class="collapse-item" href="{{route('application.index')}}">Application</a>
                   <a class="collapse-item" href="{{route('attribute.index')}}">Attribute</a>
                   <a class="collapse-item" href="{{route('characteristic.index')}}">Characteristic</a>

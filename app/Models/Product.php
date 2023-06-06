@@ -105,7 +105,7 @@ class Product extends Model
         return 0;
     }
 
-    public function images()    //sizeWIseImages
+    public function sizeWiseImages()  
     {
         return $this->hasMany('App\Models\ProductImage','product_id');
     }

@@ -185,7 +185,7 @@
                                 </select>
                             </div>
                             
-{{ dd($item->images) }}
+{{ dd($item->sizeWiseImages) }}
                             <div class="form-group col-md-4">
                                 <label>Images<span class="text-danger">*</span></label>
                                 <img src="{{ $item->veh_color_image }}" alt="" height="100px;" width="170px;">

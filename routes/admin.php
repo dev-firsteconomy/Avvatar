@@ -26,6 +26,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
 
     //color master
     Route::resource('colors','ColorController');
+    
+    // flavours master
+    Route::resource('flavours','FlavourController');
 
     //size master
     Route::resource('sizes','SizeController');
