@@ -27,7 +27,7 @@
               <th>S.N.</th>
               <th>Category</th>
               <th>Name</th>
-              <th>Design</th>
+              <!-- <th>Design</th> -->
               <th>Product Price</th>
               <th>Status</th>
               <th>Action</th>
@@ -40,7 +40,7 @@
                     <td>{{$product->id}}</td>
                     <td>{{$product->category->title}}</td>
                     <td>{{$product->name}}</td>
-                    <td>{{$product->design}}</td>
+                    <!-- <td>{{$product->design}}</td> -->
                     <td>Rs. {{$product->price}} /-</td>
                     <td>
                         @if($product->status == '1')

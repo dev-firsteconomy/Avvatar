@@ -102,7 +102,7 @@ class ProductController extends Controller
              'tag'=>'required',
              'description'=>'required',
              'additional_information'=>'required',
-             'related_products'=>'required',
+            //  'related_products'=>'required',
              'status'=>'required',
         ]);
 
@@ -199,14 +199,13 @@ class ProductController extends Controller
     public function store_images($sizeWiseImage_group,$status)
     {
         foreach($sizeWiseImage_group as $item)
-        {
-            // if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
-            if (isset($item['sizes']) && isset($item['stock_quantities']) && $item['sizes'] !== '' && $item['stock_quantities'] !== '')
+        { 
+            if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
             {
                 ProductStock::updateOrCreate([
                     'product_id'=> (int)$status->id,
                     'size_id'=> (int)$item['sizes'],
-                    'stock_qty'=> (int)$item['stock_quantities'],
+                    'stock_qty'=> (int)@$item['stock_quantities'],
                 ]);
 
                 if(!empty($item['image']))

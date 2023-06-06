@@ -9,7 +9,7 @@
 				{{csrf_field()}}
 				<div class="row">
 
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<div class="form-group">
 							<label for="category_id" class="col-form-label">Select Category <span class="text-danger">*</span></label>
 							<select class="form-control" name="category_id" id="">
@@ -24,7 +24,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<div class="form-group">
 							<label for="name" class="col-form-label">Name <span class="text-danger">*</span></label>
 							<input id="name" type="text" name="name" placeholder="Enter Name" value="{{old('name')}}" class="form-control">
@@ -34,17 +34,7 @@
 						</div>
 					</div>
 
-					<!-- <div class="col-md-4">
-            <div class="form-group">
-              <label for="design" class="col-form-label">Design Name <span class="text-danger">*</span></label>
-              <input id="design" type="text" name="design" placeholder="Enter Design"  value="{{old('design')}}" class="form-control">
-              @error('design')
-              <span class="text-danger">{{$message}}</span>
-              @enderror
-            </div>
-          </div> -->
-
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<div class="form-group">
 							<label for="hsn" class="col-form-label">HSN <span class="text-danger">*</span></label>
 							<input id="hsn" type="text" name="hsn" placeholder="Enter HSN" value="{{old('hsn')}}" class="form-control">
@@ -54,54 +44,7 @@
 						</div>
 					</div>
 
-					<!-- <div class="col-md-4">
-            <div class="form-group">
-                <label for="fabric">Fabric </label>
-                <select name="fabric" id="fabric" class="form-control selectpicker">
-                      <option value ="">Select Fabric</option>
-                      @foreach($fabrics as $key=>$attribute)
-                          <option value='{{$attribute->id}}'>{{$attribute->name}}</option>
-                      @endforeach
-                </select>
-            </div>
-          </div> 
-          
-          <div class="col-md-4">
-            <div class="form-group">
-                <label for="fabric">Orientation </label>
-                <select name="orientation[]" id="orientation" class="form-control multiple selectpicker" multiple>
-                      <option value ="">Select Orientation</option>
-                      @foreach($orientations as $key=>$attribute)
-                          <option value='{{$attribute->id}}'>{{$attribute->name}}</option>
-                      @endforeach
-                </select>
-            </div>
-          </div> -->
-
-				</div>
-
-				<div class="row">
-					<div class="col-md-3">
-						<div class="form-group">
-							<label for="price" class="col-form-label">Price(INR) <span class="text-danger">*</span></label>
-							<input id="price" type="number" name="price" min="0" placeholder="Enter price" value="{{old('price')}}" class="form-control">
-							@error('price')
-							<span class="text-danger">{{$message}}</span>
-							@enderror
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="form-group">
-							<label for="discount" class="col-form-label">Discount(%) <span class="text-danger">*</span></label>
-							<input id="discount" type="number" name="discount" min="0" placeholder="Enter discount" value="{{old('discount')}}" class="form-control">
-							@error('discount')
-							<span class="text-danger">{{$message}}</span>
-							@enderror
-						</div>
-					</div>
-
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<div class="form-group">
 							<label for="min_qty" class="col-form-label">Minimum Order Quantity <span class="text-danger">*</span></label>
 							<input id="min_qty" type="number" name="min_qty" min="0" placeholder="Enter Minimum Order Quantity" value="{{ old('min_qty') }}" class="form-control">
@@ -111,7 +54,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<div class="form-group">
 							<label for="tag" class="col-form-label">Tag <span class="text-danger">*</span></label>
 							<input id="tag" type="text" name="tag" placeholder="Enter tag" value="{{ old('tag')  }}" class="form-control">
@@ -120,8 +63,22 @@
 							@enderror
 						</div>
 					</div>
-				</div>
 
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="related_products" class="col-form-label">related_products</label>
+							<select name="related_products" id="related_products" class="form-control">
+								@foreach($related_products as $key=>$product)
+									<option value='{{$product->id}}'>{{$product->name}}</option>
+								@endforeach
+							</select>
+							@error('related_products')
+							<span class="text-danger">{{$message}}</span>
+							@enderror
+						</div>
+					</div>
+
+				</div>
 
 				<div class="row">
 					<div class="col-md-6">
@@ -165,248 +122,130 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="meta_description" class="col-form-label">Meta Description</label>
-					<textarea class="form-control" id="meta_description" name="meta_description">{{old('meta_description')}}</textarea>
-					@error('meta_description')
-					<span class="text-danger">{{$message}}</span>
-					@enderror
-				</div>
-
-				<!-- <div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="related_products">Related Products </label>
-							<select name="related_products[]" id="related_products" class="form-control selectpicker" data-live-search="true" data-actions-box="true" title="Choose in the following products..." multiple>
-								@foreach($related_products as $key=>$product)
-								<option value='{{$product->id}}'>{{$product->name}}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-				</div> -->
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="form-group">
-							<label for="related_products" class="col-form-label">related_products</label>
-							<select name="related_products" id="related_products" class="form-control">
-								@foreach($related_products as $key=>$product)
-									<option value='{{$product->id}}'>{{$product->name}}</option>
-								@endforeach
-							</select>
-							@error('related_products')
+							<label for="meta_description" class="col-form-label">Meta Description</label>
+							<textarea class="form-control" id="meta_description" name="meta_description">{{old('meta_description')}}</textarea>
+							@error('meta_description')
 							<span class="text-danger">{{$message}}</span>
 							@enderror
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-						<label for="offer" class="col-form-label">Offer</label>
-						<select name="offer" class="form-control">
-							<option value=""> Select Offer if any </option>
-							<option value="1">Buy 3 flat at 6500</option>
-							<option value="2">Buy 1 get 2nd at 20%</option>
-							<option value="3">All</option>
-						</select>
-						@error('offer')
-						<span class="text-danger">{{$message}}</span>
-						@enderror
-					</div>
-            	</div>
 				</div>
 
-				<!-- <h5 class="mt-2">Upload Image Color Wise</h5>
-				<div class="parentColorDiv">
-					<div id="multipleColorImage">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label for="colorsImages">Colors </label>
-									<select name="colorsImages[]" id="colorsImages" class="form-control" required>
-										<option value="">Select Color</option>
-										@foreach($colors as $key=>$attribute)
+				<div class="col-md-12">
+					<label for="color"> Upload Size Wise Images</label>
+					<div class="repeater mt-repeater sizeWiseImage">
+						<div data-repeater-list="sizeWiseImage_group">
+							<div class="row" data-repeater-item>
+
+								<div class="form-group col-md-3">
+									<label>flavours<span class="text-danger">*</span></label>
+									<select name="flavours" class="form-control" required>
+										<option value="">Select flavours</option>
+										@foreach($sizes as $key=>$attribute)
 										<option value='{{$attribute->id}}'>{{$attribute->name}}</option>
 										@endforeach
 									</select>
 								</div>
-							</div>
 
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="images" class="col-form-label">Images </label>
-									<div class="input-group">
-										<input class="form-control imageUploader" type="file" id="images" name="images[0][]" value="{{old('images')}}" multiple>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="form-group mb-3">
-					<button class="btn btn-primary" id="addNewProductImages" type="button">Add New Images</button>
-				</div>
-				<br> -->
-
-        <!-- <div class="parentDiv">
-					<div id="multiple">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label for="colors">Size </label>
-									<select name="sizes[]" id="sizes" class="form-control" required>
+								<div class="form-group col-md-3">
+									<label>Size<span class="text-danger">*</span></label>
+									<select name="sizes" class="form-control" required>
 										<option value="">Select Size</option>
 										@foreach($sizes as $key=>$attribute)
 										<option value='{{$attribute->id}}'>{{$attribute->name}}</option>
 										@endforeach
 									</select>
 								</div>
-							</div>
-
-							<div class="col-md-4">
-								<div class="form-group">
-									<label for="colors">Colors </label>
-									<div class="input-group">
-										<input class="form-control imageUploader" type="file" id="images" name="images[0][]" value="{{old('images')}}" multiple>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-4">
-								<div class="form-group">
+								
+								<div class="form-group col-md-2">
 									<label for="stock_quantities">Stock Quantity <span class="text-danger">*</span></label>
-									<input id="stock_quantities[]" type="number" name="stock_quantities[]" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantities') }}" class="form-control" required>
-									@error('stock_quantities')
-									<span class="text-danger">{{$message}}</span>
-									@enderror
+									<input id="stock_quantities" type="number" name="stock_quantities" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantities') }}" class="form-control" required>
 								</div>
+
+								<div class="form-group col-md-3">
+									<label>Images<span class="text-danger">*</span></label>
+									<input class="form-control imageUploader" type="file" id="images" name="images[image]" value="{{ old('images') }}" multiple>
+								</div>
+
+								<div class="form-group col-md-1">
+									<label>Delete :</label>
+									<input data-repeater-delete type="button" value="Delete"
+										class="form-control btn btn-secondary delete-button" />
+								</div>
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input data-repeater-create type="button" value="+ Add More" id="color_repeater-button"
+									class="form-control btn btn-primary" />
 							</div>
 						</div>
 					</div>
-				</div> -->
-
-				{{-- <div id="multipleClone" class="row multipleClone"> 
-            </div> --}}
-
-				<!-- <div class="form-group mb-3">
-					<button class="btn btn-primary" id="addNewProduct" type="button">Add New</button>
 				</div>
-				<br> -->
 
-        
-      
-		<div class="col-md-12">
-            <label for="color"> Upload Size Wise Images</label>
-              <div class="repeater mt-repeater sizeWiseImage">
-                  <div data-repeater-list="sizeWiseImage_group">
-                      <div class="row" data-repeater-item>
-
-                          <div class="form-group col-md-4">
-                              <label>Size<span class="text-danger">*</span></label>
-                              <select name="sizes" class="form-control" required>
-                                <option value="">Select Size</option>
-                                @foreach($sizes as $key=>$attribute)
-                                <option value='{{$attribute->id}}'>{{$attribute->name}}</option>
-                                @endforeach
-                              </select>
-                          </div>
-                        
-                          <div class="form-group col-md-4">
-                            <label>Images<span class="text-danger">*</span></label>
-                            <input class="form-control imageUploader" type="file" id="images" name="images[image][]" value="{{ old('images') }}" multiple>
-                            <!-- <input class="form-control imageUploader" type="file" id="images" name="images[{$index}][]" value="{{ old('images') }}" multiple> -->
-                          </div>
-
-                          <div class="form-group col-md-3">
-                            <label for="stock_quantities">Stock Quantity <span class="text-danger">*</span></label>
-                            <input id="stock_quantities" type="number" name="stock_quantities[]" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantities') }}" class="form-control" required>
-                            <!-- <input id="stock_quantities[]" type="number" name="stock_quantities[]" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantities') }}" class="form-control" required> -->
-                          </div>
-
-                          <div class="form-group col-md-1">
-                              <label>Delete :</label>
-                              <input data-repeater-delete type="button" value="Delete"
-                                  class="form-control btn btn-secondary delete-button" />
-                          </div>
-                          
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-2">
-                          <input data-repeater-create type="button" value="+ Add More" id="color_repeater-button"
-                              class="form-control btn btn-primary" />
-                      </div>
-                  </div>
-              </div>
-        </div>
-        <br><br>
+				<br>
+				<br>
 
 				<div class="row">     
-            <div class="col-md-2">
-              <div class="form-group">
-                <label>Featured or Not</label>
-                <div class="form-check form-check-primary">
-                  <label class="form-check-label">
-                    <input type="checkbox" id="is_featured" name="is_featured" class="form-check-input" value="1">Is Featured ? <i class="input-helper"></i>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2">
-              <div class="form-group">
-                <label>New or Old</label>
-                <div class="form-check form-check-primary">
-                  <label class="form-check-label">
-                    <input type="checkbox" id="is_new" name="is_new" class="form-check-input" value="1">Is New ? <i class="input-helper"></i>
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-2">
-              <div class="form-group">
-                <label>Best Seller or Not</label>
-                <div class="form-check form-check-primary">
-                  <label class="form-check-label">
-                    <input type="checkbox" id="is_bestsellers" name="is_bestsellers" class="form-check-input" value="1">Is Bestsellers ? <i class="input-helper"></i>
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <!-- <div class="col-md-6">
-				<div class="form-group">
-					<label for="offer" class="col-form-label">Offer</label>
-					<select name="offer" class="form-control">
-						<option value=""> Select Offer if any </option>
-						<option value="1">Buy 3 flat at 6500</option>
-						<option value="2">Buy 1 get 2nd at 20%</option>
-						<option value="3">All</option>
-					</select>
-					@error('offer')
-					<span class="text-danger">{{$message}}</span>
-					@enderror
+					<div class="col-md-4">
+					<div class="form-group">
+						<label>Featured or Not</label>
+						<div class="form-check form-check-primary">
+						<label class="form-check-label">
+							<input type="checkbox" id="is_featured" name="is_featured" class="form-check-input" value="1">Is Featured ? <i class="input-helper"></i>
+						</label>
+						</div>
+					</div>
+					</div>
+					<div class="col-md-4">
+					<div class="form-group">
+						<label>New or Old</label>
+						<div class="form-check form-check-primary">
+						<label class="form-check-label">
+							<input type="checkbox" id="is_new" name="is_new" class="form-check-input" value="1">Is New ? <i class="input-helper"></i>
+						</label>
+						</div>
+					</div>
+					</div>
+					<div class="col-md-4">
+					<div class="form-group">
+						<label>Best Seller or Not</label>
+						<div class="form-check form-check-primary">
+						<label class="form-check-label">
+							<input type="checkbox" id="is_bestsellers" name="is_bestsellers" class="form-check-input" value="1">Is Bestsellers ? <i class="input-helper"></i>
+						</label>
+						</div>
+					</div>
+					</div>
 				</div>
-            </div> -->
 
-			<div class="col-md-6">
-				<div class="form-group">
-					<label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
-					<select name="status" class="form-control">
-					<option value="1">Active</option>
-					<option value="0">Inactive</option>
-					</select>
-					@error('status')
-					<span class="text-danger">{{$message}}</span>
-					@enderror
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
+							<select name="status" class="form-control">
+							<option value="1">Active</option>
+							<option value="0">Inactive</option>
+							</select>
+							@error('status')
+							<span class="text-danger">{{$message}}</span>
+							@enderror
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
 
-				<br><br>
+				<br>
+				<br>
+
 				<div class="form-group mb-3 text-center">
 					<button type="reset" class="btn btn-warning">Reset</button>
 					<button class="btn btn-success" type="submit">Submit</button>
 				</div>
+
 			</form>
 		</div>
 	</div>
@@ -433,27 +272,11 @@
 		});
     });
 </script>
-<script>
-// $(document).ready(function () {
-//   $('.repeater').repeater({
-//     initEmpty: false,
-//     show: function () {
-//       $(this).slideDown();
-//     },
-//     hide: function (deleteElement) {
-//       if(confirm('Are you sure you want to delete this element?')) {
-//         $(this).slideUp(deleteElement);
-//       }
-//     }
-//   });
-// });
-</script>
 
 <script>
   $('.sizeWiseImage input').on('focus keyup', function() {
       $('.sizeWiseImage input').attr("required", true);
     });
-
 
 	$('#lfm').filemanager('image');
 

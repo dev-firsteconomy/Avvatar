@@ -96,7 +96,8 @@ class Product extends Model
     public static function getProductBySlug($slug){
         return Product::with(['cat_info','rel_prods','getReview'])->where('slug',$slug)->first();
     }
-    public static function countActiveProduct(){
+    public static function countActiveProduct()
+    {
         $data=Product::where('status','active')->count();
         if($data){
             return $data;
@@ -104,7 +105,7 @@ class Product extends Model
         return 0;
     }
 
-    public function images()
+    public function images()    //sizeWIseImages
     {
         return $this->hasMany('App\Models\ProductImage','product_id');
     }

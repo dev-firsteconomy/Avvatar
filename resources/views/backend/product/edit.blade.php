@@ -167,9 +167,51 @@
             	</div>
 				</div>
         
-        
-        
-            <div class="col-md-12">
+    @if(isset($product->sizesstock))
+        <div class="col-md-12">
+            <!-- <label for="color"> Upload Size Wise Images</label> -->
+            @foreach($product->sizesstock as $k=>$item)
+                <div class="repeater mt-repeater">
+                    <div data-repeater-list="sizeWiseImage_group">
+                        <div class="row" data-repeater-item>
+
+                            <div class="form-group col-md-4">
+                                <label>Size<span class="text-danger">*</span></label>
+                                <select name="sizes" class="form-control" required>
+                                    <option value="">Select Size</option>
+                                    @foreach($sizes as $key=>$attribute)
+                                    <option {{ ( ($item->size_id == $attribute->id) ? 'selected' : '') }} value='{{$attribute->id}}' >{{$attribute->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+{{ dd($item->images) }}
+                            <div class="form-group col-md-4">
+                                <label>Images<span class="text-danger">*</span></label>
+                                <img src="{{ $item->veh_color_image }}" alt="" height="100px;" width="170px;">
+                            
+                                <!-- <input class="form-control imageUploader" type="file" id="images" name="images[{$index}][]" value="{{ old('images') }}" multiple> -->
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="stock_quantities">Stock Quantity <span class="text-danger">*</span></label>
+                                <input id="stock_quantities" type="number" name="stock_quantities[]" min="0" placeholder="Enter Stock quantity" value="{{ isset($item->stock_qty)?$item->stock_qty:old('stock_quantities') }}" class="form-control" required>
+                                <!-- <input id="stock_quantities[]" type="number" name="stock_quantities[]" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantities') }}" class="form-control" required> -->
+                            </div>
+
+                            <div class="form-group col-md-1">
+                                <label>Delete :</label>
+                                <input data-repeater-delete type="button" value="Delete"
+                                    class="form-control btn btn-secondary delete-button" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif 
+           <div class="col-md-12">
             <label for="color"> Upload Size Wise Images</label>
               <div class="repeater mt-repeater sizeWiseImage">
                   <div data-repeater-list="sizeWiseImage_group">
