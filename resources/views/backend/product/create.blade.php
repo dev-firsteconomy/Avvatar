@@ -67,7 +67,7 @@
 					<div class="col-md-2">
 						<div class="form-group">
 							<label for="related_products" class="col-form-label">related_products</label>
-							<select name="related_products" id="related_products" class="form-control">
+							<select name="related_products[]" id="related_products" class="form-control related_productsClass" multiple>
 								@foreach($related_products as $key=>$product)
 									<option value='{{$product->id}}'>{{$product->name}}</option>
 								@endforeach
@@ -140,17 +140,17 @@
 						<div data-repeater-list="sizeWiseImage_group">
 							<div class="row" data-repeater-item>
 
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-2">
 									<label>flavours<span class="text-danger">*</span></label>
 									<select name="flavours" class="form-control" required>
-										<option value="">Select flavours</option>
-										@foreach($sizes as $key=>$attribute)
-										<option value='{{$attribute->id}}'>{{$attribute->name}}</option>
+										<option value="">Select Flavours</option>
+										@foreach($flavours as $key=>$item)
+										<option value='{{$item->id}}'>{{$item->name}}</option>
 										@endforeach
 									</select>
 								</div>
 
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-2">
 									<label>Size<span class="text-danger">*</span></label>
 									<select name="sizes" class="form-control" required>
 										<option value="">Select Size</option>
@@ -161,13 +161,23 @@
 								</div>
 								
 								<div class="form-group col-md-2">
+									<label>Images<span class="text-danger">*</span></label>
+									<input class="form-control imageUploader" type="file" id="images" name="images[image]" value="{{ old('images') }}" multiple>
+								</div>
+
+								<div class="form-group col-md-2">
 									<label for="stock_quantities">Stock Quantity <span class="text-danger">*</span></label>
 									<input id="stock_quantities" type="number" name="stock_quantities" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantities') }}" class="form-control" required>
 								</div>
 
-								<div class="form-group col-md-3">
-									<label>Images<span class="text-danger">*</span></label>
-									<input class="form-control imageUploader" type="file" id="images" name="images[image]" value="{{ old('images') }}" multiple>
+								<div class="form-group col-md-2">
+									<label for="price">MRP Price<span class="text-danger">*</span></label>
+									<input id="price" type="number" name="price" min="0" placeholder="Price" value="{{ old('price') }}" class="form-control" required>
+								</div>
+
+								<div class="form-group col-md-1">
+									<label for="sale_price">Sale Price <span class="text-danger">*</span></label>
+									<input id="sale_price" type="number" name="sale_price" min="0" placeholder="Sale Price" value="{{ old('sale_price') }}" class="form-control" required>
 								</div>
 
 								<div class="form-group col-md-1">
@@ -263,6 +273,7 @@
 <!-- <script src="{{asset('backend/js/bootstrap-select.min.js')}}"></script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{asset('backend/js/bootstrap-select.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>
 <script>
     $.noConflict();
@@ -271,6 +282,14 @@
 			isFirstItemUndeletable: true,
 		});
     });
+</script>
+<script>
+  $(document).ready(function() {
+    // Select2 initialization code here
+    $('.related_productsClass').select2({
+    	placeholder: 'Select Product' // Replace with your desired placeholder text
+  	});
+  });
 </script>
 
 <script>

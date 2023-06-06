@@ -14,6 +14,7 @@ use App\Models\Thickness;
 use App\Models\Color;
 use App\Models\Size;
 use App\Models\Fabric;
+use App\Models\Flavour;
 use App\Models\Orientation;
 use App\Models\Application;
 use Illuminate\Support\Str;
@@ -30,6 +31,7 @@ use App\Exports\ProductImagesExport;
 use App\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use File;
+
 class ProductController extends Controller
 {
     /**
@@ -71,12 +73,12 @@ class ProductController extends Controller
     {
         $colors          = Color::where('status',1)->get();
         $sizes           = Size::where('status',1)->get();
+        $flavours        = Flavour::where('status',1)->get();
         $fabrics         = Fabric::where('status',1)->get();
         $orientations    = Orientation::where('status',1)->get();
         $related_products= Product::orderBy('name')->where('status',1)->get();
         $categories      = Category::pluck('title','id');
-
-        return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations'));
+        return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations','flavours'));
     }
 
     /**
@@ -91,18 +93,16 @@ class ProductController extends Controller
         $data = $request->except(['_token','sizeWiseImage_group']);
 
         // $data=$request->all();
+        // dd($request->all(),$request->input('related_products'));
 
         $this->validate($request,[  
              'category_id'=>'required',
              'name'=>'required',
              'hsn'=>'required',
-             'price'=>'required',
-             'discount'=>'required',
              'min_qty'=>'required',
              'tag'=>'required',
              'description'=>'required',
              'additional_information'=>'required',
-            //  'related_products'=>'required',
              'status'=>'required',
         ]);
 
@@ -115,28 +115,13 @@ class ProductController extends Controller
 
         $data['slug']=$slug;
         $data['title']=$request->name;
-        $data['related_products']=$request->related_products;
         $data['is_featured']=$request->input('is_featured',0);
         $data['is_new']=$request->input('is_new',0);
         $data['is_bestsellers']=$request->input('is_bestsellers',0);
-        // $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
+        // $data['related_products']=$request->related_products;
+        $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
         
-        if($request->offer)
-        {
-            $data['is_offer'] = 1;
-            $data['offer'] = $request->offer;
-        }
-        else
-        {
-            $data['is_offer'] = 0;
-            $data['offer'] = 0;
-        }
-        // if($request->image1){
-        //     $fileName = rand().time().'.'.$request->image1->getClientOriginalExtension();
-        //     $request->image1->move(base_path('public/images/products'), $fileName);
-        //     $data['image1']= $fileName;
-        // }
-
+       
         DB::beginTransaction();
         try
         {
@@ -148,36 +133,6 @@ class ProductController extends Controller
                $this->store_images($sizeWiseImage_group,$status);
            }
 
-        //    if($request->sizes)
-        //    {   
-        //        $sizes = $request->sizes;
-        //        $colors = $request->colors;
-        //        $quantities = $request->stock_quantities;
-               
-        //         foreach($sizes as $key => $size)
-        //         {
-        //             $prodStock = new ProductStock;
-        //             $prodStock->product_id=$status->id;
-        //             $prodStock->size_id=$size;
-        //             $prodStock->color_id=$colors[$key];
-        //             $prodStock->stock_qty= $quantities[$key];
-        //             $prodStock->save();
-        //         }
-        //    }
-
-        //Application
-        // if(@$data['applications'] && count($data['applications'])){
-        //    $status->applications()->attach($data['applications']);
-        // }
-        //Characteristics
-        // if(@$data['characteristics'] && count($data['characteristics'])){
-        //    $status->characteristics()->attach($data['characteristics']);
-        // }
-        //Features
-        // if(@$data['features'] && count($data['features'])){
-        //    $status->features()->attach($data['features']);
-        // }
-
             if($status)
             {
                 request()->session()->flash('success','Product Successfully added');
@@ -186,6 +141,7 @@ class ProductController extends Controller
             {
                 request()->session()->flash('error','Please try again!!');
             }
+
             DB::commit();
             return redirect()->route('product.index');
         }
@@ -202,9 +158,18 @@ class ProductController extends Controller
         { 
             if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
             {
-                ProductStock::updateOrCreate([
+                $flavour_id = (int)$item['flavours'];
+                $size_id = (int)$item['sizes'];
+                $price = (int)$item['price'];
+                $sale_price = (int)$item['sale_price'];
+
+                ProductStock::create([
                     'product_id'=> (int)$status->id,
-                    'size_id'=> (int)$item['sizes'],
+                    'flavour_id'=> $flavour_id,
+                    'size_id'=> $size_id,
+                    'price'=> $price,
+                    'sale_price'=> $sale_price,
+                    'discount' => (($price - $sale_price) / $price) * 100,
                     'stock_qty'=> (int)@$item['stock_quantities'],
                 ]);
 
@@ -215,17 +180,18 @@ class ProductController extends Controller
                         foreach($item['image'] as $imageItem)
                         {
                             $image = time() . '_'. $imageItem->getClientOriginalName();
-                            $path = base_path('public/images/products');
+                            $path = public_path('/images/product_images');
+                            
                             if (!File::isDirectory($path)) 
                             {
                                 File::makeDirectory($path, 0777, true, true);
                             }
-                            $imageItem->move($path,$imageItem);
-                            $fileName = base_path('public/images/products').$image;
+                            $imageItem->move($path,$image);
+                            $fileName = '/images/product_images/'.$image;
 
-                            ProductImage::updateOrCreate([
+                            ProductImage::create([
                                 'product_id' =>$status->id,
-                                'size_id'=> (int)$item['sizes'],
+                                'size_id'=> $size_id,
                                 'image'=> $fileName
                             ]);
                         }
@@ -234,49 +200,43 @@ class ProductController extends Controller
             }
         }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function show($id)
     {
         //
         dd(1323);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id)
     {
+        $product_images = DB::table('products')
+                ->select('product_images.*')
+                ->join('product_stocks', 'products.id', '=', 'product_stocks.product_id')
+                ->join('product_images', 'products.id', '=', 'product_images.product_id')
+                ->groupBy('products.id', 'products.name', 'product_images.image')
+                ->where('products.id', '=' , $id)
+                ->get();
+        
         $product=Product::findOrFail($id);      
-        $related_products   = Product::orderBy('name')->where('status',1)->where('is_giftcard',0)->get();
+        $related_products   = Product::orderBy('name')->where('status',1)->get();
+        $relatedProductsList = unserialize($product->related_products);
         $categories         = Category::pluck('title','id');
         $colors         = Color::where('status',1)->get();   
         $sizes           = Size::where('status',1)->get(); 
         $fabrics           = Fabric::where('status',1)->get();   
         $orientations           = Orientation::where('status',1)->get();
+        $flavours        = Flavour::where('status',1)->get();
 
-        return view('backend.product.edit',compact('product','categories','related_products','colors','sizes','fabrics','orientations'));
+        return view('backend.product.edit',compact('product','relatedProductsList','product_images','flavours','categories','related_products','colors','sizes','fabrics','orientations'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        $product=Product::findOrFail($id);
         $data=$request->all();
+        $product=Product::findOrFail($id);
 
         $this->validate($request,[
              'category_id'=>'required',
@@ -300,68 +260,12 @@ class ProductController extends Controller
         $data['is_bestsellers']=$request->input('is_bestsellers',0);
         $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
         $data['orientation']=@$request->orientation && count($request->orientation) ? serialize($request->orientation) :null;
-
-        if($request->offer)
-        {
-            $data['is_offer'] = 1;
-            $data['offer'] = $request->offer;
-        }
-        else
-        {
-            $data['is_offer'] = 0;
-            $data['offer'] = 0;
-        }
-
-
-        // if($request->meta_image){
-        //     $fileName = 'images/products/meta_image/'.rand().time().'.'.$request->meta_image->getClientOriginalExtension();
-        //     $request->photo->move(base_path('public/images/products/meta_image'), $fileName);
-        //     $data['meta_image']= $fileName;
-        // }
-        // return $data;
        
         DB::beginTransaction();
         try
         {
 
            $status=$product->fill($data)->save();
-
-                //Application
-                // if(@$data['applications'] && count($data['applications'])){
-                //     $product->applications()->sync($data['applications']);
-                // }
-
-                    //Attributes
-                // if(@$data['attributes'] && count($data['attributes'])){
-                //     $product->attributes()->sync($data['attributes']);
-                // }
-
-                    //Characteristics
-                // if(@$data['characteristics'] && count($data['characteristics'])){
-                //     $product->characteristics()->sync($data['characteristics']);
-                // }
-
-                    //Features
-                // if(@$data['features'] && count($data['features'])){
-                //     $product->features()->sync($data['features']);
-                // }
-
-                    //Laminates
-                // if(@$data['laminates'] && count($data['laminates'])){
-                //     $product->laminates()->sync($data['laminates']);
-                // }
-
-
-                    //Textures
-                // if(@$data['textures'] && count($data['textures'])){
-                //     $product->textures()->sync($data['textures']);
-                // }
-
-
-                    //Thicknesses
-                // if(@$data['thicknesses'] && count($data['thicknesses'])){
-                //     $product->thicknesses()->sync($data['thicknesses']);
-                // }
 
                 if($request->sizes)
                 {   
