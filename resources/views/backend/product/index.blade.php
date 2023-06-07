@@ -43,7 +43,7 @@
                     <!-- <td>{{$product->design}}</td> -->
                     <td>Rs. {{$product->price}} /-</td>
                     <td>
-                        @if($product->status == '1')
+                        @if($product->status == 1)
                             <span class="badge badge-success">Active</span>
                         @else
                             <span class="badge badge-warning">Inactive</span>

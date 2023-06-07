@@ -140,7 +140,7 @@
 						<div data-repeater-list="sizeWiseImage_group">
 							<div class="row" data-repeater-item>
 
-								<div class="form-group col-md-2">
+								<!-- <div class="form-group col-md-2">
 									<label>flavours<span class="text-danger">*</span></label>
 									<select name="flavours" class="form-control" required>
 										<option value="">Select Flavours</option>
@@ -148,7 +148,7 @@
 										<option value='{{$item->id}}'>{{$item->name}}</option>
 										@endforeach
 									</select>
-								</div>
+								</div> -->
 
 								<div class="form-group col-md-2">
 									<label>Size<span class="text-danger">*</span></label>
@@ -175,7 +175,7 @@
 									<input id="price" type="number" name="price" min="0" placeholder="Price" value="{{ old('price') }}" class="form-control" required>
 								</div>
 
-								<div class="form-group col-md-1">
+								<div class="form-group col-md-2">
 									<label for="sale_price">Sale Price <span class="text-danger">*</span></label>
 									<input id="sale_price" type="number" name="sale_price" min="0" placeholder="Sale Price" value="{{ old('sale_price') }}" class="form-control" required>
 								</div>

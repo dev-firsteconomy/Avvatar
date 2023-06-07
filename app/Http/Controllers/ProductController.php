@@ -125,15 +125,15 @@ class ProductController extends Controller
         DB::beginTransaction();
         try
         {
-           $status = Product::create($data);
+           $product = Product::create($data);
 
            if($request->sizeWiseImage_group != null)
            {
                $sizeWiseImage_group = $request->sizeWiseImage_group;
-               $this->store_images($sizeWiseImage_group,$status);
+               $this->store_images($sizeWiseImage_group,$product);
            }
 
-            if($status)
+            if($product)
             {
                 request()->session()->flash('success','Product Successfully added');
             }
@@ -152,20 +152,18 @@ class ProductController extends Controller
         }    
     }
 
-    public function store_images($sizeWiseImage_group,$status)
+    public function store_images($sizeWiseImage_group,$product)
     {
         foreach($sizeWiseImage_group as $item)
         { 
             if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
             {
-                $flavour_id = (int)$item['flavours'];
                 $size_id = (int)$item['sizes'];
                 $price = (int)$item['price'];
                 $sale_price = (int)$item['sale_price'];
 
                 ProductStock::create([
-                    'product_id'=> (int)$status->id,
-                    'flavour_id'=> $flavour_id,
+                    'product_id'=> $product->id,
                     'size_id'=> $size_id,
                     'price'=> $price,
                     'sale_price'=> $sale_price,
@@ -190,7 +188,7 @@ class ProductController extends Controller
                             $fileName = '/images/product_images/'.$image;
 
                             ProductImage::create([
-                                'product_id' =>$status->id,
+                                'product_id' =>$product->id,
                                 'size_id'=> $size_id,
                                 'image'=> $fileName
                             ]);
@@ -204,7 +202,6 @@ class ProductController extends Controller
     
     public function show($id)
     {
-        //
         dd(1323);
     }
 
@@ -235,72 +232,40 @@ class ProductController extends Controller
     
     public function update(Request $request, $id)
     {
-        $data=$request->all();
+        // $data=$request->all();
+        $data = $request->except(['_token','sizeWiseImage_group']);
         $product=Product::findOrFail($id);
 
-        $this->validate($request,[
-             'category_id'=>'required',
-             'name'=>'required',
-             'design'=>'required',
-             'hsn'=>'required',
-             'fabric'=>'required',
-             'orientation'=>'required',
-             'price'=>'required',
-             'min_qty'=>'required',
-             'stock_quantities'=>"required",
-             'description'=>'required',
-             'additional_information'=>'required',
-             'related_products'=>'required',     
-             'status'=>'required',            
-             'discount'=>'required',             
-        ]);
+        $this->validate($request,[  
+            'category_id'=>'required',
+            'name'=>'required',
+            'hsn'=>'required',
+            'min_qty'=>'required',
+            'tag'=>'required',
+            'description'=>'required',
+            'additional_information'=>'required',
+            'status'=>'required',
+       ]);
 
         $data['is_featured']=$request->input('is_featured',0);
         $data['is_new']=$request->input('is_new',0);
         $data['is_bestsellers']=$request->input('is_bestsellers',0);
         $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
-        $data['orientation']=@$request->orientation && count($request->orientation) ? serialize($request->orientation) :null;
        
         DB::beginTransaction();
         try
         {
 
-           $status=$product->fill($data)->save();
+           $product->fill($data)->save();
+           $product = $product;
 
-                if($request->sizes)
-                {   
-                    $sizes = $request->sizes;
-                    $colors = $request->colors;
-                    $quantities = $request->stock_quantities;
-                    
-                    foreach($sizes as $key => $size)
-                    {
-                        ProductStock::updateOrCreate(['product_id'=> $id, 'size_id' => $size,'color_id' => $colors[$key]],['stock_qty' =>$quantities[$key]]);
-                    }
-                }
-    
-                if(count($request->colorsImages))
-                {
-                        foreach(@$request->colorsImages as $key => $color)
-                        {  
-                            if($color)
-                            {
-                                foreach($request->images[$key] as $image)
-                                {                 
-                                        $icon=mt_rand();
-                                        $filename=$icon.$image->getClientOriginalName();
-                                        $image->move(public_path('/images/products'), $filename); 
-                                        $prodImage = new ProductImage;
-                                        $prodImage->product_id=$id;
-                                        $prodImage->color_id = $color;
-                                        $prodImage->image = '/images/products/'.$filename;
-                                        $prodImage->save();
-                                }
-                            }    
-                        }
-                }      
+            if($request->sizeWiseImage_group != null)
+            {
+               $sizeWiseImage_group = $request->sizeWiseImage_group;
+               $this->store_images($sizeWiseImage_group,$product);
+            }
 
-            if($status)
+            if($product)
             {
                 request()->session()->flash('success','Product Successfully updated');
             }
@@ -348,9 +313,12 @@ class ProductController extends Controller
         $id = $request->id;
 
         $prodVariation = ProductStock::findOrFail($id);
-        $status = $prodVariation->delete();
+        $productImages = ProductImage::where('size_id',$prodVariation->size_id)->where('product_id',$prodVariation->product_id)->first();
 
-        if($status)
+        $variationStatus = $prodVariation->delete();
+        $imageStatus = $productImages->delete();
+
+        if($variationStatus && $imageStatus)
         {
             return 1;
         }
