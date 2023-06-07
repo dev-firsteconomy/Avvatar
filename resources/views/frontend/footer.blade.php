@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
-                        <img src="assets/images/logo-footer.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
+                        <img src="assets/images/new/logo.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
                         <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
 
                         <div class="social-icons">
@@ -65,7 +65,7 @@
 
     <div class="footer-bottom">
         <div class="container">
-            <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+            <p class="footer-copyright">Copyright © 2019 Avvatar. All Rights Reserved.</p><!-- End .footer-copyright -->
             <figure class="footer-payments">
                 <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
             </figure><!-- End .footer-payments -->

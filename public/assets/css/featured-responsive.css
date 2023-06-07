@@ -1,0 +1,341 @@
+@media(max-width:767px) {
+
+	.patternBgTop,
+	.patternBgTopReverse,
+	.aboutParafFood.patternBgPageTop,
+	.patternBrand,
+	.aboutParafFood.patternBgTop,
+	.goodnessAvvatar.patternBgTop {
+		background-size: 200px;
+	}
+
+	.categoriesBox .cat-slide:nth-child(n+3),
+	.aboutAvvatarBox:nth-child(n+4),
+	.blogCardOuter:nth-child(n+2),
+	.brandPillarsBox:nth-child(n+2),
+	.keyFactsBoxOuter:nth-child(n+3),
+	.brandAdvantage:nth-child(n+3),
+	.contactPatchBox:nth-child(n+2),
+	.goodnessAvatarBoxOuter:nth-child(n+2),
+	.instaFeedBox:nth-child(n+3) {
+		margin-top: 30px;
+	}
+
+	.aboutAvvatarBox p {
+		font-size: 12px;
+	}
+
+	.productJourneyBox h4 {
+		font-size: 20px;
+	}
+
+	.productJourneyBox img {
+		width: 100px;
+	}
+
+	.productJourneyBox:after {
+		display: none;
+	}
+
+	.reconstructContentHeading h3 {
+		font-size: 22px;
+	}
+
+	.reconstructContentHeading h2,
+	.title,
+	.keyFactsBox h3 span {
+		font-size: 30px;
+	}
+
+	.reconstructContent p {
+		font-size: 1.6rem;
+	}
+
+	.product-title {
+		font-size: 1.1rem;
+		margin-bottom: 1rem;
+	}
+
+	.new-price {
+		font-size: 14px;
+	}
+
+	.educateSection .reconstructContentHeading h2 {
+		font-size: 25px;
+		border-bottom: 0;
+	}
+
+	.reconstructContent .knowMoreButton a,
+	.commonButton,
+	.commonButton-yellow,
+	.keyFactsBox h3,
+	.keyFactsBox p {
+		font-size: 16px;
+	}
+
+	.productJourneyBox {
+		padding: 140px 0 50px;
+	}
+
+	.productJourney .heading {
+		width: 95%;
+		top: 5%;
+	}
+
+	.heading p {
+		line-height: 1.2;
+	}
+
+	.productJourneyBox:nth-child(3),
+	.productJourneyBox:nth-child(4) {
+		padding: 50px 0;
+	}
+
+	.aboutFounderBox {
+		padding: 34px 20px;
+	}
+
+	.videoContent h3 {
+		font-size: 20px;
+	}
+
+	.videoContent h2 {
+		font-size: 42px;
+	}
+
+	.svgIcon:before {
+		width: 55px;
+	}
+
+	svg,
+	.svgIconImg img {
+		width: 50px;
+		height: 50px;
+	}
+
+	.svgIconImg:after {
+		width: 50px;
+		height: 50px;
+	}
+
+	.footer-payments .footer-copyright {
+		text-align: center;
+	}
+
+	.brandAdvantageBox {
+		gap: 0;
+	}
+
+	.brandAdvantage h3 {
+		font-size: 18px;
+	}
+
+	.social-icons {
+		margin-top: 20px;
+	}
+
+	.homeBannerSection .videoContent h3 {
+		font-size: 24px;
+	}
+
+	.homeBannerSection .videoContent h2 {
+		font-size: 30px;
+	}
+
+	.homeBannerSection .videoContent p {
+		font-size: 18px;
+	}
+
+	.bestSellerWrapper .owl-carousel .owl-stage-outer {
+		padding: 10px 0;
+	}
+}
+
+@media only screen and (min-width : 768px) {
+	.brandAdvantage {
+		width: 18%;
+	}
+
+	.categorySlider.owl-carousel {
+		display: -webkit-box !important;
+		display: -ms-flexbox !important;
+		display: flex !important;
+	}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 991px) {
+	.patternBgTop {
+		background-size: 250px;
+	}
+
+	.productJourneyBox {
+		padding: 130px 0 50px;
+	}
+
+	.productJourneyBox img {
+		width: 100px;
+	}
+
+	.productJourneyBox h4 {
+		font-size: 22px;
+	}
+
+	.productJourneyBox + .productJourneyBox:after {
+		background-size: 64px;
+		height: 80px;
+	}
+
+	.reconstructContentHeading h2 {
+		font-size: 6rem;
+	}
+
+	.categorySlider.owl-carousel {
+		display: -webkit-box !important;
+		display: -ms-flexbox !important;
+		display: flex !important;
+	}
+
+	.categoriesBox .cat-slide:nth-child(n+4),
+	.brandPillarsBox:nth-child(n+4) {
+		margin-top: 30px;
+	}
+
+	.keyFactsBoxOuter:nth-child(n+4) {
+		margin-top: 50px;
+	}
+
+	.authenticateAvatar img {
+		height: 500px;
+		width: 100%;
+		-o-object-fit: cover;
+		object-fit: cover;
+	}
+
+	.brandPillarsContent p {
+		font-size: 20px;
+	}
+
+	.keyFactsBox h3 {
+		font-size: 30px;
+	}
+
+	.keyFactsBox h3 span {
+		font-size: 40px;
+	}
+
+	.widget-list li {
+		width: 100%;
+	}
+
+	.social-icons {
+		gap: 3px;
+	}
+
+	.footer a.social-icon {
+		width: 2.8rem;
+		height: 2.8rem;
+	}
+
+	.videoContent h3 {
+		font-size: 26px;
+	}
+
+	.videoContent h2 {
+		font-size: 60px;
+	}
+
+	svg,
+	.svgIconImg img {
+		width: 60px;
+		height: 60px;
+	}
+
+	.svgIcon:before {
+		width: 100px;
+	}
+
+	.home-menu-section li {
+		width: 16%;
+		margin-right: 0;
+	}
+
+
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1199px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+	.productJourneyBox img {
+		width: 150px;
+	}
+
+	.productJourneyBox + .productJourneyBox:after {
+		height: 88px;
+	}
+
+	.patternBgTop {
+		background-size: 250px;
+	}
+}
+
+@media (min-width: 1200px) {
+
+	.menu li > a {
+		color: #000;
+		font-weight: 400;
+	}
+
+	.categoriesBox .cat-slide:nth-child(n+4),
+	.brandPillarsBox:nth-child(n+4) {
+		margin-top: 30px;
+	}
+
+	.title {
+		font-size: 4rem;
+	}
+
+	.heading p {
+		font-size: 1.6rem;
+	}
+
+	.blogCardContent h2,
+	.blogCardContent p {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.blogCardContent {
+		max-height: 200px;
+	}
+
+	.keyFactsBoxOuter:nth-child(n+4) {
+		margin-top: 50px;
+	}
+}
+
+
+@media screen and (min-width: 1600px) {
+	.container {
+		max-width: 1450px;
+	}
+
+	.container-fluid {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.productJourneyBox + .productJourneyBox:after {
+		background-size: 112px;
+		left: -11%;
+	}
+
+	.reconstructSection {
+		padding: 100px 0;
+	}
+}
+
+@media screen and (min-width: 1920px) {
+	.container {
+		max-width: 1550px;
+	}
+}

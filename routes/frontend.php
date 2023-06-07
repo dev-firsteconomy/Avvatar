@@ -21,12 +21,16 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/giftcard','HomeController@giftcard')->name('giftcard');
     Route::get('/faq','HomeController@faq');
     Route::get('/contact','HomeController@contact');
-    Route::get('/about-us','HomeController@aboutus');
+    Route::get('/about-avvatar','HomeController@aboutus');
+    Route::get('/about-us-parag-foods','HomeController@aboutParagFoods');
+    Route::get('/product-categories','HomeController@productCategories');
+    Route::get('/blogs','HomeController@blogs');
+    Route::get('/authenticate','HomeController@authenticate');
     Route::get('/collaboration','HomeController@collaboration');
 
-    Route::get('/terms-and-conditions','HomeController@termsAndCondition');
-    Route::get('/shipping-policy','HomeController@shipping');
-    Route::get('/returns-exchange-refund','HomeController@returns');
+    Route::get('/terms-of-use','HomeController@termsAndCondition');
+//    Route::get('/shipping-returns-policy','HomeController@shipping');
+    Route::get('/returns-policy','HomeController@returns');
     Route::get('/privacy-policy','HomeController@privacy');
     Route::get('/cancellation-policy','HomeController@cancellation');
     // Route::get('/payment','HomeController@payment');
@@ -73,9 +77,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         return view('user.pages.wishlist');
     })->name('wishlist')->middleware('user');
 
-    // Route::get('/category',function(){
-    //     return view('frontend.category');
-    // });
+//     Route::get('/categories',function(){
+//         return view('frontend.category');
+//     });
     // Route::get('/coming-soon',function(){
     //     return view('frontend.coming-soon');
     // });
