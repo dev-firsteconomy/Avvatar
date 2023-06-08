@@ -149,6 +149,45 @@
 	.bestSellerWrapper .owl-carousel .owl-stage-outer {
 		padding: 10px 0;
 	}
+
+	.cartBlockTwo {
+		-webkit-box-flex: 0;
+		-ms-flex: none;
+		flex: none;
+	}
+
+	.table-mobile,
+	.table-mobile tbody,
+	.table-mobile tr,
+	.table-mobile td {
+		display: none !important;
+	}
+
+	.cartBlockGroup {
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		gap: 0;
+	}
+
+	.cartBlockThree {
+		display: none;
+	}
+
+	.cartBlockTwo,
+	.cartBlockThree,
+	.cartBlockFour {
+		width: 100%;
+	}
+
+	.cartBlockFive,
+	.cartBlockSix {
+		width: 50%;
+	}
+
+	.summary.summary-cart {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 @media only screen and (min-width : 768px) {
