@@ -21,7 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->string('payment_id')->nullable();
             $table->string('payment_order_id')->nullable();
             $table->text('payment_signature')->nullable();
-            $table->enum('payment_status', ['process', 'paid','failed'])->default('process');;
+            $table->enum('payment_status', ['process', 'paid','failed'])->default('process');
             
             $table->timestamps();
         });
