@@ -10,43 +10,43 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">City List</h6>
-      <a href="{{route('cities.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add City"><i class="fas fa-plus"></i> Add City</a>
+      <h6 class="m-0 font-weight-bold text-primary float-left">Blog List</h6>
+      <a href="{{route('blogs.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add Blog"><i class="fas fa-plus"></i> Add Blog</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        @if(count($cities)>0)
+        @if(count($blogs)>0)
         <table class="table table-bordered" id="banner-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Name</th>
-              <th>State</th>
+              <th>title</th>
+              <th>tag</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
        
           <tbody>
-            @foreach($cities as $city)
+            @foreach($blogs as $blog)
                 <tr>
-                    <td>{{$city->id}}</td>
-                    <td>{{$city->name}}</td>
-                    <td>{{$city->state->name}}</td>
+                    <td>{{$blog->id}}</td>
+                    <td>{{$blog->title}}</td>
+                    <td>{{$blog->tag}}</td>
 
                     <td>
-                        @if($city->status=='1')
+                        @if($blog->status=='1')
                             <span class="badge badge-success">Active</span>
                         @else
                             <span class="badge badge-warning">Inactive</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('cities.edit',$city->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('cities.destroy',[$city->id])}}">
+                        <a href="{{route('blogs.edit',$blog->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                        <form method="POST" action="{{route('blogs.destroy',[$blog->id])}}">
                           @csrf
                           @method('delete')
-                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$city->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$blog->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                
@@ -54,9 +54,9 @@
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$cities->links()}}</span>
+        <span style="float:right">{{$blogs->links()}}</span>
         @else
-          <h6 class="text-center">No cities found!!! Please create city</h6>
+          <h6 class="text-center">No blogs found!!! Please create blog</h6>
         @endif
       </div>
     </div>

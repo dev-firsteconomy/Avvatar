@@ -247,6 +247,14 @@ class ProductController extends Controller
             'status'=>'required',
        ]);
 
+        $slug = Str::slug($request->name);
+        $count= Product::where('slug',$slug)->count();
+        if($count>0)
+        {
+            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
+        }
+        $data['slug']=$slug;
+
         $data['is_featured']=$request->input('is_featured',0);
         $data['is_new']=$request->input('is_new',0);
         $data['is_bestsellers']=$request->input('is_bestsellers',0);

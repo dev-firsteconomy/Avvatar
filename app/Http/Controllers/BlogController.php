@@ -64,6 +64,13 @@ class BlogController extends Controller
             'image'=>'required',
        ]);
 
+       $slug = Str::slug($request->name);
+       $count= Blog::where('slug',$slug)->count();
+       if($count>0)
+       {
+           $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
+       }
+
        if(file_exists($request->thumbnail_image))
        {
            $file = $request->thumbnail_image;
@@ -148,6 +155,13 @@ class BlogController extends Controller
             'date'=>'required',
             'tag'=>'required',
        ]);
+
+       $slug = Str::slug($request->name);
+       $count= Blog::where('slug',$slug)->count();
+       if($count>0)
+       {
+           $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
+       }
 
         $data['is_expert_speaks'] = $request->input('is_expert_speaks',0);
         $data['is_trends']        = $request->input('is_trends',0);
