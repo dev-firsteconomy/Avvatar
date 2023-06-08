@@ -1050,3 +1050,32 @@ span.sr-only {
 	color: #000;
 	font-weight: 400;
 }
+
+.labelWrapper {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.labelWrapper span.labelText {
+	margin-right: 15px;
+	font-weight: 700;
+	color: #000;
+}
+
+.radioBoxes .radio {
+	margin-bottom: 10px;
+}
+
+.radioBoxes .radio + .radio {
+	margin-left: 10px;
+}
+
+.product-details-quantity .input-group > .form-control {
+	width: 75px;
+	min-width: 60px;
+	border: 1px solid #000;
+}

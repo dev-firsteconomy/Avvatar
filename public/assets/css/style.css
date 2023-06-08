@@ -21825,21 +21825,13 @@ button:focus {
 	background-color: rgba(0, 0, 0, 0.08);
 }
 
-.custom-size:hover {
-	background-color: rgba(0, 0, 0, 0.04);
-}
-
 .custom-size {
-	margin-right: 8px;
-	width: 40px;
-	height: 40px;
-	padding: 0px;
-	border-radius: 50%;
-	border: 1px solid rgba(0, 0, 0, 0.12);
-	color: rgba(0, 0, 0, 0.54);
+	padding: 6px 18px;
+	border: 1px solid rgba(0, 0, 0, 1);
+	color: rgba(0, 0, 0, 1);
 	font-weight: 500;
 	font-size: 14px;
-	line-height: 1.75;
+	line-height: 1.2;
 	text-transform: uppercase;
 	display: -webkit-inline-box;
 	display: -ms-inline-flexbox;
@@ -21868,6 +21860,12 @@ button:focus {
 	text-decoration: none;
 }
 
+.custom-size:hover {
+	background-color: #F7BC2A;
+	border-color: #F7BC2A;
+	font-weight: 700;
+}
+
 .fw-400 {
 	font-weight: 400;
 }
@@ -21891,9 +21889,7 @@ button:focus {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
-		-webkit-box-align: center;
-		-ms-flex-align: center;
-		align-items: center;
+		flex-direction: column;
 	}
 
 	.radio.has-color label,
