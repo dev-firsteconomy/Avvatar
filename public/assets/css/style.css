@@ -11063,15 +11063,15 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .form-control::-webkit-input-placeholder {
-	color: #777
+	color: #000
 }
 
 .form-control:-ms-input-placeholder {
-	color: #777
+	color: #000
 }
 
 .form-control::placeholder {
-	color: #777
+	color: #000
 }
 
 textarea.form-control {
@@ -11255,7 +11255,8 @@ small.form-text {
 	margin-top: .1rem;
 	visibility: hidden;
 	-webkit-transition: opacity .01s;
-	transition: opacity .01s
+	transition: opacity .01s;
+	display: none;
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
@@ -13213,7 +13214,7 @@ button:focus {
 }
 
 .toolbox .form-control {
-	color: #999;
+	color: #000;
 	font-weight: 300;
 	font-size: 1.2rem;
 	padding: .45rem 1rem;
@@ -13222,7 +13223,7 @@ button:focus {
 }
 
 .toolbox .form-control:not(:focus) {
-	border-color: #d7d7d7
+	border-color: #000
 }
 
 .toolbox select.form-control:not([size]):not([multiple]) {
@@ -13260,7 +13261,7 @@ button:focus {
 }
 
 .toolbox-info {
-	color: #ccc
+	color: #000
 }
 
 .toolbox-info span {
@@ -13391,6 +13392,7 @@ button:focus {
 
 .sidebar-shop .custom-control {
 	padding-left: 2.7rem;
+	padding-left: 0;
 	margin: 0
 }
 
@@ -21951,7 +21953,7 @@ button:focus {
 
 input[type=checkbox],
 input[type=radio] {
-	margin-top: 8px;
+	margin-top: 0px;
 	margin-right: 8px;
 }
 

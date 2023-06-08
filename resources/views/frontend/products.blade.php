@@ -87,11 +87,22 @@
             @else
              <input type="hidden" name="pageType" id="pageType" value="{{@$catId}}">
             @endif
+<!--
             <div class="page-header text-center" style="background-image: url('{{URL::asset('assets/images/page-header-bg.jpg')}}')">
                 <div class="container"> 
                     <h1 class="page-title">{{$pageType}}<span>Shop</span></h1>
-                </div><!-- End .container -->
-            </div><!-- End .page-header -->
+                </div>
+            </div>
+-->
+           <div class="page-header p-0 text-center">
+				<picture>
+					<source media="(max-width:767px)" srcset="assets/images/new/about/about-banner.png">
+					<source media="(min-width:768px)" srcset="assets/images/new/about/about-banner.png">
+					<img src="assets/images/new/about/about-banner.png" class="img-fluid" alt="aboutBanner">
+				</picture>
+			</div>
+            
+            
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
                 <div class="container">
                     <ol class="breadcrumb">
