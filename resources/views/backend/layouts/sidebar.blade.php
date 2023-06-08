@@ -216,6 +216,24 @@
           <hr class="sidebar-divider d-none d-md-block">
           <!-- Heading -->
           <div class="sidebar-heading">
+              Blogs & Media
+          </div>
+
+          <!-- Users -->
+          <li class="nav-item">
+              <a class="nav-link" href="{{route('blogs.index')}}">
+                  <i class="fas fa-list"></i>
+                  <span>Blogs</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{route('media.index')}}">
+                  <i class="fas fa-image"></i>
+                  <span>Media</span></a>
+          </li>
+
+          <hr class="sidebar-divider d-none d-md-block">
+          <!-- Heading -->
+          <div class="sidebar-heading">
               Forms
           </div>
           <!-- <li class="nav-item">

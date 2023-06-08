@@ -13,12 +13,26 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-       $cities =  City::where('status',1)->whereHas('state',function($q){
-           $q->orderBy('name');
-       })->paginate(50);
+        $keyword = $request->get('search');
+
+        if (!empty($keyword)) 
+        {
+            $cities = City::where('name', 'LIKE', "%$keyword%")
+                        ->whereHas('state',function($q) use($keyword)
+                        {
+                            $q->orwhere('name', 'LIKE', "%$keyword%");
+                        })->latest()->paginate(20);
+        } 
+        else 
+        {
+            $cities = City::latest()->paginate(20);
+        }
+
+    //    $cities =  City::where('status',1)->whereHas('state',function($q){
+    //        $q->orderBy('name');
+    //    })->paginate(50);
        return view('backend.city.index')->with('cities',$cities);
 
     }
@@ -91,9 +105,11 @@ class CityController extends Controller
      * @param  \App\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function destroy(State $state)
+    public function destroy(City $city)
     {
-        //
+        $city = City::find($city->id);
+        $city->delete();
+        request()->session()->flash('success','City Successfully deleted');
     }
 
     public function get_cities_by_state_id(Request $request){
