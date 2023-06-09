@@ -3,94 +3,117 @@
 @section('main-content')
 <div class="container-fluid">
     <div class="card">
-        <h5 class="card-header">Edit Blog</h5>
+        <h5 class="card-header">Edit Media</h5>
         <div class="card-body">
-            <form method="post" action="{{route('blogs.update',$blog->id)}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('media.update',$media->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <label for="Tag" class="form-label">Meta Title</label>
-                            <input type="text" name="meta_title" id="meta_title" placeholder=" Enter Meta Title"
-                                value="{{ old('meta_title') ? old('meta_title') : $blog->meta_title }}"
-                                class="form-control">
-                            @error('meta_title')
+                            <label for="type" class="col-form-label">Type <span class="text-danger">*</span></label>
+                            <select name="media_type" class="form-control">
+                                <option value=""> Select Media Type </option>
+                                <option value="Video" {{ $media->media_type == 'Video' ? 'selected':'' }}>Video</option>
+                                <option value="News"  {{ $media->media_type == 'News'  ? 'selected':'' }}>News</option>
+                                <option value="Image" {{ $media->media_type == 'Image' ? 'selected':'' }}>Image</option>
+                            </select>
+                            @error('media_type')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="Tag" class="form-label">Meta Description</label>
-                            <input type="text" name="meta_description" id="meta_description"
-                                placeholder=" Enter Meta Description"
-                                value="{{ old('meta_description') ? old('meta_description') : $blog->meta_description }}"
-                                class="form-control">
-                            @error('meta_description')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="Tag" class="form-label">Meta Keyword</label>
-                            <input type="text" name="meta_keyword" id="meta_keyword" placeholder=" Enter Meta Keyword"
-                                value="{{ old('meta_keyword') ? old('meta_keyword') : $blog->meta_keyword }}"
-                                class="form-control">
-                            @error('meta_keyword')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="Tag" class="form-label">Canonical</label>
-                            <input type="text" name="canonical" id="canonical" placeholder=" Enter Canonical"
-                                value="{{ old('canonical') ? old('canonical') : $blog->canonical }}"
-                                class="form-control">
-                            @error('canonical')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" name="title" id="title" placeholder="Enter Title"
-                                value="{{ old('title') ? old('title') : $blog->title }}" class="form-control" required>
+                                value="{{ old('title') ? old('title') : $media->title }}" class="form-control">
                             @error('title')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="Tag" class="form-label">Tag</label>
                             <input type="text" name="tag" id="tag" placeholder=" EnterTag"
-                                value="{{ old('tag') ? old('tag') : $blog->tag }}" class="form-control" required>
+                                value="{{ old('tag') ? old('tag') : $media->tag }}" class="form-control">
                             @error('tag')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                     </div>
+
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            @if(isset($media))
+                                <img src="{{ asset($media->thumbnail_image) }}" alt="image" style="height:100px; width: 100px;">
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="thumbnail_image" class="form-label">Change Thumbnail Image</label>
+                            <input type="file" name="thumbnail_image" id="thumbnail_image" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="video_link" class="form-label">Video Link</label>
+                            <input type="video_link" name="video_link" id="video_link" placeholder="Enter Video Link"
+                                value="{{ old('video_link') ? old('video_link') : $media->video_link }}" class="form-control">
+                            @error('video_link')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" name="date" id="date" placeholder="Enter Date"
+                                value="{{ old('date') ? old('date') : $media->date }}" class="form-control">
+                            @error('date')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="news_link" class="form-label">News Link</label>
+                            <input type="news_link" name="news_link" id="news_link" placeholder="Enter news_link"
+                                value="{{ old('news_link') ? old('news_link') : $media->news_link }}" class="form-control">
+                            @error('news_link')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="news_url" class="form-label">News Url</label>
+                            <input type="news_url" name="news_url" id="news_url" placeholder="Enter Url of Navigte News"
+                                value="{{ old('news_url') ? old('news_url') : $media->news_url }}" class="form-control">
+                            @error('news_url')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                        {{ old('short_desc') ? old('short_desc') : $media->short_desc }}
                             <label for="short_desc" class="form-label">Short Description</label>
-                            <input type="text" name="short_desc" id="short_desc" placeholder=" Enter Short Description"
-                                value="{{ old('short_desc') ? old('short_desc') : $blog->short_desc }}"
-                                class="form-control" required>
+                            <textarea class="form-control" id="short_desc" name="short_desc">{{ old('short_desc') ? old('short_desc') : $media->short_desc }}</textarea>
                             @error('short_desc')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -101,84 +124,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="description" class="col-form-label">Description</label>
-                            <textarea class="form-control" id="description"
-                                name="description">{{ old('description') ? old('description') : $blog->description }}</textarea>
-                            @error('description')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="thumbnail_image" class="form-label">Thumbnail Image</label>
-                            @if(isset($blog))
-                            <img src="{{ asset($blog->thumbnail_image) }}" alt="image"
-                                style="height:80px; width: 60px;">
-                            @endif
-                            <input type="file" name="thumbnail_image" id="thumbnail_image" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="image" class="form-label">Image</label>
-                            @if(isset($blog))
-                            <img src="{{ asset($blog->image) }}" alt="image" style="height:80px; width: 60px;">
-                            @endif
-                            <input class="form-control" type="file" id="images" name="image">
-                            @error('date')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="date" class="form-label">Date</label>
-                            <input type="date" name="date" id="date" placeholder="Enter Date"
-                                value="{{ old('date') ? old('date') : $blog->date }}" class="form-control" required>
-                            @error('date')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Expert Speaks</label>
-                            <div class="form-check form-check-primary">
-                                <input type="checkbox" name="is_expert_speaks" class="form-check-input" value="1"
-                                    {{ isset($blog) && $blog->is_expert_speaks == 1 ? 'checked' : '' }}>
-                                Is Expert Speaks ? <i class="input-helper"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Fitness Trends & Updates</label>
-                            <div class="form-check form-check-primary">
-                                <input type="checkbox" name="is_trends" class="form-check-input" value="1"
-                                    {{ isset($blog) && $blog->is_trends == 1 ? 'checked' : '' }}>
-                                Is Fitness Trends & Updates ? <i class="input-helper"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
                             <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
                             <select name="status" class="form-control">
-                                <option value="1" {{$blog->status == 1 ? 'selected':''}}>Active</option>
-                                <option value="0" {{$blog->status == 0 ? 'selected':''}}>Inactive</option>
+                                <option value="1" {{ $media->status == 1 ? 'selected':'' }}>Active</option>
+                                <option value="0" {{ $media->status == 0 ? 'selected':''}}>Inactive</option>
                             </select>
                             @error('status')
                             <span class="text-danger">{{$message}}</span>
@@ -207,7 +156,7 @@
 $('#lfm').filemanager('image');
 
 $(document).ready(function() {
-    $('#description').summernote({
+    $('#short_desc').summernote({
         placeholder: "Write short description.....",
         tabsize: 2,
         height: 150

@@ -20,11 +20,9 @@ class BlogController extends Controller
         $keyword = $request->get('search');
 
         if (!empty($keyword)) {
-            $blogs  = Blog::where('name', 'LIKE', "%$keyword%")
+            $blogs  = Blog::where('title', 'LIKE', "%$keyword%")
                 ->orwhere('slug', 'LIKE', "%$keyword%")
                 ->orwhere('tag', 'LIKE', "%$keyword%")
-                ->orwhere('title', 'LIKE', "%$keyword%")
-                ->orwhere('type', 'LIKE', "%$keyword%")
                 ->orwhere('description', 'LIKE', "%$keyword%")
                 ->orwhere('short_desc', 'LIKE', "%$keyword%")
                 ->latest()->paginate($this->perPage);
@@ -131,7 +129,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog = blog::findOrFail($id);
+        $blog = Blog::findOrFail($id);
         return view('backend.blogs.edit',compact('blog'));
     }
 
@@ -146,7 +144,7 @@ class BlogController extends Controller
     {
 
        $data = $request->all();
-        $blog = blog::findOrFail($id);
+        $blog = Blog::findOrFail($id);
 
         $this->validate($request,[  
             'title'=>'required',
@@ -217,7 +215,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog = City::find($id);
+        $blog = Blog::find($id);
         $blog->delete();
         request()->session()->flash('success','Blog Successfully deleted');
     }

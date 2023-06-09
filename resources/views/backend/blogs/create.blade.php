@@ -132,7 +132,7 @@
                         <div class="form-group">
                             <label for="date" class="form-label">Date</label>
                             <input type="date" name="date" id="date" placeholder="Enter Date"
-                                value="{{ old('name') }}" class="form-control" required>
+                                value="{{ old('date') }}" class="form-control" required>
                             @error('date')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

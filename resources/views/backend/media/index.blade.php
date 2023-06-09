@@ -10,17 +10,17 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Blog List</h6>
-      <a href="{{route('blogs.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add Blog"><i class="fas fa-plus"></i> Add Blog</a>
+      <h6 class="m-0 font-weight-bold text-primary float-left">Media List</h6>
+      <a href="{{route('media.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add Media"><i class="fas fa-plus"></i> Add Media</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        @if(count($blogs)>0)
+        @if(count($media)>0)
         <table class="table table-bordered" id="banner-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>title</th>
+              <th>Media Type</th>
               <th>tag</th>
               <th>Status</th>
               <th>Action</th>
@@ -28,10 +28,10 @@
           </thead>
        
           <tbody>
-            @foreach($blogs as $blog)
+            @foreach($media as $blog)
                 <tr>
                     <td>{{$blog->id}}</td>
-                    <td>{{$blog->title}}</td>
+                    <td>{{$blog->media_type}}</td>
                     <td>{{$blog->tag}}</td>
 
                     <td>
@@ -42,8 +42,8 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('blogs.edit',$blog->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('blogs.destroy',[$blog->id])}}">
+                        <a href="{{route('media.edit',$blog->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                        <form method="POST" action="{{route('media.destroy',[$blog->id])}}">
                           @csrf
                           @method('delete')
                               <button class="btn btn-danger btn-sm dltBtn" data-id={{$blog->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
@@ -54,9 +54,9 @@
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$blogs->links()}}</span>
+        <span style="float:right">{{$media->links()}}</span>
         @else
-          <h6 class="text-center">No blogs found!!! Please create blog</h6>
+          <h6 class="text-center">No media found!!! Please create blog</h6>
         @endif
       </div>
     </div>
