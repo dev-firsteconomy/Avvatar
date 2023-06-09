@@ -57,7 +57,7 @@
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$product->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
 
-                        <a href="{{url('admin/product/viewStock',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="View Stock" data-placement="bottom"><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('product.show',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="View Stock" data-placement="bottom"><i class="fas fa-eye"></i></a>
                     </td>
                 </tr>
             @endforeach

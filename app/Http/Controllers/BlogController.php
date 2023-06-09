@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use File;
+use Str;
 
 class BlogController extends Controller
 {
@@ -39,7 +40,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('backend.blogs.create');
+        $related_blogs = Blog::where('status',1)->get();
+        return view('backend.blogs.create',compact('related_blogs'));
     }
 
     /**
@@ -62,12 +64,17 @@ class BlogController extends Controller
             'image'=>'required',
        ]);
 
-       $slug = Str::slug($request->name);
-       $count= Blog::where('slug',$slug)->count();
-       if($count>0)
-       {
-           $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
-       }
+        $slug = Str::slug($request->title);
+        $count= Blog::where('slug',$slug)->count();
+        if($count>0)
+        {
+            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
+        }
+        $data['slug'] = $slug;
+        $data['is_expert_speaks'] = $request->input('is_expert_speaks',0);
+        $data['is_trends']        = $request->input('is_trends',0);
+        $data['is_popular']        = $request->input('is_popular',0);
+        $data['related_blogs']=@$request->related_blogs && count($request->related_blogs) ? serialize($request->related_blogs) :null;
 
        if(file_exists($request->thumbnail_image))
        {
@@ -130,7 +137,9 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = Blog::findOrFail($id);
-        return view('backend.blogs.edit',compact('blog'));
+        $related_blogs   = Blog::orderBy('title')->where('status',1)->get();
+        $relatedBlogsList = unserialize($blog->related_blogs);
+        return view('backend.blogs.edit',compact('blog','related_blogs','relatedBlogsList'));
     }
 
     /**
@@ -154,15 +163,17 @@ class BlogController extends Controller
             'tag'=>'required',
        ]);
 
-       $slug = Str::slug($request->name);
+       $slug = Str::slug($request->title);
        $count= Blog::where('slug',$slug)->count();
        if($count>0)
        {
            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
        }
-
+        $data['slug'] = $slug;
         $data['is_expert_speaks'] = $request->input('is_expert_speaks',0);
         $data['is_trends']        = $request->input('is_trends',0);
+        $data['is_popular']        = $request->input('is_popular',0);
+        $data['related_blogs']=@$request->related_blogs && count($request->related_blogs) ? serialize($request->related_blogs) :null;
 
         if(file_exists($request->thumbnail_image))
        {

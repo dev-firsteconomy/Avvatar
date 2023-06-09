@@ -202,7 +202,17 @@ class ProductController extends Controller
     
     public function show($id)
     {
-        dd(1323);
+        $product=Product::findOrFail($id);
+        $relatedProductsList = unserialize($product->related_products);
+        $relatedProductsList = Product::whereIn('id',$relatedProductsList)->pluck('name');
+        $product_images = DB::table('products')
+                ->select('product_images.*')
+                ->join('product_stocks', 'products.id', '=', 'product_stocks.product_id')
+                ->join('product_images', 'products.id', '=', 'product_images.product_id')
+                ->groupBy('products.id', 'products.name', 'product_images.image')
+                ->where('products.id', '=' , $id)
+                ->get();
+        return view('backend.product.show',compact('product','product_images','relatedProductsList'));
     }
 
   

@@ -137,14 +137,40 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
+                        <label for="related_blogs" class="col-form-label">Select Blog <span class="text-danger">*</span></label>
+                        <select name="related_blogs[]" id="related_blogs" class="form-control related_blogsClass"
+                            multiple>
+                            @foreach($related_blogs as $key=>$blog)
+                            <option value="{{$blog->id}}" {{ !empty($relatedBlogsList) && in_array($blog->id, $relatedBlogsList) ? 'selected':'' }} >{{$blog->title}}</option>
+                            @endforeach
+                        </select>
+                        @error('related_blogs')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <label for="date" class="form-label">Date</label>
+                            <label for="date" class="form-label">Date</label><span class="text-danger">*</span>
                             <input type="date" name="date" id="date" placeholder="Enter Date"
                                 value="{{ old('date') ? old('date') : $blog->date }}" class="form-control" required>
                             @error('date')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Is Popular</label>
+                            <div class="form-check form-check-primary">
+                                <input type="checkbox" id="is_popular" name="is_popular" class="form-check-input"
+                                    value="1" {{ isset($blog) && $blog->is_popular == 1 ? 'checked' : '' }}>Is Popular ? <i class="input-helper"></i>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
@@ -211,6 +237,10 @@ $(document).ready(function() {
         placeholder: "Write short description.....",
         tabsize: 2,
         height: 150
+    });
+
+    $('.related_blogsClass').select2({
+        placeholder: 'Select Blgs'
     });
 });
 </script>

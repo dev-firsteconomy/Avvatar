@@ -71,7 +71,7 @@
 							<select name="related_products[]" id="related_products" class="form-control related_productsClass" multiple>
 								
 								@foreach($related_products as $key=>$product)
-									<option value="{{$product->id}}" @if(in_array($product->id, $relatedProductsList)) selected @endif >{{$product->name}}</option>
+									<option value="{{$product->id}}" {{ !empty($relatedProductsList) && in_array($product->id, $relatedProductsList) ? 'selected':'' }} >{{$product->name}}</option>
 								@endforeach
 							</select>
 							@error('related_products')
