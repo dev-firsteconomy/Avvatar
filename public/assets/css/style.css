@@ -21633,10 +21633,10 @@ button:focus {
 }
 
 .atc-container .btn-cart:hover {
-	color: #fff;
-	border: .1rem solid #F7BC2A;
-	padding: 0.7rem 1.4rem;
-	background: #F7BC2A;
+	color: #000;
+    border: 0.1rem solid #F7BC2A;
+    padding: 0.7rem 1.4rem;
+    background: transparent;
 }
 
 .atc-container .btn-cart:before {

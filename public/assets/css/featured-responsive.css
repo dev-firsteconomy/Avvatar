@@ -349,6 +349,11 @@
 		position: relative;
 	}
 
+	.blogCardContent.mediaCardContent {
+		max-height: 70px;
+		height: 70px;
+	}
+
 	.blogCardContent .commonButton-yellow {
 		position: absolute;
 		bottom: 10px;
@@ -379,6 +384,16 @@
 
 	.reconstructSection {
 		padding: 100px 0;
+	}
+
+	.blogCardContent {
+		max-height: 200px;
+		height: 200px;
+	}
+
+	.blogCardContent.mediaCardContent {
+		max-height: 70px;
+		height: 70px;
 	}
 }
 

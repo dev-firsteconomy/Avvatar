@@ -28,13 +28,17 @@
 						<div class="row categorySlider owl-carousel justify-content-center">
 							@foreach($categories as $category)
 							<div class="col-md-4 cat-slide">
-								<a href="{{url('categories/' . $category->slug)}}">
+								<div class="cat-img position-relative">
 									<img src="{{url(@$category->photo)}}" class="m-0 w-100 img-fluid" alt="{{$category->slug}}">
-									<div class="knowMore py-2 fw-bold text-center blackText">
-										{{$category->title}}<span class="icon-arrow-right"></span>
+									<div class="cat-ovarlay overflow-hidden position-absolute w-100 h-100">
+										<a href="{{url('categories/' . $category->slug)}}" class="w-100 h-100 d-flex justify-content-center align-items-center">
+											<span class="commonButton-yellow m-0 mb-2 text-uppercase">view more</span>
+										</a>
 									</div>
-
-								</a>
+								</div>									
+								<div class="knowMore py-2 fw-bold text-center blackText">
+									{{$category->title}}</span>
+								</div>
 							</div>
 							@endforeach
 						</div>

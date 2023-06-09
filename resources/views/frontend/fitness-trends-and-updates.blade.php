@@ -6,7 +6,8 @@
 		<div class="container">
 			<ol class="breadcrumb ">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
-				<li class="breadcrumb-item fw-bold"><span class="fw-bold">fsfdf</span></li>
+				<li class="breadcrumb-item"><a href="/blogs">Blogs</a></li>
+				<li class="breadcrumb-item fw-bold"><span class="fw-bold">Fitness Trends & Updates</span></li>
 			</ol>
 		</div><!-- End .container -->
 	</nav><!-- End .breadcrumb-nav -->

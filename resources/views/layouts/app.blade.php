@@ -64,6 +64,7 @@
 	{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> --}}
 	<link rel="stylesheet" href="{{URL::asset('assets/css/plugins/nouislider/nouislider.css')}}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured-responsive.css')}}">
 
@@ -113,6 +114,7 @@
 	<script src="{{URL::asset('assets/js/owl.carousel.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/jquery.elevateZoom.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/bootstrap-input-spinner.js')}}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js"></script>
 
 	<!-- Main JS File -->
 	<script src="{{URL::asset('assets/js/main.js')}}"></script>
