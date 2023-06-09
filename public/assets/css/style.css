@@ -1484,8 +1484,6 @@ blockquote.text-white cite span {
 	color: #777;
 	padding: .1rem 4rem .1rem 2rem;
 	border-radius: 0;
-	-moz-appearance: none;
-	-webkit-appearance: none
 }
 
 .header-search select:focus {
@@ -3274,7 +3272,6 @@ blockquote.text-white cite span {
 .mobile-search .form-control {
 	height: 36px;
 	margin-bottom: 0;
-	-webkit-appearance: none;
 	font-size: 1.2rem;
 	line-height: 1.5;
 	padding: .8rem 1.5rem;
@@ -8731,11 +8728,12 @@ p {
 	transition: all .35s ease;
 	padding-top: 1.9rem;
 	padding-bottom: 1.9rem;
-	-webkit-box-flex: 1;
+	/* -webkit-box-flex: 1; */
 	-ms-flex-positive: 1;
-	flex-grow: 1;
+	/* flex-grow: 1; */
 	-ms-flex-preferred-size: 0;
-	flex-basis: 0
+	/* flex-basis: 0; */
+	font-weight: 700;
 }
 
 .btn-product + .btn-product {
@@ -8749,7 +8747,7 @@ p {
 
 .btn-product span {
 	color: #666666;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 1.3rem;
 	letter-spacing: -.01em;
 	-webkit-transition: all .35s ease;
@@ -11689,7 +11687,7 @@ small.form-text {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	margin-bottom: 2rem
+	margin: 2rem 0;
 }
 
 .page-link {
@@ -11778,7 +11776,7 @@ small.form-text {
 .page-item.active .page-link {
 	color: #F7BC2A;
 	background-color: transparent;
-	border-color: #ebebeb
+	border-color: #b7b3b3;
 }
 
 .page-item.disabled .page-link {
@@ -13644,7 +13642,8 @@ button:focus {
 
 .product-main-image {
 	position: relative;
-	margin-bottom: 1rem
+	margin-bottom: 1rem;
+	border: 1px solid #bcbcbc;
 }
 
 .product-main-image img {
@@ -13707,7 +13706,8 @@ button:focus {
 	max-width: 25%;
 	padding-left: .5rem;
 	padding-right: .5rem;
-	margin-bottom: 1rem
+	margin-bottom: 1rem;
+	/* border: 1px solid #bcbcbc; */
 }
 
 .max-col-6 .product-gallery-item {
@@ -13736,9 +13736,9 @@ button:focus {
 }
 
 .product-gallery-item:before {
-	opacity: 0;
-	visibility: hidden;
-	border: 0.1rem solid #F7BC2A
+	opacity: 1;
+	visibility: visible;
+	border: 1px solid #bcbcbc;
 }
 
 .product-gallery-item:after {
@@ -13749,7 +13749,8 @@ button:focus {
 
 .product-gallery-item.active:before {
 	visibility: visible;
-	opacity: 1
+	opacity: 1;
+	border: 1px solid #f7bc2a;
 }
 
 .product-gallery-item:hover:after,
@@ -13882,12 +13883,14 @@ button:focus {
 }
 
 .product-details .product-title {
-	font-weight: 400;
-	font-size: 2.4rem;
-	letter-spacing: -.025em;
-	margin-bottom: 1.2rem;
-	margin-top: -.5rem;
-	padding-right: 1rem
+	font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: inherit;
+    margin-bottom: 1.2rem;
+    margin-top: 0;
+    padding-right: 1rem;
+    line-height: 1.2;
+    max-height: initial;
 }
 
 .product-details .ratings-container {
@@ -14087,14 +14090,17 @@ button:focus {
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
-	margin-bottom: 3rem
+	margin-bottom: 3rem;
+	min-width: 100%;
+	gap: 10px;
 }
 
 .product-details-action .btn-cart {
 	padding: 1rem 1.5rem;
 	max-width: 198px;
-	color: #F7BC2A;
-	border: 0.1rem solid #F7BC2A
+	color: #000;
+	border: 0.1rem solid #F7BC2A;
+	font-weight: 700;
 }
 
 .product-details-action .btn-cart span {
@@ -14115,7 +14121,7 @@ button:focus {
 
 .product-details-action .btn-cart:hover,
 .product-details-action .btn-cart:focus {
-	color: #fff;
+	color: #000;
 	border-color: #F7BC2A;
 	background-color: #F7BC2A
 }
@@ -14127,7 +14133,7 @@ button:focus {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	margin-left: 4rem
+	margin-left: 0;
 }
 
 .details-action-wrapper .btn-product {
@@ -14136,7 +14142,15 @@ button:focus {
 	white-space: nowrap;
 	-ms-flex-item-align: stretch;
 	align-self: stretch;
-	line-height: 1.4
+	line-height: 1;
+	color: #000;
+	border: 1px solid #f7bc2a;
+	padding: 1rem 1.5rem;
+	background-color: #f7bc2a;
+}
+
+.details-action-wrapper .btn-product:hover {
+	background-color: transparent;
 }
 
 .details-action-wrapper .btn-product:before {
@@ -16408,7 +16422,6 @@ button:focus {
 	opacity: 0;
 	z-index: 2;
 	visibility: hidden;
-	-webkit-backface-visibility: hidden
 }
 
 .portfolio-overlay .portfolio-content.portfolio-content-center {
@@ -19321,7 +19334,6 @@ button:focus {
 	font-family: "molla";
 	font-style: normal;
 	font-weight: normal;
-	speak: none;
 	display: inline-block;
 	text-decoration: inherit;
 	text-align: center;
@@ -21914,7 +21926,6 @@ button:focus {
 .e-pro-qty-block .input-number {
 	width: 50px;
 	position: relative;
-	-webkit-appearance: none;
 	margin: 0;
 	text-align: center;
 	padding-left: 15px;
@@ -22122,4 +22133,40 @@ input[type=radio] {
 	letter-spacing: 0.5px;
 }
 
-.aboutFounderBox
+p.footer-copyright a {
+    color: #f7bc2a;
+}
+
+.product-details-action .btn-product {
+	min-width: 155px;
+}
+
+.pagination li:nth-child(1) span, .pagination li:last-child a {
+    font-size: 30px;
+}
+
+.blogHeaderImgBox {
+	position: relative;
+}
+
+.blogHeaderImgBox h3 {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    pointer-events: none;
+    font-size: 1.4em !important;
+    font-weight: 600;
+}
+
+.blogCardContent p {
+	margin-bottom: 10px;
+}
+
+.date {
+	color: #000;
+	font-size: 14px;
+	font-weight: 400;
+}

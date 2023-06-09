@@ -271,6 +271,7 @@ section {
 .blogCardContent h2 {
 	font-size: 18px;
 	line-height: 1.4;
+	margin-bottom: 5px !important;
 }
 
 .blogCardContent p {

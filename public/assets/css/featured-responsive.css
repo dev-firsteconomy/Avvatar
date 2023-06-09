@@ -344,7 +344,16 @@
 	}
 
 	.blogCardContent {
-		max-height: 200px;
+		max-height: 250px;
+    	height: 250px;
+		position: relative;
+	}
+
+	.blogCardContent .commonButton-yellow {
+		position: absolute;
+		bottom: 10px;
+		margin-bottom: 0;
+		left: 10px;
 	}
 
 	.keyFactsBoxOuter:nth-child(n+4) {
