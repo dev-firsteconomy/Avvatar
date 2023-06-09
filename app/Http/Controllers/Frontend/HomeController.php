@@ -216,9 +216,24 @@ class HomeController extends Controller
         return view('frontend.about-paragfoods');
     }
 	
+	public function media()
+    {
+        return view('frontend.media');
+    }
+    
 	public function blogs()
     {
         return view('frontend.blogs');
+    }
+    
+	public function expertsSpeaks()
+    {
+        return view('frontend.experts-speaks');
+    }
+
+	public function fitnessTrends()
+    {
+        return view('frontend.fitness-trends-and-updates');
     }
 	
 	public function authenticate()
