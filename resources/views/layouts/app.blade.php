@@ -15,6 +15,7 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/images/icons/apple-touch-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/images/icons/favicon-32x32.png')}}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/images/icons/favicon-16x16.png')}}">
+	
 	<link rel="manifest" href="{{URL::asset('assets/images/icons/site.html')}}">
 	<link rel="mask-icon" href="{{URL::asset('assets/images/icons/safari-pinned-tab.svg')}}" color="#666666">
 	<link rel="shortcut icon" href="{{URL::asset('assets/images/icons/favicon.png')}}">
@@ -23,7 +24,37 @@
 	<meta name="msapplication-TileColor" content="#cc9966">
 	<meta name="msapplication-config" content="{{URL::asset('assets/images/icons/browserconfig.xml')}}">
 	<meta name="theme-color" content="#ffffff">
+	<link rel="preload" href="{{URL::asset('assets/images/new/logo.png')}}" as="image"> 
 	<!-- Plugins CSS File -->
+
+
+	<style>
+		#preloaderWrapper {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #fff;
+			z-index: 999999999;
+		}
+
+		.preloaderInner {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+			flex-direction: column;
+		}
+
+		.preloaderInner p {
+			letter-spacing: 2px;
+			font-weight: 700;
+			font-size: 24px;
+		}
+	</style>
 	<link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-5.2.3.min.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/plugins/owl-carousel/owl.carousel.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/plugins/magnific-popup/magnific-popup.css')}}">
@@ -33,6 +64,7 @@
 	{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> --}}
 	<link rel="stylesheet" href="{{URL::asset('assets/css/plugins/nouislider/nouislider.css')}}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured-responsive.css')}}">
 
@@ -60,6 +92,13 @@
 </head>
 
 <body>
+
+	<div id="preloaderWrapper">
+		<div class="preloaderInner">
+			<img src="{{URL::asset('assets/images/new/logo.png')}}" class="img-fluid" alt="">
+			<p class="m-0">Loading...</p>
+		</div>
+	</div>
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LX9XVV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
@@ -75,6 +114,7 @@
 	<script src="{{URL::asset('assets/js/owl.carousel.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/jquery.elevateZoom.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/bootstrap-input-spinner.js')}}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js"></script>
 
 	<!-- Main JS File -->
 	<script src="{{URL::asset('assets/js/main.js')}}"></script>
@@ -430,6 +470,12 @@
 	</script>
 
 	<script src="{{asset('backend/js/sweetalert.min.js')}}"></script>
+
+	<script>
+		$(window).on('load', function(){
+			$('#preloaderWrapper').addClass('d-none');
+		})
+	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			window.addEventListener('swal:confirm', event => {

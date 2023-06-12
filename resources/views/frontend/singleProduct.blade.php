@@ -53,7 +53,7 @@
                         			<div class="product-content">
                         				{!! $product->title !!}
                         			</div><!-- End .product-content -->
-                        			<!--
+                        			
                         			<?php
                                         $availableColors = $product->sizesstock()->groupBy('color_id')->get();
                                         $availableSizes = $product->sizesstock()->where('color_id',$colorId)->groupBy('size_id')->get();
@@ -73,7 +73,7 @@
                         					@endif
                         				</div>
                         			</div>
--->
+
 
                         			<div class="table-cell radio-cell">
                         				<div class="labelWrapper mb-1">
@@ -171,9 +171,9 @@
                         					@endif
                         					<div class="details-action-wrapper">
                         						@if(is_user_logged_in())
-                        						<a href="javascript:void(0);" class="btn-product btn-wishlist btn-expandable add_to_wishlist" title="Wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">Add to Wishlist</span></a>
+                        						<a href="javascript:void(0);" class="btn-product btn-wishlist btn-expandable add_to_wishlist" title="Wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">Buy Now</span></a>
                         						@else
-                        						<a href="#signin-modal" data-toggle="modal" class="btn-product btn-wishlist btn-expandable" title="Wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}">Add to Wishlist</a>
+                        						<a href="#signin-modal" data-toggle="modal" class="btn-product btn-wishlist btn-expandable" title="Wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}">Buy Now</a>
                         						@endif
 
                         					</div><!-- End .details-action-wrapper -->

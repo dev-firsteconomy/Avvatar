@@ -271,6 +271,7 @@ section {
 .blogCardContent h2 {
 	font-size: 18px;
 	line-height: 1.4;
+	margin-bottom: 5px !important;
 }
 
 .blogCardContent p {
@@ -1078,4 +1079,46 @@ span.sr-only {
 	width: 75px;
 	min-width: 60px;
 	border: 1px solid #000;
+}
+
+.cat-ovarlay {
+	top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.2);
+	transition: all 0.2s linear;
+	display: none;
+}
+
+.cat-ovarlay span {
+	position: relative;
+	z-index: 2;
+	font-size: 14px;
+}
+
+.cat-slide:hover .cat-ovarlay{
+	display: block;
+}
+
+.mediaTabs li {
+	flex: 1;
+}
+
+.mediaTabs .nav.nav-tabs li .nav-link {
+	width: 100%;
+	color: #000;
+	font-size: 22px;
+	font-weight: 400;
+	border: 0;
+}
+
+.nav.nav-tabs .nav-item .nav-link.active {
+	color: #000;
+    font-weight: 700;
+    border: 0;
+    border-bottom: 3px solid #F7BC2A;
+}
+
+.mediaTabs .tab-pane {
+	padding-left: 0;
+	padding-right: 0;
 }
