@@ -6757,10 +6757,11 @@ p {
 	color: #999999;
 	content: '\f112';
 	font-family: "molla";
-	padding-right: .7rem;
+	padding-right: 0.7rem;
 	font-size: 1.1rem;
 	vertical-align: middle;
-	margin-top: -.1rem
+	/* margin-top: -0.1rem; */
+	line-height: 22px;
 }
 
 .title {
@@ -11687,7 +11688,7 @@ small.form-text {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	margin: 2rem 0;
+	margin: 2rem 0 0;
 }
 
 .page-link {
@@ -11749,7 +11750,12 @@ small.form-text {
 	border-color: #ebebeb;
 	text-decoration: none;
 	background-color: transparent;
-	outline: none !important
+	outline: none !important;
+	color: #000;
+	background-color: transparent;
+	border-color: #000;
+	box-shadow: none;
+	border-radius: 0;
 }
 
 .page-item-total {
@@ -11774,9 +11780,12 @@ small.form-text {
 }
 
 .page-item.active .page-link {
-	color: #F7BC2A;
+	color: #000;
 	background-color: transparent;
-	border-color: #b7b3b3;
+	border-color: #000;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0;
 }
 
 .page-item.disabled .page-link {
@@ -13884,13 +13893,13 @@ button:focus {
 
 .product-details .product-title {
 	font-weight: 700;
-    font-size: 2.4rem;
-    letter-spacing: inherit;
-    margin-bottom: 1.2rem;
-    margin-top: 0;
-    padding-right: 1rem;
-    line-height: 1.2;
-    max-height: initial;
+	font-size: 2.4rem;
+	letter-spacing: inherit;
+	margin-bottom: 1.2rem;
+	margin-top: 0;
+	padding-right: 1rem;
+	line-height: 1.2;
+	max-height: initial;
 }
 
 .product-details .ratings-container {
@@ -21621,7 +21630,8 @@ button:focus {
 
 
 
-.atc-container .btn-cart {
+.atc-container .btn-cart,
+.submitButton button {
 	font-size: 13px;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -21632,11 +21642,23 @@ button:focus {
 	white-space: nowrap;
 }
 
+.submitButton button {
+	padding: 6px 28px;
+	font-size: 16px;
+}
+
 .atc-container .btn-cart:hover {
 	color: #000;
-    border: 0.1rem solid #F7BC2A;
-    padding: 0.7rem 1.4rem;
-    background: transparent;
+	border: 0.1rem solid #F7BC2A;
+	padding: 0.7rem 1.4rem;
+	background: transparent;
+}
+
+.submitButton button:hover {
+	color: #000;
+	border: 0.1rem solid #F7BC2A;
+	background: transparent;
+	padding: 6px 28px;
 }
 
 .atc-container .btn-cart:before {
@@ -21901,6 +21923,9 @@ button:focus {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
 		flex-direction: column;
 	}
 
@@ -22134,15 +22159,16 @@ input[type=radio] {
 }
 
 p.footer-copyright a {
-    color: #f7bc2a;
+	color: #f7bc2a;
 }
 
 .product-details-action .btn-product {
 	min-width: 155px;
 }
 
-.pagination li:nth-child(1) span, .pagination li:last-child a {
-    font-size: 30px;
+.pagination li:nth-child(1) span,
+.pagination li:last-child a {
+	font-size: 30px;
 }
 
 .blogHeaderImgBox {
@@ -22151,14 +22177,15 @@ p.footer-copyright a {
 
 .blogHeaderImgBox h3 {
 	position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    pointer-events: none;
-    font-size: 1.4em !important;
-    font-weight: 600;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	color: #fff;
+	pointer-events: none;
+	font-size: 1.4em !important;
+	font-weight: 600;
 }
 
 .blogCardContent p {
@@ -22169,4 +22196,8 @@ p.footer-copyright a {
 	color: #000;
 	font-size: 14px;
 	font-weight: 400;
+}
+
+.popularBlogsWrapper .blogCard + .blogCard {
+	margin-top: 30px;
 }

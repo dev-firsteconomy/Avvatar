@@ -132,9 +132,13 @@
 				</div><!-- End .tab-content -->
 			</div><!-- End .product-details-tab -->
 
-			<h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
-
-			<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
+			<div class="youMaylike">
+				<div class="container">
+					<div class="heading text-center mb-5">
+						<h2 class="title text-uppercase">You May <span class="fw-bold">Also Like</span></h2>
+					</div>
+				</div>
+				<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
                             "nav": false, 
                             "dots": true,
                             "margin": 20,
@@ -159,62 +163,67 @@
                                 }
                             }
                         }'>
-				@if(isset($relatedProducts) && @$relatedProducts->isNotEmpty())
-				@foreach ($relatedProducts as $product)
-				<div class="product product-7 text-center">
-					<figure class="product-media">
-						@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-						<a href="{{url('product/' .$product->slug)}}">
-							<img src="{{asset(@$product->images()->first()->image)}}" alt="{!! @$product->meta_description !!}" class="product-image">
-						</a>
+					@if(isset($relatedProducts) && @$relatedProducts->isNotEmpty())
+					@foreach ($relatedProducts as $product)
+					<div class="product product-7 text-center">
+						<figure class="product-media">
+							@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
+							<a href="{{url('product/' .$product->slug)}}">
+								<img src="{{asset(@$product->images()->first()->image)}}" alt="{!! @$product->meta_description !!}" class="product-image">
+							</a>
 
-						<div class="product-action-vertical">
-							@if(is_user_logged_in())
-							<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
-							@else
-							<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
-							@endif
-						</div><!-- End .product-action-vertical -->
-					</figure><!-- End .product-media -->
-					<?php
+							<div class="product-action-vertical">
+								@if(is_user_logged_in())
+								<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
+								@else
+								<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
+								@endif
+							</div><!-- End .product-action-vertical -->
+						</figure><!-- End .product-media -->
+						<?php
                                             $availableColors = $product->sizesstock()->groupBy('color_id')->get();
                                         ?>
-					<div class="product-body">
-						<div class="product-cat">
-							<a href="{{route('product',$product->category->slug)}}">{{$product->category->title}}</a>
-						</div><!-- End .product-cat -->
-						@if(isset($availableColors) && $availableColors->isNotEmpty())
-						<div class="product-color row justify-content-center">
-							@foreach($availableColors as $color)
-							<div class="radio has-color">
-								<label>
-									<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions">
-									<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
-								</label>
+						<div class="product-body">
+							<div class="product-cat">
+								<a href="{{route('product',$product->category->slug)}}">{{$product->category->title}}</a>
+							</div><!-- End .product-cat -->
+							@if(isset($availableColors) && $availableColors->isNotEmpty())
+							<div class="product-color row justify-content-center">
+								@foreach($availableColors as $color)
+								<div class="radio has-color">
+									<label>
+										<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions">
+										<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
+									</label>
+								</div>
+								@endforeach
+							</div><!-- End .product-cat -->
+							@endif
+							<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a>
+							</h3><!-- End .product-title -->
+							<div class="product-price">
+								<span class="new-price">₹ {{round($product->discounted_amt)}}</span>
+								@if($product->discounted_amt != $product->price) <span class="old-price">₹
+									{{round($product->price)}}</span> @endif <small>(MRP incl Taxes)</small>
+							</div><!-- End .product-price -->
+							<div class="atc-container">
+								<div class="mb-0">
+									<a href="javascript:void(0);" class="btn-cart add_to_cart" data-id="{{$product->id}}"><span class="product{{$product->id}}">Add to
+											cart</span></a>
+								</div>
 							</div>
-							@endforeach
-						</div><!-- End .product-cat -->
-						@endif
-						<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a>
-						</h3><!-- End .product-title -->
-						<div class="product-price">
-							<span class="new-price">₹ {{round($product->discounted_amt)}}</span>
-							@if($product->discounted_amt != $product->price) <span class="old-price">₹
-								{{round($product->price)}}</span> @endif <small>(MRP incl Taxes)</small>
-						</div><!-- End .product-price -->
-						<div class="atc-container">
-							<div class="mb-0">
-								<a href="javascript:void(0);" class="btn-cart add_to_cart" data-id="{{$product->id}}"><span class="product{{$product->id}}">Add to
-										cart</span></a>
-							</div>
-						</div>
-					</div><!-- End .product-body -->
-				</div><!-- End .product -->
-				@endforeach
-				@endif
+						</div><!-- End .product-body -->
+					</div><!-- End .product -->
+					@endforeach
+					@endif
 
 
-			</div><!-- End .owl-carousel -->
+				</div>
+			</div>
+
+
+
+			<!-- End .owl-carousel -->
 		</div><!-- End .container -->
 	</div><!-- End .page-content -->
 </main><!-- End .main -->

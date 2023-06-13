@@ -18,22 +18,22 @@
 			</div>
 
 			<div class="imgBoxWrapper text-center mb-5">
-                <div class="row justify-content-center">
-                    <div class="col-6 col-md-4">
+				<div class="row justify-content-center">
+					<div class="col-6 col-md-4">
 						<div class="blogHeaderImgBox">
-                       		<img src="{{asset('assets/images/new/ExpertSpeaks.png')}}" class="img-fluid">
+							<img src="{{asset('assets/images/new/ExpertSpeaks.png')}}" class="img-fluid">
 							<h3 class="m-0 text-uppercase">Expert Speaks</h3>
 						</div>
-                    </div>
+					</div>
 
-                    <div class="col-6 col-md-4">
+					<div class="col-6 col-md-4">
 						<div class="blogHeaderImgBox">
-                        	<img src="{{asset('assets/images/new/ExpertSpeaks.png')}}" class="img-fluid">
+							<img src="{{asset('assets/images/new/ExpertSpeaks.png')}}" class="img-fluid">
 							<h3 class="m-0 text-uppercase">fitness trends & updates</h3>
-                    	</div>
-                    </div>
-                </div> 
-            </div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="container">
@@ -72,6 +72,32 @@
 							<a class="commonButton-yellow">Read More</a>
 						</div>
 					</div>
+				</div>
+
+				<div class="paginationWrapper">
+					<nav aria-label="Page navigation">
+						<ul class="pagination justify-content-center">
+							<span style="float:right">
+								<nav>
+									<ul class="pagination">
+										<li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
+											<span class="page-link" aria-hidden="true">‹</span>
+										</li>
+
+										<li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+
+										<li class="page-item"><a class="page-link" href="http://bharatbikes.firsteconomy.com/used-vehicles?page=2">2</a></li>
+
+										<li class="page-item"><a class="page-link" href="http://bharatbikes.firsteconomy.com/used-vehicles?page=3">3</a></li>
+
+										<li class="page-item">
+											<a class="page-link" href="http://bharatbikes.firsteconomy.com/used-vehicles?page=2" rel="next" aria-label="Next »">›</a>
+										</li>
+									</ul>
+								</nav>
+							</span>
+						</ul>
+					</nav>
 				</div>
 
 
