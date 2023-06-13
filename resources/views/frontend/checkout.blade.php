@@ -99,6 +99,7 @@
 							<label>Order notes (optional)</label>
 							<textarea class="form-control" cols="30" rows="4" name="order_notes" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
 						</div><!-- End .col-lg-9 -->
+						<!-- End .col-lg-9 -->
 						<aside class="col-lg-5">
 							<div class="summary">
 								<!--								<h3 class="summary-title">Your Order</h3>-->
