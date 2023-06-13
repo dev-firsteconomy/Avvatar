@@ -17,7 +17,8 @@
 	.brandAdvantage:nth-child(n+3),
 	.contactPatchBox:nth-child(n+2),
 	.goodnessAvatarBoxOuter:nth-child(n+2),
-	.instaFeedBox:nth-child(n+3) {
+	.instaFeedBox:nth-child(n+3),
+	.popularBlogsWrapper {
 		margin-top: 30px;
 	}
 
@@ -188,6 +189,15 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
+
+	.youMaylike {
+		padding-top: 0;
+	}
+
+	.blogAuthor img {
+		width: 50px;
+		height: 50px;
+	}
 }
 
 @media only screen and (min-width : 768px) {
@@ -329,6 +339,7 @@
 
 	.title {
 		font-size: 4rem;
+		letter-spacing: 1px;
 	}
 
 	.heading p {
@@ -343,9 +354,13 @@
 		overflow: hidden;
 	}
 
+	.blogAuthor p {
+		-webkit-line-clamp: 1;
+	}
+
 	.blogCardContent {
 		max-height: 250px;
-    	height: 250px;
+		height: 250px;
 		position: relative;
 	}
 
@@ -363,6 +378,19 @@
 
 	.keyFactsBoxOuter:nth-child(n+4) {
 		margin-top: 50px;
+	}
+
+	.popularBlogsWrapper .title {
+		font-size: 2rem;
+	}
+
+	.popularBlogsWrapper .blogCardContent h2 {
+		line-height: 1.2;
+	}
+
+	.popularBlogsWrapper .blogCardContent {
+		max-height: 160px;
+		height: 160px;
 	}
 }
 

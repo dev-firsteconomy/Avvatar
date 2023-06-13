@@ -236,8 +236,8 @@
 											}
 										?>
 								@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-								<!--								<a href="{{url('product/' .$product->slug)}}">-->
-								<a href="#">
+								<a href="{{url('product/' .$product->slug)}}">
+									<!--								<a href="#">-->
 									<img src="{{asset($url)}}" alt="{!! @$product->meta_description !!}" class="product-image">
 								</a>
 
@@ -378,8 +378,7 @@
 											}
 										?>
 								@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-								<!--<a href="{{url('product/' .$product->slug)}}">-->
-								<a href="#">
+								<a href="{{url('product/' .$product->slug)}}">
 									<img src="{{asset($url)}}" alt="{!! @$product->meta_description !!}" class="product-image">
 								</a>
 
@@ -656,8 +655,7 @@
                                         }
                                     ?>
 								@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-								<!--<a href="{{url('product/' .$product->slug)}}">-->
-								<a href="#">
+								<a href="{{url('product/' .$product->slug)}}">
 									<img src="{{asset($url)}}" alt="{!! @$product->meta_description !!}" class="product-image">
 								</a>
 

@@ -220,10 +220,20 @@ class HomeController extends Controller
     {
         return view('frontend.media');
     }
+	
+	public function trackOrder()
+    {
+        return view('frontend.track-order');
+    }
     
 	public function blogs()
     {
         return view('frontend.blogs');
+    }
+	
+	public function blogDetail()
+    {
+        return view('frontend.blog-detail');
     }
     
 	public function expertsSpeaks()
