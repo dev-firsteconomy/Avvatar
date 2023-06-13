@@ -68,8 +68,8 @@
                 <a class="collapse-item" href="{{route('product.index')}}">Products</a>
                 <a class="collapse-item" href="{{route('product.create')}}">Add Product</a>
                 <a class="collapse-item" href="{{url('admin/importProducts')}}">Import Products</a>                
-                <!-- <a class="collapse-item" href="{{url('admin/importProductImages')}}">Import Product Images</a>
-                <a class="collapse-item" href="{{url('admin/importProductStocks')}}">Import Product Stocks</a> -->
+                <a class="collapse-item" href="{{url('admin/importProductImages')}}">Import Product Images</a>
+                <a class="collapse-item" href="{{url('admin/importProductStocks')}}">Import Product Stocks</a>
               </div>
             </div>
         </li>
@@ -285,7 +285,8 @@
                   <a class="collapse-item" href="{{route('category.index')}}">Categories</a>
                   <a class="collapse-item" href="{{route('cities.index')}}"><span>Cities</span></a>
                   <a class="collapse-item" href="{{route('states.index')}}"><span>States</span></a>
-                  <a class="collapse-item" href="{{route('flavours.index')}}"><span>Flavours</span></a>
+                  <a class="collapse-item" href="{{route('sizes.index')}}">Sizes</a>
+                  <!-- <a class="collapse-item" href="{{route('flavours.index')}}"><span>Flavours</span></a> -->
             <!--  <a class="collapse-item" href="{{route('application.index')}}">Application</a>
                   <a class="collapse-item" href="{{route('attribute.index')}}">Attribute</a>
                   <a class="collapse-item" href="{{route('characteristic.index')}}">Characteristic</a>
@@ -300,7 +301,6 @@
                   <a class="collapse-item" href="{{route('orderstatus.index')}}">Order Statuses</a>
                   <a class="collapse-item" href="{{route('orientations.index')}}"><span>Orientations</span></a>
                   <a class="collapse-item" href="{{route('pincodes.index')}}"><span>Pincodes</span></a> 
-                  <a class="collapse-item" href="{{route('sizes.index')}}">Sizes</a>
                   <a class="collapse-item" href="{{route('sizecharts.index')}}">Size Chart</a>-->
                   
                   

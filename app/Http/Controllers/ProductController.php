@@ -199,7 +199,6 @@ class ProductController extends Controller
         }
     }
     
-    
     public function show($id)
     {
         $product=Product::findOrFail($id);
@@ -230,11 +229,11 @@ class ProductController extends Controller
         $related_products   = Product::orderBy('name')->where('status',1)->get();
         $relatedProductsList = unserialize($product->related_products);
         $categories         = Category::pluck('title','id');
-        $colors         = Color::where('status',1)->get();   
-        $sizes           = Size::where('status',1)->get(); 
-        $fabrics           = Fabric::where('status',1)->get();   
-        $orientations           = Orientation::where('status',1)->get();
-        $flavours        = Flavour::where('status',1)->get();
+        $colors             = Color::where('status',1)->get();   
+        $sizes              = Size::where('status',1)->get(); 
+        $fabrics            = Fabric::where('status',1)->get();   
+        $orientations       = Orientation::where('status',1)->get();
+        $flavours           = Flavour::where('status',1)->get();
 
         return view('backend.product.edit',compact('product','relatedProductsList','product_images','flavours','categories','related_products','colors','sizes','fabrics','orientations'));
     }
@@ -436,7 +435,7 @@ class ProductController extends Controller
         } 
 
         // $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
-        
+        dd($datas[0]);
         foreach($datas[0] as $k => $v)
         {  
             if($k != 0)
@@ -446,8 +445,8 @@ class ProductController extends Controller
                     $product = Product::where('design',$v[2])->first();
                     if(!$product)
                     {               
-                        $data['name']        = $v[1];
                         $data['category_id'] = Category::where('title',$v[0])->first()->id;
+                        $data['name']        = $v[1];
                         $data['title']       = $v[1];
 
                         $slug=Str::slug($v[1]);
@@ -458,32 +457,16 @@ class ProductController extends Controller
                         }
                 
                         $data['slug']        = $slug;
-                        $data['design']      = $v[2];
-                        $data['hsn']         = $v[3];
-                        $data['fabric']      = Fabric::where('name',$v[4])->first()->id;
-
-                        $orientations = Orientation::whereIn('name',explode(',',$v[5]))->get()->pluck('id')->toArray();
-                        if(count($orientations) > 0)
-                        {
-                            $orientations = serialize($orientations);
-                        }
-                        else
-                        {
-                            $orientations = null;
-                        }
-
-                        $data['orientation'] = $orientations;
-                        $data['price']       = $v[6];
-                        $data['discount']    = $v[7];                
-                        $data['min_qty']     = $v[8];
-                        $data['tag']         = $v[9];
-                        $data['description'] = $v[10];
-                        $data['additional_information']     = $v[11];
-                        $data['meta_title']   = $v[12];
-                        $data['meta_keyword'] = $v[13];
-                        $data['meta_description'] = $v[14];
-
-                        $relatedProducts = Product::whereIn('name',explode(',',$v[15]))->get()->pluck('id')->toArray();
+                        $data['hsn']         = $v[2];
+                        $data['min_qty']     = $v[3];
+                        $data['tag']         = $v[4];
+                        $data['description'] = $v[5];
+                        $data['additional_information'] = $v[6];
+                        $data['meta_title']   = $v[7];
+                        $data['meta_keyword'] = $v[8];
+                        $data['meta_description'] = $v[9];
+                        
+                        $relatedProducts = Product::whereIn('name',explode(',',$v[10]))->get()->pluck('id')->toArray();
                         if(count($relatedProducts) > 0)
                         {
                             $relatedProducts = serialize($relatedProducts);
@@ -494,55 +477,57 @@ class ProductController extends Controller
                         }
 
                         $data['related_products'] = $relatedProducts;
-                        $data['is_featured']      = $v[16];
-                        $data['is_new']           = $v[17];
-                        $data['is_bestsellers']   = $v[18];
-                        $data['is_offer']         = $v[19];
-                        $data['offer']            = $v[20];
-                        $data['status']           = $v[21];
+                        $data['is_featured']      = $v[11];
+                        $data['is_new']           = $v[12];
+                        $data['is_bestsellers']   = $v[13];
+                        $data['status']           = $v[14];
+                        
+
+                        // $data['offer']            = $v[20];
+                        // $data['is_offer']         = $v[19];
+                        // $data['discount']    = $v[7];                
+                        // $data['price']       = $v[6];
+                        // $data['design']      = $v[2];
+                        // $data['fabric']      = Fabric::where('name',$v[4])->first()->id;
+
+                        // $orientations = Orientation::whereIn('name',explode(',',$v[5]))->get()->pluck('id')->toArray();
+                        // if(count($orientations) > 0)
+                        // {
+                        //     $orientations = serialize($orientations);
+                        // }
+                        // else
+                        // {
+                        //     $orientations = null;
+                        // }
+                        // $data['orientation'] = $orientations;
+                        // $data['min_qty']     = $v[8];
 
                         Product::create($data);
                     }    
                     else
                     {
-                        $product->name       = $v[1];
                         $product->category_id = Category::where('title',$v[0])->first()->id;
+                        $product->name       = $v[1];
                         $product->title       = $v[1];
 
                         $slug=Str::slug($v[1]);
-                        $count= Product::where('slug',$slug)->where('id','<>',$product->id)->count();
-                        if($count > 0)
+                        $count= Product::where('slug',$slug)->count();
+                        if($count>0)
                         {
-                            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
+                            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
                         }
                 
-                        $product->slug        = $slug;
-                        $product->design      = $v[2];
-                        $product->hsn         = $v[3];
-                        $product->fabric      = Fabric::where('name',$v[4])->first()->id;
-
-                        $orientations = Orientation::whereIn('name',explode(',',$v[5]))->get()->pluck('id')->toArray();
-                        if(count($orientations) > 0)
-                        {
-                            $orientations = serialize($orientations);
-                        }
-                        else
-                        {
-                            $orientations = null;
-                        }
-
-                        $product->orientation = $orientations;
-                        $product->price      = $v[6];
-                        $product->discount    = $v[7];                
-                        $product->min_qty     = $v[8];
-                        $product->tag        = $v[9];
-                        $product->description = $v[10];
-                        $product->additional_information     = $v[11];
-                        $product->meta_title   = $v[12];
-                        $product->meta_keyword = $v[13];
-                        $product->meta_description = $v[14];
-
-                        $relatedProducts = Product::whereIn('name',explode(',',$v[15]))->get()->pluck('id')->toArray();
+                        $data['slug']        = $slug;
+                        $data['hsn']         = $v[2];
+                        $data['min_qty']     = $v[3];
+                        $data['tag']         = $v[4];
+                        $data['description'] = $v[5];
+                        $data['additional_information'] = $v[6];
+                        $data['meta_title']   = $v[7];
+                        $data['meta_keyword'] = $v[8];
+                        $data['meta_description'] = $v[9];
+                        
+                        $relatedProducts = Product::whereIn('name',explode(',',$v[10]))->get()->pluck('id')->toArray();
                         if(count($relatedProducts) > 0)
                         {
                             $relatedProducts = serialize($relatedProducts);
@@ -552,13 +537,12 @@ class ProductController extends Controller
                             $relatedProducts = null;
                         }
 
-                        $product->related_products = $relatedProducts;
-                        $product->is_featured      = $v[16];
-                        $product->is_new          = $v[17];
-                        $product->is_bestsellers   = $v[18];
-                        $product->is_offer         = $v[19];
-                        $product->offer            = $v[20];
-                        $product->status          = $v[21];
+                        $data['related_products'] = $relatedProducts;
+                        $data['is_featured']      = $v[11];
+                        $data['is_new']           = $v[12];
+                        $data['is_bestsellers']   = $v[13];
+                        $data['status']           = $v[14];
+                        
                         $product->update();
                     }
                 }    
@@ -581,8 +565,10 @@ class ProductController extends Controller
                 {  
                     $data['product_id']  = Product::where('name',$v[0])->first()->id;
                     $data['size_id']     = Size::where('name',$v[1])->first()->id;
-                    $data['color_id']    = Color::where('name',$v[2])->first()->id;                
-                    $data1['stock_qty']  = $v[3];
+                    // $data['color_id']    = Color::where('name',$v[2])->first()->id;                
+                    $data1['price']  = $v[2];
+                    $data1['sale_price']  = $v[3];
+                    $data1['stock_qty']  = $v[4];
                     ProductStock::updateOrCreate($data,$data1);
                 }    
             }            
@@ -596,6 +582,8 @@ class ProductController extends Controller
     {
         $datas = Excel::toArray(new ProductImagesImport, $request->file('file')); 
         
+        dd($datas[0]);
+
         foreach($datas[0] as $k => $v)
         {  
             if($k != 0)
@@ -603,7 +591,7 @@ class ProductController extends Controller
                 if($v[0] != '')
                 {  
                     $data['product_id']  = Product::where('name',$v[0])->first()->id;
-                    $data['color_id']    = Color::where('name',$v[1])->first()->id;
+                    $data['size_id']     = Size::where('name',$v[1])->first()->id;
 
                     $baseName = pathinfo($v[2]);
                     $baseName = $baseName['basename'];
