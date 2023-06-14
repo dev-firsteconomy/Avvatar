@@ -699,6 +699,11 @@ $(document).ready(function () {
 		$(this).addClass('active');
 	});
 
+	$('.weight-conversion-btns .weight-conversion-btns_btn').click(function () {
+		$('.weight-conversion-btns_btn').removeClass("active");
+		$(this).addClass("active");
+	});
+
 	$('body').on('click', '.btn-fullscreen', function (e) {
 		var galleryArr = [];
 		$(this).parents('.owl-stage-outer').find('.owl-item:not(.cloned)').each(function () {
