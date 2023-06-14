@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Zehna || Login Page</title>
+  <title> {{ env('APP_NAME') }} || Login Page</title>
   @include('backend.layouts.head')
 
 </head>

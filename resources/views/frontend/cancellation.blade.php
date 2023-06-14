@@ -21,7 +21,7 @@
 		        <div class="container">
 		            <div class="row">
 		                <div class="col-sm-12 PageContent">
-                        <p>Zehna reserve right to cancel any order without any explanation. We ensure you, communication of cancelation of an order or refund will be done in a reasonable time.</p>
+                        <p>{{ env('APP_NAME') }} reserve right to cancel any order without any explanation. We ensure you, communication of cancelation of an order or refund will be done in a reasonable time.</p>
                         <p>1) You can cancel the order from the <a title="My Order" href="https://zehna.in/users" target="_blank" rel="noopener"><strong>My Order</strong></a>&nbsp;Section in Account before the order is dispatched.</p>
                         <p>2) If the order is already shipped, we won't be able to cancel it. However, you can refuse to accept the shipment and the amount will be refunded to your account.</p>
                         <p>3) The full amount will be refunded to your account.</p>

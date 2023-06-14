@@ -155,7 +155,7 @@
 									<select name="sizes" class="form-control" required>
 										<option value="">Select Size</option>
 										@foreach($sizes as $key=>$attribute)
-										<option value='{{$attribute->id}}'>{{$attribute->name}}</option>
+										<option value='{{$attribute->id}}'>{{$attribute->name}} Kg</option>
 										@endforeach
 									</select>
 								</div>
@@ -176,7 +176,7 @@
 								</div>
 
 								<div class="form-group col-md-2">
-									<label for="sale_price">Sale Price <span class="text-danger">*</span></label>
+									<label for="sale_price">Selling Price <span class="text-danger">*</span></label>
 									<input id="sale_price" type="number" name="sale_price" min="0" placeholder="Sale Price" value="{{ old('sale_price') }}" class="form-control" required>
 								</div>
 

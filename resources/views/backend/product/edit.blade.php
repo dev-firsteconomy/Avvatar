@@ -148,17 +148,20 @@
 				@foreach($product->sizesstock as $k=>$item)
 
 						<div class="repeater mt-repeater existRecord">
-							<div data-repeater-list="sizeWiseImage_group">
+							<div data-repeater-list="updateSizeWiseImage_group">
 								<div class="row" data-repeater-item>
 
-									<!-- <div class="form-group col-md-2">
-										<input type="text" name="flavours" value="{{ $item->flavour_id}}" class="form-control" readonly>
-									</div> -->
 									<div class="form-group col-md-2">
-										<input type="text" name="size_id" value="{{ $item->productSize->name }}" class="form-control" readonly>
+										<select name="sizes[]" class="form-control" required>
+											<option value="">Select Size</option>
+											@foreach($sizes as $key=>$attribute)
+												<option value="{{ $attribute->id }}" {{ ($item->size_id == $attribute->id) ? 'selected' : ''  }} >{{$attribute->name}} Kg</option>
+											@endforeach
+										</select>
 									</div>
 									
 									<div class="form-group col-md-3">
+										<input class="form-control imageUploader" type="file" id="images" name="images[]" value="{{ old('images') }}" multiple> 
 										@foreach($product_images as $image)
 											@if($image->size_id == $item->size_id && $image->product_id == $item->product_id)
 												<img src="{{ asset($image->image) }}" alt="image" style="height:50px; width: 40px;">
@@ -167,15 +170,15 @@
 									</div>
 
 									<div class="form-group col-md-2">
-										<input type="text" name="stock_qty" value="{{ $item->stock_qty }}" class="form-control" readonly>	
+										<input type="text" name="stock_qty[]" value="{{ $item->stock_qty }}" class="form-control" required>	
 									</div>
 
 									<div class="form-group col-md-2">
-										<input type="text" name="price" value="{{ $item->price }}" class="form-control" readonly>
+										<input type="text" name="price[]" value="{{ $item->price }}" class="form-control" required>
 									</div>
 
 									<div class="form-group col-md-2">
-										<input type="text" name="price" value="{{ $item->sale_price }}" class="form-control" readonly>
+										<input type="text" name="sale_price[]" value="{{ $item->sale_price }}" class="form-control" required>
 									</div>
 
 									<div class="form-group col-md-1">
@@ -195,8 +198,8 @@
 						<div class="form-group col-md-2">Size</div>
 						<div class="form-group col-md-3">Image</div>
 						<div class="form-group col-md-2">Stock Qty</div>
-						<div class="form-group col-md-2">Price</div>
-						<div class="form-group col-md-2">Sale Price</div>
+						<div class="form-group col-md-2">MRP Price</div>
+						<div class="form-group col-md-2">Selling Price</div>
 						<div class="form-group col-md-1">Delete</div>
 					</div>
 
@@ -219,7 +222,7 @@
 									<select name="sizes" class="form-control">
 										<option value="">Select Size</option>
 										@foreach($sizes as $key=>$attribute)
-										<option value='{{$attribute->id}}'>{{$attribute->name}}</option>
+										<option value='{{$attribute->id}}'>{{$attribute->name}} Kg</option>
 										@endforeach
 									</select>
 								</div>

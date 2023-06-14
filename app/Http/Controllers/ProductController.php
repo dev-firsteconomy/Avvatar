@@ -89,11 +89,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
         $data = $request->except(['_token','sizeWiseImage_group']);
-
         // $data=$request->all();
-        // dd($request->all(),$request->input('related_products'));
+        dd($request->all());
 
         $this->validate($request,[  
              'category_id'=>'required',
@@ -275,6 +273,44 @@ class ProductController extends Controller
 
            $product->fill($data)->save();
            $product = $product;
+
+
+           if(!empty($request->sizes))
+           {
+                foreach($request->sizes as $key => $size)
+                {
+                    ProductStock::updateOrCreate([
+                        'product_id'=> $id, 
+                        'size_id' => $size
+                    ],[
+                        'price' =>$request->price[$key],
+                        'sale_price' =>$request->sale_price[$key],
+                        'discount' => (($request->price[$key] - $request->sale_price[$key]) / $request->price[$key]) * 100,
+                        'stock_qty' =>$request->stock_qty[$key],
+                    ]);
+               
+                    if(count($request->hasFile('images')))
+                    {
+                        foreach($request->file('images') as $imageKey => $item)
+                        {  
+                            if(!empty($item))
+                            {
+                                $icon=rand(0,9999);
+                                $filename=$icon.$item->getClientOriginalName();
+                                $item->move(public_path('/images/products'), $filename);
+                                
+                                $prodImage = new ProductImage;
+                                $prodImage->product_id = (int)$id;
+                                $prodImage->size_id    = (int)$size;
+                                $prodImage->image = '/images/products/'.$filename;
+                                
+                                $prodImage->save();
+                                
+                            }    
+                        }
+                    }
+                }   
+            }
 
             if($request->sizeWiseImage_group != null)
             {

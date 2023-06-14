@@ -16,7 +16,7 @@
       <meta property="og:image" content="@if(isset($metadata->meta_image)){{URL::asset($metadata->meta_image)}}@endif">
       <meta property="og:url" content="{{url()->current()}}">
       <link rel="canonical" href="{{url()->current()}}" />
-      <meta property="og:site_name" content="Zehna" />
+      <meta property="og:site_name" content="{{env('APP_NAME')}}" />
       <link rel="icon" href="{{URL::asset('frontend/images/Royale_Touche_Laminate_Favicon.png')}}" sizes="32x32" />
       <link rel="alternate" href="{{url('/')}}" hreflang="en-us"/>
       <link rel="stylesheet" href="{{asset('frontend/css/bootstrap2.min.css')}}" />

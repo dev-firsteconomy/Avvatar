@@ -57,7 +57,7 @@ class GoogleController extends Controller
                  $email = $newUser->email;
                 Mail::send('mail.new-account-cus', ['user' => $user], function ($message) use ($email) {
                     $message->to($email);
-                    $message->subject('Welcome To Zehna');
+                    $message->subject('Welcome To '.env('APP_NAME'));
                 });
                 return redirect()->intended(); // redirect('/home');
             }

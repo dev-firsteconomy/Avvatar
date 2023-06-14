@@ -148,7 +148,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="related_blogs" class="col-form-label">Select Blog <span class="text-danger">*</span></label>
+                        <label for="related_blogs" class="col-form-label">Related Blog <span class="text-danger">*</span></label>
                         <select name="related_blogs[]" id="related_blogs" class="form-control related_blogsClass"
                             multiple>
                             @foreach($related_blogs as $key=>$blog)

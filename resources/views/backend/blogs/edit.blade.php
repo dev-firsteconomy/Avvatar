@@ -115,6 +115,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="thumbnail_image" class="form-label">Thumbnail Image</label>
+                            <br>
                             @if(isset($blog))
                             <img src="{{ asset($blog->thumbnail_image) }}" alt="image"
                                 style="height:80px; width: 60px;">
@@ -125,6 +126,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="image" class="form-label">Image</label>
+                            <br>
                             @if(isset($blog))
                             <img src="{{ asset($blog->image) }}" alt="image" style="height:80px; width: 60px;">
                             @endif
@@ -137,22 +139,24 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <label for="related_blogs" class="col-form-label">Select Blog <span class="text-danger">*</span></label>
-                        <select name="related_blogs[]" id="related_blogs" class="form-control related_blogsClass"
-                            multiple>
-                            @foreach($related_blogs as $key=>$blog)
-                            <option value="{{$blog->id}}" {{ !empty($relatedBlogsList) && in_array($blog->id, $relatedBlogsList) ? 'selected':'' }} >{{$blog->title}}</option>
-                            @endforeach
-                        </select>
-                        @error('related_blogs')
-                        <span class="text-danger">{{$message}}</span>
-                        @enderror
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="related_blogs" class="form-label">Related Blog <span class="text-danger">*</span></label>
+                            <select name="related_blogs[]" id="related_blogs" class="form-control related_blogsClass"
+                                multiple>
+                                @foreach($related_blogs as $key=>$blog)
+                                <option value="{{$blog->id}}" {{ !empty($relatedBlogsList) && in_array($blog->id, $relatedBlogsList) ? 'selected':'' }} >{{$blog->title}}</option>
+                                @endforeach
+                            </select>
+                            @error('related_blogs')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
+          
 
-                <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="date" class="form-label">Date</label><span class="text-danger">*</span>
                             <input type="date" name="date" id="date" placeholder="Enter Date"
@@ -162,7 +166,9 @@
                             @enderror
                         </div>
                     </div>
+                </div>  
 
+                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Is Popular</label>
@@ -234,10 +240,17 @@ $('#lfm').filemanager('image');
 
 $(document).ready(function() {
     $('#description').summernote({
+        placeholder: "Write description.....",
+        tabsize: 2,
+        height: 150
+    });
+
+    $('#short_desc').summernote({
         placeholder: "Write short description.....",
         tabsize: 2,
         height: 150
     });
+    
 
     $('.related_blogsClass').select2({
         placeholder: 'Select Blgs'

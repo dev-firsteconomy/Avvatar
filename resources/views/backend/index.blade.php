@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title','Zehna Ecom || DASHBOARD')
+@section('title',env('APP_NAME').' || DASHBOARD')
 @section('main-content')
 <div class="container-fluid">
     @include('backend.layouts.notification')

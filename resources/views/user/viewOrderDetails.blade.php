@@ -6,7 +6,7 @@
 				<tr>
 					<td align="center" valign="top">
 						<div id="template_header_image">
-							{{-- <p style="margin-top: 0;"><img src="https://zehna.netlify.app/static/media/brand-logo.f9600df5.png" alt="Zehna" style="border: none; display: inline-block; font-size: 14px; font-weight: bold; height: 50px; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; max-width: 100%; margin-left: 0; margin-right: 0;"></p>						</div> --}}
+							{{-- <p style="margin-top: 0;"><img src="https://zehna.netlify.app/static/media/brand-logo.f9600df5.png" alt="{{ env('APP_NAME') }}" style="border: none; display: inline-block; font-size: 14px; font-weight: bold; height: 50px; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; max-width: 100%; margin-left: 0; margin-right: 0;"></p>						</div> --}}
 						<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_container" style="background-color: #ffffff; border: 1px solid #dedede; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); border-radius: 3px;">
 							
 							<tr>
@@ -137,7 +137,7 @@
 																		</tfoot>
 																	</table>
 																	<br>
-																	<p style="margin:0 0 16px">Thanks for using Zehna.</p>
+																	<p style="margin:0 0 16px">Thanks for using {{ env('APP_NAME') }}.</p>
 																</div>
 															</div>
 														</td>

@@ -2,7 +2,7 @@
 <html lang="en-US">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Zehna order {{$orderDetails->order_number}} received!</title>
+		<title>{{ env('APP_NAME') }} order {{$orderDetails->order_number}} received!</title>
 	</head>
 	<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="padding: 0;">
 		<div id="wrapper" dir="ltr" style="background-color: #f7f7f7; margin: 0; padding: 70px 0; width: 100%; -webkit-text-size-adjust: none;">
@@ -10,7 +10,7 @@
 				<tr>
 					<td align="center" valign="top">
 						<div id="template_header_image">
-							<p style="margin-top: 0;"><img src="https://zehna.netlify.app/static/media/brand-logo.f9600df5.png" alt="Zehna" style="border: none; display: inline-block; font-size: 14px; font-weight: bold; height: 50px; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; max-width: 100%; margin-left: 0; margin-right: 0;"></p>						</div>
+							<p style="margin-top: 0;"><img src="https://zehna.netlify.app/static/media/brand-logo.f9600df5.png" alt="{{ env('APP_NAME') }}" style="border: none; display: inline-block; font-size: 14px; font-weight: bold; height: 50px; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; max-width: 100%; margin-left: 0; margin-right: 0;"></p>						</div>
 						<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_container" style="background-color: #ffffff; border: 1px solid #dedede; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); border-radius: 3px;">
 							<tr>
 								<td align="center" valign="top">
@@ -37,7 +37,7 @@
 														<td valign="top" style="padding: 48px 48px 32px;">
 															<div id="body_content_inner" style='color: #636363; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; font-size: 14px; line-height: 150%; text-align: left;'>
 																<p style="margin: 0 0 16px;">Hi admin,</p>
-																<p style="margin: 0 0 16px;">You have received order on Zehna. There are more details below for your reference:</p>
+																<p style="margin: 0 0 16px;">You have received order on {{ env('APP_NAME') }}. There are more details below for your reference:</p>
 																<h2 style='color: #000000; display: block; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; font-size: 18px; font-weight: bold; line-height: 130%; margin: 0 0 18px; text-align: left;'>[Order #{{$orderDetails->order_number}}] ({{date('d-m-Y', strtotime($orderDetails->created_at))}})</h2>
 																<div style="margin-bottom:40px">
 																	<table cellspacing="0" cellpadding="6" border="1" style="color:#636363;border:1px solid #e5e5e5;vertical-align:middle;width:100%;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif">
@@ -156,7 +156,7 @@
 									<table border="0" cellpadding="10" cellspacing="0" width="100%">
 										<tr>
 											<td colspan="2" valign="middle" id="credit" style='border-radius: 6px; border: 0; color: #8a8a8a; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; font-size: 12px; line-height: 150%; text-align: center; padding: 24px 0;'>
-												<p style="margin: 0 0 16px;">Zehna</p>
+												<p style="margin: 0 0 16px;">{{ env('APP_NAME') }}</p>
 											</td>
 										</tr>
 									</table>

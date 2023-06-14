@@ -98,7 +98,7 @@
 
     <div class="footer-bottom bg-black">
         <div class="container flex-column py-4">
-            <p class="footer-copyright text-center text-white fs-12">Copyright © 2022 Zehna. All Rights Reserved.</p>
+            <p class="footer-copyright text-center text-white fs-12">Copyright © 2022 {{ env('APP_NAME') }}. All Rights Reserved.</p>
             <!-- End .footer-copyright -->
         </div><!-- End .container -->
     </div><!-- End .footer-bottom -->
@@ -274,7 +274,7 @@
                     <div class="banner-content text-center">
                         <img src="{{url('assets/images/logo.png')}}" class="logo" alt="logo" width="100">
 <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
-<p>Subscribe to the Zehna newsletter to receive timely updates from your favorite products.</p>
+<p>Subscribe to the {{ env('APP_NAME') }} newsletter to receive timely updates from your favorite products.</p>
 <form action="#">
     <div class="input-group input-group-round">
         <input type="email" class="form-control form-control-white" placeholder="Your Email Address"

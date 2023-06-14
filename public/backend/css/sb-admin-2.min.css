@@ -10273,3 +10273,8 @@
     width: 30px !important;
   }
   
+  .actionButtons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
