@@ -279,34 +279,52 @@ class ProductController extends Controller
            {
                 foreach($request->sizes as $key => $size)
                 {
-                    ProductStock::updateOrCreate([
-                        'product_id'=> $id, 
-                        'size_id' => $size
-                    ],[
-                        'price' =>$request->price[$key],
-                        'sale_price' =>$request->sale_price[$key],
-                        'discount' => (($request->price[$key] - $request->sale_price[$key]) / $request->price[$key]) * 100,
-                        'stock_qty' =>$request->stock_qty[$key],
-                    ]);
-               
-                    if(count($request->hasFile('images')))
+                    $productStock =  ProductStock::where('product_id', $id)->where('size_id', $size)->first();
+
+                    if($productStock) 
                     {
-                        foreach($request->file('images') as $imageKey => $item)
-                        {  
-                            if(!empty($item))
+                        $productStock->update([
+                            'product_id' => $id, 
+                            'size_id'    => $size,
+                            'price'      => $request->price[$key],
+                            'sale_price' => $request->sale_price[$key],
+                            'discount'   => (($request->price[$key] - $request->sale_price[$key]) / $request->price[$key]) * 100,
+                            'stock_qty'  => $request->stock_qty[$key],
+                        ]);
+                    } 
+                    else 
+                    {
+                    }
+
+                    if(!empty($request->hasFile('images')))
+                    {
+                        if(file_exists($request['images'][0]))
+                        {
+                            foreach($request['images'] as $imageItem)
                             {
-                                $icon=rand(0,9999);
-                                $filename=$icon.$item->getClientOriginalName();
-                                $item->move(public_path('/images/products'), $filename);
-                                
-                                $prodImage = new ProductImage;
-                                $prodImage->product_id = (int)$id;
-                                $prodImage->size_id    = (int)$size;
-                                $prodImage->image = '/images/products/'.$filename;
-                                
-                                $prodImage->save();
-                                
-                            }    
+                                try 
+                                {
+                                    $image = time() . '_'. $imageItem->getClientOriginalName();
+                                    $path = public_path('/images/product_images');
+                                    
+                                    if (!File::isDirectory($path)) 
+                                    {
+                                        File::makeDirectory($path, 0777, true, true);
+                                    }
+                                    $imageItem->move($path,$image);
+                                    $fileName = '/images/product_images/'.$image;
+
+                                    $prodImage = new ProductImage;
+                                    $prodImage->product_id = (int)$id;
+                                    $prodImage->size_id    = (int)$size;
+                                    $prodImage->image = $fileName;
+                                    $prodImage->save();
+                                } 
+                                catch (\Exception $e) 
+                                {
+                                   dd($e);
+                                }
+                            }
                         }
                     }
                 }   
