@@ -576,7 +576,7 @@
 			</div>
 
 			<div class="mt-4 text-center">
-				<a class="commonButton-yellow m-0">View All</a>
+				<a href="/blogs" class="commonButton-yellow m-0">View All</a>
 			</div>
 		</div>
 	</section>

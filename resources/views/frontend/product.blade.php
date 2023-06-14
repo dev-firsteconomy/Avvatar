@@ -90,7 +90,7 @@
 		<div class="container d-flex align-items-center">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
-				<li class="breadcrumb-item"><a href="{{route('products')}}">Products</a></li>
+				<li class="breadcrumb-item"><a href="{{route('products')}}">Prsoducts</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Product</li>
 			</ol>
 		</div><!-- End .container -->
@@ -98,133 +98,7 @@
 	<input type="hidden" name="product" id="product" value="{{@$product->slug}}">
 	<input type="hidden" name="productType" id="productType" value="1">
 	<div class="page-content">
-		<div class="container">
-			<div class="product-details-top" id="loadAjax">
-
-				@include('frontend.singleProduct')
-
-			</div><!-- End .product-details-top -->
-
-			<div class="product-details-tab">
-				<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="product-description" data-bs-toggle="tab" data-bs-target="#product-description-pane" type="button" role="tab" aria-controls="product-description-pane" aria-selected="true">Description</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="product-information" data-bs-toggle="tab" data-bs-target="#product-information-pane" type="button" role="tab" aria-controls="product-information-pane" aria-selected="false">Additional
-							information</button>
-					</li>
-				</ul>
-
-				<div class="tab-content">
-					<div class="tab-pane fade show active" id="product-description-pane" role="tabpanel" aria-labelledby="product-description" tabindex="0">
-						<div class="product-desc-content">
-							<h3>Product Information</h3>
-							{!! $product->description !!}
-						</div><!-- End .product-desc-content -->
-					</div><!-- .End .tab-pane -->
-					<div class="tab-pane fade" id="product-information-pane" role="tabpanel" aria-labelledby="product-information" tabindex="0">
-						<div class="product-desc-content">
-							<h3>Information</h3>
-							{!! $product->additional_information !!}
-						</div><!-- End .product-desc-content -->
-					</div><!-- .End .tab-pane -->
-				</div><!-- End .tab-content -->
-			</div><!-- End .product-details-tab -->
-
-			<div class="youMaylike">
-				<div class="container">
-					<div class="heading text-center mb-5">
-						<h2 class="title text-uppercase">You May <span class="fw-bold">Also Like</span></h2>
-					</div>
-				</div>
-				<div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
-                            "nav": false, 
-                            "dots": true,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":1
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                },
-                                "1200": {
-                                    "items":4,
-                                    "nav": true,
-                                    "dots": false
-                                }
-                            }
-                        }'>
-					@if(isset($relatedProducts) && @$relatedProducts->isNotEmpty())
-					@foreach ($relatedProducts as $product)
-					<div class="product product-7 text-center">
-						<figure class="product-media">
-							@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-							<a href="{{url('product/' .$product->slug)}}">
-								<img src="{{asset(@$product->images()->first()->image)}}" alt="{!! @$product->meta_description !!}" class="product-image">
-							</a>
-
-							<div class="product-action-vertical">
-								@if(is_user_logged_in())
-								<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
-								@else
-								<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
-								@endif
-							</div><!-- End .product-action-vertical -->
-						</figure><!-- End .product-media -->
-						<?php
-                                            $availableColors = $product->sizesstock()->groupBy('color_id')->get();
-                                        ?>
-						<div class="product-body">
-							<div class="product-cat">
-								<a href="{{route('product',$product->category->slug)}}">{{$product->category->title}}</a>
-							</div><!-- End .product-cat -->
-							@if(isset($availableColors) && $availableColors->isNotEmpty())
-							<div class="product-color row justify-content-center">
-								@foreach($availableColors as $color)
-								<div class="radio has-color">
-									<label>
-										<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions">
-										<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
-									</label>
-								</div>
-								@endforeach
-							</div><!-- End .product-cat -->
-							@endif
-							<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a>
-							</h3><!-- End .product-title -->
-							<div class="product-price">
-								<span class="new-price">₹ {{round($product->discounted_amt)}}</span>
-								@if($product->discounted_amt != $product->price) <span class="old-price">₹
-									{{round($product->price)}}</span> @endif <small>(MRP incl Taxes)</small>
-							</div><!-- End .product-price -->
-							<div class="atc-container">
-								<div class="mb-0">
-									<a href="javascript:void(0);" class="btn-cart add_to_cart" data-id="{{$product->id}}"><span class="product{{$product->id}}">Add to
-											cart</span></a>
-								</div>
-							</div>
-						</div><!-- End .product-body -->
-					</div><!-- End .product -->
-					@endforeach
-					@endif
-
-
-				</div>
-			</div>
-
-
-
-			<!-- End .owl-carousel -->
-		</div><!-- End .container -->
+		@include('frontend.singleProduct')
 	</div><!-- End .page-content -->
 </main><!-- End .main -->
 <script>
