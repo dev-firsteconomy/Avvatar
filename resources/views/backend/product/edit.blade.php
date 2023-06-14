@@ -82,20 +82,22 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="form-group">
-							<label for="description" class="col-form-label">Description</label>
+							<label for="description" class="col-form-label">Product Description</label>
 							<textarea class="form-control" id="description" name="description">{{ old('description') ? old('description') : $product->description }}</textarea>
 							@error('description')
 							<span class="text-danger">{{$message}}</span>
 							@enderror
 						</div>
 					</div>
-					<div class="col-md-6">
+					</div>
+					<div class="row">
+					<div class="col-md-12">
 						<div class="form-group">
-							<label for="additional_information" class="col-form-label">Additional Information</label>
-							<textarea class="form-control" id="additional_information" name="additional_information">{{ old('additional_information') ? old('additional_information') : $product->additional_information }}</textarea>
-							@error('additional_information')
+							<label for="faq" class="col-form-label">FAQ</label>
+							<textarea class="form-control" id="faq" name="faq">{{ old('faq') ? old('faq') : $product->faq }}</textarea>
+							@error('faq')
 							<span class="text-danger">{{$message}}</span>
 							@enderror
 						</div>
@@ -222,7 +224,7 @@
 									<select name="sizes" class="form-control">
 										<option value="">Select Size</option>
 										@foreach($sizes as $key=>$attribute)
-										<option value='{{$attribute->id}}'>{{$attribute->name}} Kg</option>
+										<option value="{{$attribute->id}}">{{$attribute->name}} Kg</option>
 										@endforeach
 									</select>
 								</div>
@@ -388,7 +390,7 @@
 			tabsize: 2,
 			height: 150
 		});
-		$('#additional_information').summernote({
+		$('#faq').summernote({
 			placeholder: "Write detail information.....",
 			tabsize: 2,
 			height: 150

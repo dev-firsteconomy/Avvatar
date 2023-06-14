@@ -12,8 +12,11 @@ use App\Models\Laminate;
 use App\Models\Attribute;
 use App\Models\Thickness;
 use App\Models\Color;
+use App\Models\Protein;
 use App\Models\Size;
 use App\Models\Fabric;
+use App\Models\ProductProtein;
+use App\Models\ProductNutrition;
 use App\Models\Flavour;
 use App\Models\Orientation;
 use App\Models\Application;
@@ -74,11 +77,12 @@ class ProductController extends Controller
         $colors          = Color::where('status',1)->get();
         $sizes           = Size::where('status',1)->get();
         $flavours        = Flavour::where('status',1)->get();
+        $proteins        = Protein::where('status',1)->get();
         $fabrics         = Fabric::where('status',1)->get();
         $orientations    = Orientation::where('status',1)->get();
         $related_products= Product::orderBy('name')->where('status',1)->get();
         $categories      = Category::pluck('title','id');
-        return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations','flavours'));
+        return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations','proteins'));
     }
 
     /**
@@ -91,7 +95,7 @@ class ProductController extends Controller
     {
         $data = $request->except(['_token','sizeWiseImage_group']);
         // $data=$request->all();
-        dd($request->all());
+        // dd($request->all());
 
         $this->validate($request,[  
              'category_id'=>'required',
@@ -100,7 +104,7 @@ class ProductController extends Controller
              'min_qty'=>'required',
              'tag'=>'required',
              'description'=>'required',
-             'additional_information'=>'required',
+             'faq'=>'required',
              'status'=>'required',
         ]);
 
@@ -125,11 +129,43 @@ class ProductController extends Controller
         {
            $product = Product::create($data);
 
+           if(!empty($request->nutrition_images))
+           {
+               if(file_exists($request['nutrition_images'][0]))
+               {
+                   foreach($request['nutrition_images'] as $imageItem)
+                   {
+                       $image = time() . '_'. $imageItem->getClientOriginalName();
+                       $path = public_path('/images/nutrition_images');
+                       
+                       if (!File::isDirectory($path)) 
+                       {
+                           File::makeDirectory($path, 0777, true, true);
+                       }
+                       $imageItem->move($path,$image);
+                       $fileName = '/images/nutrition_images/'.$image;
+
+                       ProductNutrition::create([
+                           'product_id' =>$product->id,
+                           'image'=> $fileName
+                       ]);
+                   }
+               }
+           }
+
+           if($request->protein_group != null)
+           {
+               $protein_group = $request->protein_group;
+               $this->store_proteinLevel($protein_group,$product);
+           }
+
            if($request->sizeWiseImage_group != null)
            {
                $sizeWiseImage_group = $request->sizeWiseImage_group;
                $this->store_images($sizeWiseImage_group,$product);
            }
+
+           
 
             if($product)
             {
@@ -148,6 +184,26 @@ class ProductController extends Controller
             DB::rollback();
             dd($e);
         }    
+    }
+
+    public function store_proteinLevel($protein_group,$product)
+    {
+        foreach($protein_group as $item)
+        { 
+            if($item['proteins'] !== null && $item['description'] !== '' && $item['protein_value'] !== null) 
+            {
+                $protein_id = (int)$item['proteins'];
+                $protein_value = $item['protein_value'];
+                $description = $item['description'];
+
+                ProductProtein::create([
+                    'product_id'=> $product->id,
+                    'protein_id'=> $protein_id,
+                    'protein_value'=> $protein_value,
+                    'description'=> $description,
+                ]);
+            }
+        }
     }
 
     public function store_images($sizeWiseImage_group,$product)
@@ -239,6 +295,7 @@ class ProductController extends Controller
     
     public function update(Request $request, $id)
     {
+        dd("YOU HAVE TO RESOLVE ERRORES FIRST");
         // $data=$request->all();
         $data = $request->except(['_token','sizeWiseImage_group']);
         $product=Product::findOrFail($id);
@@ -274,9 +331,8 @@ class ProductController extends Controller
            $product->fill($data)->save();
            $product = $product;
 
-
-           if(!empty($request->sizes))
-           {
+            if(!empty($request->sizes))
+            {
                 foreach($request->sizes as $key => $size)
                 {
                     $productStock =  ProductStock::where('product_id', $id)->where('size_id', $size)->first();

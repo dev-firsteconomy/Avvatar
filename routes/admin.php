@@ -30,6 +30,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     // flavours master
     Route::resource('flavours','FlavourController');
 
+    // proteins master
+    Route::resource('proteins','ProteinController');
+
     //size master
     Route::resource('sizes','SizeController');
     //size chart master
