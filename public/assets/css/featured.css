@@ -446,6 +446,8 @@ video {
 .videoContent h3 {
 	font-size: 30px;
 	margin: 0;
+	color: #fff;
+	text-transform: uppercase;
 }
 
 .videoContent h2 {
@@ -456,6 +458,8 @@ video {
 	width: -webkit-max-content;
 	width: -moz-max-content;
 	width: max-content;
+	color: #fff;
+	text-transform: uppercase;
 }
 
 .videoContent h2:after {
@@ -466,6 +470,10 @@ video {
 	bottom: 0;
 	position: absolute;
 	height: 2px;
+}
+
+.videoContent p {
+	color: #fff;
 }
 
 #circle-play-b {
@@ -1059,6 +1067,7 @@ span.sr-only {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
+	margin-bottom: 10px;
 }
 
 .labelWrapper span.labelText {
@@ -1221,7 +1230,8 @@ span.sr-only {
 	margin-top: 30px;
 }
 
-.chooseFlavourWrapper {
+.chooseFlavourWrapper,
+.checkDelivery {
 	margin-bottom: 20px;
 }
 
@@ -1231,15 +1241,26 @@ span.sr-only {
 	outline: none;
 	background-color: #fff;
 	border-radius: 2px;
-	padding: 10px 12px 10px;
-	min-width: 30%;
+	padding: 6px 8px;
+	min-width: 23%;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	font-weight: 700;
+	font-size: 12px;
 }
 
-.chooseFlavourBtns .btn.oos {
+.chooseFlavourBtns .btn.oos,
+.chooseFlavourBtns .btn.oos.active {
 	opacity: 0.6;
 	border-style: dotted;
+	background-color: #fff;
+	border: 1px solid #000;
+}
+
+.chooseFlavourBtns .btn.active {
+	background-color: #f7bc2a;
+	border-color: #f7bc2a;
+
 }
 
 .weight-conversion-btns {
@@ -1249,9 +1270,9 @@ span.sr-only {
 }
 
 .weight-conversion-btns .weight-conversion-btns_btn {
-	width: 39px;
+	width: 50px;
 	height: 27px;
-	border: 1px solid #9d9e9d;
+	border: 1px solid #000;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -1262,15 +1283,141 @@ span.sr-only {
 	-ms-flex-align: center;
 	align-items: center;
 	font-family: dinbold;
-	font-size: 11px;
+	font-size: 14px;
 	font-weight: 600;
 	line-height: 18px;
 	letter-spacing: 0;
-	color: #727272;
+	color: #000;
 	cursor: pointer;
 }
 
 .weight-conversion-btns .weight-conversion-btns_btn.active {
-	background-color: #727272;
-	color: #fff;
+	background-color: #f7bc2a;
+	color: #000;
+}
+
+.productDescription h3 {
+	margin-top: 30px;
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.productDescription p {
+	margin-bottom: 0;
+	font-size: 16px;
+}
+
+.productProteinLevel {
+	gap: 20px;
+}
+
+.proteinLevelBox {
+	min-width: 18%;
+	width: 18%;
+}
+
+.proteinLevelBox h3 {
+	margin-bottom: 10px;
+	font-size: 46px;
+	font-weight: 700;
+}
+
+.proteinLevelBox h4 {
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	font-weight: 700;
+	border-bottom: 2px solid #f3b92a;
+	padding-bottom: 5px;
+}
+
+.proteinLevelBox p {
+	line-height: 1.2;
+}
+
+.productFaq h3 {
+	font-weight: 700;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+.productFaq h3:nth-child(n+2) {
+	margin-top: 30px;
+}
+
+.productFaq p {
+	line-height: 1.4;
+}
+
+.product-price-box {
+	font-size: 20px;
+	color: #333333;
+	font-weight: 700;
+}
+
+
+.star-rating {
+	border: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+	font-size: 24px;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+	padding: 0;
+	text-align: center;
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+	gap: 5px;
+}
+
+.star-rating input {
+	display: none;
+}
+
+.star-rating label {
+	color: #ccc;
+	cursor: pointer;
+	line-height: 1.2;
+	margin: 0;
+	font-size: 24px;
+}
+
+.star-rating :checked ~ label {
+	color: #f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+	color: #fc0;
+}
+
+.basedOnReviews {
+	margin-left: 5px;
+}
+
+.checkDelivery .form-control {
+	padding: .85rem 1rem;
+	color: #000;
+	border: 1px solid #d3cdcd;
+}
+
+.checkDelivery .btn {
+	padding-top: 0;
+	padding-bottom: 0;
+	white-space: nowrap;
+	-ms-flex-item-align: stretch;
+	align-self: stretch;
+	line-height: 1;
+	color: #000;
+	border: 1px solid #f7bc2a;
+	padding: 1.2rem 2.5rem;
+	background-color: #f7bc2a;
+	min-width: inherit;
+	font-weight: 700;
 }
