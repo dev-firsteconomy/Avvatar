@@ -5,9 +5,9 @@
 <main class="main">
 	<div class="page-header p-0 text-center">
 		<picture>
-			<source media="(max-width:767px)" srcset="assets/images/new/about/about-banner.png">
-			<source media="(min-width:768px)" srcset="assets/images/new/about/about-banner.png">
-			<img src="assets/images/new/about/about-banner.png" class="img-fluid" alt="aboutBanner">
+			<source media="(max-width:767px)" srcset="{{asset('assets/images/new/about/WhyAvvatarBanner.jpg')}}">
+			<source media="(min-width:768px)" srcset="{{asset('assets/images/new/about/WhyAvvatarBanner.jpg')}}">
+			<img src="{{asset('assets/images/new/about/WhyAvvatarBanner.jpg')}}" class="img-fluid" alt="aboutBanner">
 		</picture>
 	</div>
 
@@ -33,9 +33,99 @@
 				</div>
 
 				<div class="row justify-content-center">
-					<div class="col-md-10 row">
-						<div class="col-md-6"></div>
-						<div class="col-md-6"></div>
+					<div class="col-md-9 row justify-content-between">
+						<div class="col-md-5">
+							<div class="whyAvvatarBoxWrapper">
+								<div class="whyAvvatarBoxImg">
+									<img src="{{asset('assets/images/new/about/WhyAvvatarBanner-1.png')}}" class="m-auto img-fluid" alt="aboutBanner">
+								</div>
+								<div class="whyAvvatarBox">
+
+									<div class="whyAvvatarBoxContent">
+										<div class="whyAvvatarBoxHeading text-center">
+											<h3 class="text-uppercase m-0">milk to cheese</h3>
+										</div>
+										<ul>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-5">
+							<div class="whyAvvatarBoxWrapper">
+								<div class="whyAvvatarBoxImg">
+									<img src="{{asset('assets/images/new/about/WhyAvvatarBanner-1.png')}}" class="m-auto img-fluid" alt="aboutBanner">
+								</div>
+								<div class="whyAvvatarBox">
+
+									<div class="whyAvvatarBoxContent">
+										<div class="whyAvvatarBoxHeading text-center">
+											<h3 class="text-uppercase m-0">milk to cheese</h3>
+										</div>
+										<ul>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-5">
+							<div class="whyAvvatarBoxWrapper">
+								<div class="whyAvvatarBoxImg">
+									<img src="{{asset('assets/images/new/about/WhyAvvatarBanner-1.png')}}" class="m-auto img-fluid" alt="aboutBanner">
+								</div>
+								<div class="whyAvvatarBox">
+
+									<div class="whyAvvatarBoxContent">
+										<div class="whyAvvatarBoxHeading text-center">
+											<h3 class="text-uppercase m-0">milk to cheese</h3>
+										</div>
+										<ul>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-5">
+							<div class="whyAvvatarBoxWrapper">
+								<div class="whyAvvatarBoxImg">
+									<img src="{{asset('assets/images/new/about/WhyAvvatarBanner-1.png')}}" class="m-auto img-fluid" alt="aboutBanner">
+								</div>
+								<div class="whyAvvatarBox">
+
+									<div class="whyAvvatarBoxContent">
+										<div class="whyAvvatarBoxHeading text-center">
+											<h3 class="text-uppercase m-0">milk to cheese</h3>
+										</div>
+										<ul>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias porro aliquam odit temporibus.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>

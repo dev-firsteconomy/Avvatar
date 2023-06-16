@@ -31,12 +31,12 @@
 
 						<ul class="widget-list d-lg-flex flex-wrap">
 							<li><a href="/about-avvatar">About Us</a></li>
-							<li><a href="#">Blogs</a></li>
-							<li><a href="#">Why Avvatar</a></li>
+							<li><a href="/blogs">Blogs</a></li>
+							<li><a href="/why-avvatar">Why Avvatar</a></li>
 							<li><a href="/privacy-policy">Privacy Policy</a></li>
-							<li><a href="#">Authenticate</a></li>
+							<li><a href="/authenticate">Authenticate</a></li>
 							<li><a href="/terms-of-use">Terms of Use</a></li>
-							<li><a href="#">Media</a></li>
+							<li><a href="/media">Media</a></li>
 							<li><a href="/returns-policy">Return Policy</a></li>
 						</ul><!-- End .widget-list -->
 					</div><!-- End .widget -->
