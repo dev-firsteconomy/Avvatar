@@ -33,11 +33,12 @@
 						<ul class="menu sf-arrows">
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Why Avvatar
+									About Us
 								</a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="/about-avvatar">About Avvatar</a></li>
 									<li><a class="dropdown-item" href="/about-us-parag-foods">About Parag Foods</a></li>
+									<li><a class="dropdown-item" href="/why-avvatar">Why Avvatar</a></li>
 								</ul>
 							</li>
 							<!-- @foreach ($categoriesHeader as $category)

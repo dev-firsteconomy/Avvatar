@@ -206,7 +206,12 @@ class HomeController extends Controller
         return view('frontend.contact');
     }
 
-    public function aboutus()
+    public function whyAvvatar()
+    {
+        return view('frontend.why-avvatar');
+    }
+	
+	public function aboutus()
     {
         return view('frontend.aboutus');
     }

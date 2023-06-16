@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/contact','HomeController@contact');
     Route::get('/about-avvatar','HomeController@aboutus');
     Route::get('/about-us-parag-foods','HomeController@aboutParagFoods');
+    Route::get('/why-avvatar','HomeController@whyAvvatar');
     Route::get('/product-categories','HomeController@productCategories');
     Route::get('/media','HomeController@media');
     Route::get('/track-order','HomeController@trackOrder');
