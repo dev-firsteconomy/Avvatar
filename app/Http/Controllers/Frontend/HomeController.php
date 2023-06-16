@@ -16,6 +16,7 @@ use App\Models\Laminate;
 use App\Models\Product;
 use App\Models\Catalogue;
 use App\Models\Order;
+use App\Models\Blog;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Models\Banner;
@@ -30,6 +31,7 @@ use Symfony\Component\Console\Input\Input;
 use App\Models\Contact;
 use Spatie\Newsletter\Newsletter;
 use App\Models\SubscribeNewsletter;
+
 use Illuminate\Support\Facades\Mail;
 use Seshac\Shiprocket\Shiprocket;
 use App\Models\Offer;
@@ -121,10 +123,13 @@ class HomeController extends Controller
             // return view('frontend.pages.home_desktop');
            // $categoriesHeader = Category::where('status',1)->where('show_on_header',1)->get();
             $banners = Banner::where('status',1)->latest()->take(5)->get();
+            $blogs = Blog::where('status',1)->latest()->take(3)->get();
+
             $newArrivals = Product::where('status','1')->where('is_giftcard',0)->where('is_new',1)->latest()->take(5)->get();
             $bestSellers = Product::where('status','1')->where('is_giftcard',0)->where('is_bestsellers',1)->take(5)->latest()->get();
-            $categories = Category::where('status','1')->where('is_parent',1)->where('is_giftcard',0)->orderBy('title','ASC')->get();
-            return view('frontend.index',compact('banners','newArrivals','bestSellers','categories'));
+            $categories  = Category::where('status','1')->where('is_parent',1)->where('is_giftcard',0)->orderBy('title','ASC')->get();
+
+            return view('frontend.index',compact('banners','newArrivals','bestSellers','categories','blogs'));
         // }
     }
 
@@ -226,7 +231,7 @@ class HomeController extends Controller
         return view('frontend.track-order');
     }
     
-	public function blogs()
+	public function blogs(Request $request)
     {
         return view('frontend.blogs');
     }
