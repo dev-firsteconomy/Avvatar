@@ -539,7 +539,7 @@
 						<div class="blogCardContent d-flex flex-column gap-3 p-2 px-3">
 							<h2 class="fw-bold m-0">{{ $blog->title }}</h2>
 							<p class="m-0">{{ $blog->short_desc }}</p>
-							<a href="{{ route('blog.detail',$blog->id) }}" class="commonButton-yellow m-0 mb-2">Know More</a>
+							<a href="/" class="commonButton-yellow m-0 mb-2">Know More</a>
 						</div>
 					</div>
 				</div>
