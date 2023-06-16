@@ -26,6 +26,12 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
 
     //color master
     Route::resource('colors','ColorController');
+    
+    // flavours master
+    Route::resource('flavours','FlavourController');
+
+    // proteins master
+    Route::resource('proteins','ProteinController');
 
     //size master
     Route::resource('sizes','SizeController');
@@ -46,10 +52,18 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
 
     // Offer
     //Route::resource('offer','OfferController');
+
     // Banner
     Route::resource('banner','BannerController');
+
     // Brand
     Route::resource('brand','BrandController');
+
+    // Blog
+    Route::resource('blogs','BlogController');
+
+    // Media
+    Route::resource('media','MediaController');
 
     Route::resource('/orderstatus','OrderStatusController');
 

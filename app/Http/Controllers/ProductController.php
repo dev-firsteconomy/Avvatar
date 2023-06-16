@@ -12,8 +12,12 @@ use App\Models\Laminate;
 use App\Models\Attribute;
 use App\Models\Thickness;
 use App\Models\Color;
+use App\Models\Protein;
 use App\Models\Size;
 use App\Models\Fabric;
+use App\Models\ProductProtein;
+use App\Models\ProductNutrition;
+use App\Models\Flavour;
 use App\Models\Orientation;
 use App\Models\Application;
 use Illuminate\Support\Str;
@@ -30,6 +34,7 @@ use App\Exports\ProductImagesExport;
 use App\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use File;
+
 class ProductController extends Controller
 {
     /**
@@ -71,12 +76,13 @@ class ProductController extends Controller
     {
         $colors          = Color::where('status',1)->get();
         $sizes           = Size::where('status',1)->get();
+        $flavours        = Flavour::where('status',1)->get();
+        $proteins        = Protein::where('status',1)->get();
         $fabrics         = Fabric::where('status',1)->get();
         $orientations    = Orientation::where('status',1)->get();
         $related_products= Product::orderBy('name')->where('status',1)->get();
         $categories      = Category::pluck('title','id');
-
-        return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations'));
+        return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations','proteins'));
     }
 
     /**
@@ -87,22 +93,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
         $data = $request->except(['_token','sizeWiseImage_group']);
-
         // $data=$request->all();
+        // dd($request->all());
 
         $this->validate($request,[  
              'category_id'=>'required',
              'name'=>'required',
              'hsn'=>'required',
-             'price'=>'required',
-             'discount'=>'required',
              'min_qty'=>'required',
              'tag'=>'required',
              'description'=>'required',
-             'additional_information'=>'required',
-             'related_products'=>'required',
+             'faq'=>'required',
              'status'=>'required',
         ]);
 
@@ -115,70 +117,57 @@ class ProductController extends Controller
 
         $data['slug']=$slug;
         $data['title']=$request->name;
-        $data['related_products']=$request->related_products;
         $data['is_featured']=$request->input('is_featured',0);
         $data['is_new']=$request->input('is_new',0);
         $data['is_bestsellers']=$request->input('is_bestsellers',0);
-        // $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
+        // $data['related_products']=$request->related_products;
+        $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
         
-        if($request->offer)
-        {
-            $data['is_offer'] = 1;
-            $data['offer'] = $request->offer;
-        }
-        else
-        {
-            $data['is_offer'] = 0;
-            $data['offer'] = 0;
-        }
-        // if($request->image1){
-        //     $fileName = rand().time().'.'.$request->image1->getClientOriginalExtension();
-        //     $request->image1->move(base_path('public/images/products'), $fileName);
-        //     $data['image1']= $fileName;
-        // }
-
+       
         DB::beginTransaction();
         try
         {
-           $status = Product::create($data);
+           $product = Product::create($data);
+
+           if(!empty($request->nutrition_images))
+           {
+               if(file_exists($request['nutrition_images'][0]))
+               {
+                   foreach($request['nutrition_images'] as $imageItem)
+                   {
+                       $image = time() . '_'. $imageItem->getClientOriginalName();
+                       $path = public_path('/images/nutrition_images');
+                       
+                       if (!File::isDirectory($path)) 
+                       {
+                           File::makeDirectory($path, 0777, true, true);
+                       }
+                       $imageItem->move($path,$image);
+                       $fileName = '/images/nutrition_images/'.$image;
+
+                       ProductNutrition::create([
+                           'product_id' =>$product->id,
+                           'image'=> $fileName
+                       ]);
+                   }
+               }
+           }
+
+           if($request->protein_group != null)
+           {
+               $protein_group = $request->protein_group;
+               $this->store_proteinLevel($protein_group,$product);
+           }
 
            if($request->sizeWiseImage_group != null)
            {
                $sizeWiseImage_group = $request->sizeWiseImage_group;
-               $this->store_images($sizeWiseImage_group,$status);
+               $this->store_images($sizeWiseImage_group,$product);
            }
 
-        //    if($request->sizes)
-        //    {   
-        //        $sizes = $request->sizes;
-        //        $colors = $request->colors;
-        //        $quantities = $request->stock_quantities;
-               
-        //         foreach($sizes as $key => $size)
-        //         {
-        //             $prodStock = new ProductStock;
-        //             $prodStock->product_id=$status->id;
-        //             $prodStock->size_id=$size;
-        //             $prodStock->color_id=$colors[$key];
-        //             $prodStock->stock_qty= $quantities[$key];
-        //             $prodStock->save();
-        //         }
-        //    }
+           
 
-        //Application
-        // if(@$data['applications'] && count($data['applications'])){
-        //    $status->applications()->attach($data['applications']);
-        // }
-        //Characteristics
-        // if(@$data['characteristics'] && count($data['characteristics'])){
-        //    $status->characteristics()->attach($data['characteristics']);
-        // }
-        //Features
-        // if(@$data['features'] && count($data['features'])){
-        //    $status->features()->attach($data['features']);
-        // }
-
-            if($status)
+            if($product)
             {
                 request()->session()->flash('success','Product Successfully added');
             }
@@ -186,6 +175,7 @@ class ProductController extends Controller
             {
                 request()->session()->flash('error','Please try again!!');
             }
+
             DB::commit();
             return redirect()->route('product.index');
         }
@@ -196,17 +186,43 @@ class ProductController extends Controller
         }    
     }
 
-    public function store_images($sizeWiseImage_group,$status)
+    public function store_proteinLevel($protein_group,$product)
+    {
+        foreach($protein_group as $item)
+        { 
+            if($item['proteins'] !== null && $item['description'] !== '' && $item['protein_value'] !== null) 
+            {
+                $protein_id = (int)$item['proteins'];
+                $protein_value = $item['protein_value'];
+                $description = $item['description'];
+
+                ProductProtein::create([
+                    'product_id'=> $product->id,
+                    'protein_id'=> $protein_id,
+                    'protein_value'=> $protein_value,
+                    'description'=> $description,
+                ]);
+            }
+        }
+    }
+
+    public function store_images($sizeWiseImage_group,$product)
     {
         foreach($sizeWiseImage_group as $item)
-        {
-            // if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
-            if (isset($item['sizes']) && isset($item['stock_quantities']) && $item['sizes'] !== '' && $item['stock_quantities'] !== '')
+        { 
+            if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
             {
-                ProductStock::updateOrCreate([
-                    'product_id'=> (int)$status->id,
-                    'size_id'=> (int)$item['sizes'],
-                    'stock_qty'=> (int)$item['stock_quantities'],
+                $size_id = (int)$item['sizes'];
+                $price = (int)$item['price'];
+                $sale_price = (int)$item['sale_price'];
+
+                ProductStock::create([
+                    'product_id'=> $product->id,
+                    'size_id'=> $size_id,
+                    'price'=> $price,
+                    'sale_price'=> $sale_price,
+                    'discount' => (($price - $sale_price) / $price) * 100,
+                    'stock_qty'=> (int)@$item['stock_quantities'],
                 ]);
 
                 if(!empty($item['image']))
@@ -216,17 +232,18 @@ class ProductController extends Controller
                         foreach($item['image'] as $imageItem)
                         {
                             $image = time() . '_'. $imageItem->getClientOriginalName();
-                            $path = base_path('public/images/products');
+                            $path = public_path('/images/product_images');
+                            
                             if (!File::isDirectory($path)) 
                             {
                                 File::makeDirectory($path, 0777, true, true);
                             }
-                            $imageItem->move($path,$imageItem);
-                            $fileName = base_path('public/images/products').$image;
+                            $imageItem->move($path,$image);
+                            $fileName = '/images/product_images/'.$image;
 
-                            ProductImage::updateOrCreate([
-                                'product_id' =>$status->id,
-                                'size_id'=> (int)$item['sizes'],
+                            ProductImage::create([
+                                'product_id' =>$product->id,
+                                'size_id'=> $size_id,
                                 'image'=> $fileName
                             ]);
                         }
@@ -235,169 +252,147 @@ class ProductController extends Controller
             }
         }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
-        //
-        dd(1323);
+        $product=Product::findOrFail($id);
+        $relatedProductsList = unserialize($product->related_products);
+        $relatedProductsList = Product::whereIn('id',$relatedProductsList)->pluck('name');
+        $product_images = DB::table('products')
+                ->select('product_images.*')
+                ->join('product_stocks', 'products.id', '=', 'product_stocks.product_id')
+                ->join('product_images', 'products.id', '=', 'product_images.product_id')
+                ->groupBy('products.id', 'products.name', 'product_images.image')
+                ->where('products.id', '=' , $id)
+                ->get();
+        return view('backend.product.show',compact('product','product_images','relatedProductsList'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id)
     {
-        $product=Product::findOrFail($id);      
-        $related_products   = Product::orderBy('name')->where('status',1)->where('is_giftcard',0)->get();
+        $product_images = DB::table('products')
+                ->select('product_images.*')
+                ->join('product_stocks', 'products.id', '=', 'product_stocks.product_id')
+                ->join('product_images', 'products.id', '=', 'product_images.product_id')
+                ->groupBy('products.id', 'products.name', 'product_images.image')
+                ->where('products.id', '=' , $id)
+                ->get();
+        
+        $product=Product::findOrFail($id);  
+        $related_products   = Product::orderBy('name')->where('status',1)->get();
+        $relatedProductsList = unserialize($product->related_products);
         $categories         = Category::pluck('title','id');
-        $colors         = Color::where('status',1)->get();   
-        $sizes           = Size::where('status',1)->get(); 
-        $fabrics           = Fabric::where('status',1)->get();   
-        $orientations           = Orientation::where('status',1)->get();
-
-        return view('backend.product.edit',compact('product','categories','related_products','colors','sizes','fabrics','orientations'));
+        $colors             = Color::where('status',1)->get();   
+        $sizes              = Size::where('status',1)->get(); 
+        $fabrics            = Fabric::where('status',1)->get();   
+        $orientations       = Orientation::where('status',1)->get();
+        $flavours           = Flavour::where('status',1)->get();
+        $proteins        = Protein::where('status',1)->get();
+        return view('backend.product.edit',compact('product','proteins','relatedProductsList','product_images','flavours','categories','related_products','colors','sizes','fabrics','orientations'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
+        dd($request->all());
+        dd("YOU HAVE TO RESOLVE ERRORES FIRST");
+        // $data=$request->all();
+        $data = $request->except(['_token','sizeWiseImage_group']);
         $product=Product::findOrFail($id);
-        $data=$request->all();
 
-        $this->validate($request,[
-             'category_id'=>'required',
-             'name'=>'required',
-             'design'=>'required',
-             'hsn'=>'required',
-             'fabric'=>'required',
-             'orientation'=>'required',
-             'price'=>'required',
-             'min_qty'=>'required',
-             'stock_quantities'=>"required",
-             'description'=>'required',
-             'additional_information'=>'required',
-             'related_products'=>'required',     
-             'status'=>'required',            
-             'discount'=>'required',             
-        ]);
+        $this->validate($request,[  
+            'category_id'=>'required',
+            'name'=>'required',
+            'hsn'=>'required',
+            'min_qty'=>'required',
+            'tag'=>'required',
+            'description'=>'required',
+            'additional_information'=>'required',
+            'status'=>'required',
+       ]);
+
+        $slug = Str::slug($request->name);
+        $count= Product::where('slug',$slug)->count();
+        if($count>0)
+        {
+            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
+        }
+        $data['slug']=$slug;
 
         $data['is_featured']=$request->input('is_featured',0);
         $data['is_new']=$request->input('is_new',0);
         $data['is_bestsellers']=$request->input('is_bestsellers',0);
         $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
-        $data['orientation']=@$request->orientation && count($request->orientation) ? serialize($request->orientation) :null;
-
-        if($request->offer)
-        {
-            $data['is_offer'] = 1;
-            $data['offer'] = $request->offer;
-        }
-        else
-        {
-            $data['is_offer'] = 0;
-            $data['offer'] = 0;
-        }
-
-
-        // if($request->meta_image){
-        //     $fileName = 'images/products/meta_image/'.rand().time().'.'.$request->meta_image->getClientOriginalExtension();
-        //     $request->photo->move(base_path('public/images/products/meta_image'), $fileName);
-        //     $data['meta_image']= $fileName;
-        // }
-        // return $data;
        
         DB::beginTransaction();
         try
         {
+           $product->fill($data)->save();
+           $product = $product;
 
-           $status=$product->fill($data)->save();
-
-                //Application
-                // if(@$data['applications'] && count($data['applications'])){
-                //     $product->applications()->sync($data['applications']);
-                // }
-
-                    //Attributes
-                // if(@$data['attributes'] && count($data['attributes'])){
-                //     $product->attributes()->sync($data['attributes']);
-                // }
-
-                    //Characteristics
-                // if(@$data['characteristics'] && count($data['characteristics'])){
-                //     $product->characteristics()->sync($data['characteristics']);
-                // }
-
-                    //Features
-                // if(@$data['features'] && count($data['features'])){
-                //     $product->features()->sync($data['features']);
-                // }
-
-                    //Laminates
-                // if(@$data['laminates'] && count($data['laminates'])){
-                //     $product->laminates()->sync($data['laminates']);
-                // }
-
-
-                    //Textures
-                // if(@$data['textures'] && count($data['textures'])){
-                //     $product->textures()->sync($data['textures']);
-                // }
-
-
-                    //Thicknesses
-                // if(@$data['thicknesses'] && count($data['thicknesses'])){
-                //     $product->thicknesses()->sync($data['thicknesses']);
-                // }
-
-                if($request->sizes)
-                {   
-                    $sizes = $request->sizes;
-                    $colors = $request->colors;
-                    $quantities = $request->stock_quantities;
-                    
-                    foreach($sizes as $key => $size)
-                    {
-                        ProductStock::updateOrCreate(['product_id'=> $id, 'size_id' => $size,'color_id' => $colors[$key]],['stock_qty' =>$quantities[$key]]);
-                    }
-                }
-    
-                if(count($request->colorsImages))
+            if(!empty($request->sizes))
+            {
+                foreach($request->sizes as $key => $size)
                 {
-                        foreach(@$request->colorsImages as $key => $color)
-                        {  
-                            if($color)
-                            {
-                                foreach($request->images[$key] as $image)
-                                {                 
-                                        $icon=mt_rand();
-                                        $filename=$icon.$image->getClientOriginalName();
-                                        $image->move(public_path('/images/products'), $filename); 
-                                        $prodImage = new ProductImage;
-                                        $prodImage->product_id=$id;
-                                        $prodImage->color_id = $color;
-                                        $prodImage->image = '/images/products/'.$filename;
-                                        $prodImage->save();
-                                }
-                            }    
-                        }
-                }      
+                    $productStock =  ProductStock::where('product_id', $id)->where('size_id', $size)->first();
 
-            if($status)
+                    if($productStock) 
+                    {
+                        $productStock->update([
+                            'product_id' => $id, 
+                            'size_id'    => $size,
+                            'price'      => $request->price[$key],
+                            'sale_price' => $request->sale_price[$key],
+                            'discount'   => 100 - ((100 * $request->sale_price[$key]) / $request->price[$key]),
+                            'stock_qty'  => $request->stock_qty[$key],
+                        ]);
+                    } 
+                    else 
+                    {
+                    }
+
+                    if(!empty($request->hasFile('images')))
+                    {
+                        if(file_exists($request['images'][0]))
+                        {
+                            foreach($request['images'] as $imageItem)
+                            {
+                                try 
+                                {
+                                    $image = time() . '_'. $imageItem->getClientOriginalName();
+                                    $path = public_path('/images/product_images');
+                                    
+                                    if (!File::isDirectory($path)) 
+                                    {
+                                        File::makeDirectory($path, 0777, true, true);
+                                    }
+                                    $imageItem->move($path,$image);
+                                    $fileName = '/images/product_images/'.$image;
+
+                                    $prodImage = new ProductImage;
+                                    $prodImage->product_id = (int)$id;
+                                    $prodImage->size_id    = (int)$size;
+                                    $prodImage->image = $fileName;
+                                    $prodImage->save();
+                                } 
+                                catch (\Exception $e) 
+                                {
+                                   dd($e);
+                                }
+                            }
+                        }
+                    }
+                }   
+            }
+
+            if($request->sizeWiseImage_group != null)
+            {
+               $sizeWiseImage_group = $request->sizeWiseImage_group;
+               $this->store_images($sizeWiseImage_group,$product);
+            }
+
+            if($product)
             {
                 request()->session()->flash('success','Product Successfully updated');
             }
@@ -445,9 +440,12 @@ class ProductController extends Controller
         $id = $request->id;
 
         $prodVariation = ProductStock::findOrFail($id);
-        $status = $prodVariation->delete();
+        $productImages = ProductImage::where('size_id',$prodVariation->size_id)->where('product_id',$prodVariation->product_id)->first();
 
-        if($status)
+        $variationStatus = $prodVariation->delete();
+        $imageStatus = $productImages->delete();
+
+        if($variationStatus && $imageStatus)
         {
             return 1;
         }
@@ -547,7 +545,7 @@ class ProductController extends Controller
         } 
 
         // $datas = Excel::toArray(new ProductsImport, $request->file('file')); 
-        
+        dd($datas[0]);
         foreach($datas[0] as $k => $v)
         {  
             if($k != 0)
@@ -557,8 +555,8 @@ class ProductController extends Controller
                     $product = Product::where('design',$v[2])->first();
                     if(!$product)
                     {               
-                        $data['name']        = $v[1];
                         $data['category_id'] = Category::where('title',$v[0])->first()->id;
+                        $data['name']        = $v[1];
                         $data['title']       = $v[1];
 
                         $slug=Str::slug($v[1]);
@@ -569,32 +567,16 @@ class ProductController extends Controller
                         }
                 
                         $data['slug']        = $slug;
-                        $data['design']      = $v[2];
-                        $data['hsn']         = $v[3];
-                        $data['fabric']      = Fabric::where('name',$v[4])->first()->id;
-
-                        $orientations = Orientation::whereIn('name',explode(',',$v[5]))->get()->pluck('id')->toArray();
-                        if(count($orientations) > 0)
-                        {
-                            $orientations = serialize($orientations);
-                        }
-                        else
-                        {
-                            $orientations = null;
-                        }
-
-                        $data['orientation'] = $orientations;
-                        $data['price']       = $v[6];
-                        $data['discount']    = $v[7];                
-                        $data['min_qty']     = $v[8];
-                        $data['tag']         = $v[9];
-                        $data['description'] = $v[10];
-                        $data['additional_information']     = $v[11];
-                        $data['meta_title']   = $v[12];
-                        $data['meta_keyword'] = $v[13];
-                        $data['meta_description'] = $v[14];
-
-                        $relatedProducts = Product::whereIn('name',explode(',',$v[15]))->get()->pluck('id')->toArray();
+                        $data['hsn']         = $v[2];
+                        $data['min_qty']     = $v[3];
+                        $data['tag']         = $v[4];
+                        $data['description'] = $v[5];
+                        $data['additional_information'] = $v[6];
+                        $data['meta_title']   = $v[7];
+                        $data['meta_keyword'] = $v[8];
+                        $data['meta_description'] = $v[9];
+                        
+                        $relatedProducts = Product::whereIn('name',explode(',',$v[10]))->get()->pluck('id')->toArray();
                         if(count($relatedProducts) > 0)
                         {
                             $relatedProducts = serialize($relatedProducts);
@@ -605,55 +587,57 @@ class ProductController extends Controller
                         }
 
                         $data['related_products'] = $relatedProducts;
-                        $data['is_featured']      = $v[16];
-                        $data['is_new']           = $v[17];
-                        $data['is_bestsellers']   = $v[18];
-                        $data['is_offer']         = $v[19];
-                        $data['offer']            = $v[20];
-                        $data['status']           = $v[21];
+                        $data['is_featured']      = $v[11];
+                        $data['is_new']           = $v[12];
+                        $data['is_bestsellers']   = $v[13];
+                        $data['status']           = $v[14];
+                        
+
+                        // $data['offer']            = $v[20];
+                        // $data['is_offer']         = $v[19];
+                        // $data['discount']    = $v[7];                
+                        // $data['price']       = $v[6];
+                        // $data['design']      = $v[2];
+                        // $data['fabric']      = Fabric::where('name',$v[4])->first()->id;
+
+                        // $orientations = Orientation::whereIn('name',explode(',',$v[5]))->get()->pluck('id')->toArray();
+                        // if(count($orientations) > 0)
+                        // {
+                        //     $orientations = serialize($orientations);
+                        // }
+                        // else
+                        // {
+                        //     $orientations = null;
+                        // }
+                        // $data['orientation'] = $orientations;
+                        // $data['min_qty']     = $v[8];
 
                         Product::create($data);
                     }    
                     else
                     {
-                        $product->name       = $v[1];
                         $product->category_id = Category::where('title',$v[0])->first()->id;
+                        $product->name       = $v[1];
                         $product->title       = $v[1];
 
                         $slug=Str::slug($v[1]);
-                        $count= Product::where('slug',$slug)->where('id','<>',$product->id)->count();
-                        if($count > 0)
+                        $count= Product::where('slug',$slug)->count();
+                        if($count>0)
                         {
-                            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
+                            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
                         }
                 
-                        $product->slug        = $slug;
-                        $product->design      = $v[2];
-                        $product->hsn         = $v[3];
-                        $product->fabric      = Fabric::where('name',$v[4])->first()->id;
-
-                        $orientations = Orientation::whereIn('name',explode(',',$v[5]))->get()->pluck('id')->toArray();
-                        if(count($orientations) > 0)
-                        {
-                            $orientations = serialize($orientations);
-                        }
-                        else
-                        {
-                            $orientations = null;
-                        }
-
-                        $product->orientation = $orientations;
-                        $product->price      = $v[6];
-                        $product->discount    = $v[7];                
-                        $product->min_qty     = $v[8];
-                        $product->tag        = $v[9];
-                        $product->description = $v[10];
-                        $product->additional_information     = $v[11];
-                        $product->meta_title   = $v[12];
-                        $product->meta_keyword = $v[13];
-                        $product->meta_description = $v[14];
-
-                        $relatedProducts = Product::whereIn('name',explode(',',$v[15]))->get()->pluck('id')->toArray();
+                        $data['slug']        = $slug;
+                        $data['hsn']         = $v[2];
+                        $data['min_qty']     = $v[3];
+                        $data['tag']         = $v[4];
+                        $data['description'] = $v[5];
+                        $data['additional_information'] = $v[6];
+                        $data['meta_title']   = $v[7];
+                        $data['meta_keyword'] = $v[8];
+                        $data['meta_description'] = $v[9];
+                        
+                        $relatedProducts = Product::whereIn('name',explode(',',$v[10]))->get()->pluck('id')->toArray();
                         if(count($relatedProducts) > 0)
                         {
                             $relatedProducts = serialize($relatedProducts);
@@ -663,13 +647,12 @@ class ProductController extends Controller
                             $relatedProducts = null;
                         }
 
-                        $product->related_products = $relatedProducts;
-                        $product->is_featured      = $v[16];
-                        $product->is_new          = $v[17];
-                        $product->is_bestsellers   = $v[18];
-                        $product->is_offer         = $v[19];
-                        $product->offer            = $v[20];
-                        $product->status          = $v[21];
+                        $data['related_products'] = $relatedProducts;
+                        $data['is_featured']      = $v[11];
+                        $data['is_new']           = $v[12];
+                        $data['is_bestsellers']   = $v[13];
+                        $data['status']           = $v[14];
+                        
                         $product->update();
                     }
                 }    
@@ -692,8 +675,10 @@ class ProductController extends Controller
                 {  
                     $data['product_id']  = Product::where('name',$v[0])->first()->id;
                     $data['size_id']     = Size::where('name',$v[1])->first()->id;
-                    $data['color_id']    = Color::where('name',$v[2])->first()->id;                
-                    $data1['stock_qty']  = $v[3];
+                    // $data['color_id']    = Color::where('name',$v[2])->first()->id;                
+                    $data1['price']  = $v[2];
+                    $data1['sale_price']  = $v[3];
+                    $data1['stock_qty']  = $v[4];
                     ProductStock::updateOrCreate($data,$data1);
                 }    
             }            
@@ -707,6 +692,8 @@ class ProductController extends Controller
     {
         $datas = Excel::toArray(new ProductImagesImport, $request->file('file')); 
         
+        dd($datas[0]);
+
         foreach($datas[0] as $k => $v)
         {  
             if($k != 0)
@@ -714,7 +701,7 @@ class ProductController extends Controller
                 if($v[0] != '')
                 {  
                     $data['product_id']  = Product::where('name',$v[0])->first()->id;
-                    $data['color_id']    = Color::where('name',$v[1])->first()->id;
+                    $data['size_id']     = Size::where('name',$v[1])->first()->id;
 
                     $baseName = pathinfo($v[2]);
                     $baseName = $baseName['basename'];

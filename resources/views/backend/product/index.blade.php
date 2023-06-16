@@ -27,10 +27,8 @@
               <th>S.N.</th>
               <th>Category</th>
               <th>Name</th>
-              <th>Design</th>
-              <th>Product Price</th>
               <th>Status</th>
-              <th>Action</th>
+              <th>Take Action</th>
             </tr>
           </thead>
          
@@ -40,24 +38,23 @@
                     <td>{{$product->id}}</td>
                     <td>{{$product->category->title}}</td>
                     <td>{{$product->name}}</td>
-                    <td>{{$product->design}}</td>
-                    <td>Rs. {{$product->price}} /-</td>
+                    
                     <td>
-                        @if($product->status == '1')
+                        @if($product->status == 1)
                             <span class="badge badge-success">Active</span>
                         @else
                             <span class="badge badge-warning">Inactive</span>
                         @endif
                     </td>
-                    <td>
+                    <td class="actionButtons">
                         <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('product.destroy',[$product->id])}}">
+                        <form method="POST" class="d-inline-block" action="{{route('product.destroy',[$product->id])}}">
                           @csrf
                           @method('delete')
-                          <button class="btn btn-danger btn-sm dltBtn" data-id={{$product->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                          <button class="btn btn-danger btn-sm dltBtn" data-id="{{$product->id}}" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
 
-                        <a href="{{url('admin/product/viewStock',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="View Stock" data-placement="bottom"><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('product.show',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="View Stock" data-placement="bottom"><i class="fas fa-eye"></i></a>
                     </td>
                 </tr>
             @endforeach

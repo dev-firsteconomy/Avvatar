@@ -33,8 +33,8 @@
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
-              <option value="1" {{$city->status == 1 ?? 'selected'}}>Active</option>
-              <option value="0" {{$city->status == 0 ?? 'selected'}}>Inactive</option>
+              <option value="1" {{$city->status == 1 ? 'selected':''}}>Active</option>
+              <option value="0" {{$city->status == 0 ? 'selected':''}}>Inactive</option>
           </select>
           @error('status')
              <span class="text-danger">{{$message}}</span>

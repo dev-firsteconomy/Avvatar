@@ -115,7 +115,7 @@ class LoginController extends Controller
                 Alert::success('Hello '. Auth::user()->name, 'You have been registered and logged in successfully');
                 Mail::send('mail.new-account-cus', ['user' => $user], function ($message) use ($email) {
                     $message->to($email);
-                    $message->subject('Welcome To Zehna');
+                    $message->subject('Welcome To '.env('APP_NAME'));
                 });
                 if($request->popup==1)
                 return redirect()->back();
