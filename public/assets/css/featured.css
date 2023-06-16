@@ -1477,3 +1477,51 @@ span.sr-only {
 	display: -ms-flexbox;
 	display: flex;
 }
+
+.whyAvvatarBox {
+	background-color: #FFF2D0;
+	border: 2px solid #F7BC2A;
+	padding: 170px 0px 15px;
+	margin-top: -150px;
+}
+
+.whyAvvatarBoxImg img {
+	width: 300px;
+}
+
+.whyAvvatarBoxHeading {
+	background-color: #F7BC2A;
+	padding: 10px 5px;
+}
+
+.whyAvvatarBoxHeading h3 {
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.whyAvvatarBoxContent ul {
+	list-style-type: disc;
+	margin: 15px 0 0 15px;
+	padding: 0 15px;
+}
+
+.whyAvvatarBoxContent ul li {
+	color: #000;
+}
+
+.whyAvvatarBoxContent ul li::marker {
+	color: #F7BC2A;
+}
+
+.whyAvvatarBoxContent ul li + li {
+	margin-top: 10px;
+}
+
+.makingAvvatar .col-md-5:nth-child(2),
+.makingAvvatar .col-md-5:nth-child(4) {
+	margin-top: 200px;
+}
+
+.makingAvvatar .col-md-5:nth-child(3) {
+	margin-top: -65px;
+}
