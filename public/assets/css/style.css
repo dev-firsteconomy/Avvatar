@@ -6190,7 +6190,8 @@ p {
 
 .footer a:hover,
 .footer a:focus {
-	color: #F7BC2A
+	color: #000;
+	font-weight: 600;
 }
 
 .footer .widget {
