@@ -263,6 +263,35 @@
 		margin-bottom: 0;
 	}
 
+	.productReviewBox {
+		gap: 20px;
+	}
+
+	.productReviewUserImg,
+	.productReviewUserImg img {
+		min-width: 60px;
+	}
+
+	.productReviewContentBox {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	.productReviewContent {
+		-webkit-box-ordinal-group: 3;
+		-ms-flex-order: 2;
+		order: 2;
+	}
+
+	.productReviewContentBox:after {
+		top: 15%;
+		left: -13px;
+		border: 14px solid transparent;
+		border-right-color: #F5F7F6;
+	}
 
 }
 
@@ -403,6 +432,29 @@
 		font-size: 20px;
 	}
 
+	.productReviewUserImg,
+	.productReviewUserImg img {
+		min-width: 60px;
+	}
+
+	.product-details-tab .nav.nav-tabs .nav-link {
+		font-size: 14px;
+		padding: 6px 10px;
+	}
+
+	.social-icons-sm .social-icon {
+		font-size: 1.2rem;
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.checkDelivery .form-control {
+		width: 130px;
+	}
+
+	.checkDelivery .col-auto {
+		padding-right: 5px;
+	}
 }
 
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1199px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {

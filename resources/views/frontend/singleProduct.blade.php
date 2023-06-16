@@ -257,7 +257,7 @@
 	<div class="product-details-tab">
 		<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
 			<li class="nav-item" role="presentation">
-				<button class="nav-link active" id="product-description" data-bs-toggle="tab" data-bs-target="#product-description-pane" type="button" role="tab" aria-controls="product-description-pane" aria-selected="true">Product Description</button>
+				<button class="nav-link" id="product-description" data-bs-toggle="tab" data-bs-target="#product-description-pane" type="button" role="tab" aria-controls="product-description-pane" aria-selected="true">Product Description</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="product-protein-level" data-bs-toggle="tab" data-bs-target="#product-protein-level-pane" type="button" role="tab" aria-controls="product-protein-level-pane" aria-selected="false">Protein Level</button>
@@ -269,12 +269,12 @@
 				<button class="nav-link" id="product-faq" data-bs-toggle="tab" data-bs-target="#product-faq-pane" type="button" role="tab" aria-controls="product-faq-pane" aria-selected="false">FAQs</button>
 			</li>
 			<li class="nav-item" role="presentation">
-				<button class="nav-link" id="product-reviews" data-bs-toggle="tab" data-bs-target="#product-reviews-pane" type="button" role="tab" aria-controls="product-reviews-pane" aria-selected="false">Reviews</button>
+				<button class="nav-link active" id="product-reviews" data-bs-toggle="tab" data-bs-target="#product-reviews-pane" type="button" role="tab" aria-controls="product-reviews-pane" aria-selected="false">Reviews</button>
 			</li>
 		</ul>
 
 		<div class="tab-content">
-			<div class="tab-pane fade show active" id="product-description-pane" role="tabpanel" aria-labelledby="product-description" tabindex="0">
+			<div class="tab-pane fade" id="product-description-pane" role="tabpanel" aria-labelledby="product-description" tabindex="0">
 				<div class="product-desc-content">
 					<div class="productDescription">
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
@@ -362,11 +362,12 @@
 					<!--{!! $product->additional_information !!}-->
 				</div><!-- End .product-desc-content -->
 			</div><!-- .End .tab-pane -->
-			<div class="tab-pane fade" id="product-reviews-pane" role="tabpanel" aria-labelledby="product-reviews" tabindex="0">
+			<div class="tab-pane fade show active" id="product-reviews-pane" role="tabpanel" aria-labelledby="product-reviews" tabindex="0">
 				<div class="product-desc-content">
 					<div class="productFaqTop w-100 d-flex flex-column flex-md-row">
-						<div class="starRatingWrapper d-flex">
+						<div class="starRatingWrapper d-flex align-items-center">
 							<div class="star-rating me-md-2">
+								<!--
 								<input type="radio" id="5-stars" name="rating" value="5" />
 								<label for="5-stars" class="star">&#9733;</label>
 								<input type="radio" id="4-stars" checked name="rating" value="4" />
@@ -377,6 +378,12 @@
 								<label for="2-stars" class="star">&#9733;</label>
 								<input type="radio" id="1-star" name="rating" value="1" />
 								<label for="1-star" class="star">&#9733;</label>
+-->
+								<i class="icon-star"></i>
+								<i class="icon-star"></i>
+								<i class="icon-star"></i>
+								<i class="icon-star"></i>
+								<i class="icon-star-o"></i>
 							</div>
 							<div class="basedOnReviews">
 								<p>Based on <span>5 </span>Reviews</p>
@@ -398,8 +405,41 @@
 							</div>
 						</div>
 					</div>
-					<div class="productFaq">
-
+					<div class="productReviewBox">
+						<div class="productReviewUserImg">
+							<img src="https://placehold.it/70x70" class="img-fluid" alt="">
+						</div>
+						<div class="productReviewContentBox d-flex align-items-md-center">
+							<div class="productReviewContent">
+								<div class="productReviewUser">
+									<h4>User Name</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nam nostrum expedita laudantium animi, commodi a aperiam numquam odit necessitatibus dolorem quasi nemo id recusandae ad, consequatur minima quidem voluptates.</p>
+								</div>
+							</div>
+							<div class="productReviewRating">
+								<div class="starRatingWrapper d-flex">
+									<div class="star-rating me-md-2">
+										<!--
+										<input type="radio" id="15-stars" name="rating" value="15" />
+										<label for="15-stars" class="star">&#9733;</label>
+										<input type="radio" id="14-stars" checked name="rating" value="14" />
+										<label for="14-stars" class="star">&#9733;</label>
+										<input type="radio" id="13-stars" name="rating" value="13" />
+										<label for="13-stars" class="star">&#9733;</label>
+										<input type="radio" id="12-stars" name="rating" value="12" />
+										<label for="12-stars" class="star">&#9733;</label>
+										<input type="radio" id="11-star" name="rating" value="11" />
+										<label for="11-star" class="star">&#9733;</label>
+-->
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star-o"></i>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<!--{!! $product->additional_information !!}-->
 				</div><!-- End .product-desc-content -->
