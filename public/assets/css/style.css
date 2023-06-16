@@ -22177,3 +22177,7 @@ p.footer-copyright a {
 .product-details-action .btn-product {
 	min-width: 155px;
 }
+
+.youMaylike .owl-stage-outer {
+	padding: 10px;
+}
