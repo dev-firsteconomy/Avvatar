@@ -105,46 +105,40 @@
                     </div>
                 </div>
 
-                @if(isset($product->sizesstocks))
+                @if(isset($product->productProtein))
                 <div class="col-md-12">
                     <label for="color"> Protein Level</label>
                     <div class="row">
-                        <div class="form-group col-md-2">Size</div>
-                        <div class="form-group col-md-3">Image</div>
-                        <div class="form-group col-md-2">Stock Qty</div>
-                        <div class="form-group col-md-2">Price</div>
-                        <div class="form-group col-md-2">Sale Price</div>
+                        <div class="form-group col-md-2">Protein Name</div>
+                        <div class="form-group col-md-3">Value</div>
+                        <div class="form-group col-md-2">Description</div>
                     </div>
                     @foreach($product->productProtein as $proteinsItem)
                     <div class="repeater mt-repeater">
                         <div data-repeater-list="protein_group">
                             <div class="row" data-repeater-item>
                                 <div class="form-group col-md-2">
-                                    <label>Size<span class="text-danger">*</span></label>
                                     <select name="proteins[]" class="form-control" required>
                                         <option value="">Select Protein Name</option>
                                         @foreach($proteins as $key=>$attribute)
-                                        <option value='{{$attribute->id}}'>{{$attribute->name}}</option>
+                                        <option value="{{$attribute->id}}" {{ ($proteinsItem->protein_id == $attribute->id) ? 'selected' : ''  }}>{{$attribute->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-2">
-                                    <label for="protein_value">Value<span class="text-danger">*</span></label>
                                     <input id="protein_value" type="text" name="protein_value[]" min="0"
-                                        placeholder="Protein Value" value="{{ old('protein_value') }}"
+                                        placeholder="Protein Value" value="{{ $proteinsItem->protein_value }}"
                                         class="form-control" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="description">Description <span class="text-danger">*</span></label>
                                     <input id="description" type="text" name="description[]" min="0"
-                                        placeholder="Short Description" value="{{ old('description') }}"
+                                        placeholder="Short Description" value="{{ $proteinsItem->description }}"
                                         class="form-control" required>
                                 </div>
 
                                 <div class="form-group col-md-1">
-                                    <label>Delete :</label>
                                     <input data-repeater-delete type="button" value="Delete"
                                         class="form-control btn btn-secondary delete-button" />
                                 </div>
@@ -153,7 +147,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <input data-repeater-create type="button" value="+ Add More" id="color_repeater-button"
+                                <input data-repeater-create type="button" value="+ Add More" id="protein-button"
                                     class="form-control btn btn-primary" />
                             </div>
                         </div>
@@ -196,7 +190,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <input data-repeater-create type="button" value="+ Add More" id="color_repeater-button"
+                                <input data-repeater-create type="button" value="+ Add More" id="protein_repeater-button"
                                     class="form-control btn btn-primary" />
                             </div>
                         </div>
