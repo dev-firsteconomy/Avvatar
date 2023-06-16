@@ -39,9 +39,9 @@
 
 			<div class="container">
 				<div class="videoContent d-flex flex-column justify-content-center" id="videoContent">
-					<h3 class="text-white">Unleash your</h3>
-					<h2 class="text-uppercase text-white d-inline-flex">inner strength</h2>
-					<p class="text-white">With our premium Indian whey <br> protein supplemets</p>
+					<h3>Unleash your</h3>
+					<h2>inner strength</h2>
+					<p>With our premium Indian whey <br> protein supplemets</p>
 					<div title="Play video" class="play-gif" id="circle-play-b">
 						<span class="text text-uppercase text-white">Play video</span>
 						<div class="svgIcon">

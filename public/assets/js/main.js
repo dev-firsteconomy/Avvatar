@@ -704,6 +704,11 @@ $(document).ready(function () {
 		$(this).addClass("active");
 	});
 
+	$('.chooseFlavourBtns .btn').click(function () {
+		$('.chooseFlavourBtns .btn').removeClass("active");
+		$(this).addClass("active");
+	});
+
 	$('body').on('click', '.btn-fullscreen', function (e) {
 		var galleryArr = [];
 		$(this).parents('.owl-stage-outer').find('.owl-item:not(.cloned)').each(function () {
