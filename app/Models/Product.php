@@ -115,6 +115,16 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductStock','product_id');
     }
 
+    public function productProtein()
+    {
+        return $this->hasMany('App\Models\ProductProtein','product_id');
+    }
+
+    public function productNutrition()
+    {
+        return $this->hasMany('App\Models\ProductNutrition','product_id');
+    }
+
 
     public function available(){
         return $this->hasMany('App\Models\Product','product_texture','product_texture')->take(9);

@@ -1184,3 +1184,93 @@ span.sr-only {
 .blogAuthor h6 {
 	margin-bottom: 5px;
 }
+
+.pagination li:nth-child(1) span,
+.pagination li:last-child a {
+	font-size: 30px;
+}
+
+.blogHeaderImgBox {
+	position: relative;
+}
+
+.blogHeaderImgBox h3 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	color: #fff;
+	pointer-events: none;
+	font-size: 1.4em !important;
+	font-weight: 600;
+}
+
+.blogCardContent p {
+	margin-bottom: 10px;
+}
+
+.date {
+	color: #000;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.popularBlogsWrapper .blogCard + .blogCard {
+	margin-top: 30px;
+}
+
+.chooseFlavourWrapper {
+	margin-bottom: 20px;
+}
+
+.chooseFlavourBtns .btn {
+	border: 1px solid #000;
+	color: #000;
+	outline: none;
+	background-color: #fff;
+	border-radius: 2px;
+	padding: 10px 12px 10px;
+	min-width: 30%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.chooseFlavourBtns .btn.oos {
+	opacity: 0.6;
+	border-style: dotted;
+}
+
+.weight-conversion-btns {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.weight-conversion-btns .weight-conversion-btns_btn {
+	width: 39px;
+	height: 27px;
+	border: 1px solid #9d9e9d;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	font-family: dinbold;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 0;
+	color: #727272;
+	cursor: pointer;
+}
+
+.weight-conversion-btns .weight-conversion-btns_btn.active {
+	background-color: #727272;
+	color: #fff;
+}

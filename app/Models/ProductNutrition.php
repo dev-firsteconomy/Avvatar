@@ -10,4 +10,9 @@ class ProductNutrition extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded = [];
+
+    public function nutritionProduct()
+    {
+        return $this->belongsTo('App\Models\Product','product_id');
+    }
 }

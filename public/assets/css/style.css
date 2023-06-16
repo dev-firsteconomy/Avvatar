@@ -1,5 +1,4 @@
-﻿/* @import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"); */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 html {
 	font-size: 62.5%;
@@ -7220,10 +7219,16 @@ p {
 	border-left-width: 0
 }
 
+.product-details-tab .nav-tabs li {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
 .nav.nav-tabs .nav-link {
 	color: #777;
 	font-weight: 500;
-	font-size: 1.4rem;
+	font-size: 16px;
 	line-height: 1.5;
 	letter-spacing: -.025em;
 	padding: .85rem 2.2rem;
@@ -7231,7 +7236,8 @@ p {
 	border-top-right-radius: .3rem;
 	text-align: center;
 	-webkit-transition: all .35s ease;
-	transition: all .35s ease
+	transition: all .35s ease;
+	width: 100%;
 }
 
 .nav.nav-tabs .nav-link:hover,
@@ -14252,13 +14258,13 @@ button:focus {
 }
 
 .product-details-tab .tab-content {
-	border: .1rem solid #dadada;
-	margin-top: -.1rem;
-	border-radius: .3rem
+	border: 0;
+	margin-top: 30px;
+	border-radius: 0.3rem;
 }
 
 .product-details-tab .tab-content .tab-pane {
-	padding: 2.7rem 3rem
+	padding: 0;
 }
 
 .product-desc-content h2 {
@@ -21856,7 +21862,8 @@ button:focus {
 
 .radio.has-image input[type="radio"]:checked + .custom-size {
 	color: rgba(0, 0, 0, 0.87);
-	background-color: rgba(0, 0, 0, 0.08);
+	background-color: rgb(247 188 42);
+	border: 1px solid rgb(247 188 42);
 }
 
 .custom-size {
@@ -22164,40 +22171,4 @@ p.footer-copyright a {
 
 .product-details-action .btn-product {
 	min-width: 155px;
-}
-
-.pagination li:nth-child(1) span,
-.pagination li:last-child a {
-	font-size: 30px;
-}
-
-.blogHeaderImgBox {
-	position: relative;
-}
-
-.blogHeaderImgBox h3 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 100%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	color: #fff;
-	pointer-events: none;
-	font-size: 1.4em !important;
-	font-weight: 600;
-}
-
-.blogCardContent p {
-	margin-bottom: 10px;
-}
-
-.date {
-	color: #000;
-	font-size: 14px;
-	font-weight: 400;
-}
-
-.popularBlogsWrapper .blogCard + .blogCard {
-	margin-top: 30px;
 }

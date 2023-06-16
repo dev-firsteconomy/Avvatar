@@ -279,7 +279,7 @@ class ProductController extends Controller
                 ->where('products.id', '=' , $id)
                 ->get();
         
-        $product=Product::findOrFail($id);      
+        $product=Product::findOrFail($id);  
         $related_products   = Product::orderBy('name')->where('status',1)->get();
         $relatedProductsList = unserialize($product->related_products);
         $categories         = Category::pluck('title','id');
@@ -288,13 +288,14 @@ class ProductController extends Controller
         $fabrics            = Fabric::where('status',1)->get();   
         $orientations       = Orientation::where('status',1)->get();
         $flavours           = Flavour::where('status',1)->get();
-
-        return view('backend.product.edit',compact('product','relatedProductsList','product_images','flavours','categories','related_products','colors','sizes','fabrics','orientations'));
+        $proteins        = Protein::where('status',1)->get();
+        return view('backend.product.edit',compact('product','proteins','relatedProductsList','product_images','flavours','categories','related_products','colors','sizes','fabrics','orientations'));
     }
 
     
     public function update(Request $request, $id)
     {
+        dd($request->all());
         dd("YOU HAVE TO RESOLVE ERRORES FIRST");
         // $data=$request->all();
         $data = $request->except(['_token','sizeWiseImage_group']);
@@ -327,7 +328,6 @@ class ProductController extends Controller
         DB::beginTransaction();
         try
         {
-
            $product->fill($data)->save();
            $product = $product;
 
@@ -344,7 +344,7 @@ class ProductController extends Controller
                             'size_id'    => $size,
                             'price'      => $request->price[$key],
                             'sale_price' => $request->sale_price[$key],
-                            'discount'   => (($request->price[$key] - $request->sale_price[$key]) / $request->price[$key]) * 100,
+                            'discount'   => 100 - ((100 * $request->sale_price[$key]) / $request->price[$key]),
                             'stock_qty'  => $request->stock_qty[$key],
                         ]);
                     } 

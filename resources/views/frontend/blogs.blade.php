@@ -20,17 +20,17 @@
 			<div class="imgBoxWrapper text-center mb-5">
 				<div class="row justify-content-center">
 					<div class="col-6 col-md-4">
-						<div class="blogHeaderImgBox">
+						<a href="/expert-speaks" class="blogHeaderImgBox">
 							<img src="{{asset('assets/images/new/ExpertSpeaks.png')}}" class="img-fluid">
 							<h3 class="m-0 text-uppercase">Expert Speaks</h3>
-						</div>
+						</a>
 					</div>
 
 					<div class="col-6 col-md-4">
-						<div class="blogHeaderImgBox">
+						<a href="/fitness-trends-and-updates" class="blogHeaderImgBox">
 							<img src="{{asset('assets/images/new/ExpertSpeaks.png')}}" class="img-fluid">
 							<h3 class="m-0 text-uppercase">fitness trends & updates</h3>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>

@@ -10,4 +10,9 @@ class ProductProtein extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded = [];
+
+    public function proteinProduct()
+    {
+        return $this->belongsTo('App\Models\Product','product_id');
+    }
 }

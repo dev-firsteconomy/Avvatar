@@ -100,6 +100,65 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-12">
+                    <label for="color"> Protein Level</label>
+                    <div class="repeater mt-repeater proteinlevel_group">
+                        <div data-repeater-list="protein_group">
+                            <div class="row" data-repeater-item>
+
+                                <div class="form-group col-md-2">
+                                    <label>Size<span class="text-danger">*</span></label>
+                                    <select name="proteins" class="form-control" required>
+                                        <option value="">Select Protein Name</option>
+                                        @foreach($proteins as $key=>$attribute)
+                                        <option value='{{$attribute->id}}'>{{$attribute->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <label for="protein_value">Value<span class="text-danger">*</span></label>
+                                    <input id="protein_value" type="text" name="protein_value" min="0" placeholder="Protein Value"
+                                        value="{{ old('protein_value') }}" class="form-control" required>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="description">Description <span class="text-danger">*</span></label>
+                                    <input id="description" type="text" name="description" min="0"
+                                        placeholder="Short Description" value="{{ old('description') }}" class="form-control"
+                                        required>
+                                </div>
+
+                                <div class="form-group col-md-1">
+                                    <label>Delete :</label>
+                                    <input data-repeater-delete type="button" value="Delete"
+                                        class="form-control btn btn-secondary delete-button" />
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input data-repeater-create type="button" value="+ Add More" id="color_repeater-button"
+                                    class="form-control btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="nutrition_images" class="col-form-label">Nutrition Images </label>
+                            <input type="file" class="form-control" id="nutrition_images" name="nutrition_images[]" multiple>
+                            @error('nutrition_images')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -145,64 +204,6 @@
                             @error('meta_description')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
-                        </div>
-                    </div>
-                </div>
-
-				<div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="nutrition_images" class="col-form-label">Nutrition Images </label>
-                            <input type="file" class="form-control" id="nutrition_images" name="nutrition_images[]" multiple>
-                            @error('nutrition_images')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-				<div class="col-md-12">
-                    <label for="color"> Protein Level</label>
-                    <div class="repeater mt-repeater proteinlevel_group">
-                        <div data-repeater-list="protein_group">
-                            <div class="row" data-repeater-item>
-
-                                <div class="form-group col-md-2">
-                                    <label>Size<span class="text-danger">*</span></label>
-                                    <select name="proteins" class="form-control" required>
-                                        <option value="">Select Protein Name</option>
-                                        @foreach($proteins as $key=>$attribute)
-                                        <option value='{{$attribute->id}}'>{{$attribute->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-2">
-                                    <label for="protein_value">Value<span class="text-danger">*</span></label>
-                                    <input id="protein_value" type="text" name="protein_value" min="0" placeholder="Protein Value"
-                                        value="{{ old('protein_value') }}" class="form-control" required>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="description">Description <span class="text-danger">*</span></label>
-                                    <input id="description" type="text" name="description" min="0"
-                                        placeholder="Short Description" value="{{ old('description') }}" class="form-control"
-                                        required>
-                                </div>
-
-                                <div class="form-group col-md-1">
-                                    <label>Delete :</label>
-                                    <input data-repeater-delete type="button" value="Delete"
-                                        class="form-control btn btn-secondary delete-button" />
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <input data-repeater-create type="button" value="+ Add More" id="color_repeater-button"
-                                    class="form-control btn btn-primary" />
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -268,7 +269,6 @@
                     </div>
                 </div>
 
-                <br>
                 <br>
 
                 <div class="row">
