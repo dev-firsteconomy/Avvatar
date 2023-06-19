@@ -728,7 +728,7 @@ span.sr-only {
 .accordion-button {
 	font-size: 18px;
 	font-weight: 600;
-	padding: 15px 0;
+	padding: 15px 15px;
 }
 
 .accordion-button:focus {
@@ -745,6 +745,26 @@ span.sr-only {
 
 .accordion-flush .accordion-collapse {
 	border-top: 1px solid #dee2e6;
+}
+
+.accordion-button:not(.collapsed) {
+	color: #000;
+	background-color: #f7bc2a;
+}
+
+.accordion-button:not(.collapsed)::after {
+	-webkit-filter: invert(1) brightness(0);
+	filter: invert(1) brightness(0);
+}
+
+.accordion-body {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #fafafa;
+}
+
+.accordion-body p + p {
+	margin-top: 10px;
 }
 
 .contactUsForm form {
@@ -1291,6 +1311,10 @@ span.sr-only {
 	cursor: pointer;
 }
 
+.weight-conversion-btns .weight-conversion-btns_btn:nth-child(2) {
+	border-left: 0;
+}
+
 .weight-conversion-btns .weight-conversion-btns_btn.active {
 	background-color: #f7bc2a;
 	color: #000;
@@ -1524,4 +1548,9 @@ span.sr-only {
 
 .makingAvvatar .col-md-5:nth-child(3) {
 	margin-top: -65px;
+}
+
+.header-center .dropdown-item:focus, .header-center .dropdown-item:hover {
+    color: #f7bc2a;
+    background-color: #333;
 }

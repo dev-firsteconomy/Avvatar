@@ -41,7 +41,7 @@
     <div class="row">
         @if(isset($products) && $products->isNotEmpty())
             @foreach($products as $product)
-                <div class="col-6 col-md-4 col-lg-4">
+                <div class="col-6 col-md-3 col-lg-3">
                     <div class="product product-7 text-center">
                         <figure class="product-media">
                             @if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif

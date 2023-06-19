@@ -241,8 +241,9 @@ class HomeController extends Controller
         return view('frontend.blogs');
     }
 	
-	public function blogDetail()
+	public function blogDetail($slug)
     {
+       
         return view('frontend.blog-detail');
     }
     

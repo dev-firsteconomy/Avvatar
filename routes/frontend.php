@@ -28,7 +28,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/media','HomeController@media');
     Route::get('/track-order','HomeController@trackOrder');
     Route::get('/blogs','HomeController@blogs');
-    Route::get('/blog-detail','HomeController@blogDetail');
+    Route::get('/blog-detail/{slug}','HomeController@blogDetail')->name('blog.detail');
     Route::get('/blogs/experts-speaks','HomeController@expertsSpeaks');
     Route::get('/blogs/fitness-trends-and-updates','HomeController@fitnessTrends');
     Route::get('/authenticate','HomeController@authenticate');

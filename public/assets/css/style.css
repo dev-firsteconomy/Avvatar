@@ -6309,13 +6309,14 @@ p {
 }
 
 #scroll-top {
-	width: 5rem;
-	height: 5rem;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50% !important;
 	position: fixed;
-	right: 50px;
-	bottom: 128px;
+	right: 20px;
+    bottom: 15px;
 	z-index: 999;
-	color: #cccccc;
+	color: #000;
 	display: none;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
@@ -6329,22 +6330,61 @@ p {
 	opacity: 0;
 	border-radius: 0;
 	border: none;
-	background-color: #fafafa;
-	font-size: 3rem;
+	background-color: #f7bc2a;
+	font-size: 18px;
 	-webkit-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 	-webkit-transform: translateY(60px);
 	transform: translateY(60px);
-	-ms-transform: translateY(60px)
+	-ms-transform: translateY(60px);
+	cursor: pointer;
+}
+
+.stickyiconsWrapper {
+	position: fixed;
+	right: 20px;
+	bottom: 65px;
+	z-index: 999;
+	color: #000;
+	text-align: center;
+	line-height: 1;
+	border-radius: 0;
+	border: none;
+	font-size: 18px;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	cursor: pointer;
+}
+
+.stickyiconsWrapper a + a {
+	margin-top: 5px;
+}
+
+.stickyicons {
+	width: 4rem;
+	height: 4rem;
+	background-color: #000;
+	font-size: 18px;
+	border-radius: 50% !important;
+	color: #f7bc2a;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
 
 #scroll-top:hover,
-#scroll-top:focus {
-	color: #777;
-	background-color: #eaeaea
+#scroll-top:focus,
+.stickyicons:hover,
+.stickyicons:focus {
+	color: #000;
+	background-color: #f7bc2a;
 }
 
-#scroll-top.show {
+#scroll-top.show,
+.whatsappIcon.show {
 	visibility: visible;
 	opacity: 1;
 	transform: translateY(0);
@@ -6353,7 +6393,7 @@ p {
 }
 
 @media screen and (min-width: 768px) {
-	#scroll-top {
+	#scroll-top, .stickyicons {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex
@@ -6737,7 +6777,8 @@ p {
 }
 
 .breadcrumb-item a {
-	color: #777
+	color: #000;
+    font-weight: 400;
 }
 
 .breadcrumb-item a:hover,
@@ -13343,7 +13384,9 @@ button:focus {
 }
 
 .products .product {
-	width: 100%
+	width: 100%;
+	-webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15) !important;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15) !important;
 }
 
 .product {
@@ -17297,7 +17340,9 @@ button:focus {
 }
 
 .checkout label {
-	margin-bottom: .2rem
+	margin-bottom: 0.2rem;
+	color: #000;
+	font-weight: 400;
 }
 
 .checkout .form-control {
@@ -17441,7 +17486,9 @@ button:focus {
 .table.table-summary thead th:last-child,
 .table.table-summary tbody td:last-child {
 	text-align: right;
-	min-width: 100px
+	min-width: 100px;
+	color: #000;
+	font-weight: 400;
 }
 
 .table.table-summary .summary-total td {
