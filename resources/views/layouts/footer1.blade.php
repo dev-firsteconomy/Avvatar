@@ -21,6 +21,7 @@
 							<li><a href="contact.html">Pre Workout Series</a></li>
 							<li><a href="categories/muscle-gainer">Muscle Gainer</a></li>
 							<li><a href="categories/clothing-accessories">Colthing & Accessories</a></li>
+							<li><a href="/products">All Products</a></li>
 						</ul><!-- End .widget-list -->
 					</div><!-- End .widget -->
 				</div><!-- End .col-sm-6 col-lg-3 -->
@@ -77,6 +78,9 @@
 	</div><!-- End .footer-bottom -->
 </footer><!-- End .footer -->
 </div><!-- End .page-wrapper -->
+<div class="stickyiconsWrapper">
+	<a href="https://wa.me/917756072076" target="_blank" class="stickyicons whatsappIcon"><i class="icon-whatsapp"></i></a>
+</div>
 <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
 <!-- Mobile Menu -->

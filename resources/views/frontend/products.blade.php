@@ -107,7 +107,7 @@
                 <div class="container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                        <li class="breadcrumb-item active fw-bold" aria-current="page">Products</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
@@ -115,14 +115,14 @@
             <div class="page-content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-9" id="productListings">
+                        <div class="col-lg-12" id="productListings">
                            
                             @include('frontend.productlisting')
                                
                         </div><!-- End .col-lg-9 -->
 
                         <!-- Filter Part Start Here -->
-                        <aside class="col-lg-3 order-lg-first sidebar-container">
+                        <aside class="col-lg-3 order-lg-first sidebar-container d-none">
                             <div class="sidebar sidebar-shop">
                                 <div class="d-block d-lg-none text-right close-sidebar-btn"><span><i class="icon-times"></i> </span>
                                 </div>
