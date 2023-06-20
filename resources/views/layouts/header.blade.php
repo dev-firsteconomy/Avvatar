@@ -96,7 +96,7 @@
 							<i class="icon-user"></i>
 						</a>
 						@else
-						<a href="#signin-modal" data-toggle="modal">
+						<a href="#signin-modal" data-bs-toggle="modal">
 							<i class="icon-user"></i>
 						</a>
 						@endif

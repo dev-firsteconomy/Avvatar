@@ -1550,7 +1550,14 @@ span.sr-only {
 	margin-top: -65px;
 }
 
-.header-center .dropdown-item:focus, .header-center .dropdown-item:hover {
-    color: #f7bc2a;
-    background-color: #333;
+.header-center .dropdown-item:focus,
+.header-center .dropdown-item:hover {
+	color: #f7bc2a;
+	background-color: #333;
+}
+
+.orderCompleteThankYou img {
+	width: 200px;
+	max-width: 200px;
+	margin-bottom: 30px;
 }
