@@ -12,19 +12,19 @@
 	<meta name="description" content="{{env('APP_NAME')}}">
 	<meta name="author" content="{{env('APP_NAME')}}">
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/images/icons/apple-touch-icon.png')}}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/images/icons/favicon-32x32.png')}}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/images/icons/favicon-16x16.png')}}">
-	
+	<link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/images/new/favicon.ico')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/images/new/favicon.ico')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/images/new/favicon.ico')}}">
+
 	<link rel="manifest" href="{{URL::asset('assets/images/icons/site.html')}}">
 	<link rel="mask-icon" href="{{URL::asset('assets/images/icons/safari-pinned-tab.svg')}}" color="#666666">
-	<link rel="shortcut icon" href="{{URL::asset('assets/images/icons/favicon.png')}}">
+	<link rel="shortcut icon" href="{{URL::asset('assets/images/new/favicon.ico')}}">
 	<meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}">
 	<meta name="application-name" content="{{ env('APP_NAME') }}">
 	<meta name="msapplication-TileColor" content="#cc9966">
 	<meta name="msapplication-config" content="{{URL::asset('assets/images/icons/browserconfig.xml')}}">
 	<meta name="theme-color" content="#ffffff">
-	<link rel="preload" href="{{URL::asset('assets/images/new/logo.png')}}" as="image"> 
+	<link rel="preload" href="{{URL::asset('assets/images/new/logo.png')}}" as="image">
 	<!-- Plugins CSS File -->
 
 
@@ -54,6 +54,7 @@
 			font-weight: 700;
 			font-size: 24px;
 		}
+
 	</style>
 	<link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-5.2.3.min.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/plugins/owl-carousel/owl.carousel.css')}}">
@@ -136,7 +137,7 @@
 
 
 	<script>
-		
+
 	</script>
 	<script>
 		$('.footer-middle .widget-title').click(function(e) {
@@ -476,9 +477,10 @@
 	<script src="{{asset('backend/js/sweetalert.min.js')}}"></script>
 
 	<script>
-		$(window).on('load', function(){
+		$(window).on('load', function() {
 			$('#preloaderWrapper').addClass('d-none');
 		})
+
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
