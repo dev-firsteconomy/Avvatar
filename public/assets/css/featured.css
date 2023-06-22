@@ -205,7 +205,7 @@ section {
 	background-color: #333333;
 	color: #fff;
 	border: 1px solid #333333;
-	padding: 0.4rem 1.8rem;
+	padding: 6px 14px;
 	text-transform: uppercase;
 	font-size: 18px;
 	-webkit-transition: all 0.2s;
@@ -213,6 +213,7 @@ section {
 	margin-top: 20px;
 	display: inline-block;
 	cursor: pointer;
+	line-height: 1.2;
 }
 
 .commonButton-yellow {
@@ -1560,4 +1561,58 @@ span.sr-only {
 	width: 200px;
 	max-width: 200px;
 	margin-bottom: 30px;
+}
+
+.orderDataBox {
+	padding: 15px;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+}
+
+.orderDataBox + .orderDataBox {
+	margin-top: 30px;
+}
+
+.orderDetail {
+	-webkit-box-flex: 2;
+	-ms-flex: 2;
+	flex: 2;
+	padding: 0 15px;
+}
+
+.orderImg {
+	min-width: 100px;
+	max-width: 100px;
+}
+
+.orderVariant {
+	line-height: 1.2;
+}
+
+.orderVariant + .orderVariant {
+	padding-left: 5px;
+	margin-left: 5px;
+	border-left: 1px solid #000;
+}
+
+.orderVariant p {
+	line-height: 1.2;
+}
+
+.orderVariant .badge {
+	padding: 4px 10px;
+	font-size: 14px;
+	background-color: #388E3C !important;
+}
+
+.orderName h5 {
+	font-size: 15px;
+}
+
+.orderPrice h5 {
+	font-size: 24px
+}
+
+.orderPrice h5 .mrp {
+	font-size: 18px;
 }
