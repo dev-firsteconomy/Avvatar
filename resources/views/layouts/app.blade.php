@@ -820,6 +820,27 @@
 
 	</script>
 
+	<!--
+	 alert('Hello world!'); 
+	<script src="data:text/javascript;base64,YWxlcnQoJ0hlbGxvIHdvcmxkIScpOw=="></script>
+	<script defer>
+		window.addEventListener('DOMContentLoaded', function() {
+
+			alert('Why no defer?!?');
+
+		});
+
+	</script>
+
+
+
+	<script>
+		alert('Buh-bye world!');
+
+	</script>
+-->
+
+
 </body>
 
 </html>

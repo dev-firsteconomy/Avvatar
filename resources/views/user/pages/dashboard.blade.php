@@ -32,7 +32,7 @@
 								<a class="nav-link " id="tab-dashboard-link" data-bs-toggle="tab" href="#tab-dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="true">Dashboard</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" id="tab-orders-link" data-bs-toggle="tab" href="#tab-orders" role="tab" aria-controls="tab-orders" aria-selected="false">Orders</a>
+								<a class="nav-link" id="tab-orders-link" data-bs-toggle="tab" href="#tab-orders" role="tab" aria-controls="tab-orders" aria-selected="false">Orders</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="tab-wishlist-link" data-bs-toggle="tab" href="#tab-wishlist" role="tab" aria-controls="tab-wishlist" aria-selected="false">Wishlist</a>
@@ -41,7 +41,7 @@
 								        <a class="nav-link" id="tab-downloads-link" data-bs-toggle="tab" href="#tab-downloads" role="tab" aria-controls="tab-downloads" aria-selected="false">Downloads</a>
 								    </li> --}}
 							<li class="nav-item">
-								<a class="nav-link" id="tab-address-link" data-bs-toggle="tab" href="#tab-address" role="tab" aria-controls="tab-address" aria-selected="false">Adresses</a>
+								<a class="nav-link active" id="tab-address-link" data-bs-toggle="tab" href="#tab-address" role="tab" aria-controls="tab-address" aria-selected="false">Adresses</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="tab-account-link" data-bs-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Account Details</a>
@@ -67,7 +67,7 @@
 								</div>
 							</div><!-- .End .tab-pane -->
 
-							<div class="tab-pane fade show active" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-link">
+							<div class="tab-pane fade" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-link">
 								<div class="row">
 									@php
 									$orders=App\Models\Order::where('user_id',auth()->user()->id)->latest()->paginate(10);
@@ -181,7 +181,7 @@
 								</div>
 							</div> <!-- .End .tab-pane -->
 
-							<div class="tab-pane fade show " id="tab-wishlist" role="tabpanel" aria-labelledby="tab-wishlist-link">
+							<div class="tab-pane fade" id="tab-wishlist" role="tabpanel" aria-labelledby="tab-wishlist-link">
 								@if(count(Helper::getAllProductFromWishlist()))
 								<table class="table shopping-summery d-none">
 									<thead>
@@ -258,181 +258,197 @@
 								    	<a href="category.html" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
 								    </div><!-- .End .tab-pane --> --}}
 
-						<div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
+						<div class="tab-pane fade show active" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
+							<h3 class="card-title">Manage Address</h3>
 							<p>The following addresses will be used on the checkout page by default.</p>
 
 							<div class="row">
-								{{-- <div class="col-lg-6">
-								    			<div class="card card-dashboard">
-								    				<div class="card-body">
-								    					<h3 class="card-title">Billing Address</h3><!-- End .card-title -->
-
-														<p>User Name<br>
-														User Company<br>
-														John str<br>
-														New York, NY 10001<br>
-														1-234-987-6543<br>
-														yourmail@mail.com<br>
-														<a href="#">Edit <i class="icon-edit"></i></a></p>
-								    				</div><!-- End .card-body -->
-								    			</div><!-- End .card-dashboard -->
-								    		</div><!-- End .col-lg-6 --> --}}
-
 								<div class="col-lg-12">
-									<div class="card card-dashboard">
-										<div class="card-body">
-											<h3 class="card-title">Manage Address</h3><!-- End .card-title -->
-											<br>
-											<?php
-														    $addresses = auth()->user()->addresses; 
-														 ?>
+									<div class="card addressCardsWrapper">
+										<?php $addresses = auth()->user()->addresses; ?>
 
-											<div class="row">
-												@foreach($addresses as $key => $address)
-												<div class="col-sm-6 mb-2">
-													<div class="d-flex flex-row">
-														<h5 class="add-h6">Address {{++$key}} <span>{{$address->is_primary ? '(DEFAULT ADDRESS)':''}}</span></h3>
-															<button class="btn-link p-0 bg-transparent ml-3 lh-0 updateClickButton" id="{{$address->id}}" type="button">Edit</button>
-															<form method="POST" action="{{route('remove-user-address',$address->id)}}"> @csrf
-																<button class="btn-link p-0 bg-transparent ml-3 lh-0" type="submit">Delete</button>
-															</form>
-													</div>
-													<div class="addresses">
-														<span>{{$address->first_name}}</span> <br>
-														<span>{{$address->mobile}}</span> - <span>{{$address->email}}</span><br>
-														<span>{{$address->address}}</span> , <span>{{$address->address1}}</span><br>
-														<span>{{$address->get_state->name}}</span> - <span>{{$address->get_city->name}}</span> -<span>{{$address->pincode}}</span><br>
+										<div class="row">
+											@foreach($addresses as $key => $address)
+											<div class="col-md-6">
+												<div class="addressCardBox">
+													<div class="addresses ">
+														<div class="d-flex w-100 justify-content-between align-items-center mb-1">
+															<h5 class="fw-bold m-0 text-capitalize">
+																<!--Address {{++$key}} -->
+																{{$address->first_name}}
+																<span class="addressType">{{$address->is_primary ? '(Default Address)':''}}</span>
+															</h5>
+
+															<div class="addressAction d-flex gap-2">
+
+																<div class="dropdown">
+																	<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+																		<img src="{{URL::asset('assets/images/new/dots.png')}}" class="img-fluid">
+																	</a>
+																	<div class="dropdown-menu">
+																		<button class="btn-link bg-transparent ml-3 updateClickButton" id="{{$address->id}}" type="button">Edit</button>
+																		<form method="POST" action="{{route('remove-user-address',$address->id)}}"> @csrf
+																			<button class="btn-link bg-transparent ml-3" type="submit">Delete</button>
+																		</form>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+														<div class="addressBlock">
+															<p>{{$address->address}}, <span>{{$address->address1}}</span> <span>{{$address->address2}} </span> <span>{{$address->get_state->name}}</span> - <span>{{$address->get_city->name}}</span> - <span>{{$address->pincode}}</span></p>
+														</div>
+
+														<div class="addressContact d-flex align-items-center gap-3">
+															<p class="d-flex align-items-center justify-content-center">
+																<span class="icon rounded-2"><i class="icon-phone"></i></span>
+																<span>{{$address->mobile}}</span>
+															</p>
+															<p class="d-flex align-items-center justify-content-center">
+																<span class="icon rounded-2"><i class="icon-envelope"></i></span>
+																<span>{{$address->email}}</span>
+															</p>
+														</div>
 													</div>
 												</div>
-												@endforeach
 											</div>
+											@endforeach
+										</div>
 
-											@foreach($addresses as $key => $address)
-											<div id="updateAddress{{$address->id}}" class="updateAddress mt-2" style="display:none;">
-												<form action="{{url('create-user-address')}}" class="place_order" method="POST">
-													@csrf
-													<input type="hidden" name="flag" value="{{$address->id}}">
-													<div class="singleRecord">
-														<div class="row">
-															<div class="col-sm-6">
-																<label>Full Name *</label>
-																<input type="text" class="form-control" name="first_name" value="{{$address->first_name}}" required>
-															</div>
+										@foreach($addresses as $key => $address)
+										<div id="updateAddress{{$address->id}}" class="updateAddress mt-2" style="display:none;">
+											<form action="{{url('create-user-address')}}" class="place_order" method="POST">
+												@csrf
+												<input type="hidden" name="flag" value="{{$address->id}}">
+												<div class="singleRecord">
+													<div class="row">
+														<div class="col-sm-12">
+															<label>Full Name *</label>
+															<input type="text" class="form-control text-capitalize" name="first_name" value="{{$address->first_name}}" required>
 														</div>
-														<div class="row">
-															<div class="col-sm-6">
-																<label>Phone *</label>
-																<input type="tel" class="form-control" name="mobile" value="{{$address->mobile}}" required>
-															</div>
-															<div class="col-sm-6">
-																<label>Email Address *</label>
-																<input type="text" class="form-control" name="email" value="{{$address->email}}" required>
-															</div>
+
+														<div class="col-sm-6">
+															<label>Phone *</label>
+															<input type="tel" class="form-control" name="mobile" value="{{$address->mobile}}" required>
 														</div>
-														<label>Address Line 1*</label>
-														<input type="text" class="form-control" name="address" value="{{$address->address}}" required>
-														<label>Address Line 2</label>
-														<input type="text" class="form-control" name="address1" value="{{$address->address2}}">
-														<div class="row">
-															<div class="col-sm-4">
-																<label>State *</label>
-																<select class="form-control state_id" data-id="{{$address->id}}" name="state_id" required>
-																	<option value="">Select State </option>
-																	@foreach($states as $state)
-																	<option value="{{$state->id}}" {{isset($address->state_id) && $address->state_id == $state->id ? 'selected':''}}>{{$state->name}}</option>
-																	@endforeach
-																</select>
-															</div>
-															<?php
-																		    $cities = App\Models\City::where('state_id',$address->state_id)->get(); 
-																		?>
-															<div class="col-sm-4">
-																<label>Town / City *</label>
-																<select class="form-control city{{$address->id}}" name="city_id" id="city{{$address->id}}" required>
-																	<option value="">Select City </option>
-																	@foreach($cities as $city)
-																	<option value="{{$city->id}}" {{isset($address->city_id) && @$address->city_id == $city->id ? 'selected':''}}>{{$city->name}}</option>
-																	@endforeach
-																</select>
-															</div>
-															<div class="col-sm-4">
-																<label>Postcode / ZIP *</label>
-																<input type="text" class="form-control" name="pincode" value="{{$address->pincode}}" required>
-															</div>
+														<div class="col-sm-6">
+															<label>Email Address *</label>
+															<input type="text" class="form-control" name="email" value="{{$address->email}}" required>
 														</div>
-														<div class="row">
+													</div>
+													<label>Address Line 1*</label>
+													<input type="text" class="form-control" name="address" value="{{$address->address}}" required>
+													<label>Address Line 2</label>
+													<input type="text" class="form-control" name="address1" value="{{$address->address2}}">
+													<div class="row">
+														<div class="col-sm-4">
+															<label>State *</label>
+															<select class="form-control state_id" data-id="{{$address->id}}" name="state_id" required>
+																<option value="">Select State </option>
+																@foreach($states as $state)
+																<option value="{{$state->id}}" {{isset($address->state_id) && $address->state_id == $state->id ? 'selected':''}}>{{$state->name}}</option>
+																@endforeach
+															</select>
+														</div>
+														<?php
+																		$cities = App\Models\City::where('state_id',$address->state_id)->get(); 
+																	?>
+														<div class="col-sm-4">
+															<label>Town / City *</label>
+															<select class="form-control city{{$address->id}}" name="city_id" id="city{{$address->id}}" required>
+																<option value="">Select City </option>
+																@foreach($cities as $city)
+																<option value="{{$city->id}}" {{isset($address->city_id) && @$address->city_id == $city->id ? 'selected':''}}>{{$city->name}}</option>
+																@endforeach
+															</select>
+														</div>
+														<div class="col-sm-4">
+															<label>Postcode / ZIP *</label>
+															<input type="text" class="form-control" name="pincode" value="{{$address->pincode}}" required>
+														</div>
+													</div>
+													<div class="row">
+														<div class="isPrimary">
 															<input type="checkbox" id="is_primary" name="is_primary" value="1" {{$address->is_primary == 1 ? 'checked':''}}>
 															<label for="is_primary">Set as Primary Address ?</label>
 														</div>
-													</div>
-													<br>
-													<button type="submit" class="btn btn-outline-primary-2 mb-2">
-														<span>Update Address</span>
-													</button>
-												</form>
-											</div>
-											@endforeach
 
-											<button id="addNewAddress">Add New Address</button>
-											<br>
-											<div id="newAddresForm" class="AddAddress mt-2" style="display:none;">
-												<form action="{{url('create-user-address')}}" class="place_order" method="POST">
-													@csrf
-													<input type="hidden" name="flag" value="0">
-													<div class="singleRecord">
-														<div class="row">
-															<div class="col-sm-6">
-																<label>Full Name *</label>
-																<input type="text" class="form-control" name="first_name" value="" required>
-															</div>
+													</div>
+												</div>
+												<br>
+												<button type="submit" class="btn btn-outline-primary-2 mb-2">
+													<span>Update Address</span>
+												</button>
+											</form>
+										</div>
+										@endforeach
+
+										<div class="addNewAddress mt-4">
+											<button class="commonButton-yellow text-capitalize" id="addNewAddress">Add New Address</button>
+										</div>
+
+
+										<div id="newAddresForm" class="AddAddress mt-2" style="display:none;">
+											<form action="{{url('create-user-address')}}" class="place_order" method="POST">
+												@csrf
+												<input type="hidden" name="flag" value="0">
+												<div class="singleRecord">
+													<div class="row">
+														<div class="col-sm-6">
+															<label>Full Name *</label>
+															<input type="text" class="form-control text-capitalize" name="first_name" value="" required>
 														</div>
-														<div class="row">
-															<div class="col-sm-6">
-																<label>Phone *</label>
-																<input type="tel" class="form-control" name="mobile" value="" required>
-															</div>
-															<div class="col-sm-6">
-																<label>Email Address *</label>
-																<input type="text" class="form-control" name="email" value="" required>
-															</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-6">
+															<label>Phone *</label>
+															<input type="tel" class="form-control" name="mobile" value="" required>
 														</div>
-														<label>Address Line 1*</label>
-														<input type="text" class="form-control" name="address" value="" required>
-														<label>Address Line 2</label>
-														<input type="text" class="form-control" name="address1" value="">
-														<div class="row">
-															<div class="col-sm-4">
-																<label>State *</label>
-																<select class="form-control state_id" name="state_id" data-id="0" required>
-																	<option value="">Select State </option>
-																	@foreach($states as $state)
-																	<option value="{{$state->id}}">{{$state->name}}</option>
-																	@endforeach
-																</select>
-															</div>
-															<div class="col-sm-4">
-																<label>Town / City *</label>
-																<select class="form-control city0" name="city_id" required>
-																	<option value="">Select City </option>
-																</select>
-															</div>
-															<div class="col-sm-4">
-																<label>Postcode / ZIP *</label>
-																<input type="text" class="form-control" name="pincode" value="" required>
-															</div>
+														<div class="col-sm-6">
+															<label>Email Address *</label>
+															<input type="text" class="form-control" name="email" value="" required>
 														</div>
-														<div class="row">
+													</div>
+													<label>Address Line 1*</label>
+													<input type="text" class="form-control" name="address" value="" required>
+													<label>Address Line 2</label>
+													<input type="text" class="form-control" name="address1" value="">
+													<div class="row">
+														<div class="col-sm-4">
+															<label>State *</label>
+															<select class="form-control state_id" name="state_id" data-id="0" required>
+																<option value="">Select State </option>
+																@foreach($states as $state)
+																<option value="{{$state->id}}">{{$state->name}}</option>
+																@endforeach
+															</select>
+														</div>
+														<div class="col-sm-4">
+															<label>Town / City *</label>
+															<select class="form-control city0" name="city_id" required>
+																<option value="">Select City </option>
+															</select>
+														</div>
+														<div class="col-sm-4">
+															<label>Postcode / ZIP *</label>
+															<input type="text" class="form-control" name="pincode" value="" required>
+														</div>
+													</div>
+													<div class="row">
+														<div class="isPrimary">
 															<input type="checkbox" id="is_primary" name="is_primary" value="1">
 															<label for="is_primary">Set as Primary Address ?</label>
 														</div>
+
 													</div>
-													<br>
-													<button type="submit" class="btn btn-outline-primary-2 mb-2">
-														<span>Add New</span>
-													</button>
-												</form>
-											</div>
-										</div><!-- End .card-body -->
+												</div>
+												<br>
+												<button type="submit" class="btn btn-outline-primary-2 mb-2">
+													<span>Add New</span>
+												</button>
+											</form>
+										</div>
+
 									</div><!-- End .card-dashboard -->
 								</div><!-- End .col-lg-6 -->
 							</div><!-- End .row -->
@@ -444,9 +460,18 @@
 								<div class="row">
 									<div class="col-sm-6">
 										<label>Full Name *</label>
-										<input type="text" class="form-control" name="name" value="{{auth()->user()->name}}" required>
+										<input type="text" class="form-control text-capitalize" name="name" value="{{auth()->user()->name}}" required>
 									</div><!-- End .col-sm-6 -->
 
+									<div class="col-sm-6">
+										<label>Email address *</label>
+										<input type="email" class="form-control keyup-email" name="email" value="{{auth()->user()->email}}" required>
+									</div>
+
+									<div class="col-sm-6">
+										<label>Mobile Number *</label>
+										<input type="tel" class="form-control keyup-mobile" name="mobile" value="{{auth()->user()->mobile}}" minlength="10" maxlength="10" placeholder="Enter your 10 digit mobile" required>
+									</div>
 									{{-- <div class="col-sm-6">
 			                						<label>Last Name *</label>
 			                						<input type="text" class="form-control" required>
@@ -457,11 +482,9 @@
 		            						<input type="text" class="form-control" value="{{auth()->user()->name}}" required>
 								<small class="form-text">This will be how your name will be displayed in the account section and in reviews</small> --}}
 
-								<label>Email address *</label>
-								<input type="email" class="form-control keyup-email" name="email" value="{{auth()->user()->email}}" required>
 
-								<label>Mobile Number *</label>
-								<input type="tel" class="form-control keyup-mobile" name="mobile" value="{{auth()->user()->mobile}}" minlength="10" maxlength="10" placeholder="Enter your 10 digit mobile" required>
+
+
 								<br>
 								<button type="submit" class="btn btn-outline-primary-2 mb-2">
 									<span>SAVE CHANGES</span>
@@ -469,22 +492,33 @@
 								</button>
 							</form>
 						</div>
+
 						<div class="tab-pane fade" id="tab-password" role="tabpanel" aria-labelledby="tab-account-link">
-							<form method="POST" action="{{ route('change.password') }}">
+							<form method="POST" class="row" action="{{ route('change.password') }}">
 								@csrf
-								<label>Current password (leave blank to leave unchanged)</label>
-								<input type="password" class="form-control" name="current_password" required>
 
-								<label>New password (leave blank to leave unchanged)</label>
-								<input type="password" class="form-control" name="new_password" required>
+								<div class="col-md-12">
+									<label>Current password (leave blank to leave unchanged)</label>
+									<input type="password" class="form-control" name="current_password" required>
+								</div>
 
-								<label>Confirm new password</label>
-								<input type="password" class="form-control mb-2" name="new_confirm_password" required>
+								<div class="col-md-6">
+									<label>New password (leave blank to leave unchanged)</label>
+									<input type="password" class="form-control" name="new_password" required>
+								</div>
 
-								<button type="submit" class="btn btn-outline-primary-2 mb-2">
-									<span>SAVE CHANGES</span>
-									<i class="icon-long-arrow-right"></i>
-								</button>
+
+								<div class="col-md-6">
+									<label>Confirm new password</label>
+									<input type="password" class="form-control mb-2" name="new_confirm_password" required>
+								</div>
+
+								<div class="text-center">
+									<button type="submit" class="btn btn-outline-primary-2 mb-2">
+										<span>SAVE CHANGES</span>
+										<i class="icon-long-arrow-right"></i>
+									</button>
+								</div>
 							</form>
 						</div><!-- .End .tab-pane -->
 					</div>

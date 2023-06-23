@@ -1616,3 +1616,64 @@ span.sr-only {
 .orderPrice h5 .mrp {
 	font-size: 18px;
 }
+
+.card.addressCardsWrapper {
+	border: 0;
+}
+
+.addressCardsWrapper .col-md-6:nth-child(n + 3) {
+	margin-top: 30px;
+}
+
+.addressBlock {
+	min-height: 107px;
+}
+
+.addressCardBox {
+	padding: 15px;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+}
+
+.addressAction .dropdown-toggle::after {
+	display: none;
+}
+
+.addressType {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.addressAction .dropdown-menu {
+	padding: 0;
+	right: 0 !important;
+	left: auto !important;
+}
+
+.addressAction .btn-link {
+	width: 100%;
+	text-align: left;
+	padding: 6px 15px;
+}
+
+.addressContact p {
+	line-height: 1.2;
+}
+
+.addressContact .icon {
+	width: 20px;
+	height: 20px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	background-color: #f7bc2a;
+	color: #000;
+	margin-right: 4px;
+	border-radius: 50%;
+}
