@@ -51,7 +51,10 @@
 									Products
 								</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Whey Protein</a></li>
+									@foreach ($categoriesHeader as $category)
+									  <li><a class="dropdown-item" href="{{url('/categories/'.$category->slug)}}" class="">{{$category->title}}</a></li>
+									@endforeach
+									{{-- <li><a class="dropdown-item" href="#">Whey Protein</a></li>
 									<li><a class="dropdown-item" href="#">Muscle Gainer</a></li>
 									<li><a class="dropdown-item" href="#">Mass Gainer</a></li>
 									<li><a class="dropdown-item" href="#">Isorich</a></li>
@@ -60,7 +63,7 @@
 									<li><a class="dropdown-item" href="#">L-Glutamine</a></li>
 									<li><a class="dropdown-item" href="#">Alpha Whey</a></li>
 									<li><a class="dropdown-item" href="#">Nitro Iso Whey</a></li>
-									<li><a class="dropdown-item" href="#">Nitro Massive Mass Gainer</a></li>
+									<li><a class="dropdown-item" href="#">Nitro Massive Mass Gainer</a></li> --}}
 								</ul>
 							</li>
 							<li>

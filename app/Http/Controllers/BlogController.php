@@ -62,22 +62,25 @@ class BlogController extends Controller
             'tag'=>'required',
             'thumbnail_image'=>'required',
             'image'=>'required',
+            'author_name'=>'required',
        ]);
 
         $slug = Str::slug($request->title);
         $count= Blog::where('slug',$slug)->count();
-        if($count>0)
+
+        if($count > 0)
         {
             $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
         }
+
         $data['slug'] = $slug;
         $data['is_expert_speaks'] = $request->input('is_expert_speaks',0);
         $data['is_trends']        = $request->input('is_trends',0);
-        $data['is_popular']        = $request->input('is_popular',0);
-        $data['related_blogs']=@$request->related_blogs && count($request->related_blogs) ? serialize($request->related_blogs) :null;
+        $data['is_popular']       = $request->input('is_popular',0);
+        $data['related_blogs']    = @$request->related_blogs && count($request->related_blogs) ? serialize($request->related_blogs) :null;
 
-       if(file_exists($request->thumbnail_image))
-       {
+        if(file_exists($request->thumbnail_image))
+        {
            $file = $request->thumbnail_image;
            $thumbnail_image = time() . '_'. $file->getClientOriginalName();
            $path = public_path('/images/blogs/thumbnail_image');
@@ -88,7 +91,7 @@ class BlogController extends Controller
            }
            $file->move($path,$thumbnail_image);
            $data['thumbnail_image'] = '/images/blogs/thumbnail_image/'.$thumbnail_image;
-       }
+        }
 
         if(file_exists($request->image))
         {
@@ -110,10 +113,12 @@ class BlogController extends Controller
         if($blog)
         {
             request()->session()->flash('success','Blog Successfully created');
-        }else
+        }
+        else
         {
             request()->session()->flash('error','Please try again!!');
         }
+
         return redirect()->route('blogs.index');
     }
 
@@ -164,8 +169,8 @@ class BlogController extends Controller
        ]);
 
        $slug = Str::slug($request->title);
-       $count= Blog::where('slug',$slug)->count();
-       if($count>0)
+       $count= Blog::where('slug',$slug)->where('id','!=',$id)->count();
+       if($count > 0)
        {
            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
        }

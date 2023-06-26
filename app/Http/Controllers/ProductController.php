@@ -115,15 +115,30 @@ class ProductController extends Controller
             $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
         }
 
-        $data['slug']=$slug;
-        $data['title']=$request->name;
-        $data['is_featured']=$request->input('is_featured',0);
-        $data['is_new']=$request->input('is_new',0);
-        $data['is_bestsellers']=$request->input('is_bestsellers',0);
-        // $data['related_products']=$request->related_products;
-        $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
+        $data['slug']             = $slug;
+        $data['title']            = $request->name;
+        $data['is_featured']      = $request->input('is_featured',0);
+        $data['is_new']           = $request->input('is_new',0);
+        $data['is_bestsellers']   =$request->input('is_bestsellers',0);
+        $data['related_products'] = @$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
         
-       
+        if($request->default_image != null)
+        {
+            $imageData = $request->default_image;
+            $image = time() . '_'. $imageData->getClientOriginalName();
+            $path = public_path('/images/product_images');
+               
+            if (!File::isDirectory($path)) 
+            {
+                File::makeDirectory($path, 0777, true, true);
+            }
+            
+            $imageData->move($path,$image);
+            $fileName = '/images/product_images/'.$image;
+
+            $data['default_image'] = $fileName;
+        }
+
         DB::beginTransaction();
         try
         {
@@ -159,13 +174,13 @@ class ProductController extends Controller
                $this->store_proteinLevel($protein_group,$product);
            }
 
-           if($request->sizeWiseImage_group != null)
-           {
-               $sizeWiseImage_group = $request->sizeWiseImage_group;
-               $this->store_images($sizeWiseImage_group,$product);
-           }
-
            
+
+           if($request->images != null)
+           {
+               $images = $request->images;
+               $this->store_images($images,$product);
+           }           
 
             if($product)
             {
@@ -208,47 +223,25 @@ class ProductController extends Controller
 
     public function store_images($sizeWiseImage_group,$product)
     {
-        foreach($sizeWiseImage_group as $item)
+        foreach($sizeWiseImage_group as $imageItem)
         { 
-            if($item['sizes'] !== null && $item['sizes'] !== '' && $item['stock_quantities'] !== null) 
+            if(file_exists($imageItem))
             {
-                $size_id = (int)$item['sizes'];
-                $price = (int)$item['price'];
-                $sale_price = (int)$item['sale_price'];
-
-                ProductStock::create([
-                    'product_id'=> $product->id,
-                    'size_id'=> $size_id,
-                    'price'=> $price,
-                    'sale_price'=> $sale_price,
-                    'discount' => (($price - $sale_price) / $price) * 100,
-                    'stock_qty'=> (int)@$item['stock_quantities'],
-                ]);
-
-                if(!empty($item['image']))
-                {
-                    if(file_exists($item['image'][0]))
-                    {
-                        foreach($item['image'] as $imageItem)
-                        {
-                            $image = time() . '_'. $imageItem->getClientOriginalName();
-                            $path = public_path('/images/product_images');
+                $image = time() . '_'. $imageItem->getClientOriginalName();
+                $path = public_path('/images/product_images');
                             
-                            if (!File::isDirectory($path)) 
-                            {
-                                File::makeDirectory($path, 0777, true, true);
-                            }
-                            $imageItem->move($path,$image);
-                            $fileName = '/images/product_images/'.$image;
-
-                            ProductImage::create([
-                                'product_id' =>$product->id,
-                                'size_id'=> $size_id,
-                                'image'=> $fileName
-                            ]);
-                        }
-                    }
+                if (!File::isDirectory($path)) 
+                {
+                    File::makeDirectory($path, 0777, true, true);
                 }
+
+                $imageItem->move($path,$image);
+                $fileName = '/images/product_images/'.$image;
+
+                ProductImage::create([
+                    'product_id' =>$product->id,
+                    'image'=> $fileName
+                ]);
             }
         }
     }

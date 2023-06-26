@@ -125,11 +125,12 @@ class HomeController extends Controller
             $banners = Banner::where('status',1)->latest()->take(5)->get();
             $blogs = Blog::where('status',1)->latest()->take(3)->get();
 
-            $newArrivals = Product::where('status','1')->where('is_giftcard',0)->where('is_new',1)->latest()->take(5)->get();
-            $bestSellers = Product::where('status','1')->where('is_giftcard',0)->where('is_bestsellers',1)->take(5)->latest()->get();
+            $newArrivals = Product::where('status','1')->where('is_new',1)->latest()->take(5)->get();
+            $bestSellers = Product::where('status','1')->where('is_bestsellers',1)->take(5)->latest()->get();
+            $featureProducts = Product::where('status','1')->where('is_featured',1)->take(5)->latest()->get();
             $categories  = Category::where('status','1')->where('is_parent',1)->where('is_giftcard',0)->orderBy('title','ASC')->get();
 
-            return view('frontend.index',compact('banners','newArrivals','bestSellers','categories','blogs'));
+            return view('frontend.index',compact('banners','newArrivals','bestSellers','featureProducts','categories','blogs'));
         // }
     }
 
@@ -151,10 +152,11 @@ class HomeController extends Controller
 
     public function submitContact(Request $request)
     {   
-        $data['name'] = @$request->name;
-        $data['email'] = @$request->email;
-        $data['mobile'] = @$request->mobile;
-        $data['subject'] = @$request->subject;
+        $data['name']    = @$request->name;
+        $data['mobile']  = @$request->mobile;
+        $data['email']   = @$request->email;
+        // $data['subject'] = @$request->subject;
+        $data['city']    = @$request->city;
         $data['message'] = @$request->message;
         Contact::create($data);
         return redirect()->back()->with('success', 'Thank you for your details! Our team will get in touch with you.');
@@ -238,22 +240,28 @@ class HomeController extends Controller
     
 	public function blogs(Request $request)
     {
-        return view('frontend.blogs');
+        $blogs = Blog::where('status',1)->latest()->paginate(9);
+        return view('frontend.blogs',compact('blogs'));
     }
 	
-	public function blogDetail()
+	public function blogDetail($slug)
     {
-        return view('frontend.blog-detail');
+        $blog = Blog::where('slug',$slug)->first();
+        $popularBlogs = Blog::where('slug','!=',$slug)->where('is_popular',1)->inRandomOrder()->limit(3)->get();
+        $relatedBlogs = Blog::whereIn('id',unserialize($blog->related_blogs))->get();
+        return view('frontend.blog-detail',compact('blog','popularBlogs','relatedBlogs'));
     }
     
 	public function expertsSpeaks()
     {
-        return view('frontend.experts-speaks');
+        $blogs = Blog::where('status',1)->where('is_expert_speaks',1)->latest()->paginate(9);
+        return view('frontend.experts-speaks',compact('blogs'));
     }
 
 	public function fitnessTrends()
     {
-        return view('frontend.fitness-trends-and-updates');
+        $blogs = Blog::where('status',1)->where('is_trends',1)->latest()->paginate(9);
+        return view('frontend.fitness-trends-and-updates',compact('blogs'));
     }
 	
 	public function authenticate()
@@ -364,22 +372,17 @@ class HomeController extends Controller
     public function getCategoriesProducts(Request $request,$slug= null)
     {        
         $requestData = $request->all();
-        $keyword  = $request->get('search');
-        $count = Product::where('status','1')->count();
-        $pageType = 'Shop By Categories';
-        $catId = null;
-        $value = isset($request->value) ? $request->value : null;
-
-        $sizes = Size::where('status',1)->get();
-        $colors = Color::where('status',1)->get();
-        $fabrics = Fabric::where('status',1)->get();
-        $orientations = Orientation::where('status',1)->get();  
-        $maxValue = Product::where('is_giftcard',0)->max('price');
+        $keyword     = $request->get('search');
+        $count       = Product::where('status','1')->count();
+        $pageType    = 'Shop By Categories';
+        $catId       = null;
+        $value       = isset($request->value) ? $request->value : null;
+        $maxValue     = Product::where('status',1)->max('price');
 
         if($slug)
         {   
             $category = Category::where('slug',$slug)->first();
-            $pageType = 'Shop By Category ' . $category->title;    
+            $pageType = $category->title;    
             $catId = $category->id;    
 
             $products = Product::withCount('user_wishlist')
@@ -409,7 +412,7 @@ class HomeController extends Controller
         }
         else
         {
-            return view('frontend.products', compact('products','catId','pageType','sizes','colors','fabrics','orientations','maxValue'));
+            return view('frontend.products', compact('products','catId','pageType','maxValue'));
         }       
     }
 

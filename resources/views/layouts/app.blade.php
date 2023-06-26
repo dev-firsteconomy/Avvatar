@@ -647,22 +647,24 @@
 				var newsletterEmail = $('#newsletter-email').val();
 				var EmailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
-				if (!EmailPattern.test(newsletterEmail)) {
-					Swal.fire({
-						icon: "error",
-						text: 'Please Enter Valid Email',
-						toast: true,
-						position: 'top-right',
-						timer: 5000,
-						showConfirmButton: false,
-						title: "Valid Email!",
-					});
+				if (newsletterEmail != '') 
+				{
+					if (!EmailPattern.test(newsletterEmail)) 
+					{
+						Swal.fire({
+							icon: "error",
+							text: 'Please Enter Valid Email',
+							toast: true,
+							position: 'top-right',
+							timer: 5000,
+							showConfirmButton: false,
+							title: "Valid Email!",
+						});
 
-					return false;
-				}
+						return false;
+					}
 
-
-				if (newsletterEmail != '') {
+				
 					$.ajax({
 						url: "/submit-newsletter",
 						data: {
@@ -671,7 +673,8 @@
 						},
 						type: "POST",
 						success: function(response) {
-							if (response == 1) {
+							if (response == 1) 
+							{
 								Swal.fire({
 									icon: "success",
 									text: "You have subscribed to our newsletter",
@@ -681,7 +684,9 @@
 									showConfirmButton: false,
 									title: "Subscribed!",
 								});
-							} else if (response == 2) {
+							} 
+							else if (response == 2) 
+							{
 								Swal.fire({
 									icon: "alert",
 									text: 'You have already subscribed to our newsletter',
@@ -691,7 +696,9 @@
 									showConfirmButton: false,
 									title: "Already Subscribed!",
 								});
-							} else {
+							} 
+							else 
+							{
 								Swal.fire({
 									icon: "error",
 									text: 'Something went wrong !',
@@ -701,12 +708,14 @@
 									showConfirmButton: false,
 									title: "Error !",
 								});
-
 							}
+
 							$('#newsletter-email').val('');
 						}
 					});
-				} else {
+				} 
+				else 
+				{
 					Swal.fire({
 						icon: "error",
 						text: 'Please Add Email',
