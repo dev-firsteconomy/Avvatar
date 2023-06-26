@@ -581,12 +581,15 @@ $(document).ready(function () {
 
 	// Scroll Top Button - Show
 	var $scrollTop = $('#scroll-top');
+	var $whatsappIcon = $('.whatsappIcon');
 
 	$(window).on('load scroll', function () {
 		if ($(window).scrollTop() >= 400) {
 			$scrollTop.addClass('show');
+			$whatsappIcon.addClass('show');
 		} else {
 			$scrollTop.removeClass('show');
+			$whatsappIcon.removeClass('show');
 		}
 	});
 
@@ -708,6 +711,18 @@ $(document).ready(function () {
 		$('.chooseFlavourBtns .btn').removeClass("active");
 		$(this).addClass("active");
 	});
+	
+	
+	$('.product-image-gallery').slick({
+		rows: 4,
+		dots: false,
+		arrows: true,
+		infinite: false,
+		vertical: true,
+		speed: 300,
+		slidesToShow: 1,
+		slidesToScroll: 1
+	 });
 
 	$('body').on('click', '.btn-fullscreen', function (e) {
 		var galleryArr = [];

@@ -21,6 +21,7 @@
 							<li><a href="contact.html">Pre Workout Series</a></li>
 							<li><a href="categories/muscle-gainer">Muscle Gainer</a></li>
 							<li><a href="categories/clothing-accessories">Colthing & Accessories</a></li>
+							<li><a href="/products">All Products</a></li>
 						</ul><!-- End .widget-list -->
 					</div><!-- End .widget -->
 				</div><!-- End .col-sm-6 col-lg-3 -->
@@ -31,12 +32,12 @@
 
 						<ul class="widget-list d-lg-flex flex-wrap">
 							<li><a href="/about-avvatar">About Us</a></li>
-							<li><a href="#">Blogs</a></li>
-							<li><a href="#">Why Avvatar</a></li>
+							<li><a href="/blogs">Blogs</a></li>
+							<li><a href="/why-avvatar">Why Avvatar</a></li>
 							<li><a href="/privacy-policy">Privacy Policy</a></li>
-							<li><a href="#">Authenticate</a></li>
+							<li><a href="/authenticate">Authenticate</a></li>
 							<li><a href="/terms-of-use">Terms of Use</a></li>
-							<li><a href="#">Media</a></li>
+							<li><a href="/media">Media</a></li>
 							<li><a href="/returns-policy">Return Policy</a></li>
 						</ul><!-- End .widget-list -->
 					</div><!-- End .widget -->
@@ -77,6 +78,9 @@
 	</div><!-- End .footer-bottom -->
 </footer><!-- End .footer -->
 </div><!-- End .page-wrapper -->
+<div class="stickyiconsWrapper">
+	<a href="https://wa.me/917756072076" target="_blank" class="stickyicons whatsappIcon"><i class="icon-whatsapp"></i></a>
+</div>
 <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
 <!-- Mobile Menu -->
@@ -256,7 +260,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true"><i class="icon-close"></i></span>
 				</button>
 
@@ -264,10 +268,10 @@
 					<div class="form-tab">
 						<ul class="nav nav-pills nav-fill" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+								<a class="nav-link active" id="signin-tab" data-bs-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+								<a class="nav-link" id="register-tab" data-bs-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
 							</li>
 						</ul>
 						<div class="tab-content" id="tab-content-5">

@@ -150,7 +150,7 @@
 					</div>
 					<div class="productJourneyBox col-6 col-md-3 text-center">
 						<img src="assets/images/new/homepage/shaker.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Shakaer</h4>
+						<h4 class="mt-1 mt-md-2 fw-bold">Shaker</h4>
 					</div>
 				</div>
 			</div>

@@ -205,7 +205,7 @@ section {
 	background-color: #333333;
 	color: #fff;
 	border: 1px solid #333333;
-	padding: 0.4rem 1.8rem;
+	padding: 6px 14px;
 	text-transform: uppercase;
 	font-size: 18px;
 	-webkit-transition: all 0.2s;
@@ -213,6 +213,7 @@ section {
 	margin-top: 20px;
 	display: inline-block;
 	cursor: pointer;
+	line-height: 1.2;
 }
 
 .commonButton-yellow {
@@ -728,7 +729,7 @@ span.sr-only {
 .accordion-button {
 	font-size: 18px;
 	font-weight: 600;
-	padding: 15px 0;
+	padding: 15px 15px;
 }
 
 .accordion-button:focus {
@@ -745,6 +746,26 @@ span.sr-only {
 
 .accordion-flush .accordion-collapse {
 	border-top: 1px solid #dee2e6;
+}
+
+.accordion-button:not(.collapsed) {
+	color: #000;
+	background-color: #f7bc2a;
+}
+
+.accordion-button:not(.collapsed)::after {
+	-webkit-filter: invert(1) brightness(0);
+	filter: invert(1) brightness(0);
+}
+
+.accordion-body {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #fafafa;
+}
+
+.accordion-body p + p {
+	margin-top: 10px;
 }
 
 .contactUsForm form {
@@ -1291,6 +1312,10 @@ span.sr-only {
 	cursor: pointer;
 }
 
+.weight-conversion-btns .weight-conversion-btns_btn:nth-child(2) {
+	border-left: 0;
+}
+
 .weight-conversion-btns .weight-conversion-btns_btn.active {
 	background-color: #f7bc2a;
 	color: #000;
@@ -1476,4 +1501,179 @@ span.sr-only {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+}
+
+.whyAvvatarBox {
+	background-color: #FFF2D0;
+	border: 2px solid #F7BC2A;
+	padding: 170px 0px 15px;
+	margin-top: -100px;
+}
+
+.whyAvvatarBoxImg img {
+	width: 200px;
+}
+
+.whyAvvatarBoxHeading {
+	background-color: #F7BC2A;
+	padding: 10px 5px;
+}
+
+.whyAvvatarBoxHeading h3 {
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.whyAvvatarBoxContent ul {
+	list-style-type: disc;
+	margin: 15px 0 0 15px;
+	padding: 0 15px;
+}
+
+.whyAvvatarBoxContent ul li {
+	color: #000;
+}
+
+.whyAvvatarBoxContent ul li::marker {
+	color: #F7BC2A;
+}
+
+.whyAvvatarBoxContent ul li + li {
+	margin-top: 10px;
+}
+
+.makingAvvatar .col-md-5:nth-child(2),
+.makingAvvatar .col-md-5:nth-child(4) {
+	margin-top: 200px;
+}
+
+.makingAvvatar .col-md-5:nth-child(3) {
+	margin-top: -65px;
+}
+
+.header-center .dropdown-item:focus,
+.header-center .dropdown-item:hover {
+	color: #f7bc2a;
+	background-color: #333;
+}
+
+.orderCompleteThankYou img {
+	width: 200px;
+	max-width: 200px;
+	margin-bottom: 30px;
+}
+
+.orderDataBox {
+	padding: 15px;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+}
+
+.orderDataBox + .orderDataBox {
+	margin-top: 30px;
+}
+
+.orderDetail {
+	-webkit-box-flex: 2;
+	-ms-flex: 2;
+	flex: 2;
+	padding: 0 15px;
+}
+
+.orderImg {
+	min-width: 100px;
+	max-width: 100px;
+}
+
+.orderVariant {
+	line-height: 1.2;
+}
+
+.orderVariant + .orderVariant {
+	padding-left: 5px;
+	margin-left: 5px;
+	border-left: 1px solid #000;
+}
+
+.orderVariant p {
+	line-height: 1.2;
+}
+
+.orderVariant .badge {
+	padding: 4px 10px;
+	font-size: 14px;
+	background-color: #388E3C !important;
+}
+
+.orderName h5 {
+	font-size: 15px;
+}
+
+.orderPrice h5 {
+	font-size: 24px
+}
+
+.orderPrice h5 .mrp {
+	font-size: 18px;
+}
+
+.card.addressCardsWrapper {
+	border: 0;
+}
+
+.addressCardsWrapper .col-md-6:nth-child(n + 3) {
+	margin-top: 30px;
+}
+
+.addressBlock {
+	min-height: 107px;
+}
+
+.addressCardBox {
+	padding: 15px;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, .099) !important;
+}
+
+.addressAction .dropdown-toggle::after {
+	display: none;
+}
+
+.addressType {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.addressAction .dropdown-menu {
+	padding: 0;
+	right: 0 !important;
+	left: auto !important;
+}
+
+.addressAction .btn-link {
+	width: 100%;
+	text-align: left;
+	padding: 6px 15px;
+}
+
+.addressContact p {
+	line-height: 1.2;
+}
+
+.addressContact .icon {
+	width: 20px;
+	height: 20px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	background-color: #f7bc2a;
+	color: #000;
+	margin-right: 4px;
+	border-radius: 50%;
 }

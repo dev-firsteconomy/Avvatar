@@ -238,20 +238,20 @@
 														$url = '/images/no-image.jpg';
 													}
 												?>
-										@if($bestseller->tag != '')<span class="product-label label-new">{{$bestseller->tag}}</span>@endif
-										<a href="{{url('product/' .$bestseller->slug)}}">
-											<img src="{{asset($url)}}" alt="{!! @$bestseller->meta_description !!}" class="product-image">
-										</a>
+								@if($bestseller->tag != '')<span class="product-label label-new">{{$bestseller->tag}}</span>@endif
+								<a href="{{url('product/' .$bestseller->slug)}}">
+									<img src="{{asset($url)}}" alt="{!! @$bestseller->meta_description !!}" class="product-image">
+								</a>
 
-										<div class="product-action-vertical">
-											@if(is_user_logged_in())
-											 <a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"><span class="add_to_wishlist_msg{{$bestseller->id}}">add to wishlist</span></a>
-											@else
-											 <a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"></a>
-											@endif
-										</div><!-- End .product-action-vertical -->
-									</figure><!-- End .product-media -->
-									<?php
+								<div class="product-action-vertical">
+									@if(is_user_logged_in())
+									<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"><span class="add_to_wishlist_msg{{$bestseller->id}}">add to wishlist</span></a>
+									@else
+									<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"></a>
+									@endif
+								</div><!-- End .product-action-vertical -->
+							</figure><!-- End .product-media -->
+							<?php
 									// $availableColors = $product->sizesstock()->groupBy('color_id')->get();
 									?>
 									<div class="product-body">
@@ -274,11 +274,39 @@
 													<span class="product{{$bestseller->id}}">Add to cart</span>
 												</a>
 
-											</div>
-										</div>
-									</div><!-- End .product-body -->
-								</div><!-- End .product -->
-							@endforeach
+								@if(isset($availableColors) && $availableColors->isNotEmpty())
+								<div class="product-color row justify-content-center">
+									@foreach($availableColors as $color)
+									<div class="radio has-color">
+										<label>
+											<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions-{{$bestseller->id}}">
+											<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
+										</label>
+									</div>
+									@endforeach
+								</div><!-- End .product-cat -->
+								@endif
+								<h3 class="product-title">
+									{{@$bestseller->category->title}} {{$bestseller->name}} - {{@$bestseller->sizesstock()->first()->productSize->name}} Kg
+								</h3><!-- End .product-title -->
+								<div class="product-price">
+									<div class="w-100">
+										<span class="new-price">₹ {{round(@$bestseller->sizesstock()->first()->sale_price) }}</span> <span class="old-price">₹ {{round(@$bestseller->sizesstock()->first()->price)}}</span>
+									</div>
+									<!--									<small>(MRP incl Taxes)</small>-->
+								</div><!-- End .product-price -->
+								<div class="atc-container">
+									<div class="mb-0">
+										<a href="{{route('product',$bestseller->slug)}}" class="btn-cart">
+											<!--										<a href="#" class="btn-cart">-->
+											<span class="product{{$bestseller->id}}">Add to cart</span>
+										</a>
+
+									</div>
+								</div>
+							</div><!-- End .product-body -->
+						</div><!-- End .product -->
+						@endforeach
 						@endif
 
 
@@ -310,7 +338,7 @@
 				</div>
 				<div class="productJourneyBox col-6 col-md-3 text-center">
 					<img src="assets/images/new/homepage/shaker.png" class="m-auto img-fluid" alt="">
-					<h4 class="mt-1 mt-md-2 fw-bold">Shakaer</h4>
+					<h4 class="mt-1 mt-md-2 fw-bold">Shaker</h4>
 				</div>
 			</div>
 		</div>
@@ -403,11 +431,39 @@
 													<span class="product{{$featureProduct->id}}">Add to cart</span>
 												</a>
 
-											</div>
-										</div>
-									</div><!-- End .product-body -->
-								</div><!-- End .product -->
-							@endforeach
+								@if(isset($availableColors) && $availableColors->isNotEmpty())
+								<div class="product-color row justify-content-center">
+									@foreach($availableColors as $color)
+									<div class="radio has-color">
+										<label>
+											<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions-{{$bestseller->id}}">
+											<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
+										</label>
+									</div>
+									@endforeach
+								</div><!-- End .product-cat -->
+								@endif
+								<h3 class="product-title">
+									{{@$bestseller->category->title}} {{$bestseller->name}} - {{@$bestseller->sizesstock()->first()->productSize->name}} Kg
+								</h3><!-- End .product-title -->
+								<div class="product-price">
+									<div class="w-100">
+										<span class="new-price">₹ {{round(@$bestseller->sizesstock()->first()->sale_price) }}</span> <span class="old-price">₹ {{round(@$bestseller->sizesstock()->first()->price)}}</span>
+									</div>
+									<!--									<small>(MRP incl Taxes)</small>-->
+								</div><!-- End .product-price -->
+								<div class="atc-container">
+									<div class="mb-0">
+										<a href="{{route('product',$bestseller->slug)}}" class="btn-cart">
+											<!--										<a href="#" class="btn-cart">-->
+											<span class="product{{$bestseller->id}}">Add to cart</span>
+										</a>
+
+									</div>
+								</div>
+							</div><!-- End .product-body -->
+						</div><!-- End .product -->
+						@endforeach
 						@endif
 
 					</div><!-- End .owl-carousel -->

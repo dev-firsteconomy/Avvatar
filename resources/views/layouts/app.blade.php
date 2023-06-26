@@ -12,19 +12,19 @@
 	<meta name="description" content="{{env('APP_NAME')}}">
 	<meta name="author" content="{{env('APP_NAME')}}">
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/images/icons/apple-touch-icon.png')}}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/images/icons/favicon-32x32.png')}}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/images/icons/favicon-16x16.png')}}">
-	
+	<link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/images/new/favicon.ico')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/images/new/favicon.ico')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/images/new/favicon.ico')}}">
+
 	<link rel="manifest" href="{{URL::asset('assets/images/icons/site.html')}}">
 	<link rel="mask-icon" href="{{URL::asset('assets/images/icons/safari-pinned-tab.svg')}}" color="#666666">
-	<link rel="shortcut icon" href="{{URL::asset('assets/images/icons/favicon.png')}}">
+	<link rel="shortcut icon" href="{{URL::asset('assets/images/new/favicon.ico')}}">
 	<meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}">
 	<meta name="application-name" content="{{ env('APP_NAME') }}">
 	<meta name="msapplication-TileColor" content="#cc9966">
 	<meta name="msapplication-config" content="{{URL::asset('assets/images/icons/browserconfig.xml')}}">
 	<meta name="theme-color" content="#ffffff">
-	<link rel="preload" href="{{URL::asset('assets/images/new/logo.png')}}" as="image"> 
+	<link rel="preload" href="{{URL::asset('assets/images/new/logo.png')}}" as="image">
 	<!-- Plugins CSS File -->
 
 
@@ -54,6 +54,7 @@
 			font-weight: 700;
 			font-size: 24px;
 		}
+
 	</style>
 	<link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-5.2.3.min.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/plugins/owl-carousel/owl.carousel.css')}}">
@@ -65,28 +66,11 @@
 	<link rel="stylesheet" href="{{URL::asset('assets/css/plugins/nouislider/nouislider.css')}}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured-responsive.css')}}">
 
-	<!-- Google Tag Manager -->
-	<script>
-		(function(w, d, s, l, i) {
-			w[l] = w[l] || [];
-			w[l].push({
-				'gtm.start': new Date().getTime(),
-				event: 'gtm.js'
-			});
-			var f = d.getElementsByTagName(s)[0],
-				j = d.createElement(s),
-				dl = l != 'dataLayer' ? '&l=' + l : '';
-			j.async = true;
-			j.src =
-				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-			f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-5LX9XVV');
 
-	</script>
-	<!-- End Google Tag Manager -->
 
 	@livewireStyles
 </head>
@@ -99,8 +83,7 @@
 			<p class="m-0">Loading...</p>
 		</div>
 	</div>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LX9XVV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 	<!-- End Google Tag Manager (noscript) -->
 	<!-- Header File -->
 	@include('layouts.header')
@@ -115,6 +98,7 @@
 	<script src="{{URL::asset('assets/js/jquery.elevateZoom.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/bootstrap-input-spinner.js')}}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 	<!-- Main JS File -->
 	<script src="{{URL::asset('assets/js/main.js')}}"></script>
@@ -133,7 +117,9 @@
 
 
 
+	<script>
 
+	</script>
 	<script>
 		$('.footer-middle .widget-title').click(function(e) {
 			$(this).parent().find('.widget-list').slideToggle();
@@ -472,9 +458,10 @@
 	<script src="{{asset('backend/js/sweetalert.min.js')}}"></script>
 
 	<script>
-		$(window).on('load', function(){
+		$(window).on('load', function() {
 			$('#preloaderWrapper').addClass('d-none');
 		})
+
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -841,6 +828,27 @@
 		});
 
 	</script>
+
+	<!--
+	 alert('Hello world!'); 
+	<script src="data:text/javascript;base64,YWxlcnQoJ0hlbGxvIHdvcmxkIScpOw=="></script>
+	<script defer>
+		window.addEventListener('DOMContentLoaded', function() {
+
+			alert('Why no defer?!?');
+
+		});
+
+	</script>
+
+
+
+	<script>
+		alert('Buh-bye world!');
+
+	</script>
+-->
+
 
 </body>
 

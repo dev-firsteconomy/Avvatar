@@ -67,16 +67,16 @@
 								</ul>
 							</li>
 							<li>
-								<a href="/offers" class="">Authanticate</a>
+								<a href="/authanticate" class="">Authanticate</a>
 							</li>
 							<li>
 								<a href="/faq" class="">FAQs</a>
 							</li>
 							<li>
-								<a href="{{url('/contact')}}" class="">Contact Us</a>
+								<a href="/contact" class="">Contact Us</a>
 							</li>
 							<li>
-								<a href="#" class="">media</a>
+								<a href="/media" class="">media</a>
 							</li>
 						</ul><!-- End .menu -->
 					</nav><!-- End .main-nav -->
@@ -99,7 +99,7 @@
 							<i class="icon-user"></i>
 						</a>
 						@else
-						<a href="#signin-modal" data-toggle="modal">
+						<a href="#signin-modal" data-bs-toggle="modal">
 							<i class="icon-user"></i>
 						</a>
 						@endif
