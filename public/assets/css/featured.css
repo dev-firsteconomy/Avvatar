@@ -76,7 +76,7 @@ section {
 }
 
 .knowMore:hover a {
-	color: #fff;
+	color: #000;
 }
 
 .commonImgTextBox:hover .knowMore {
@@ -138,16 +138,17 @@ section {
 }
 
 .productJourneyBox img {
-	width: 180px;
+	width: 130px;
 	position: relative;
 	z-index: 2;
 }
 
 .productJourneyBox h4 {
 	color: #fff;
-	font-size: 30px;
+	font-size: 20px;
 	position: relative;
 	z-index: 2;
+	line-height: 1.2;
 }
 
 .productJourneyBox:before {
@@ -164,12 +165,12 @@ section {
 	content: '';
 	position: absolute;
 	top: auto;
-	width: 120px;
-	height: 100px;
+	width: 50px;
+	height: 73px;
 	background-image: url(../images/new/homepage/journeyArrow.png);
 	background-repeat: no-repeat;
-	background-size: 91px;
-	left: -15%;
+	background-size: 50px;
+	left: -12%;
 	bottom: 14%;
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
@@ -350,6 +351,8 @@ section {
 .aboutAvvatarBox p {
 	font-weight: 500;
 	color: #000;
+	text-align: center;
+	line-height: 1.2;
 }
 
 .aboutParafFood.patternBgTop,
@@ -845,8 +848,6 @@ span.sr-only {
 .instaFeedBox:nth-child(n+5) {
 	margin-top: 30px;
 }
-
-.uniqCode h3 {}
 
 .otpInputBoxes input {
 	width: 50px;
@@ -1730,4 +1731,286 @@ span.sr-only {
 	color: #000;
 	margin-right: 4px;
 	border-radius: 50%;
+}
+
+
+.total-like-user-main a {
+	display: inline-block;
+	margin: 0 -17px 0 0;
+}
+
+.total-like {
+	border: 1px solid;
+	border-radius: 50px;
+	display: inline-block;
+	font-weight: 500;
+	height: 34px;
+	line-height: 33px;
+	padding: 0 13px;
+	vertical-align: top;
+}
+
+.restaurant-detailed-ratings-and-reviews hr {
+	margin: 0 -24px;
+}
+
+.graph-star-rating-header .star-rating {
+	font-size: 17px;
+}
+
+.progress {
+	background: #f2f4f8 none repeat scroll 0 0;
+	border-radius: 0;
+	height: 30px;
+}
+
+.rating-list {
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.rating-list-left {
+	height: 16px;
+	line-height: 29px;
+	width: 10%;
+}
+
+.rating-list-center {
+	width: 80%;
+}
+
+.rating-list-right {
+	line-height: 29px;
+	text-align: right;
+	width: 10%;
+}
+
+.restaurant-slider-pics {
+	bottom: 0;
+	font-size: 12px;
+	left: 0;
+	z-index: 999;
+	padding: 0 10px;
+}
+
+.restaurant-slider-view-all {
+	bottom: 15px;
+	right: 15px;
+	z-index: 999;
+}
+
+.offer-dedicated-nav .nav-link.active,
+.offer-dedicated-nav .nav-link:hover,
+.offer-dedicated-nav .nav-link:focus {
+	border-color: #3868fb;
+	color: #3868fb;
+}
+
+.offer-dedicated-nav .nav-link {
+	border-bottom: 2px solid #fff;
+	color: #000000;
+	padding: 16px 0;
+	font-weight: 600;
+}
+
+.offer-dedicated-nav .nav-item {
+	margin: 0 37px 0 0;
+}
+
+.restaurant-detailed-action-btn {
+	margin-top: 12px;
+}
+
+.restaurant-detailed-header-right .btn-success {
+	border-radius: 3px;
+	height: 45px;
+	margin: -18px 0 18px;
+	min-width: 130px;
+	padding: 7px;
+}
+
+.text-black {
+	color: #000000;
+}
+
+.icon-overlap {
+	bottom: -23px;
+	font-size: 74px;
+	opacity: 0.23;
+	position: absolute;
+	right: -32px;
+}
+
+.menu-list img {
+	width: 41px;
+	height: 41px;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.restaurant-detailed-header-left img {
+	width: 88px;
+	height: 88px;
+	border-radius: 3px;
+	-o-object-fit: cover;
+	object-fit: cover;
+	-webkit-box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+.reviews-members .media img {
+	width: 56px;
+	height: 56px;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.rounded-pill {
+	border-radius: 50rem !important;
+}
+
+.total-like-user {
+	border: 2px solid #fff;
+	height: 34px;
+	-webkit-box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+	width: 34px;
+}
+
+/*** review css ***/
+
+.total-like-user-main a {
+	display: inline-block;
+	margin: 0 -17px 0 0;
+}
+
+.total-like {
+	border: 1px solid;
+	border-radius: 50px;
+	display: inline-block;
+	font-weight: 500;
+	height: 34px;
+	line-height: 33px;
+	padding: 0 13px;
+	vertical-align: top;
+}
+
+.restaurant-detailed-ratings-and-reviews hr {
+	margin: 0 -24px;
+}
+
+.graph-star-rating-header .star-rating {
+	font-size: 17px;
+}
+
+.progress {
+	background: #f2f4f8 none repeat scroll 0 0;
+	border-radius: 0;
+	height: 30px;
+}
+
+.rating-list {
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.rating-list-left {
+	height: 16px;
+	line-height: 29px;
+	width: 10%;
+}
+
+.rating-list-center {
+	width: 80%;
+}
+
+.rating-list-right {
+	line-height: 29px;
+	text-align: right;
+	width: 10%;
+}
+
+.restaurant-slider-pics {
+	bottom: 0;
+	font-size: 12px;
+	left: 0;
+	z-index: 999;
+	padding: 0 10px;
+}
+
+.restaurant-slider-view-all {
+	bottom: 15px;
+	right: 15px;
+	z-index: 999;
+}
+
+.progress {
+	background: #f2f4f8 none repeat scroll 0 0;
+	border-radius: 0;
+	height: 30px;
+}
+
+.reviews-members .media-body {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.star-rating .bxs-star {
+	color: #000;
+}
+
+.star-rating .bxs-star.active {
+	color: #f7bc2a;
+}
+
+.reviews-members-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+}
+
+.reviews-members-heade .star-rating {
+	line-height: 1;
+}
+
+.shadow-sm.rating-review-select-page {
+	-webkit-box-shadow: 0 1px 14px rgba(0, 0, 0, .075) !important;
+	box-shadow: 0 1px 14px rgba(0, 0, 0, .075) !important;
+}
+
+.menu-footer p {
+	line-height: 1.2;
+	margin-bottom: 10px;
+}
+
+.menu-footer a {
+	display: inline-block;
+	font-weight: 700;
+	padding: 3px 0;
+	font-size: 14px;
+	color: #000000;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.menu-footer a:hover,
+.menu-footer a:focus {
+	font-weight: 700;
+}
+
+.menu-footer .time {
+	font-size: 14px;
 }

@@ -154,30 +154,44 @@
 				<p>the purest whey protien in the market</p>
 			</div>
 
-			<div class="row aboutAvaatarIcons">
-				<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-					<img src="assets/images/new/homepage/sugarfree-Icon.png" alt="" class="img-fluid">
-					<p class="mb-0">Sugar Free</p>
-				</div>
-				<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-					<img src="assets/images/new/homepage/cholesterol-Icon.png" alt="" class="img-fluid">
-					<p class="mb-0">Low Cholesterol</p>
-				</div>
-				<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-					<img src="assets/images/new/homepage/gmo-Icon.png" alt="" class="img-fluid">
-					<p class="mb-0">GMO Free</p>
-				</div>
-				<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-					<img src="assets/images/new/homepage/gluten-Icon.png" alt="" class="img-fluid">
-					<p class="mb-0">Gluten Free</p>
-				</div>
-				<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-					<img src="assets/images/new/homepage/soy-Icon.png" alt="" class="img-fluid">
-					<p class="mb-0">Soy Free</p>
-				</div>
-				<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-					<img src="assets/images/new/homepage/lowfat-Icon.png" alt="" class="img-fluid">
-					<p class="mb-0">Low Fat</p>
+			<div class="row justify-content-center aboutAvaatarIcons">
+				<div class="col-md-11 row justify-content-center">
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/sugarfree-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% Freshest Protein of India</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/cholesterol-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% Natural Flavours</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/gmo-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% made of cow milk</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/gluten-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% Vegetarian</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/soy-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% Certified</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/lowfat-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% Counterfiet proof</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/gluten-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% free from preservatives</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/soy-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% free from amino spiking</p>
+					</div>
+					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
+						<img src="assets/images/new/homepage/lowfat-Icon.png" alt="" class="img-fluid">
+						<p class="mb-0">100% free from artificial digestive enzymes</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -284,21 +298,29 @@
 			</div><!-- End .heading -->
 
 			<div class="row">
-				<div class="productJourneyBox col-6 col-md-3 text-center">
+				<div class="productJourneyBox col-6 col-md-2 text-center">
 					<img src="assets/images/new/homepage/dairyFarm.png" class="m-auto img-fluid" alt="">
-					<h4 class="mt-1 mt-md-2 fw-bold">Dairy Farm</h4>
+					<h4 class="mt-1 mt-md-1 fw-bold">Dairy Farm</h4>
 				</div>
-				<div class="productJourneyBox col-6 col-md-3 text-center">
+				<div class="productJourneyBox col-6 col-md-2 text-center">
 					<img src="assets/images/new/homepage/cheesePlant.png" class="m-auto img-fluid" alt="">
-					<h4 class="mt-1 mt-md-2 fw-bold">Cheese Plant</h4>
+					<h4 class="mt-1 mt-md-1 fw-bold">Milk Plant</h4>
 				</div>
-				<div class="productJourneyBox col-6 col-md-3 text-center">
+				<div class="productJourneyBox col-6 col-md-2 text-center">
 					<img src="assets/images/new/homepage/wheyPlant.png" class="m-auto img-fluid" alt="">
-					<h4 class="mt-1 mt-md-2 fw-bold">Whey Farm</h4>
+					<h4 class="mt-1 mt-md-1 fw-bold">Cheese Plant</h4>
 				</div>
-				<div class="productJourneyBox col-6 col-md-3 text-center">
+				<div class="productJourneyBox col-6 col-md-2 text-center">
 					<img src="assets/images/new/homepage/shaker.png" class="m-auto img-fluid" alt="">
-					<h4 class="mt-1 mt-md-2 fw-bold">Shaker</h4>
+					<h4 class="mt-1 mt-md-1 fw-bold">Whey Protien <br> Plant</h4>
+				</div>
+				<div class="productJourneyBox col-6 col-md-2 text-center">
+					<img src="assets/images/new/homepage/wheyPlant.png" class="m-auto img-fluid" alt="">
+					<h4 class="mt-1 mt-md-1 fw-bold">Store</h4>
+				</div>
+				<div class="productJourneyBox col-6 col-md-2 text-center">
+					<img src="assets/images/new/homepage/shaker.png" class="m-auto img-fluid" alt="">
+					<h4 class="mt-1 mt-md-1 fw-bold">Shaker</h4>
 				</div>
 			</div>
 		</div>
@@ -511,7 +533,7 @@
 		</section>
 	@endif
 
-	<section class="reconstructSection educateSection">
+	<section class="reconstructSection educateSection d-none">
 		<div class="container">
 			<div class="row justify-content-end">
 				<div class="col-lg-8">

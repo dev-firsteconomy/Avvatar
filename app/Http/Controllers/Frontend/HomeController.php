@@ -254,6 +254,11 @@ class HomeController extends Controller
     {
         return view('frontend.authenticate');
     }
+
+	public function review()
+    {
+        return view('frontend.reviews');
+    }
 	
 	public function productCategories()
     {

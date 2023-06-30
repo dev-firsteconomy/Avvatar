@@ -67,7 +67,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="/authanticate" class="">Authanticate</a>
+								<a href="/authenticate" class="">Authenticate</a>
 							</li>
 							<li>
 								<a href="/faq" class="">FAQs</a>

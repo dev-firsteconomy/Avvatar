@@ -128,34 +128,6 @@
 			</div>
 		</section>
 
-		<section class="productJourney p-0 position-relative">
-			<div class="container-fluid">
-				<div class="heading position-absolute text-center mb-3 mb-md-5">
-					<h2 class="title text-uppercase yellowText"><span class="fw-bold">Journey of</span> the Product</h2><!-- End .title -->
-					<p>From our daily farm to your shaker, fresh and pure.</p>
-				</div><!-- End .heading -->
-
-				<div class="row">
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/dairyFarm.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Dairy Farm</h4>
-					</div>
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/cheesePlant.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Cheese Plant</h4>
-					</div>
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/wheyPlant.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Whey Farm</h4>
-					</div>
-					<div class="productJourneyBox col-6 col-md-3 text-center">
-						<img src="assets/images/new/homepage/shaker.png" class="m-auto img-fluid" alt="">
-						<h4 class="mt-1 mt-md-2 fw-bold">Shaker</h4>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<section class="aboutParafFood patternBgTop">
 			<div class="container">
 				<div class="heading text-center mb-3 mb-md-5">

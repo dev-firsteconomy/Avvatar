@@ -25,6 +25,8 @@
 
 	.aboutAvvatarBox p {
 		font-size: 12px;
+		text-align: center;
+		line-height: 1.2;
 	}
 
 	.productJourneyBox h4 {
@@ -332,6 +334,19 @@
 		justify-content: space-between;
 	}
 
+	.col-md-2.aboutAvvatarBox {
+		width: 20%;
+	}
+
+	.optimalBenfits .col-md-2.aboutAvvatarBox {
+		width: 16.66666667%;
+		margin-top: 0 !important;
+	}
+
+	.col-md-2.aboutAvvatarBox:nth-child(n+6) {
+		margin-top: 20px;
+	}
+
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 991px) {
@@ -579,6 +594,15 @@
 
 	.main-nav .menu .dropdown-menu li + li {
 		margin-left: 0;
+	}
+
+	.col-md-2.aboutAvvatarBox {
+		width: 20%;
+	}
+
+
+	.col-md-2.aboutAvvatarBox:nth-child(n+6) {
+		margin-top: 20px;
 	}
 }
 

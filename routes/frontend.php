@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('blogs/experts-speaks','HomeController@expertsSpeaks');
     Route::get('blogs/fitness-trends-and-updates','HomeController@fitnessTrends');
     Route::get('/authenticate','HomeController@authenticate');
+    Route::get('/reviews','HomeController@review');
     Route::get('/collaboration','HomeController@collaboration');
 
     Route::get('/terms-of-use','HomeController@termsAndCondition');
