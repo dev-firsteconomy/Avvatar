@@ -12,7 +12,7 @@
 		<div class="container">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">FAQs</li>
+				<li class="breadcrumb-item fw-bold active" aria-current="page">FAQs</li>
 			</ol>
 		</div><!-- End .container -->
 	</nav><!-- End .breadcrumb-nav -->

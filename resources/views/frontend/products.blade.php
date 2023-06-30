@@ -96,9 +96,9 @@
 -->
            <div class="page-header p-0 text-center">
 				<picture>
-					<source media="(max-width:767px)" srcset="assets/images/new/about/about-banner.png">
-					<source media="(min-width:768px)" srcset="assets/images/new/about/about-banner.png">
-					<img src="assets/images/new/about/about-banner.png" class="img-fluid" alt="aboutBanner">
+					<source media="(max-width:767px)" srcset="assets/images/new/product-category-banner.png">
+					<source media="(min-width:768px)" srcset="assets/images/new/product-category-banner.png">
+					<img src="assets/images/new/product-category-banner.png" class="img-fluid" alt="aboutBanner">
 				</picture>
 			</div>
             

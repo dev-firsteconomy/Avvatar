@@ -67,6 +67,7 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/featured-responsive.css')}}">
 

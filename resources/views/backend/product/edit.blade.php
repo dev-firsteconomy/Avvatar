@@ -337,15 +337,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group col-md-3">
-                                    <input class="form-control imageUploader" type="file" id="images"
-                                        name="images[{{$item->size_id}}][]" value="{{ old('images') }}" multiple>
-                                    @foreach($product_images as $image)
-                                    @if($image->size_id == $item->size_id && $image->product_id == $item->product_id)
-                                    <img src="{{ asset($image->image) }}" alt="image" style="height:50px; width: 40px;">
-                                    @endif
-                                    @endforeach
-                                </div>
+                                
 
                                 <div class="form-group col-md-2">
                                     <input type="text" name="stock_qty[]" value="{{ $item->stock_qty }}"
