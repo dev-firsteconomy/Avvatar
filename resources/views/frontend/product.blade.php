@@ -74,7 +74,6 @@
 			transform: scale(1.0);
 		}
 	}
-
 </style>
 
 <div class="spinner-wrapper" id="spinner-wrapper">
@@ -84,6 +83,7 @@
 		<div class="bounce3"></div>
 	</div>
 </div>
+
 <main class="main">
 	<input type="hidden" name="pageValue" id="pageValue" value="{{ request()->has('offerValue') ? decrypt(request()->query('offerValue')) : 0 }}">
 	<nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -91,19 +91,22 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
 				<li class="breadcrumb-item"><a href="{{route('products')}}">Products</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Product</li>
+				<li class="breadcrumb-item active" aria-current="page">{{$currentProduct->category->title}} {{$currentProduct->name}}</li>
 			</ol>
-		</div><!-- End .container -->
-	</nav><!-- End .breadcrumb-nav -->
-	<input type="hidden" name="product" id="product" value="{{@$product->slug}}">
+		</div>
+	</nav>
+	
+	<input type="hidden" name="product" id="product" value="{{@$currentProduct->slug}}">
 	<input type="hidden" name="productType" id="productType" value="1">
+
 	<div class="page-content">
 		@include('frontend.singleProduct')
-	</div><!-- End .page-content -->
-</main><!-- End .main -->
+	</div>
+</main>
+
 <script>
 	$(document).ready(function() {
-		// $(this).magnificPopup();
+
 		$('.spinner-wrapper').hide();
 
 		$(document).on('click', '.product-gallery-item', function() {
@@ -127,7 +130,7 @@
 				responsive: true
 			});
 			var ez = $('#product-zoom').data('elevateZoom');
-			console.log(ez);
+
 			if ($.fn.magnificPopup) {
 				$.magnificPopup.open({
 					items: ez.getGalleryList(),
@@ -144,6 +147,25 @@
 			}
 		});
 
+	});
+
+	$(document).on('click','.changeFlavourBtn', function(){
+		var slug     = $(this).data('url');
+		window.location.href = slug;
+		// $('.spinner-wrapper').show();
+		// var slug     = $(this).data('url');
+		// $.ajax({
+		// 	url: "/product/" + slug ,
+		// 	type: "GET",
+		// 	success: function(response) {
+		// 		$('#loadAjax').empty().append(response);
+		// 		$('.spinner-wrapper').hide();
+		// 		$('.zoomContainer').remove();
+		// 		$('#product-zoom').elevateZoom({
+		// 			zoomType: "inner",
+		// 		});
+		// 	}
+		// });
 	});
 
 	$(document).on('click', '.colorOptions', function() {
@@ -174,6 +196,18 @@
 			"max": qty,
 			"min": 1
 		});
+	});
+
+	$(document).on('click', '#toggle', function() {
+		var stats = $(this).is(':checked');
+		console.log(stats);
+		if (stats) {
+			$('#sizeImage0').hide();
+			$('#sizeImage1').show();
+		} else {
+			$('#sizeImage1').hide();
+			$('#sizeImage0').show();
+		}
 	});
 
 	$(document).on('click', '#toggle', function() {

@@ -113,16 +113,6 @@ Route::group(['namespace' => 'Frontend'], function () {
     //Apply-coupon
     Route::post('/coupon-remove','CouponController@couponStore')->name('coupon-remove');    
 
-    // Cart section
-    // Route::get('/cart',function()
-    // {
-    //     return view('frontend.cart');
-    // })->name('cart');
-
-    // Route::get('/cart',function(){
-    //     return view('frontend.pages.cart2');
-    // })->name('cart');
-
     Route::get('/cart','CartController@goToCart')->name('cart');
     Route::get('/add-to-cart/{slug}','CartController@addToCart')->name('add-to-cart')->middleware('user');
     Route::post('/add-to-cart','CartController@singleAddToCart')->name('single-add-to-cart')->middleware('user');

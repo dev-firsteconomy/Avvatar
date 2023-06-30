@@ -226,89 +226,49 @@
 								<div class="product productBox product-7 text-center">
 									<figure class="product-media">
 										<?php 
-													$url = $bestseller->images()->inRandomOrder()->first();
-													$sizeId = 1;
-													if($url)
-													{
-														$sizeId = $url->size_id;
-														$url = $url->image;
-													}
-													else 
-													{
-														$url = '/images/no-image.jpg';
-													}
-												?>
-								@if($bestseller->tag != '')<span class="product-label label-new">{{$bestseller->tag}}</span>@endif
-								<a href="{{url('product/' .$bestseller->slug)}}">
-									<img src="{{asset($url)}}" alt="{!! @$bestseller->meta_description !!}" class="product-image">
-								</a>
+											$baseImage = $bestseller->default_image;
+											if(!$baseImage)
+											{
+												$baseImage = $bestseller->images()->first()->image;
+											}
+										?>
 
-								<div class="product-action-vertical">
-									@if(is_user_logged_in())
-									<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"><span class="add_to_wishlist_msg{{$bestseller->id}}">add to wishlist</span></a>
-									@else
-									<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"></a>
-									@endif
-								</div><!-- End .product-action-vertical -->
-							</figure><!-- End .product-media -->
-							<?php
-									// $availableColors = $product->sizesstock()->groupBy('color_id')->get();
-									?>
-									<div class="product-body">
-										
+										@if($bestseller->tag != '')<span class="product-label label-new">{{$bestseller->tag}}</span>@endif
+										<a href="{{url('product/' . $bestseller->slug)}}">
+											<img src="{{asset($baseImage)}}" alt="{!! @$bestseller->meta_description !!}" class="product-image">
+										</a>
+
+										<div class="product-action-vertical">
+											@if(is_user_logged_in())
+												<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"><span class="add_to_wishlist_msg{{$bestseller->id}}">add to wishlist</span></a>
+											@else
+												<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$bestseller->id}}" id="wishlist{{$bestseller->id}}"></a>
+											@endif
+										</div><!-- End .product-action-vertical -->
+									</figure><!-- End .product-media -->
+							
+									<div class="product-body">										
 										
 										<h3 class="product-title">
-											
-											<a href="#">{{@$bestseller->category->title}} {{$bestseller->name}} - {{@$bestseller->sizesstock()->where('size_id',$sizeId)->first()->productSize->name}} Kg</a>
+											<a href="{{url('product/' . $bestseller->slug)}}">{{$bestseller->title}}</a>
 										</h3><!-- End .product-title -->
 										<div class="product-price">
 											<div class="w-100">
-												<span class="new-price">₹ {{round(@$bestseller->sizesstock()->where('size_id',$sizeId)->first()->sale_price) }}</span> <span class="old-price">₹ {{round(@$bestseller->sizesstock()->where('size_id',$sizeId)->first()->price)}}</span> 
+												<span class="new-price">₹ {{round(@$bestseller->sale_price) }}</span> <span class="old-price">₹ {{round(@$bestseller->price)}}</span> 
 											</div>
 											<!--									<small>(MRP incl Taxes)</small>-->
 										</div><!-- End .product-price -->
 										<div class="atc-container">
 											<div class="mb-0">
-												<a href="{{route('product',$bestseller->slug)}}" class="btn-cart">
-													<!--										<a href="#" class="btn-cart">-->
-													<span class="product{{$bestseller->id}}">Add to cart</span>
+												<a href="javascript:void(0);" data-id="{{$bestseller->id}}" class="btn-cart buyNowBtn">
+													<span class="product{{$bestseller->id}}">Buy Now</span>
 												</a>
-
-								@if(isset($availableColors) && $availableColors->isNotEmpty())
-								<div class="product-color row justify-content-center">
-									@foreach($availableColors as $color)
-									<div class="radio has-color">
-										<label>
-											<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions-{{$bestseller->id}}">
-											<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
-										</label>
-									</div>
-									@endforeach
-								</div><!-- End .product-cat -->
-								@endif
-								<h3 class="product-title">
-									{{@$bestseller->category->title}} {{$bestseller->name}} - {{@$bestseller->sizesstock()->first()->productSize->name}} Kg
-								</h3><!-- End .product-title -->
-								<div class="product-price">
-									<div class="w-100">
-										<span class="new-price">₹ {{round(@$bestseller->sizesstock()->first()->sale_price) }}</span> <span class="old-price">₹ {{round(@$bestseller->sizesstock()->first()->price)}}</span>
-									</div>
-									<!--									<small>(MRP incl Taxes)</small>-->
-								</div><!-- End .product-price -->
-								<div class="atc-container">
-									<div class="mb-0">
-										<a href="{{route('product',$bestseller->slug)}}" class="btn-cart">
-											<!--										<a href="#" class="btn-cart">-->
-											<span class="product{{$bestseller->id}}">Add to cart</span>
-										</a>
-
+											</div>
+										</div>
 									</div>
 								</div>
-							</div><!-- End .product-body -->
-						</div><!-- End .product -->
-						@endforeach
+							@endforeach
 						@endif
-
 
 					</div><!-- End .owl-carousel -->
 				</div><!-- .End .tab-pane -->
@@ -383,87 +343,48 @@
 								<div class="product productBox product-7 text-center">
 									<figure class="product-media">
 										<?php 
-													$url = $featureProduct->images()->inRandomOrder()->first();
-													$sizeId = 1;
-													if($url)
-													{
-														$sizeId = $url->size_id;
-														$url = $url->image;
-													}
-													else 
-													{
-														$url = '/images/no-image.jpg';
-													}
-												?>
+											$baseImage = $featureProduct->default_image;
+											if(!$baseImage)
+											{
+												$baseImage = $featureProduct->images()->first()->image;
+											}
+										?>
+
 										@if($featureProduct->tag != '')<span class="product-label label-new">{{$featureProduct->tag}}</span>@endif
-										<a href="{{url('product/' .$featureProduct->slug)}}">
-											<img src="{{asset($url)}}" alt="{!! @$featureProduct->meta_description !!}" class="product-image">
+										<a href="{{url('product/' . $featureProduct->slug)}}">
+											<img src="{{asset($baseImage)}}" alt="{!! @$featureProduct->meta_description !!}" class="product-image">
 										</a>
 
 										<div class="product-action-vertical">
 											@if(is_user_logged_in())
-											 <a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$featureProduct->id}}" id="wishlist{{$featureProduct->id}}"><span class="add_to_wishlist_msg{{$featureProduct->id}}">add to wishlist</span></a>
+												<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$featureProduct->id}}" id="wishlist{{$featureProduct->id}}"><span class="add_to_wishlist_msg{{$featureProduct->id}}">add to wishlist</span></a>
 											@else
-											 <a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$featureProduct->id}}" id="wishlist{{$featureProduct->id}}"></a>
+												<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$featureProduct->id}}" id="wishlist{{$featureProduct->id}}"></a>
 											@endif
 										</div><!-- End .product-action-vertical -->
 									</figure><!-- End .product-media -->
-									<?php
-									// $availableColors = $product->sizesstock()->groupBy('color_id')->get();
-									?>
-									<div class="product-body">
-										
+							
+									<div class="product-body">										
 										
 										<h3 class="product-title">
-											
-											<a href="#">{{@$featureProduct->category->title}} {{$featureProduct->name}} - {{@$featureProduct->sizesstock()->where('size_id',$sizeId)->first()->productSize->name}} Kg</a>
+											<a href="{{url('product/' . $featureProduct->slug)}}">{{$featureProduct->title}}</a>
 										</h3><!-- End .product-title -->
 										<div class="product-price">
 											<div class="w-100">
-												<span class="new-price">₹ {{round(@$featureProduct->sizesstock()->where('size_id',$sizeId)->first()->sale_price) }}</span> <span class="old-price">₹ {{round(@$featureProduct->sizesstock()->where('size_id',$sizeId)->first()->price)}}</span> 
+												<span class="new-price">₹ {{round(@$featureProduct->sale_price) }}</span> <span class="old-price">₹ {{round(@$featureProduct->price)}}</span> 
 											</div>
 											<!--									<small>(MRP incl Taxes)</small>-->
 										</div><!-- End .product-price -->
 										<div class="atc-container">
 											<div class="mb-0">
-												<a href="{{route('product',$featureProduct->slug)}}" class="btn-cart">
-													<!--										<a href="#" class="btn-cart">-->
-													<span class="product{{$featureProduct->id}}">Add to cart</span>
+												<a href="javascript:void(0);" data-id="{{$featureProduct->id}}" class="btn-cart buyNowBtn">
+													<span class="product{{$featureProduct->id}}">Buy Now</span>
 												</a>
-
-								@if(isset($availableColors) && $availableColors->isNotEmpty())
-								<div class="product-color row justify-content-center">
-									@foreach($availableColors as $color)
-									<div class="radio has-color">
-										<label>
-											<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions-{{$bestseller->id}}">
-											<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
-										</label>
-									</div>
-									@endforeach
-								</div><!-- End .product-cat -->
-								@endif
-								<h3 class="product-title">
-									{{@$bestseller->category->title}} {{$bestseller->name}} - {{@$bestseller->sizesstock()->first()->productSize->name}} Kg
-								</h3><!-- End .product-title -->
-								<div class="product-price">
-									<div class="w-100">
-										<span class="new-price">₹ {{round(@$bestseller->sizesstock()->first()->sale_price) }}</span> <span class="old-price">₹ {{round(@$bestseller->sizesstock()->first()->price)}}</span>
-									</div>
-									<!--									<small>(MRP incl Taxes)</small>-->
-								</div><!-- End .product-price -->
-								<div class="atc-container">
-									<div class="mb-0">
-										<a href="{{route('product',$bestseller->slug)}}" class="btn-cart">
-											<!--										<a href="#" class="btn-cart">-->
-											<span class="product{{$bestseller->id}}">Add to cart</span>
-										</a>
-
+											</div>
+										</div>
 									</div>
 								</div>
-							</div><!-- End .product-body -->
-						</div><!-- End .product -->
-						@endforeach
+						    @endforeach
 						@endif
 
 					</div><!-- End .owl-carousel -->
@@ -654,58 +575,47 @@
 							<div class="product productBox product-7 text-center">
 								<figure class="product-media">
 									<?php 
-												$url = $newArrival->images()->inRandomOrder()->first();
-												$sizeId = 1;
-												if($url)
-												{
-													$sizeId = $url->size_id;
-													$url = $url->image;
-												}
-												else 
-												{
-													$url = '/images/no-image.jpg';
-												}
-											?>
+										$baseImage = $newArrival->default_image;
+										if(!$baseImage)
+										{
+											$baseImage = $newArrival->images()->first()->image;
+										}
+									?>
+
 									@if($newArrival->tag != '')<span class="product-label label-new">{{$newArrival->tag}}</span>@endif
-									<a href="{{url('product/' .$newArrival->slug)}}">
-										<img src="{{asset($url)}}" alt="{!! @$newArrival->meta_description !!}" class="product-image">
+									<a href="{{url('product/' . $newArrival->slug)}}">
+										<img src="{{asset($baseImage)}}" alt="{!! @$newArrival->meta_description !!}" class="product-image">
 									</a>
 
 									<div class="product-action-vertical">
 										@if(is_user_logged_in())
-										<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$newArrival->id}}" id="wishlist{{$newArrival->id}}"><span class="add_to_wishlist_msg{{$newArrival->id}}">add to wishlist</span></a>
+											<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$newArrival->id}}" id="wishlist{{$newArrival->id}}"><span class="add_to_wishlist_msg{{$newArrival->id}}">add to wishlist</span></a>
 										@else
-										<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$newArrival->id}}" id="wishlist{{$newArrival->id}}"></a>
+											<a href="#signin-modal" data-bs-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$newArrival->id}}" id="wishlist{{$newArrival->id}}"></a>
 										@endif
 									</div><!-- End .product-action-vertical -->
 								</figure><!-- End .product-media -->
-								<?php
-								// $availableColors = $product->sizesstock()->groupBy('color_id')->get();
-								?>
-								<div class="product-body">
-									
+						
+								<div class="product-body">										
 									
 									<h3 class="product-title">
-										
-										<a href="#">{{@$newArrival->category->title}} {{$newArrival->name}} - {{@$newArrival->sizesstock()->where('size_id',$sizeId)->first()->productSize->name}} Kg</a>
+										<a href="{{url('product/' . $newArrival->slug)}}">{{$newArrival->title}}</a>
 									</h3><!-- End .product-title -->
 									<div class="product-price">
 										<div class="w-100">
-											<span class="new-price">₹ {{round(@$newArrival->sizesstock()->where('size_id',$sizeId)->first()->sale_price) }}</span> <span class="old-price">₹ {{round(@$newArrival->sizesstock()->where('size_id',$sizeId)->first()->price)}}</span> 
+											<span class="new-price">₹ {{round(@$newArrival->sale_price) }}</span> <span class="old-price">₹ {{round(@$newArrival->price)}}</span> 
 										</div>
 										<!--									<small>(MRP incl Taxes)</small>-->
 									</div><!-- End .product-price -->
 									<div class="atc-container">
 										<div class="mb-0">
-											<a href="{{route('product',$newArrival->slug)}}" class="btn-cart">
-												<!--										<a href="#" class="btn-cart">-->
-												<span class="product{{$newArrival->id}}">Add to cart</span>
+											<a href="javascript:void(0);" data-id="{{$newArrival->id}}" class="btn-cart buyNowBtn">
+												<span class="product{{$newArrival->id}}">Buy Now</span>
 											</a>
-
 										</div>
 									</div>
-								</div><!-- End .product-body -->
-							</div><!-- End .product -->
+								</div>
+							</div>
 						@endforeach
 					@endif
 

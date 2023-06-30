@@ -74,15 +74,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $colors          = Color::where('status',1)->get();
         $sizes           = Size::where('status',1)->get();
-        $flavours        = Flavour::where('status',1)->get();
         $proteins        = Protein::where('status',1)->get();
-        $fabrics         = Fabric::where('status',1)->get();
-        $orientations    = Orientation::where('status',1)->get();
         $related_products= Product::orderBy('name')->where('status',1)->get();
         $categories      = Category::pluck('title','id');
-        return view('backend.product.create',compact('categories','related_products','colors','sizes','fabrics','orientations','proteins'));
+        return view('backend.product.create',compact('categories','related_products','sizes','proteins'));
     }
 
     /**
@@ -94,8 +90,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->except(['_token','sizeWiseImage_group']);
-        // $data=$request->all();
-        // dd($request->all());
 
         $this->validate($request,[  
              'category_id'=>'required',
@@ -108,18 +102,23 @@ class ProductController extends Controller
              'status'=>'required',
         ]);
 
-        $slug = Str::slug($request->name);
-        $count= Product::where('slug',$slug)->count();
-        if($count>0)
+        $size     = Size::find($request->size_id);
+        $category = Category::find($data['category_id']);
+
+        $slug     = Str::slug($request->name . ' ' . $size->name);
+
+        $count    = Product::where('slug',$slug)->count();
+
+        if($count > 0)
         {
             $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
         }
 
         $data['slug']             = $slug;
-        $data['title']            = $request->name;
+        $data['title']            = $category->title . ' ' . $request->name . ' - ' .  $size->name;
         $data['is_featured']      = $request->input('is_featured',0);
         $data['is_new']           = $request->input('is_new',0);
-        $data['is_bestsellers']   =$request->input('is_bestsellers',0);
+        $data['is_bestsellers']   = $request->input('is_bestsellers',0);
         $data['related_products'] = @$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
         
         if($request->default_image != null)
@@ -172,9 +171,7 @@ class ProductController extends Controller
            {
                $protein_group = $request->protein_group;
                $this->store_proteinLevel($protein_group,$product);
-           }
-
-           
+           }           
 
            if($request->images != null)
            {
@@ -261,38 +258,21 @@ class ProductController extends Controller
         return view('backend.product.show',compact('product','product_images','relatedProductsList'));
     }
 
-  
     public function edit($id)
-    {
-        $product_images = DB::table('products')
-                ->select('product_images.*')
-                ->join('product_stocks', 'products.id', '=', 'product_stocks.product_id')
-                ->join('product_images', 'products.id', '=', 'product_images.product_id')
-                ->groupBy('products.id', 'products.name', 'product_images.image')
-                ->where('products.id', '=' , $id)
-                ->get();
-        
-        $product=Product::findOrFail($id);  
-        $related_products   = Product::orderBy('name')->where('status',1)->get();
+    {        
+        $product             = Product::findOrFail($id);  
+        $related_products    = Product::orderBy('name')->where('status',1)->get();
         $relatedProductsList = unserialize($product->related_products);
-        $categories         = Category::pluck('title','id');
-        $colors             = Color::where('status',1)->get();   
-        $sizes              = Size::where('status',1)->get(); 
-        $fabrics            = Fabric::where('status',1)->get();   
-        $orientations       = Orientation::where('status',1)->get();
-        $flavours           = Flavour::where('status',1)->get();
-        $proteins        = Protein::where('status',1)->get();
-        return view('backend.product.edit',compact('product','proteins','relatedProductsList','product_images','flavours','categories','related_products','colors','sizes','fabrics','orientations'));
+        $categories          = Category::pluck('title','id'); 
+        $sizes               = Size::where('status',1)->get();
+        $proteins            = Protein::where('status',1)->get();
+        return view('backend.product.edit',compact('product','proteins','relatedProductsList','categories','related_products','sizes'));
     }
-
     
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        dd("YOU HAVE TO RESOLVE ERRORES FIRST");
-        // $data=$request->all();
-        $data = $request->except(['_token','sizeWiseImage_group']);
-        $product=Product::findOrFail($id);
+        $data    = $request->except(['_token','sizeWiseImage_group']);
+        $product = Product::findOrFail($id);
 
         $this->validate($request,[  
             'category_id'=>'required',
@@ -300,89 +280,99 @@ class ProductController extends Controller
             'hsn'=>'required',
             'min_qty'=>'required',
             'tag'=>'required',
-            'description'=>'required',
-            'additional_information'=>'required',
+            // 'description'=>'required',
+            // 'additional_information'=>'required',
             'status'=>'required',
-       ]);
+        ]);
 
-        $slug = Str::slug($request->name);
-        $count= Product::where('slug',$slug)->count();
-        if($count>0)
+        $size     = Size::find($request->size_id);
+        $category = Category::find($data['category_id']);
+
+        $slug  = Str::slug($request->name . ' ' . $size->name);
+
+        $count = Product::where('slug',$slug)->where('id','!=',$id)->count();
+
+        if($count > 0)
         {
             $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
         }
-        $data['slug']=$slug;
 
-        $data['is_featured']=$request->input('is_featured',0);
-        $data['is_new']=$request->input('is_new',0);
-        $data['is_bestsellers']=$request->input('is_bestsellers',0);
-        $data['related_products']=@$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
-       
+        $data['slug']             = $slug;
+        $data['title']            = $category->title . ' ' . $request->name . ' - ' .  $size->name;
+        $data['is_featured']      = $request->input('is_featured',0);
+        $data['is_new']           = $request->input('is_new',0);
+        $data['is_bestsellers']   = $request->input('is_bestsellers',0);
+        $data['related_products'] = @$request->related_products && count($request->related_products) ? serialize($request->related_products) :null;
+
+        if($request->default_image != null)
+        {
+            $imageData = $request->default_image;
+            $image = time() . '_'. $imageData->getClientOriginalName();
+            $path = public_path('/images/product_images');
+               
+            if (!File::isDirectory($path)) 
+            {
+                File::makeDirectory($path, 0777, true, true);
+            }
+            
+            $imageData->move($path,$image);
+            $fileName = '/images/product_images/'.$image;
+
+            $data['default_image'] = $fileName;
+        }
+
         DB::beginTransaction();
         try
         {
            $product->fill($data)->save();
            $product = $product;
-
-            if(!empty($request->sizes))
+           
+            if($request->images != null)
             {
-                foreach($request->sizes as $key => $size)
+               $images = $request->images;
+               $this->store_images($images,$product);
+            }  
+
+            if(count($request->proteins_section) > 0)
+            {
+                foreach($request->proteins_section as $proteinSection)
                 {
-                    $productStock =  ProductStock::where('product_id', $id)->where('size_id', $size)->first();
-
-                    if($productStock) 
-                    {
-                        $productStock->update([
-                            'product_id' => $id, 
-                            'size_id'    => $size,
-                            'price'      => $request->price[$key],
-                            'sale_price' => $request->sale_price[$key],
-                            'discount'   => 100 - ((100 * $request->sale_price[$key]) / $request->price[$key]),
-                            'stock_qty'  => $request->stock_qty[$key],
-                        ]);
-                    } 
-                    else 
-                    {
-                    }
-
-                    if(!empty($request->hasFile('images')))
-                    {
-                        if(file_exists($request['images'][0]))
-                        {
-                            foreach($request['images'] as $imageItem)
-                            {
-                                try 
-                                {
-                                    $image = time() . '_'. $imageItem->getClientOriginalName();
-                                    $path = public_path('/images/product_images');
-                                    
-                                    if (!File::isDirectory($path)) 
-                                    {
-                                        File::makeDirectory($path, 0777, true, true);
-                                    }
-                                    $imageItem->move($path,$image);
-                                    $fileName = '/images/product_images/'.$image;
-
-                                    $prodImage = new ProductImage;
-                                    $prodImage->product_id = (int)$id;
-                                    $prodImage->size_id    = (int)$size;
-                                    $prodImage->image = $fileName;
-                                    $prodImage->save();
-                                } 
-                                catch (\Exception $e) 
-                                {
-                                   dd($e);
-                                }
-                            }
-                        }
-                    }
-                }   
+                    ProductProtein::where('id',$proteinSection[0])->update([
+                        'protein_id'    => @$proteinSection[1],
+                        'protein_value' => @$proteinSection[2],
+                        'description'   => @$proteinSection[3]
+                    ]);
+                }
             }
 
-            if($request->sizeWiseImage_group != null)
+            if($request->protein_group != null)
             {
-               $sizeWiseImage_group = $request->sizeWiseImage_group;
-               $this->store_images($sizeWiseImage_group,$product);
+                $protein_group = $request->protein_group;
+                $this->store_proteinLevel($protein_group,$product);
+            } 
+
+            if(!empty($request->nutrition_images))
+            {
+                if(file_exists($request['nutrition_images'][0]))
+                {
+                    foreach($request['nutrition_images'] as $imageItem)
+                    {
+                        $image = time() . '_'. $imageItem->getClientOriginalName();
+                        $path = public_path('/images/nutrition_images');
+                        
+                        if (!File::isDirectory($path)) 
+                        {
+                            File::makeDirectory($path, 0777, true, true);
+                        }
+                        $imageItem->move($path,$image);
+                        $fileName = '/images/nutrition_images/'.$image;
+
+                        ProductNutrition::create([
+                            'product_id' =>$product->id,
+                            'image'=> $fileName
+                        ]);
+                    }
+                }
             }
 
             if($product)

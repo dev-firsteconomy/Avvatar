@@ -23,7 +23,7 @@
                         <tr>
                             <th>S.N.</th>
                             <th>Name</th>
-                            <th>LB</th>
+                            {{-- <th>LB</th> --}}
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -33,8 +33,8 @@
                         @foreach($sizes as $key => $size)
                         <tr>
                             <td>{{++$key}}</td>
-                            <td>{{$size->name}} KG</td>
-                            <td>{{$size->lb}} lb</td>
+                            <td>{{$size->name}}</td>
+                            {{-- <td>{{$size->lb}}</td> --}}
                             <td>
                                 @if($size->status=='1')
                                 <span class="badge badge-success">Active</span>

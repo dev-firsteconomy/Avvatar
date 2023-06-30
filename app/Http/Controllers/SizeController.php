@@ -82,13 +82,9 @@ class SizeController extends Controller
      */
     public function update(Request $request, Size $size)
     {   
-        $lb = $request->name * 2.20462;
-        $lbFormatted = number_format($lb, 1);
-
         $data = $request->all();
-        $data['lb'] = $lbFormatted;
-
-        $size=Size::findOrFail($size->id);        
+        
+        $size = Size::findOrFail($size->id);        
         $size->update($data);
         request()->session()->flash('success','Size Successfully updated');
         return redirect()->route('sizes.index');

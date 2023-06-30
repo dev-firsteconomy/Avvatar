@@ -702,13 +702,20 @@ $(document).ready(function () {
 		$(this).addClass('active');
 	});
 
-	$('.weight-conversion-btns .weight-conversion-btns_btn').click(function () {
+	$(document).on('click','.weight-conversion-btns .weight-conversion-btns_btn', function(){
 		$('.weight-conversion-btns_btn').removeClass("active");
-		$(this).addClass("active");
-	});
+		var tab = $(this).data('value');
+		if(tab == 'kg')
+		{
+			$('.weightInKg').removeClass('d-none');
+			$('.weightInLb').addClass('d-none');
+		}
+		else
+		{
+			$('.weightInKg').addClass('d-none');
+			$('.weightInLb').removeClass('d-none');
+		}
 
-	$('.chooseFlavourBtns .btn').click(function () {
-		$('.chooseFlavourBtns .btn').removeClass("active");
 		$(this).addClass("active");
 	});
 	

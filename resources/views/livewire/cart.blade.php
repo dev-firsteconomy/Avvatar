@@ -1,143 +1,37 @@
 <main class="main">
 	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
 		<div class="container">
-			<h1 class="page-title">Shopping Cart<span>Shop</span></h1>
-		</div><!-- End .container -->
-	</div><!-- End .page-header -->
+			<h1 class="page-title">Cart</h1>
+		</div>
+	</div>
 	<nav aria-label="breadcrumb" class="breadcrumb-nav">
 		<div class="container">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+				<li class="breadcrumb-item active" aria-current="page">My Cart</li>
 			</ol>
 		</div><!-- End .container -->
 	</nav><!-- End .breadcrumb-nav -->
 	@if(count(get_cart()))
 	@php
-	$addresses = @Auth()->user() ? Auth()->user()->addresses :[];
-	$user = @auth()->user();
-	$freight_details = Session::get('freight_charge');
-	$coupon_value = @Session::get('coupon') ? Session::get('coupon')['value'] :0;
+		$addresses       = @Auth()->user() ? Auth()->user()->addresses :[];
+		$user            = @auth()->user();
+		$freight_details = Session::get('freight_charge');
+		$coupon_value    = @Session::get('coupon') ? Session::get('coupon')['value'] :0;
 	@endphp
 	<div class="page-content">
 		<div class="cart">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-10">
-						<table class="table table-cart table-mobile d-none">
-							<thead>
-								<tr>
-									<th class="productImg">Product </th>
-									<th class="productName"></th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<!--<th>Color</th>-->
-									<th>Size</th>
-									<th>Total</th>
-									<th></th>
-								</tr>
-							</thead>
-							@php
-							$taxable_amount = get_cart_taxable_amount();
-							$tax = 0;// get_tax_total($taxable_amount);
-							$freight_charge = 0; // @$freight_details['freight_charge'] ? $freight_details['freight_charge'] :0;
-							$grand_total = $tax + $taxable_amount + $freight_charge - $coupon_value;
-							$isGiftCard = 0;
-							@endphp
-							<tbody>
-
-								<form class="cart_update_form" action="{{route('cart.update')}}" method="POST">
-									@csrf
-									@php
-									$sub_total = 0;
-									@endphp
-									@foreach(get_cart() as $cart)
-									@php
-									$total = $cart['product']['discounted_amt'] * $cart['quantity'];
-									$sub_total += $total;
-									$color = @App\Models\Color::find(@$cart['color_id'])->name ;
-									$size = @App\Models\Size::find(@$cart['size_id'])->name;
-									@endphp
-
-									@if($total>0)
-									<tr class="single-row delete_cart_item{{$cart['product']['id']}}">
-
-										<td class="product-col">
-											<div class="product">
-												<figure class="product-media">
-													@if($cart['product']['is_giftcard'] == 0)
-													<a href="{{route('product',[$cart['product']['slug']])}}">
-														<img src="{{asset(@$cart['image'])}}" alt="Product image">
-													</a>
-													@endif
-												</figure>
-											</div>
-										</td>
-
-										<td>
-											<div class="product">
-												<h3 class="product-title m-0">
-													<a href="{{route('product',[$cart['product']['slug']])}}">{{$cart['product']['name']}}</a>
-												</h3><!-- End .product-title -->
-												<input type="hidden" id="product_price{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}" data-price="{{$cart['product']['price'].@$cart['color_id'].@$cart['size_id']}}">
-											</div><!-- End .product -->
-										</td>
-										<td class="price-col">
-											&#8377;
-											{{round($cart['product']['discounted_amt'])}}
-										</td>
-										<td class="quantity-col">
-											<div class="e-pro-qty-block">
-												@if($cart['product']['is_giftcard'] == 0)
-												@if($cart['quantity']>1)
-												<span wire:click="removeToCart({{$cart['product']['id']}},{{@$cart['color_id']}},{{@$cart['size_id']}},{{@$cart['page_value']}})" class="input-number-increment">-</span>
-												@else
-												<span wire:click="alertConfirmDelete({{$cart['product']['id']}})" class="input-number-increment"><i class="fas fa-trash-alt"></i> X </span>
-												@endif
-												@endif
-												<input style="width:50px;" name="quant[{{$cart['product']['id']}}]" class="input-number" data-product_id="{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}" id="cart_item_count{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}" type="number" value="{{$cart['quantity']}}" min="{{@$cart['product']['min_qty']}}" max="{{@$cart['product']['max_qty']}}">
-												@if($cart['product']['is_giftcard'] == 0)
-												<span wire:click="addToCart({{$cart['product']['id']}},{{@$cart['color_id']}},{{@$cart['size_id']}},{{@$cart['page_value']}})" class="input-number-increment">+</span>
-												@endif
-											</div>
-										</td>
-										<!--
-										<td>
-											{{ $color }}
-											<input type="hidden" id="product_{{@$cart['color_id']}}" data-value="{{@$cart['color_id']}}">
-										</td>
-										-->
-										<td>
-											{{ $size }}
-											<input type="hidden" id="product_{{@$cart['size_id']}}" data-value="{{@$cart['size_id']}}">
-										</td>
-
-
-										<td class="total-col">
-											&#8377;
-											<span class="product_total{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}">{{round($total) }}</span>
-										</td>
-										<td class="remove-col">
-											<div class="e-pro-remove-block trash_btn" id="">
-												<button type="button" class="btn-remove dltBtn" wire:click="alertConfirmDelete({{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}})" style="height:30px; border-radius:50%" title="Delete">X Remove Item</button>
-											</div>
-										</td>
-									</tr>
-
-									@endif
-									@endforeach
-								</form>
-
-							</tbody>
-						</table>
 
 						<div class="table-cart cartWrapperOuter">
 							@php
-							$taxable_amount = get_cart_taxable_amount();
-							$tax = 0;// get_tax_total($taxable_amount);
-							$freight_charge = 0; // @$freight_details['freight_charge'] ? $freight_details['freight_charge'] :0;
-							$grand_total = $tax + $taxable_amount + $freight_charge - $coupon_value;
-							$isGiftCard = 0;
+								$taxable_amount = get_cart_taxable_amount();
+								$tax = 0;
+								$freight_charge = 0; 
+								$grand_total = $tax + $taxable_amount + $freight_charge - $coupon_value;
+								$isGiftCard = 0;
 							@endphp
 							<div class="cartBlock d-none d-md-flex">
 								<div class="cartBlockOne">
@@ -157,7 +51,6 @@
 										<p class="fw-bold blackText">Total</p>
 									</div>
 									<div class="cartBlockSix">
-										<!--<p class="fw-bold blackText">Total</p>-->
 									</div>
 								</div>
 							</div>
@@ -165,70 +58,71 @@
 							<form class="cart_update_form" action="{{route('cart.update')}}" method="POST">
 								@csrf
 								@php
-								$sub_total = 0;
+									$sub_total = 0;
 								@endphp
 								@foreach(get_cart() as $cart)
-								@php
-								$total = $cart['product']['discounted_amt'] * $cart['quantity'];
-								$sub_total += $total;
-								$color = @App\Models\Color::find(@$cart['color_id'])->name ;
-								$size = @App\Models\Size::find(@$cart['size_id'])->name;
-								@endphp
+									@php
+										$total      = $cart['product']['sale_price'] * $cart['quantity'];
+										$sub_total += $total;
+										$category   = @App\Models\Category::find(@$cart['product']['category_id'])->title ;
+										$size       = @App\Models\Size::find(@$cart['product']['size_id'])->name;
+									@endphp
 
-								@if($total>0)
-								<div class="cartBlock">
-									<div class="cartBlockOne">
-										<div class="product">
-											<figure class="product-media">
-												@if($cart['product']['is_giftcard'] == 0)
-												<a href="{{route('product',[$cart['product']['slug']])}}">
-													<img src="{{asset(@$cart['image'])}}" alt="Product image">
-												</a>
-												@endif
-											</figure>
-										</div>
-									</div>
-									<div class="cartBlockGroup">
-										<div class="cartBlockTwo">
-											<div class="product">
-												<h3 class="product-title m-0">
-													<a href="{{route('product',[$cart['product']['slug']])}}">{{$cart['product']['name']}}</a>
-												</h3><!-- End .product-title -->
-												<input type="hidden" id="product_price{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}" data-price="{{$cart['product']['price'].@$cart['color_id'].@$cart['size_id']}}">
-											</div><!-- End .product -->
-										</div>
-										<div class="cartBlockThree">
-											&#8377;
-											{{round($cart['product']['discounted_amt'])}}
-										</div>
-										<div class="cartBlockFour">
-											<div class="e-pro-qty-block">
-												@if($cart['product']['is_giftcard'] == 0)
-												@if($cart['quantity']>1)
-												<span wire:click="removeToCart({{$cart['product']['id']}},{{@$cart['color_id']}},{{@$cart['size_id']}},{{@$cart['page_value']}})" class="input-number-increment">-</span>
-												@else
-												<span wire:click="alertConfirmDelete({{$cart['product']['id']}})" class="input-number-increment"><i class="fas fa-trash-alt"></i> X </span>
-												@endif
-												@endif
-												<input style="width:50px;" name="quant[{{$cart['product']['id']}}]" class="input-number" data-product_id="{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}" id="cart_item_count{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}" type="number" value="{{$cart['quantity']}}" min="{{@$cart['product']['min_qty']}}" max="{{@$cart['product']['max_qty']}}">
-												@if($cart['product']['is_giftcard'] == 0)
-												<span wire:click="addToCart({{$cart['product']['id']}},{{@$cart['color_id']}},{{@$cart['size_id']}},{{@$cart['page_value']}})" class="input-number-increment">+</span>
-												@endif
+									@if($total>0)
+										<div class="cartBlock">
+											<div class="cartBlockOne">
+												<div class="product">
+													<figure class="product-media">
+														@if($cart['product']['is_giftcard'] == 0)
+														<a href="{{route('product',[$cart['product']['slug']])}}">
+															<img src="{{asset(@$cart['image'])}}" alt="Product image">
+														</a>
+														@endif
+													</figure>
+												</div>
+											</div>
+
+											<div class="cartBlockGroup">
+												<div class="cartBlockTwo">
+													<div class="product">
+														<h3 class="product-title m-0">
+															<a href="{{route('product',[$cart['product']['slug']])}}">{{$cart['product']['title']}}</a>
+														</h3>
+														<input type="hidden" id="product_price{{$cart['product']['id']}}" data-price="{{$cart['product']['sale_price']}}">
+													</div>
+												</div>
+
+												<div class="cartBlockThree">
+													<span class="new-price">₹ {{round($cart['product']['sale_price']) }}</span> <span class="old-price">₹ {{round($cart['product']['price'])}}</span> 
+												</div>
+												
+												<div class="cartBlockFour">
+													<div class="e-pro-qty-block">
+
+														@if($cart['quantity']>1)
+															<span wire:click="removeToCart({{$cart['product']['id']}})" class="input-number-increment">-</span>
+														@else
+															<span wire:click="alertConfirmDelete({{$cart['product']['id']}})" class="input-number-increment"><i class="fas fa-trash-alt"></i> X </span>
+														@endif
+														
+														<input style="width:50px;" name="quant[{{$cart['product']['id']}}]" class="input-number" data-product_id="{{$cart['product']['id']}}" id="cart_item_count{{$cart['product']['id']}}" type="number" value="{{$cart['quantity']}}" min="{{@$cart['product']['min_qty']}}" max="{{@$cart['product']['max_qty']}}">
+														
+														<span wire:click="addToCart({{$cart['product']['id']}})" class="input-number-increment">+</span>
+													
+													</div>
+												</div>
+												<div class="cartBlockFive">
+													&#8377;
+													<span class="product_total{{$cart['product']['id']}}">{{round($total) }}</span>
+												</div>
+												<div class="cartBlockSix">
+													<div class="e-pro-remove-block trash_btn" id="">
+														<button type="button" class="btn-remove dltBtn" wire:click="alertConfirmDelete({{$cart['product']['id']}})" style="height:30px; border-radius:50%" title="Delete">X Remove Item</button>
+													</div>
+												</div>
 											</div>
 										</div>
-										<div class="cartBlockFive">
-											&#8377;
-											<span class="product_total{{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}}">{{round($total) }}</span>
-										</div>
-										<div class="cartBlockSix">
-											<div class="e-pro-remove-block trash_btn" id="">
-												<button type="button" class="btn-remove dltBtn" wire:click="alertConfirmDelete({{$cart['product']['id'].@$cart['color_id'].@$cart['size_id']}})" style="height:30px; border-radius:50%" title="Delete">X Remove Item</button>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								@endif
+									@endif
 								@endforeach
 							</form>
 						</div>

@@ -7,18 +7,8 @@
         <div class="card-body">
             <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
                 {{csrf_field()}}
+                
                 <div class="row">
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="name" class="col-form-label">Name <span class="text-danger">*</span></label>
-                            <input id="name" type="text" name="name" placeholder="Enter Product Name" value="{{old('name')}}" class="form-control" required>
-                            @error('name')
-                               <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="category_id" class="col-form-label">Select Category <span class="text-danger">*</span></label>
@@ -33,10 +23,36 @@
                             @enderror
                         </div>
                     </div>
+                </div>    
 
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Name <span class="text-danger">*</span></label>
+                            <input id="name" type="text" name="name" placeholder="Enter Product Name" value="{{old('name')}}" class="form-control" required>
+                            @error('name')
+                               <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div> 
                     
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="size_id" class="col-form-label">Select Size <span class="text-danger">*</span></label>
+                            <select class="form-control" name="size_id" id="size_id" required>
+                                <option value="" selected>Select Size</option>
+                                @foreach ($sizes as  $size)
+                                   <option value="{{$size->id}}">{{$size->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('size_id')
+                               <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="hsn" class="col-form-label">HSN <span class="text-danger">*</span></label>
                             <input id="hsn" type="text" name="hsn" placeholder="Enter HSN" value="{{old('hsn')}}" class="form-control" required>
@@ -46,7 +62,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="min_qty" class="col-form-label">Minimum Order Qty <span class="text-danger">*</span></label>
                             <input id="min_qty" type="number" name="min_qty" min="0" placeholder="Enter Minimum Order Quantity" value="{{ old('min_qty') }}" class="form-control" required>
@@ -56,7 +72,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="tag" class="col-form-label">Tag </label>
                             <input id="tag" type="text" name="tag" placeholder="Enter tag" value="{{ old('tag')  }}" class="form-control">
@@ -69,22 +85,26 @@
 
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label>Default Image<span class="text-danger">*</span></label>
-                        <input class="form-control imageUploader" type="file" id="default_image" name="default_image" value="{{ old('default_image') }}" required>
+                        <label>Default Image</label>
+                        <input class="form-control imageUploader" type="file" id="default_image" name="default_image" value="{{ old('default_image') }}">
                     </div>
-                </div>    
+                </div>  
+
                 <br>
+                
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>Images<span class="text-danger">*</span></label>
                         <input class="form-control imageUploader" type="file" id="images" name="images[]" value="{{ old('images') }}" multiple required>
                     </div>
                 </div>    
+
                 <br>
+
                 <div class="row">
                     <div class="form-group col-md-4">
-                        <label for="stock_quantities">Stock Quantity <span class="text-danger">*</span></label>
-                        <input id="stock_quantities" type="number" name="stock_quantities" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantities') }}" class="form-control" required>
+                        <label for="stock_quantity">Stock Quantity <span class="text-danger">*</span></label>
+                        <input id="stock_quantity" type="number" name="stock_quantity" min="0" placeholder="Enter Stock quantity" value="{{ old('stock_quantity') }}" class="form-control" required>
                     </div>
 
                     <div class="form-group col-md-4">

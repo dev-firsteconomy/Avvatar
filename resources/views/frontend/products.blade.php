@@ -87,18 +87,12 @@
             @else
              <input type="hidden" name="pageType" id="pageType" value="{{@$catId}}">
             @endif
-<!--
-            <div class="page-header text-center" style="background-image: url('{{URL::asset('assets/images/page-header-bg.jpg')}}')">
-                <div class="container"> 
-                    <h1 class="page-title">{{$pageType}}<span>Shop</span></h1>
-                </div>
-            </div>
--->
+
            <div class="page-header p-0 text-center">
 				<picture>
-					<source media="(max-width:767px)" srcset="assets/images/new/about/about-banner.png">
-					<source media="(min-width:768px)" srcset="assets/images/new/about/about-banner.png">
-					<img src="assets/images/new/about/about-banner.png" class="img-fluid" alt="aboutBanner">
+					<source media="(max-width:767px)" srcset="/assets/images/new/about/about-banner.png">
+					<source media="(min-width:768px)" srcset="/assets/images/new/about/about-banner.png">
+					<img src="/assets/images/new/about/about-banner.png" class="img-fluid" alt="aboutBanner">
 				</picture>
 			</div>
             
@@ -107,11 +101,11 @@
                 <div class="container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item " aria-current="page">Product Categories</li>
-                        <li class="breadcrumb-item active" aria-current="page">{{$pageType}}</li>
+                        {{-- <li class="breadcrumb-item " aria-current="page"><a href="/product-categories">Categories</a></li> --}}
+                        <li class="breadcrumb-item active" aria-current="page"><strong>{{$pageType}}</strong></li>
                     </ol>
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
+                </div>
+            </nav>
 
             <div class="page-content">
                 <div class="container">
@@ -120,100 +114,14 @@
                            
                             @include('frontend.productlisting')
                                
-                        </div><!-- End .col-lg-9 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-            </div><!-- End .page-content -->
-        </main><!-- End .main -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script>
-            // $(document).ready(function() {
-                // $(function() {
-                    // $("#slider-range").slider({
-                    //     range: true,
-                    //     min: 0,
-                    //     max: {{$maxValue}},
-                    //     values: [ 0, {{$maxValue}} ],
-                    //     slide: function( event, ui ) 
-                    //     {
-                    //         $( "#amount" ).val( "₹" + ui.values[ 0 ] + " - ₹" + ui.values[ 1 ] );
-                    //         $('.spinner-wrapper').show();
 
-                    //         var sizes = [];
-                    //         var colors = [];
-                    //         var fabrics = [];
-                    //         var orientations = null;
-                    //         var pageType = $('#pageType').val();
-                    //         var min = ui.values[0];
-                    //         var max = ui.values[1];
-
-                    //         $('*[id*=size-]:visible').each(function() 
-                    //         {   
-                    //             console.log($(this).is(':checked'));                    
-                    //             if($(this).is(':checked'))
-                    //             {  
-                    //                 sizes.push( $(this).data('id'));
-                    //                 //$(this).trigger("change");
-                    //             }
-                    //         });
-
-                    //         $('*[id*=color-]').each(function() 
-                    //         {       
-                    //             var isChecked = $(this).is(':checked')?true:false; 
-                    //             console.log(isChecked);                 
-                    //             if(isChecked)
-                    //             {  
-                    //                 colors.push($(this).val());
-                    //                 //$(this).trigger("change");
-                    //             }
-                    //         });
-
-                    //         $('*[id*=fabric-]:visible').each(function() 
-                    //         {   
-                    //             console.log('fabric' ,$(this).is(':checked'));                    
-                    //             if($(this).is(':checked'))
-                    //             {  
-                    //                 fabrics.push( $(this).data('id'));
-                    //                 //$(this).trigger("change");
-                    //             }
-                    //         });
-
-                    //         $('*[id*=orientation-]:visible').each(function() 
-                    //         {   
-                    //             console.log('o',$(this).is(':checked'));                    
-                    //             if($(this).is(':checked'))
-                    //             {  
-                    //                 orientations = $(this).data('id');
-                    //                 //$(this).trigger("change");
-                    //             }
-                    //         });
-
-                    //         $.ajax({
-                    //                 url:"/filter-product",
-                    //                 data:{
-                    //                     sizes:sizes,
-                    //                     colors:colors,
-                    //                     fabrics:fabrics,
-                    //                     min:min,
-                    //                     max:max,
-                    //                     orientations:orientations,
-                    //                     pageType:pageType
-                    //                 },
-                    //                 type:"POST",
-                    //                 success:function(response)
-                    //                 {  
-                    //                     $('#productListings').empty().append(response);
-                    //                     $('.spinner-wrapper').hide();
-                    //                 }
-                    //         }); 
-                    //     }
-                    // });
-
-                    // $( "#amount" ).val( "₹" + $( "#slider-range" ).slider( "values", 0 ) + " - ₹" + $( "#slider-range" ).slider( "values", 1 ) );
-                // });
-            // });
-        </script>
         <script>
          $(document).ready(function() 
           {  
@@ -254,7 +162,7 @@
                     var price = [];
                     var pageType = $('#pageType').val();
                     var min = 0;
-                    var max = "{{@$maxValue}}";
+                    var max = 0;
                     var flag = 0;
                     var value = $('.filterBySort').val();                  
 
@@ -299,24 +207,6 @@
                         }
                     });
 
-                    // if(value != '')
-                    // {
-                    //     $("#slider-range").slider({
-                    //         range: true,
-                    //         min: 0,
-                    //         max: {{$maxValue}},
-                    //         values: [ 0, {{$maxValue}} ]
-                    //     });   
-                        
-                    //     $( "#amount" ).val( "₹" + 0 + " - ₹" + {{$maxValue}} ); 
-
-                    //     flag = 1;
-                    // }
-                    // else
-                    // {
-                    //     min = $("#slider-range").slider("values")[0];;
-                    //     max = $("#slider-range").slider("values")[1];
-                    // } 
 
                     $.ajax({
                         url:url,
@@ -352,7 +242,7 @@
                     var pageType = $('#pageType').val();
                     var value = $('.filterBySort').val(); 
                     var min = 0;
-                    var max = "{{@$maxValue}}";
+                    var max = 0;
                     var pageValue = $('#pageValue').val();
 
                     $('*[id*=size-]:visible').each(function() 
@@ -408,23 +298,6 @@
                         }
                     });
 
-                    // if(value != '')
-                    // {
-                    //     $("#slider-range").slider({
-                    //         range: true,
-                    //         min: 0,
-                    //         max: {{$maxValue}},
-                    //         values: [ 0, {{$maxValue}} ]
-                    //     });   
-
-                    //     $( "#amount" ).val( "₹" + 0 + " - ₹" + {{$maxValue}} ); 
-                    //     // flag = 1;
-                    // }
-                    // else
-                    // {
-                    //     min = $("#slider-range").slider("values")[0];;
-                    //     max = $("#slider-range").slider("values")[1];
-                    // }   
 
                     $.ajax({
                             url:"/filter-product",

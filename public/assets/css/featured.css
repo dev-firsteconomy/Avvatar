@@ -1284,6 +1284,60 @@ span.sr-only {
 
 }
 
+.chooseSizeBtnsKg .btn {
+	border: 1px solid #000;
+	color: #000;
+	outline: none;
+	background-color: #fff;
+	border-radius: 2px;
+	padding: 6px 8px;
+	min-width: 23%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.chooseSizeBtnsKg .btn.oos,
+.chooseSizeBtnsKg .btn.oos.active {
+	opacity: 0.6;
+	border-style: dotted;
+	background-color: #fff;
+	border: 1px solid #000;
+}
+
+.chooseSizeBtnsKg .btn.active {
+	background-color: #f7bc2a;
+	border-color: #f7bc2a;
+}
+
+.chooseSizeBtnsLb .btn {
+	border: 1px solid #000;
+	color: #000;
+	outline: none;
+	background-color: #fff;
+	border-radius: 2px;
+	padding: 6px 8px;
+	min-width: 23%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.chooseSizeBtnsLb .btn.oos,
+.chooseSizeBtnsLb .btn.oos.active {
+	opacity: 0.6;
+	border-style: dotted;
+	background-color: #fff;
+	border: 1px solid #000;
+}
+
+.chooseSizeBtnsLb .btn.active {
+	background-color: #f7bc2a;
+	border-color: #f7bc2a;
+}
+
 .weight-conversion-btns {
 	display: -webkit-box;
 	display: -ms-flexbox;
