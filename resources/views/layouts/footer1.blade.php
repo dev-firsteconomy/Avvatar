@@ -45,7 +45,18 @@
 
 				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="widget">
-						<h4 class="widget-title">Follow Us On</h4><!-- End .widget-title -->
+						<h4 class="widget-title">Contact Us</h4><!-- End .widget-title -->
+
+						<div class="menu-footer">
+							<p class="ttl">Toll Free Number : <a href="tel:18001033611">18001033611</a></p>
+
+							<p>Avvatar Care Email : <a href="mailto:customercare@parag.com" target="_blank">customercare@parag.com</a></p>
+
+							<p>Email &amp; Call Timings<br> Monday to Saturday (11:00 AM – 6:00 PM)</p>
+							<p>WhatsApp Messaging<br> Monday to Friday <span class="time">(9:30 AM – 6:30 PM)</span><br>
+								<span>(Please note – No calls will be entertained on WhatsApp.)<span></span></span>
+							</p>
+						</div>
 
 						<div class="social-icons">
 							<a href="https://www.facebook.com/avvatarindia" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
@@ -68,7 +79,7 @@
 				</div>
 				<div class="col-md-6">
 					<figure class="footer-payments">
-						<p class="footer-copyright">Design by <a href="" class="yellowText">WRM</a></p>
+						<p class="footer-copyright">Design by <a href="https://www.whiteriversmedia.com/" target="_blank" class="yellowText">WRM</a></p>
 					</figure><!-- End .footer-payments -->
 				</div>
 
@@ -260,7 +271,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true"><i class="icon-close"></i></span>
 				</button>
 
@@ -268,10 +279,10 @@
 					<div class="form-tab">
 						<ul class="nav nav-pills nav-fill" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+								<a class="nav-link active" id="signin-tab" data-bs-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+								<a class="nav-link" id="register-tab" data-bs-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
 							</li>
 						</ul>
 						<div class="tab-content" id="tab-content-5">

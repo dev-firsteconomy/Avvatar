@@ -51,20 +51,23 @@
 									Products
 								</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="/categories/">Whey Protein</a></li>
-									<li><a class="dropdown-item" href="/categories/muscle-gainer">Muscle Gainer</a></li>
-									<li><a class="dropdown-item" href="/categories/mass-gainer">Mass Gainer</a></li>
-									<li><a class="dropdown-item" href="/categories/isorich">Isorich</a></li>
-									<li><a class="dropdown-item" href="/categories/">Rapid</a></li>
-									<li><a class="dropdown-item" href="/categories/">L-Carnitine</a></li>
-									<li><a class="dropdown-item" href="/categories/">L-Glutamine</a></li>
-									<li><a class="dropdown-item" href="/categories/">Alpha Whey</a></li>
-									<li><a class="dropdown-item" href="/categories/">Nitro Iso Whey</a></li>
-									<li><a class="dropdown-item" href="/categories/">Nitro Massive Mass Gainer</a></li>
+									@foreach ($categoriesHeader as $category)
+									  <li><a class="dropdown-item" href="{{url('/categories/'.$category->slug)}}" class="">{{$category->title}}</a></li>
+									@endforeach
+									{{-- <li><a class="dropdown-item" href="#">Whey Protein</a></li>
+									<li><a class="dropdown-item" href="#">Muscle Gainer</a></li>
+									<li><a class="dropdown-item" href="#">Mass Gainer</a></li>
+									<li><a class="dropdown-item" href="#">Isorich</a></li>
+									<li><a class="dropdown-item" href="#">Rapid</a></li>
+									<li><a class="dropdown-item" href="#">L-Carnitine</a></li>
+									<li><a class="dropdown-item" href="#">L-Glutamine</a></li>
+									<li><a class="dropdown-item" href="#">Alpha Whey</a></li>
+									<li><a class="dropdown-item" href="#">Nitro Iso Whey</a></li>
+									<li><a class="dropdown-item" href="#">Nitro Massive Mass Gainer</a></li> --}}
 								</ul>
 							</li>
 							<li>
-								<a href="/authanticate" class="">Authanticate</a>
+								<a href="/authenticate" class="">Authenticate</a>
 							</li>
 							<li>
 								<a href="/faq" class="">FAQs</a>
@@ -96,7 +99,7 @@
 							<i class="icon-user"></i>
 						</a>
 						@else
-						<a href="#signin-modal" data-toggle="modal">
+						<a href="#signin-modal" data-bs-toggle="modal">
 							<i class="icon-user"></i>
 						</a>
 						@endif

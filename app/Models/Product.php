@@ -15,7 +15,7 @@ class Product extends Model
 
     protected $attributes = ['in_cart' => false];
 
-    protected $fillable=['category_id','title','name','design','hsn','fabric','faq','orientation','related_products','min_qty','is_featured','is_new','is_bestsellers','is_offer','offer','price','stock_quantity','description','additional_information','discount','slug','a4sheet_view','fullsheet_view','room_view','meta_title','meta_description','meta_image','meta_keyword','status','sort_order','tags','tag'];
+    protected $fillable=['category_id','title','name','design','hsn','fabric','faq','orientation','related_products','min_qty','is_featured','is_new','is_bestsellers','is_offer','offer','price','sale_price','stock_quantity','description','additional_information','discount','slug','a4sheet_view','fullsheet_view','room_view','meta_title','meta_description','meta_image','meta_keyword','status','sort_order','tags','tag','size_id'];
     protected $appends = ['discounted_amt'];
 
     public function toArray()
@@ -32,6 +32,11 @@ class Product extends Model
     
     public function category(){
         return $this->belongsTo('App\Models\Category','category_id');
+    }
+
+    public function size()
+    {   
+        return $this->belongsTo('App\Models\Size','size_id');
     }
 
     public function pfabric(){
@@ -124,7 +129,6 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductNutrition','product_id');
     }
-
 
     public function available(){
         return $this->hasMany('App\Models\Product','product_texture','product_texture')->take(9);

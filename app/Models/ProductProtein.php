@@ -15,4 +15,9 @@ class ProductProtein extends Model
     {
         return $this->belongsTo('App\Models\Product','product_id');
     }
+
+    public function proteinName()
+    {
+        return $this->belongsTo('App\Models\Protein','protein_id');
+    }
 }

@@ -27,7 +27,7 @@ class CartController extends Controller
     }
 
     public function goToCart(){
-        return view('frontend_newold.pages.cart2');
+        return view('frontend.cartparent');
     }
 
     public function viewCart()
@@ -40,16 +40,18 @@ class CartController extends Controller
         return view('frontend.collabration');
     }
 
-    public function addToCart($slug){
-
-        if (empty( $slug)) {
+    public function addToCart($slug)
+    {
+        if (empty( $slug)) 
+        {
             request()->session()->flash('error','Invalid Products');
             return back();
         }
+        
         $product = Product::where('slug',  $slug)->first();
 
-        // return $product;
-        if (empty($product)) {
+        if (empty($product)) 
+        {
             request()->session()->flash('error','Invalid Products');
             return back();
         }
@@ -62,47 +64,33 @@ class CartController extends Controller
 
 
 
-    public function ajax_addToCart(Request $request){
+    public function ajax_addToCart(Request $request)
+    {
+        try
+        {            
+            $product = Product::where('id',  $request->product_id)->first();
 
-        $product = Product::where('id',  $request->product_id)->first();
-        $colorId = $request->colorId;
-        $sizeId = $request->sizeId;
-        $pageValue = isset($request->pageValue)?$request->pageValue:0;
+            if (empty($product)) 
+            {
+                return response(['error'=>'Something is going wrong'], 200);
+            }
 
-        if (empty($product)) 
-        {
-            return response(['error'=>'Something is going wrong'], 200);
-        }
-
-        if($product->is_giftcard == 0)
-        {
             if (is_user_logged_in())
             {
-                addToCart($product,$colorId,$sizeId,$pageValue);
+                addToCart($product);
             }
             else
             {
-                addToCartForGuestInSession($product,$colorId,$sizeId,$pageValue);
+                addToCartForGuestInSession($product);
             }
-        }    
-        else
-        {
-            if (is_user_logged_in())
-            {
-                addGiftToCart($product,$request->toName,$request->toEmail,$request->message,$request->fromName);
-            }
-            else
-            {
-                addGiftToCartForGuestInSession($product,$request->toName,$request->toEmail,$request->message,$request->fromName);
-            }
+
+            return response(['status' => true, 'add_to_cart' => 'Added', 'cart_count' => get_cart_count(),'msg'=>strtoupper($product->product_texture.' '. $product->name.' successfully added to cart')], 200);
         }
-
-        return response(['add_to_cart'=>'Added',
-        'cart_count' =>get_cart_count(),
-        'msg'=>strtoupper($product->product_texture.' '. $product->name.' successfully added to cart')], 200);
-
-    }
-    
+        catch(\Exception $e)
+        {
+            return response(['status' => false, 'add_to_cart' => 'Added', 'cart_count' => get_cart_count(), 'msg' => 'Error successfully added to cart'], 200);
+        } 
+    }    
 
 
     public function singleAddToCart(Request $request){

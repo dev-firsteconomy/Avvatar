@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::post('password-reset', 'FrontendController@showResetForm')->name('password.reset');
     Route::get('/giftcard','HomeController@giftcard')->name('giftcard');
     Route::get('/faq','HomeController@faq');
-    Route::get('/contact','HomeController@contact');
+    Route::get('/contact-us','HomeController@contact');
     Route::get('/about-avvatar','HomeController@aboutus');
     Route::get('/about-us-parag-foods','HomeController@aboutParagFoods');
     Route::get('/why-avvatar','HomeController@whyAvvatar');
@@ -28,10 +28,12 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/media','HomeController@media');
     Route::get('/track-order','HomeController@trackOrder');
     Route::get('/blogs','HomeController@blogs');
-    Route::get('/blog-detail/{slug}','HomeController@blogDetail')->name('blog.detail');
-    Route::get('/blogs/experts-speaks','HomeController@expertsSpeaks');
-    Route::get('/blogs/fitness-trends-and-updates','HomeController@fitnessTrends');
+    Route::get('/blog/{slug?}','HomeController@blogDetail');   //dynamic
+    Route::get('/blog-detail','HomeController@blogDetail');    //static
+    Route::get('blogs/experts-speaks','HomeController@expertsSpeaks');
+    Route::get('blogs/fitness-trends-and-updates','HomeController@fitnessTrends');
     Route::get('/authenticate','HomeController@authenticate');
+    Route::get('/reviews','HomeController@review');
     Route::get('/collaboration','HomeController@collaboration');
 
     Route::get('/terms-of-use','HomeController@termsAndCondition');
@@ -111,16 +113,6 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     //Apply-coupon
     Route::post('/coupon-remove','CouponController@couponStore')->name('coupon-remove');    
-
-    // Cart section
-    // Route::get('/cart',function()
-    // {
-    //     return view('frontend.cart');
-    // })->name('cart');
-
-    // Route::get('/cart',function(){
-    //     return view('frontend.pages.cart2');
-    // })->name('cart');
 
     Route::get('/cart','CartController@goToCart')->name('cart');
     Route::get('/add-to-cart/{slug}','CartController@addToCart')->name('add-to-cart')->middleware('user');

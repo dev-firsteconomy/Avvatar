@@ -3,243 +3,146 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="product-gallery product-gallery-vertical">
-					<?php
-                                        $colorId  = @$colorId ? $colorId:0; 
-
-                                        if($colorId != 0)
-                                        {   
-                                            $priImage = @$product->images()->where('color_id','=',$colorId)->first()->image;
-                                            $images = $product->images()->where('color_id',$colorId)->get();
-                                        }
-                                        else 
-                                        {  
-                                            $colorId = @$product->sizesstock()->first()->color_id;
-                                            $priImage = @$product->images()->first()->image;
-                                            $images = $product->images()->where('color_id',$colorId)->get();
-                                        }                     
-                                    ?>
+					<?php 
+						$baseImage = $currentProduct->default_image;
+						if(!$baseImage)
+						{
+							$baseImage = $productImages->first()->image;
+						}
+					?>
 
 					<div class="row">
 						<figure class="product-main-image">
-							<img id="product-zoom" src="{{asset(@$priImage)}}" data-zoom-image="{{asset(@$priImage)}}" alt="{!! @$product->meta_description !!}">
+							<img id="product-zoom" src="{{asset(@$baseImage)}}" data-zoom-image="{{asset(@$baseImage)}}" alt="{!! @$currentProduct->meta_description !!}">
 							<a href="javascript:void(0);" id="btn-product-gallery" class="btn-product-gallery">
 								<i class="icon-arrows"></i>
 							</a>
-						</figure><!-- End .product-main-image -->
+						</figure>
 
 						<div id="product-zoom-gallery" class="product-image-gallery">
-							@foreach($images as $key => $image)
-							@if($key == 0)
-							<a class="product-gallery-item active" href="javascript:void(0);" data-image="{{asset(@$image->image)}}" data-zoom-image="{{asset(@$image->image)}}">
-								<img src="{{asset(@$image->image)}}" alt="product side">
-							</a>
-							@else
-							<a class="product-gallery-item" href="javascript:void(0);" data-image="{{asset(@$image->image)}}" data-zoom-image="{{asset(@$image->image)}}">
-								<img src="{{asset(@$image->image)}}" alt="product side">
-							</a>
-							@endif
+							@foreach($productImages as $key => $image)
+								@if($key == 0)
+									<a class="product-gallery-item active" href="javascript:void(0);" data-image="{{asset(@$image->image)}}" data-zoom-image="{{asset(@$image->image)}}">
+										<img src="{{asset(@$image->image)}}" alt="product side">
+									</a>
+								@else
+									<a class="product-gallery-item" href="javascript:void(0);" data-image="{{asset(@$image->image)}}" data-zoom-image="{{asset(@$image->image)}}">
+										<img src="{{asset(@$image->image)}}" alt="product side">
+									</a>
+								@endif
 							@endforeach
-						</div><!-- End .product-image-gallery -->
-					</div><!-- End .row -->
-				</div><!-- End .product-gallery -->
-			</div><!-- End .col-md-6 -->
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<div class="col-md-6">
 				<div class="product-details">
-					<h1 class="product-title">{{$product->name}}</h1><!-- End .product-title -->
+					<h1 class="product-title">{{@$currentProduct->title}}</h1>
 
 					<div class="product-price d-flex justify-content-between">
 						<div class="product-price-box">
-							MRP: <span class="old-price">₹ {{round($product->price)}}</span>
+							MRP: <span class="old-price">₹ {{round($currentProduct->price)}}</span>
 						</div>
 
 						<div class="product-price-box">
-							Offer Price: <span class="new-price">₹ {{round($product->discounted_amt)}}</span>
-							@if($product->discounted_amt != $product->price) @endif
+							Offer Price: <span class="new-price">₹ {{round($currentProduct->sale_price)}}</span>
 							<small>(MRP incl Taxes)</small>
 						</div>
-
-					</div><!-- End .product-price -->
-
-					<div class="product-content">
-						{!! $product->title !!}
-					</div><!-- End .product-content -->
-
-					<?php
-                                        $availableColors = $product->sizesstock()->groupBy('color_id')->get();
-                                        $availableSizes = $product->sizesstock()->where('color_id',$colorId)->groupBy('size_id')->get();
-                                     ?>
-					@if(isset($availableSizes) && $availableSizes->isNotEmpty())
-					<div class="labelWrapper">
-						<span class="fw-400 mr-4 labelText">Quantity: </span>
-						<div class="product-details-quantity">
-							<input type="number" id="quantity" class="form-control" value="1" min="1" max="5" step="1" data-decimals="0" required>
-						</div>
-					</div>
-					@endif
-					<div class="table-cell radio-cell">
-						<div class="label text-underline fw-400 mr-4">Color</div>
-						<div id="" class="d-flex">
-							@if(isset($availableColors) && $availableColors->isNotEmpty())
-							@foreach($availableColors as $color)
-							<div class="radio has-color">
-								<label>
-									<input type="radio" name="color" value="{{@$color->color_id}}" {{$colorId==$color->color_id ? 'checked' : '' }} class="p-cradio colorOptions colorOptions{{$product->id}}">
-									<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
-								</label>
-							</div>
-							@endforeach
-							@endif
-						</div>
-					</div>
-
-
-					<div class="table-cell radio-cell">
-						<div class="labelWrapper">
-							<span class="fw-400 mr-4 labelText">Choose Weight: </span>
-							<div class="weight-conversion-btns">
-								<div class="weight-conversion-btns_btn active kg">kg</div>
-								<div class="weight-conversion-btns_btn  lb">lb</div>
-							</div>
-						</div>
-						@if(isset($availableSizes) && $availableSizes->isNotEmpty())
-						<div id="" class="radioBoxes d-flex">
-							@foreach($availableSizes as $size)
-							@if($size->stock_qty > 0)
-							<div class="radio has-image">
-								<label>
-									<input type="radio" name="size" value="{{@$size->size_id}}" data-id="{{$size->id}}" data-stock="{{@$size->stock_qty}}" class="p-cradio changeProductSize sizeOptions{{$product->id}}">
-									<div class="custom-size">
-										<span>{{@$size->productSize->name}}</span>
-										<span>{{round($product->price)}} kg</span>
-									</div>
-								</label>
-							</div>
-							@else
-							@if(count($availableSizes) == 1)
-							<div class="label fw-400 mr-4">Out of Stock</div>
-							@endif
-							@endif
-							@endforeach
-						</div>
-
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Size Guide</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body p-4">
-										<div class="size-toggle mb-2 d-flex justify-content-center align-items-center">
-											<span class="mr-0 text-dark">IN</span>
-											<input type="checkbox" id="toggle" />
-											<label for="toggle"></label>
-											<span class="ml-2 text-dark">CM</span>
-										</div>
-										@if($sizeCharts && $sizeCharts->isNotEmpty())
-										@foreach($sizeCharts as $k => $chart)
-										@if($k == 0)
-										<img class="sg-img" id="sizeImage{{$k}}" src="{{URL::asset($chart->image)}}">
-										@else
-										<img class="sg-img" id="sizeImage{{$k}}" style="display:none;" src="{{URL::asset($chart->image)}}">
-										@endif
-										@endforeach
-										@endif
-									</div>
-								</div>
-							</div>
-						</div>
-						@else
-						<div class="label fw-400 mr-4">Out of Stock</div>
-						@endif
 					</div>
 
 					<div class="chooseFlavourWrapper">
 						<div class="labelWrapper mb-1">
-							<span class="fw-400 mr-4 labelText">Choose Flavours</span>
+							<span class="fw-400 mr-4 labelText">Choose Flavour:</span>
 
 						</div>
 						<div class="chooseFlavourBtns d-flex flex-wrap gap-3">
-							<button class="btn">
-								Blue Tokai Coffee
-							</button>
-							<button class="btn oos">
-								Blue Tokai Coffee
-							</button>
-							<button class="btn">
-								Blue Tokai Coffee
-							</button>
-							<button class="btn">
-								Blue Tokai Coffee
-							</button>
-							<button class="btn">
-								Blue Tokai Coffee
-							</button>
-							<button class="btn">
-								Blue Tokai Coffee
-							</button>
+							<?php $prodName = ''; ?>
+							@foreach($allCategoryProduct as $product)
+							   @if($prodName != $product->name)
+								 <button class="btn changeFlavourBtn {{$currentProduct->name == $product->name ? 'active' : ''}}" data-url="{{$product->slug}}">{{$product->name}}</button>
+								 <?php $prodName = $product->name; ?>
+							   @endif
+							@endforeach
 						</div>
 					</div>
+
+
+					<?php
+					   $sameFlavourProducts = App\Models\Product::where('name',$currentProduct->name)->groupBy('size_id')->get();
+					?>
+					<div class="table-cell radio-cell">
+						<div class="labelWrapper">
+							<span class="fw-400 mr-4 labelText">Choose Weight: </span>
+							<div class="weight-conversion-btns">
+								<div class="weight-conversion-btns_btn active kg" data-value="kg">kg</div>
+								<div class="weight-conversion-btns_btn lb" data-value="lb">lb</div>
+							</div>
+						</div>
+						
+						@if(isset($sameFlavourProducts))
+							<div class="chooseSizeBtnsKg d-flex flex-wrap gap-3 active weightInKg">
+								@foreach($sameFlavourProducts as $sameFlavourProduct)
+									<button class="btn changeFlavourBtn {{$currentProduct->size_id == $sameFlavourProduct->size_id ? 'active' : ''}}" data-url="{{$sameFlavourProduct->slug}}">{{$sameFlavourProduct->size->name}}</button>
+								@endforeach
+							</div>
+							<div class="chooseSizeBtnsLb d-flex flex-wrap gap-3 weightInLb d-none">
+								@foreach($sameFlavourProducts as $sameFlavourProduct)
+									<button class="btn changeFlavourBtn {{$currentProduct->size_id == $sameFlavourProduct->size_id ? 'active' : ''}}" data-url="{{$sameFlavourProduct->slug}}">{{2.2 * substr($sameFlavourProduct->size->name, 0, -3)}} lb</button>
+								@endforeach
+							</div>
+						@else
+						    <div class="label fw-400 mr-4">Out of Stock</div>
+						@endif
+					</div>
+
+					@if( $currentProduct->stock_quantity >=1 && $currentProduct->stock_quantity <= 5)
+						<div class="product-price stockLabel" style="" id="dispalyAlert{{$currentProduct->id}}">
+							<small>Only {{$currentProduct->stock_quantity}} Left In stock</small>
+						</div>
+					@endif
 
 					<div class="checkDelivery">
 						<div class="labelWrapper">
 							<span class="fw-400 mr-4 labelText">Delivery: </span>
-							<form>
+							<form id="checkPincode" action="javascript:void(0);">
 								<div class="row align-items-center">
 									<div class="col-auto">
-										<input type="no" class="form-control mb-0" id="pinCode" placeholder="Enter Pincode..">
+										<input type="text" class="form-control mb-0" id="pinCode" placeholder="Enter Pincode.." onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 									</div>
 									<div class="col-auto">
-										<button type="submit" class="btn">Check</button>
+										<button type="button" class="btn">Check</button>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 
-					@if(isset($availableSizes) && $availableSizes->isNotEmpty())
-					@foreach($availableSizes as $size)
-					@if($size->stock_qty <= 2 && $size->stock_qty > 0)
-						<div class="product-price stockLabel" style="display:none;" id="dispalyAlert{{$size->id}}">
-							<small>Only {{$size->stock_qty}} Left In stock</small>
-						</div>
-						@endif
-						@endforeach
-						@endif
-
 
 						<div id="displayProdCount">
-						</div><!-- End .details-filter-row -->
-
+						</div>
 
 
 						<div class="details-filter-row details-row-size d-none">
 							<label id="availableContsu"></label>
-						</div><!-- End .details-filter-row -->
+						</div>
 
-						<div class="product-details-action">
-							@if(isset($availableSizes) && $availableSizes->isNotEmpty())
-							<a href="javascript:void(0);" class="btn-product btn-cart add_to_cart" data-id="{{$product->id}}"><span class="product{{$product->id}}">Add to cart</span></a>
+						<div class="product-details-action">					
+							@if($currentProduct->stock_quantity > 0)
+
+								<div class="details-action-wrapper">
+									<a href="javascript:void(0);" class="btn-product btn-wishlist btn-expandable buyNowBtn" title="Buy Now" data-id="{{$currentProduct->id}}" id="wishlist{{$currentProduct->id}}"><span class="">Buy Now</span></a>
+								</div>
+								
+								<a href="javascript:void(0);" class="btn-product btn-cart add_to_cart" data-id="{{$currentProduct->id}}"><span class="product{{$currentProduct->id}}">Add to cart</span></a>
 							@endif
-							<div class="details-action-wrapper">
-								@if(is_user_logged_in())
-								<a href="javascript:void(0);" class="btn-product btn-wishlist btn-expandable add_to_wishlist" title="Wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">Buy Now</span></a>
-								@else
-								<a href="#signin-modal" data-toggle="modal" class="btn-product btn-wishlist btn-expandable" title="Wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}">Buy Now</a>
-								@endif
-
-							</div><!-- End .details-action-wrapper -->
-						</div><!-- End .product-details-action -->
+						</div>
 
 						<div class="product-details-footer">
 							<div class="product-cat">
 								<span>Category:</span>
-								<a href="javascript:void(0);">{{$product->category->title}}</a>
-							</div><!-- End .product-cat -->
+								<a href="/product-categories">{{$currentProduct->category->title}}</a>
+							</div>
 
 							<div class="social-icons social-icons-sm">
 								<span class="social-label">Share:</span>
@@ -248,11 +151,11 @@
 								<a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
 								<a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
 							</div>
-						</div><!-- End .product-details-footer -->
-				</div><!-- End .product-details -->
-			</div><!-- End .col-md-6 -->
+						</div>
+				</div>
+			</div>
 		</div>
-	</div><!-- End .product-details-top -->
+	</div>
 
 	<div class="product-details-tab">
 		<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -277,108 +180,50 @@
 			<div class="tab-pane fade show active" id="product-description-pane" role="tabpanel" aria-labelledby="product-description" tabindex="0">
 				<div class="product-desc-content">
 					<div class="productDescription">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
-
-						<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
-
-						<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
-
-						<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+						{!! $currentProduct->description !!}
 					</div>
-					<!--{!! $product->description !!}-->
-				</div><!-- End .product-desc-content -->
+					
+				</div>
 			</div><!-- .End .tab-pane -->
 			<div class="tab-pane fade" id="product-protein-level-pane" role="tabpanel" aria-labelledby="product-protein-level" tabindex="0">
 				<div class="product-desc-content">
 					<div class="productProteinLevel d-flex flex-wrap">
-						<div class="proteinLevelBox">
-							<h3>23 g</h3>
-							<h4>Protien</h4>
-							<p>Builds strength and enables muscle growth</p>
-						</div>
-						<div class="proteinLevelBox">
-							<h3>23 g</h3>
-							<h4>Protien</h4>
-							<p>Builds strength and enables muscle growth</p>
-						</div>
-						<div class="proteinLevelBox">
-							<h3>23 g</h3>
-							<h4>Protien</h4>
-							<p>Builds strength and enables muscle growth</p>
-						</div>
-						<div class="proteinLevelBox">
-							<h3>23 g</h3>
-							<h4>Protien</h4>
-							<p>Builds strength and enables muscle growth</p>
-						</div>
-						<div class="proteinLevelBox">
-							<h3>23 g</h3>
-							<h4>Protien</h4>
-							<p>Builds strength and enables muscle growth</p>
-						</div>
-						<div class="proteinLevelBox">
-							<h3>23 g</h3>
-							<h4>Protien</h4>
-							<p>Builds strength and enables muscle growth</p>
-						</div>
+						@foreach($productProteins as $productProtein)
+							<div class="proteinLevelBox">
+								<h3>{{$productProtein->protein_value}}</h3>
+								<h4>{{$productProtein->proteinName->name}}</h4>
+								<p>{{$productProtein->description}}</p>
+							</div>
+						@endforeach
 					</div>
-					<!--{!! $product->additional_information !!}-->
-				</div><!-- End .product-desc-content -->
-			</div><!-- .End .tab-pane -->
+					
+				</div>
+			</div>
 			<div class="tab-pane fade" id="product-nutritional-information-pane" role="tabpanel" aria-labelledby="product-nutritional-information" tabindex="0">
 				<div class="product-desc-content">
 					<div class="productNutritional">
 						<div class="row">
-							<div class="col-6 col-md-4">
-								<img src="https://via.placeholder.com/600x400" data-lity class="img-fluid" loading="lazy">
-							</div>
-
-							<div class="col-6 col-md-4">
-								<img src="https://via.placeholder.com/600x400" data-lity class="img-fluid" loading="lazy">
-							</div>
-
-							<div class="col-6 col-md-4">
-								<img src="https://via.placeholder.com/600x400" data-lity class="img-fluid" loading="lazy">
-							</div>
+							@foreach($nutritionImages as $nutritionImage)
+								<div class="col-6 col-md-4">
+									<img src="{{$nutritionImage->image}}" data-lity class="img-fluid" loading="lazy">
+								</div>
+							@endforeach
 						</div>
 					</div>
-				</div><!-- End .product-desc-content -->
-			</div><!-- .End .tab-pane -->
+				</div>
+			</div>
 			<div class="tab-pane fade" id="product-faq-pane" role="tabpanel" aria-labelledby="product-faq" tabindex="0">
 				<div class="product-desc-content">
 					<div class="productFaq">
-						<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
-
-						<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
-
-						<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+						{!! $currentProduct->faq !!}
 					</div>
-					<!--{!! $product->additional_information !!}-->
-				</div><!-- End .product-desc-content -->
-			</div><!-- .End .tab-pane -->
+				</div>
+			</div>
 			<div class="tab-pane fade " id="product-reviews-pane" role="tabpanel" aria-labelledby="product-reviews" tabindex="0">
 				<div class="product-desc-content">
 					<div class="productFaqTop w-100 d-flex flex-column flex-md-row">
 						<div class="starRatingWrapper d-flex align-items-center">
 							<div class="star-rating me-md-2">
-								<!--
-								<input type="radio" id="5-stars" name="rating" value="5" />
-								<label for="5-stars" class="star">&#9733;</label>
-								<input type="radio" id="4-stars" checked name="rating" value="4" />
-								<label for="4-stars" class="star">&#9733;</label>
-								<input type="radio" id="3-stars" name="rating" value="3" />
-								<label for="3-stars" class="star">&#9733;</label>
-								<input type="radio" id="2-stars" name="rating" value="2" />
-								<label for="2-stars" class="star">&#9733;</label>
-								<input type="radio" id="1-star" name="rating" value="1" />
-								<label for="1-star" class="star">&#9733;</label>
--->
 								<i class="icon-star"></i>
 								<i class="icon-star"></i>
 								<i class="icon-star"></i>
@@ -441,7 +286,6 @@
 							</div>
 						</div>
 					</div>
-					<!--{!! $product->additional_information !!}-->
 				</div><!-- End .product-desc-content -->
 			</div><!-- .End .tab-pane -->
 		</div><!-- End .tab-content -->
@@ -479,57 +323,50 @@
                             }
                         }'>
 			@if(isset($relatedProducts) && @$relatedProducts->isNotEmpty())
-			@foreach ($relatedProducts as $product)
-			<div class="product product-7 text-center">
-				<figure class="product-media">
-					@if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
-					<a href="{{url('product/' .$product->slug)}}">
-						<img src="{{asset(@$product->images()->first()->image)}}" alt="{!! @$product->meta_description !!}" class="product-image">
-					</a>
-
-					<div class="product-action-vertical">
-						@if(is_user_logged_in())
-						<a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
-						@else
-						<a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
-						@endif
-					</div><!-- End .product-action-vertical -->
-				</figure><!-- End .product-media -->
-				<?php
-                                            $availableColors = $product->sizesstock()->groupBy('color_id')->get();
-                                        ?>
-				<div class="product-body">
-					<div class="product-cat">
-						<a href="{{route('product',$product->category->slug)}}">{{$product->category->title}}</a>
-					</div><!-- End .product-cat -->
-					@if(isset($availableColors) && $availableColors->isNotEmpty())
-					<div class="product-color row justify-content-center">
-						@foreach($availableColors as $color)
-						<div class="radio has-color">
-							<label>
-								<input type="radio" name="color" value="{{@$color->color_id}}" class="p-cradio colorOptions">
-								<div class="custom-color"><span style="background-color:{{@$color->productColor->code}}"></span></div>
-							</label>
-						</div>
-						@endforeach
-					</div><!-- End .product-cat -->
-					@endif
-					<h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}}</a>
-					</h3><!-- End .product-title -->
-					<div class="product-price">
-						<span class="new-price">₹ {{round($product->discounted_amt)}}</span>
-						@if($product->discounted_amt != $product->price) <span class="old-price">₹
-							{{round($product->price)}}</span> @endif <small>(MRP incl Taxes)</small>
-					</div><!-- End .product-price -->
-					<div class="atc-container">
-						<div class="mb-0">
-							<a href="javascript:void(0);" class="btn-cart add_to_cart" data-id="{{$product->id}}"><span class="product{{$product->id}}">Add to
-									cart</span></a>
-						</div>
+				@foreach ($relatedProducts as $product)
+					<div class="product product-7 text-center">
+						<figure class="product-media">
+                            @if($product->tag != '')<span class="product-label label-new">{{$product->tag}}</span>@endif
+                            <?php 
+                                    $baseImage = $product->default_image;
+                                    if(!$baseImage)
+                                    {
+                                        $baseImage = $product->images()->first()->image;
+                                    }
+                            ?>
+                
+                            <a href="{{ route('product',$product->slug) }}">
+                                <img src="{{asset($baseImage)}}" alt="{!! $product->meta_description !!}" class="product-image">
+                            </a>
+                                        
+                            <div class="product-action-vertical">
+                                    @if(is_user_logged_in())
+                                        <a href="javascript:void(0);" class="btn-product-icon btn-wishlist btn-expandable add_to_wishlist" data-id="{{$product->id}}" id="wishlist{{$product->id}}"><span class="add_to_wishlist_msg{{$product->id}}">add to wishlist</span></a>
+                                    @else
+                                        <a href="#signin-modal" data-toggle="modal" class="btn-product-icon btn-wishlist btn-expandable" data-id="{{$product->id}}" id="wishlist{{$product->id}}"></a>
+                                    @endif
+                                </div>
+                        </figure>
+                                        
+                        <div class="product-body">
+                            <div class="product-cat">
+                                <a href="javascript:void(0);">AVVATAR {{$product->category->title}}</a>
+                            </div><!-- End .product-cat -->
+                                            
+                            <h3 class="product-title"><a href="{{route('product',$product->slug)}}">{{$product->name}} - {{@$product->size->name}}</a></h3><!-- End .product-title -->
+                            <div class="product-price">
+                                <div class="w-100">
+                                <span class="new-price">₹{{round($product->sale_price) }}</span>  @if($product->sale_price != $product->price) <span class="old-price">₹{{round($product->price)}}</span> @endif </div> 
+                                <small>(MRP incl Taxes)</small>
+                            </div><!-- End .product-price -->
+                            <div class="atc-container">                                                            
+                                <div class="mb-2">
+                                    <a href="{{route('product',$product->slug)}}" class="btn-cart" ><span class="product{{$product->id}}">Buy Now</span></a>
+                                </div>
+                            </div>
+                        </div>
 					</div>
-				</div><!-- End .product-body -->
-			</div><!-- End .product -->
-			@endforeach
+				@endforeach
 			@endif
 
 

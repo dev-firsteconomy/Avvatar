@@ -6314,7 +6314,7 @@ p {
 	border-radius: 50% !important;
 	position: fixed;
 	right: 20px;
-    bottom: 15px;
+	bottom: 15px;
 	z-index: 999;
 	color: #000;
 	display: none;
@@ -6393,7 +6393,9 @@ p {
 }
 
 @media screen and (min-width: 768px) {
-	#scroll-top, .stickyicons {
+
+	#scroll-top,
+	.stickyicons {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex
@@ -6778,7 +6780,7 @@ p {
 
 .breadcrumb-item a {
 	color: #000;
-    font-weight: 400;
+	font-weight: 400;
 }
 
 .breadcrumb-item a:hover,
@@ -10867,6 +10869,7 @@ p {
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 	gap: 7px;
+	margin-top: 10px;
 }
 
 .footer a.social-icon {
@@ -18104,11 +18107,11 @@ button:focus {
 .nav-dashboard .nav-link {
 	overflow: hidden;
 	position: relative;
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 1.4rem;
 	line-height: 1.5;
 	padding: 1.4rem 0;
-	color: #333;
+	color: #000;
 	border-bottom: .1rem solid #ebebeb
 }
 
@@ -18124,17 +18127,19 @@ button:focus {
 	margin-top: -7.5px;
 	-webkit-transition: all .3s;
 	transition: all .3s;
-	opacity: 0
+	opacity: 0;
+	display: none;
 }
 
 .nav-dashboard .nav-link:hover,
 .nav-dashboard .nav-link:focus,
 .nav-dashboard .nav-link.active {
-	color: #F7BC2A
+	color: #000;
 }
 
 .nav-dashboard .nav-link.active {
-	padding-left: 2rem
+	padding-left: 0;
+	font-weight: 700;
 }
 
 .nav-dashboard .nav-link.active:before {

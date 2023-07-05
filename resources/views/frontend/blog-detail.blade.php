@@ -7,25 +7,21 @@
 			<ol class="breadcrumb ">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
 				<li class="breadcrumb-item"><a href="/">Blogs</a></li>
-				<li class="breadcrumb-item fw-bold"><span class="fw-bold">Making of Avvatar #WheyProtien</span></li>
+				<li class="breadcrumb-item fw-bold"><span class="fw-bold">{{@$blog->title}}</span></li>
 			</ol>
-		</div><!-- End .container -->
-	</nav><!-- End .breadcrumb-nav -->
+		</div>
+	</nav>
 
 	<section class="blogDetailWrapper">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="blogCard blogCardDetail pb-2">
-						<img src="{{asset('assets/images/new/blog-big.png')}}" class="w-100 img-fluid">
+						<img src="{{asset(@$blog->image)}}" class="w-100 img-fluid">
 						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quos eum possimus, quod ratione id cupiditate est pariatur quaerat minus ipsum deleniti accusamus asperiores cumque itaque aliquam debitis, vitae sequi blanditiis dolores maiores enim tempore. Consequatur animi tempore eaque maiores, totam qui adipisci rerum corrupti error voluptatum? Fugit eaque voluptas illo quasi dolor autem neque, quam laudantium nisi libero suscipit pariatur ipsam magnam alias ducimus dolore labore et optio ab sunt! Suscipit nihil perspiciatis aliquam ea reprehenderit incidunt voluptatibus iure sapiente ad atque, nobis quos maiores temporibus non magnam quo a alias. In ad dolores a, iure, molestiae quam explicabo! </p>
-
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quos eum possimus, quod ratione id cupiditate est pariatur quaerat minus ipsum deleniti accusamus asperiores cumque itaque aliquam debitis, vitae sequi blanditiis dolores maiores enim tempore. Consequatur animi tempore eaque maiores, totam qui adipisci rerum corrupti error voluptatum? Fugit eaque voluptas illo quasi dolor autem neque, quam laudantium nisi libero suscipit pariatur ipsam magnam alias ducimus dolore labore et optio ab sunt! Suscipit nihil perspiciatis aliquam ea reprehenderit incidunt voluptatibus iure sapiente ad atque, nobis quos maiores temporibus non magnam quo a alias. In ad dolores a, iure, molestiae quam explicabo! </p>
-
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quos eum possimus, quod ratione id cupiditate est pariatur quaerat minus ipsum deleniti accusamus asperiores cumque itaque aliquam debitis, vitae sequi blanditiis dolores maiores enim tempore. Consequatur animi tempore eaque maiores, totam qui adipisci rerum corrupti error voluptatum? Fugit eaque voluptas illo quasi dolor autem neque, quam laudantium nisi libero suscipit pariatur ipsam magnam alias ducimus dolore labore et optio ab sunt! Suscipit nihil perspiciatis aliquam ea reprehenderit incidunt voluptatibus iure sapiente ad atque, nobis quos maiores temporibus non magnam quo a alias. In ad dolores a, iure, molestiae quam explicabo! </p>
+							<div class="date">{{date('F j, Y', strtotime($blog->date));}}</div>
+							<h2 class="fw-bold m-0">{{@$blog->title}}</h2>
+							{!! $blog->description !!}
 						</div>
 
 						<div class="blogAuthor mt-2">
@@ -35,8 +31,8 @@
 								</div>
 								<div class="flex-grow-1 ms-3">
 									<h6 class="fw-light text-uppercase">Author</h6>
-									<h5>Jhon Carter</h5>
-									<p>Excellent feature! I love it. One day I'm definitely going to put this Bootstrap component into use and I'll let you know once I do.</p>
+									<h5>{{$blog->author_name}}</h5>
+									<p>{!! @$blog->author_desc !!}</p>
 								</div>
 							</div>
 						</div>
@@ -47,32 +43,18 @@
 						<div class="heading mb-1">
 							<h2 class="title text-uppercase"><span class="fw-bold">Popular Blogs</span></h2>
 						</div>
-						<div class="blogCard bg-gray">
-							<img src="{{asset('assets/images/new/blog-1.png')}}" class="w-100 img-fluid">
-							<div class="blogCardContent d-flex flex-column p-2 px-3">
-								<div class="date">September 7, 2018</div>
-								<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							</div>
-						</div>
-
-						<div class="blogCard bg-gray">
-							<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-							<div class="blogCardContent d-flex flex-column p-2 px-3">
-								<div class="date">September 7, 2018</div>
-								<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							</div>
-						</div>
-
-						<div class="blogCard bg-gray">
-							<img src="{{asset('assets/images/new/blog-1.png')}}" class="w-100 img-fluid">
-							<div class="blogCardContent d-flex flex-column p-2 px-3">
-								<div class="date">September 7, 2018</div>
-								<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							</div>
-						</div>
+						@if(isset($popularBlogs) && $popularBlogs->isNotEmpty())
+						   @foreach($popularBlogs as $popularBlog)
+								<div class="blogCard bg-gray">
+									<img src="{{asset($popularBlog->thumbnail_image)}}" class="w-100 img-fluid">
+									<div class="blogCardContent d-flex flex-column p-2 px-3">
+										<div class="date">{{date('F j, Y', strtotime($popularBlog->date));}}</div>
+										<h2 class="fw-bold m-0">{{ $popularBlog->title }}</h2>
+										<p>{!! $popularBlog->short_desc !!}</p>
+									</div>
+								</div>
+							@endforeach
+						@endif	
 					</div>
 				</div>
 			</div>
@@ -111,65 +93,21 @@
 				}
 			}'>
 
-				<div class="item">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
-						</div>
-					</div>
-				</div>
+			    @if(isset($relatedBlogs) && $relatedBlogs->isNotEmpty())
+				   @foreach($relatedBlogs as $relatedBlog)
+								<div class="blogCard bg-gray">
+									<img src="{{asset($relatedBlog->thumbnail_image)}}" class="w-100 img-fluid">
+									<div class="blogCardContent d-flex flex-column p-2 px-3">
+										<div class="date">{{date('F j, Y', strtotime($relatedBlog->date));}}</div>
+										<h2 class="fw-bold m-0">{{ $relatedBlog->title }}</h2>
+										<p>{!! $relatedBlog->short_desc !!}</p>
+										<a class="commonButton-yellow" href="/blog/{{@$relatedBlog->slug}}">Read More</a>
+									</div>
+								</div>
+					@endforeach
+				@endif	
 
-				<div class="item">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="item">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="item">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="item">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
-						</div>
-					</div>
-				</div>
+				
 
 
 			</div>

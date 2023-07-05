@@ -20,8 +20,10 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>title</th>
-              <th>tag</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Thumbnail Image</th>
+              <th>Author Name</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -32,8 +34,9 @@
                 <tr>
                     <td>{{$blog->id}}</td>
                     <td>{{$blog->title}}</td>
-                    <td>{{$blog->tag}}</td>
-
+                    <td>{{date('d-m-Y',strtotime($blog->date))}}</td>
+                    <td><img src="{{$blog->thumbnail_image}}" height="50px;" width="50px"></td>
+                    <td>{{$blog->author_name}}</td>
                     <td>
                         @if($blog->status=='1')
                             <span class="badge badge-success">Active</span>

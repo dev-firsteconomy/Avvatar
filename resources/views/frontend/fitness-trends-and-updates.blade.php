@@ -18,7 +18,7 @@
 				<h2 class="title text-uppercase"><span class="fw-bold">Blogs</span></h2>
 			</div>
 
-			<div class="imgBoxWrapper text-center mb-5">
+			{{-- <div class="imgBoxWrapper text-center mb-5">
 				<div class="row justify-content-center">
 					<div class="col-6 col-md-4">
 						<a href="/expert-speaks" class="blogHeaderImgBox">
@@ -34,57 +34,39 @@
 						</a>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 
 		<div class="container">
+			<div class="heading mb-5 ">
+				<h4 class="title text-uppercase"><span class="fw-bold">Fitness Trends & Updates</span></h4>
+			</div>
 			<div class="row">
-				<div class="col-md-4 blogCardOuter">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
+				@if(isset($blogs) && $blogs->isNotEmpty())
+					@foreach($blogs as $blog)
+						<div class="col-md-4 blogCardOuter">
+							<div class="blogCard bg-gray">
+								<img src="{{asset($blog->thumbnail_image)}}" class="w-100 img-fluid">
+								<div class="blogCardContent d-flex flex-column p-2 px-3">
+									<div class="date">{{date('F j, Y', strtotime($blog->date));}}</div>
+									<h2 class="fw-bold m-0">{{ $blog->title }}</h2>
+									<p>{!! $blog->short_desc !!}</p>
+									<a class="commonButton-yellow" href="/blog/{{@$blog->slug}}">Read More</a>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4 blogCardOuter ">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4 blogCardOuter">
-					<div class="blogCard bg-gray">
-						<img src="{{asset('assets/images/new/blog.png')}}" class="w-100 img-fluid">
-						<div class="blogCardContent d-flex flex-column p-2 px-3">
-							<div class="date">September 7, 2018</div>
-							<h2 class="fw-bold m-0">Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-							<a class="commonButton-yellow">Read More</a>
-						</div>
-					</div>
-				</div>
-
-
+				  	@endforeach	
+				@endif
 			</div>
 
-			<div class="mt-4 text-center">
+			{{-- <div class="mt-4 text-center">
 				<a class="commonButton-yellow m-0">View All</a>
-			</div>
+			</div> --}}
 		</div>
 
 		<div class="pagintaionWrapper">
-			<nav aria-label="Page navigation">
+			{!! $blogs->appends(['search' => Request::get('search')])->render() !!}
+			{{-- <nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
 					<span style="float:right">
 						<nav>
@@ -103,7 +85,7 @@
 						</nav>
 					</span>
 				</ul>
-			</nav>
+			</nav> --}}
 		</div>
 	</section>
 

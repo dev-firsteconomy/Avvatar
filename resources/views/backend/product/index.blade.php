@@ -27,6 +27,8 @@
               <th>S.N.</th>
               <th>Category</th>
               <th>Name</th>
+              <th>HSN</th>
+              <th>Offer Image</th>
               <th>Status</th>
               <th>Take Action</th>
             </tr>
@@ -37,8 +39,12 @@
                 <tr>
                     <td>{{$product->id}}</td>
                     <td>{{$product->category->title}}</td>
-                    <td>{{$product->name}}</td>
-                    
+                    <td>{{$product->name . ' - ' . @$product->size->name}}</td>
+                    <td>{{$product->hsn}}</td>
+                    <td>
+                        @if(isset($product->default_image))
+                          <img src="{{$product->default_image}}" height="50px" width="50px" />
+                        @endif                   
                     <td>
                         @if($product->status == 1)
                             <span class="badge badge-success">Active</span>
