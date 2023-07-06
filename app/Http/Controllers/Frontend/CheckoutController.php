@@ -68,6 +68,6 @@ class CheckoutController extends Controller
             //     return redirect('/cart');
         }
 
-        return view('frontend.checkout',compact('states'));
+        return redirect('/cart');
     }
 }
