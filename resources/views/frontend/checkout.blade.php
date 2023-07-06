@@ -20,13 +20,14 @@
 		<div class="checkout">
 			<div class="container">
 				@php
-				$addresses = @Auth()->user() ? Auth()->user()->addresses()->where('is_primary',1)->first() :[];
-				$user = @auth()->user();
-				$freight_details = Session::get('freight_charge');
-				$coupon_value = @Session::get('coupon') ? Session::get('coupon')['value'] :0;
-				$giftcard_value = @Session::get('giftcard') ? Session::get('giftcard')['value'] :0;
+					$addresses = @Auth()->user() ? Auth()->user()->addresses()->where('is_primary',1)->first() :[];
+					$user = @auth()->user();
+					$freight_details = Session::get('freight_charge');
+					$coupon_value = @Session::get('coupon') ? Session::get('coupon')['value'] :0;
+					$giftcard_value = @Session::get('giftcard') ? Session::get('giftcard')['value'] :0;
 				@endphp
-				<form id="checkoutForm" action="{{url('place-order')}}" class="place_order" method="POST">
+				{{-- <form id="checkoutForm" action="{{url('place-order')}}" action="{{url('place-order')}}" class="place_order" method="POST"> --}}
+				<form id="checkoutForm" action="javascript:void(0);" class="place_order" method="POST">
 					@csrf
 					<input type="hidden" name="address_id" id="address_id" value={{@$addresses ?$addresses->id:'new'}}>
 					<div class="row">
@@ -113,38 +114,38 @@
 										</tr>
 									</thead>
 									@php
-									$offer = 0;
-									$totalAmt = get_cart_total_amount();
-									$taxable_amount = get_cart_taxable_amount();
-									$tax = 0;// get_tax_total($taxable_amount);
-									$freight_charge = 0;// @$freight_details['freight_charge'] ? $freight_details['freight_charge'] :0;
-									$offerDiscount1 = get_offer_discount_amount1();
-									$offerDiscount2 = get_offer_discount_amount2();
-									//$offer = get_offer_type();
-									// if($offer != 0)
-									// {
-									$offerValue1 = get_offer_value(1);
-									$offerValue2 = get_offer_value(2);
-									//}
-									$grand_total = $tax + $taxable_amount + $freight_charge - $offerDiscount1 - $offerDiscount2 - $giftcard_value - $coupon_value;
-									$isGiftCard = 0;
-									$discountRs = $totalAmt - $taxable_amount;
-									$discountPer = 0;
-									if($discountRs != 0)
-									{
-									$discountPer = (100 * ($discountRs)) / $totalAmt;
-									}
+										$offer = 0;
+										$totalAmt = get_cart_total_amount();
+										$taxable_amount = get_cart_taxable_amount();
+										$tax = 0;// get_tax_total($taxable_amount);
+										$freight_charge = 0;// @$freight_details['freight_charge'] ? $freight_details['freight_charge'] :0;
+										$offerDiscount1 = get_offer_discount_amount1();
+										$offerDiscount2 = get_offer_discount_amount2();
+										//$offer = get_offer_type();
+										// if($offer != 0)
+										// {
+										$offerValue1 = get_offer_value(1);
+										$offerValue2 = get_offer_value(2);
+										//}
+										$grand_total = $tax + $taxable_amount + $freight_charge - $offerDiscount1 - $offerDiscount2 - $giftcard_value - $coupon_value;
+										$isGiftCard = 0;
+										$discountRs = $totalAmt - $taxable_amount;
+										$discountPer = 0;
+										if($discountRs != 0)
+										{
+										  $discountPer = (100 * ($discountRs)) / $totalAmt;
+										}
 									// dd(get_cart());
 									@endphp
 									<tbody>
 										@foreach (get_cart() as $cart)
-										@php
-										$total = $cart['product']['price'] * $cart['quantity'];
-										if($cart['product']['is_giftcard'] == 1)
-										{
-										$isGiftCard = 1;
-										}
-										@endphp
+											@php
+												$total = $cart['product']['price'] * $cart['quantity'];
+												if($cart['product']['is_giftcard'] == 1)
+												{
+												  $isGiftCard = 1;
+												}
+											@endphp
 										<tr>
 											<td>
 												<!--												{{$cart['quantity']}}-->
