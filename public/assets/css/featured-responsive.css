@@ -315,6 +315,11 @@
 		padding: 0;
 	}
 
+	.tabsSlider .box {
+		width: 65%;
+		margin: 0 auto;
+	}
+
 }
 
 @media only screen and (min-width : 768px) {
@@ -604,6 +609,10 @@
 	.col-md-2.aboutAvvatarBox:nth-child(n+6) {
 		margin-top: 20px;
 	}
+
+	.tabsSliderWrapper ul .arrows {
+		display: none;
+	}
 }
 
 
@@ -634,6 +643,10 @@
 	.blogCardContent.mediaCardContent {
 		max-height: 70px;
 		height: 70px;
+	}
+
+	.whyAvvatarBox {
+		margin-top: -100px;
 	}
 }
 

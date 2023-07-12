@@ -731,6 +731,45 @@ $(document).ready(function () {
 		slidesToScroll: 1
 	 });
 
+	$('.tabsSlider').slick({
+		slidesToShow: 6,
+		slidesToScroll: 1,
+		asNavFor: '.tabsImgSlider',
+		dots: false,
+		arrows: false,
+		infinite: false,
+		
+		focusOnSelect: true,
+		responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					arrows: true,
+					prevArrow: $('.prev-slick-arrow'),
+      				nextArrow: $('.next-slick-arrow')
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
+	});
+	$('.tabsImgSlider').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		fade: true,
+		asNavFor: '.tabsSlider',
+		dots: false,
+		infinite: false,
+	});
+
 	$('body').on('click', '.btn-fullscreen', function (e) {
 		var galleryArr = [];
 		$(this).parents('.owl-stage-outer').find('.owl-item:not(.cloned)').each(function () {

@@ -229,10 +229,7 @@
 
 								</div><!-- End .accordion -->
 								<div class="disc-sec">
-									<input type="text" class="form-control mb-0" id="checkout-gift-discount-input" name="giftcard" placeholder="Gift card number" value="{{@Session::get('giftcard')['code']}}">
-									<span id="error1" class="error" style="color:red">Invalid Gift Card Code</span>
-									<button class="btn bg-primary text-white w-100 mt-1" type="button" id="applyGiftcard">{{@Session::get('giftcard')['code'] ? 'Remove Gift Card' :'Apply Gift Card'}}</button>
-									<hr class="my-3">
+									
 
 									<input type="text" class="form-control mb-0" id="checkout-discount-input" name="code" placeholder="Coupon Code" value="{{@Session::get('coupon')['code']}}">
 									<span id="error2" class="error" style="color:red">Invalid Coupon Code</span>

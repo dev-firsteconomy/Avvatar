@@ -131,7 +131,7 @@
 							@if($currentProduct->stock_quantity > 0)
 
 								<div class="details-action-wrapper">
-									<a href="javascript:void(0);" class="btn-product btn-wishlist btn-expandable buyNowBtn" title="Buy Now" data-id="{{$currentProduct->id}}" id="wishlist{{$currentProduct->id}}"><span class="">Buy Now</span></a>
+									<a href="javascript:void(0);" class="btn-product btn-wishlist btn-expandable buyNowBtn" title="Buy Now" data-id="{{$currentProduct->id}}" id="wishlist{{$currentProduct->id}}">Buy Now</a>
 								</div>
 								
 								<a href="javascript:void(0);" class="btn-product btn-cart add_to_cart" data-id="{{$currentProduct->id}}"><span class="product{{$currentProduct->id}}">Add to cart</span></a>
@@ -236,7 +236,7 @@
 						</div>
 
 						<div class="writeReview d-flex align-items-center gap-2">
-							<a href="/write-review" class="">Write a review</a>
+							<a href="/reviews" class="">Write a review</a>
 							<div class="toolbox-right">
 								<div class="toolbox-sort">
 									<div class="select-custom m-2 mb-md-0">

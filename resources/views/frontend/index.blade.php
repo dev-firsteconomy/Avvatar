@@ -148,6 +148,10 @@
 			<img src="assets/images/new/homepage/hundreadPercent.png" alt="" class="img-fluid">
 		</div>
 
+		<div class="aboutavaatarSlider d-flex align-items-center">
+
+		</div>
+
 		<div class="container">
 			<div class="heading text-center">
 				<h2 class="title text-uppercase">it's time for pure <span class="fw-bold">workout</span></h2>
@@ -555,7 +559,7 @@
 		</div>
 	</section>
 
-	<section class="newArriwalsWrapper patternBgTop">
+	<section class="newArriwalsWrapper patternBgTop d-none">
 		<div class="container">
 			<div class="heading mb-5">
 				<h2 class="title">New Arrivals</h2>
@@ -656,7 +660,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-4 text-center">
 					<input type="email" class="form-control" placeholder="Email ID" id="newsletter-email">
-					<button type="submit" href="#" class="mt-1 commonButton" id="submit-newsletter-button">Know More</button>
+					<button type="submit" href="#" class="mt-1 commonButton" id="submit-newsletter-button">Subscribe Now</button>
 				</div>
 			</div>
 		</div>
@@ -668,43 +672,45 @@
 				<h2 class="title text-uppercase"><span class="fw-bold">Instagram</span> feed</h2>
 			</div>
 
-			<div class="row">
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-1.png" class="img-fluid" />
-				</div>
-
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-2.png" class="img-fluid" />
-				</div>
-
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-3.png" class="img-fluid" />
-				</div>
-
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-4.png" class="img-fluid" />
-				</div>
-
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-1.png" class="img-fluid" />
-				</div>
-
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-2.png" class="img-fluid" />
-				</div>
-
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-3.png" class="img-fluid" />
-				</div>
-
-				<div class="col-6 col-md-3 instaFeedBox">
-					<img src="assets/images/new/homepage/insta-4.png" class="img-fluid" />
+			<div class="row justify-content-center">
+				<div class="col-md-11 row">
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-1.png" class="img-fluid" />
+					</div>
+	
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-2.png" class="img-fluid" />
+					</div>
+	
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-3.png" class="img-fluid" />
+					</div>
+	
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-4.png" class="img-fluid" />
+					</div>
+	
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-1.png" class="img-fluid" />
+					</div>
+	
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-2.png" class="img-fluid" />
+					</div>
+	
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-3.png" class="img-fluid" />
+					</div>
+	
+					<div class="col-6 col-md-3 instaFeedBox">
+						<img src="assets/images/new/homepage/insta-4.png" class="img-fluid" />
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<div class="icon-boxes-container pb-0">
+	<div class="icon-boxes-container pb-0 d-none">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-10 offset-sm-1">
