@@ -42,7 +42,7 @@
 						<form action="{{url('submit-contact')}}" class="contact-form mb-3" method="post">
 							<div class="row justify-content-center">
 								<div class="col-md-8 text-center  uniqCode mb-3">
-									<h3 class="text-uppercase">Enter the uniq code</h3>
+									<h3 class="text-uppercase">Enter the Unique code</h3>
 									<div class="otpInputBoxes digit-group d-flex justify-content-center gap-3">
 										<input type="text" id="digit-1" name="digit-1" data-next="digit-2" />
 										<input type="text" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" />

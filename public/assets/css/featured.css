@@ -1562,7 +1562,7 @@ span.sr-only {
 	background-color: #FFF2D0;
 	border: 2px solid #F7BC2A;
 	padding: 170px 0px 15px;
-	margin-top: -100px;
+	margin-top: -145px;
 }
 
 .whyAvvatarBoxImg img {
@@ -1598,11 +1598,11 @@ span.sr-only {
 }
 
 .makingAvvatar .col-md-5:nth-child(2),
-.makingAvvatar .col-md-5:nth-child(4) {
+.makingAvvatar .col-md-5:nth-child(4), .makingAvvatar .col-md-5:nth-child(6) {
 	margin-top: 200px;
 }
 
-.makingAvvatar .col-md-5:nth-child(3) {
+.makingAvvatar .col-md-5:nth-child(3), .makingAvvatar .col-md-5:nth-child(5) {
 	margin-top: -65px;
 }
 
@@ -1992,13 +1992,13 @@ span.sr-only {
 }
 
 .menu-footer p {
-	line-height: 1.2;
-	margin-bottom: 10px;
+	line-height: 1.4;
+    margin-bottom: 15px;
 }
 
 .menu-footer a {
 	display: inline-block;
-	font-weight: 700;
+	/* font-weight: 700; */
 	padding: 3px 0;
 	font-size: 14px;
 	color: #000000;
@@ -2013,4 +2013,62 @@ span.sr-only {
 
 .menu-footer .time {
 	font-size: 14px;
+}
+
+.tryYourself {
+	background-image: url(../images/new/about/tryYourselfBg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+    background-size: 100% 100%;
+}
+
+.tabsSlider .box {
+	padding: 10px;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid #f7bc2a;
+    color: #000;
+    font-weight: 500;
+}
+
+.tabsSlider .slick-current.slick-active .box {
+	background-color: #f7bc2a;
+}
+
+.tabsSlider .slick-slide {
+	margin: 0 15px;
+}
+
+/* the parent */
+.tabsSlider .slick-list {
+	margin: 0 -15px;
+}
+
+.tabsImgSlider {
+	margin-top: 30px;
+}
+
+.tabsSliderWrapper ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabsSliderWrapper ul .arrows {
+	position: absolute;
+	transform: translateY(-50%);
+    top: 50%;
+	background-color: #000;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+	z-index: 3;
+}
+
+.next-slick-arrow {
+	right: 0;
 }

@@ -21,16 +21,7 @@
 		<div class="container">
 			<div class="col-md-12">
 				<div class="reviews-tab">
-					<div id="ratings-and-reviews" class="bg-white rounded shadow-sm p-4 mb-4 clearfix restaurant-detailed-star-rating">
-						<span class="star-rating float-right">
-							<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-							<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-							<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-							<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-							<a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-						</span>
-						<h5 class="mb-0 pt-1">Rate this Place</h5>
-					</div>
+					
 					<div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
 						<h5 class="mb-0 mb-4">Ratings and Reviews</h5>
 						<div class="graph-star-rating-header">

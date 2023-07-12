@@ -51,6 +51,7 @@
 										<p class="fw-bold blackText">Total</p>
 									</div>
 									<div class="cartBlockSix">
+										Remove
 									</div>
 								</div>
 							</div>
@@ -93,7 +94,7 @@
 												</div>
 
 												<div class="cartBlockThree">
-													<span class="new-price">₹ {{round($cart['product']['sale_price']) }}</span> <span class="old-price">₹ {{round($cart['product']['price'])}}</span> 
+													<span class="new-price">₹ {{round($cart['product']['sale_price']) }}</span> <br> <span class="old-price">₹ {{round($cart['product']['price'])}}</span> 
 												</div>
 												
 												<div class="cartBlockFour">
@@ -131,18 +132,16 @@
 					<div class="col-md-7">
 						<div class="cart-bottom">
 							<div class="cart-discount">
-								<form action="#">
+								<!-- <form action="#">
 									<h3 class="blackText fw-bold">Have a promo code for checkout ?</h3>
 									<div class="input-group">
 										<input type="text" class="form-control" required placeholder="coupon code">
 										<div class="input-group-append">
 											<button class="btn commonButton-yellow m-0" type="submit">Apply</button>
 										</div>
-										<!-- .End .input-group-append -->
-									</div><!-- End .input-group -->
-
-									<a href="{{route('products')}}" class="mb-3 blackText fw-bold"><i class="icon-arrow-left"></i><span>Continue Shopping</span></a>
-								</form>
+									</div>
+								</form> -->
+								<a href="{{route('products')}}" class="mb-3 blackText fw-bold"><i class="icon-arrow-left"></i><span>Continue Shopping</span></a>
 							</div><!-- End .cart-discount -->
 
 							<!--							<a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>-->
@@ -208,8 +207,9 @@
 								</tbody>
 							</table><!-- End .table table-summary -->
 
-							<a href="#" class="btn btn-outline-primary-2 d-block blackText"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
-							<a href="{{route('checkout')}}" class="btn btn-order d-block commonButton-yellow mt-1">GO TO CHECKOUT</a>
+							<!-- <a href="#" class="btn btn-outline-primary-2 d-block blackText"><span>GO TO CHECKOUT</span><i class="icon-refresh"></i></a> -->
+							<a href="{{route('checkout')}}" class="btn btn-outline-primary-2 d-block blackText"><span>GO TO CHECKOUT</span><i class="icon-refresh"></i></a>
+							<!-- <a href="{{route('checkout')}}" class="btn btn-order d-block commonButton-yellow mt-1">GO TO CHECKOUT</a> -->
 						</div><!-- End .summary -->
 
 

@@ -15,12 +15,12 @@
 						<h4 class="widget-title">Products</h4><!-- End .widget-title -->
 
 						<ul class="widget-list d-lg-flex flex-wrap">
-							<li><a href="/categories/whey-protein-isorich-2305255413-594">Whey Protien Isorich</a></li>
+							<li><a href="/categories/whey-protein-isorich-2305255413-594">Whey Protein Isorich</a></li>
 							<li><a href="/categories/mass-gainer">Mass Gainer</a></li>
-							<li><a href="categories/whey-protein-blend">Whey Protien Blend</a></li>
+							<li><a href="categories/whey-protein-blend">Whey Protein Blend</a></li>
 							<li><a href="contact.html">Pre Workout Series</a></li>
 							<li><a href="categories/muscle-gainer">Muscle Gainer</a></li>
-							<li><a href="categories/clothing-accessories">Colthing & Accessories</a></li>
+							<li><a href="categories/clothing-accessories">Clothing & Accessories</a></li>
 							<li><a href="/products">All Products</a></li>
 						</ul><!-- End .widget-list -->
 					</div><!-- End .widget -->
@@ -48,12 +48,12 @@
 						<h4 class="widget-title">Contact Us</h4><!-- End .widget-title -->
 
 						<div class="menu-footer">
-							<p class="ttl">Toll Free Number : <a href="tel:18001033611">18001033611</a></p>
+							<p class="ttl"><b>Toll Free Number</b> : <a href="tel:18001033611">18001033611</a></p>
 
-							<p>Avvatar Care Email : <a href="mailto:customercare@parag.com" target="_blank">customercare@parag.com</a></p>
+							<p><b>Avvatar Care Email</b> : <a href="mailto:customercare@parag.com" target="_blank">customercare@parag.com</a></p>
 
-							<p>Email &amp; Call Timings<br> Monday to Saturday (11:00 AM – 6:00 PM)</p>
-							<p>WhatsApp Messaging<br> Monday to Friday <span class="time">(9:30 AM – 6:30 PM)</span><br>
+							<p><b>Email &amp; Call Timings</b><br> Monday to Saturday (11:00 AM – 6:00 PM)</p>
+							<p><b>WhatsApp Messaging</b><br> Monday to Friday <span class="time">(9:30 AM – 6:30 PM)</span><br>
 								<span>(Please note – No calls will be entertained on WhatsApp.)<span></span></span>
 							</p>
 						</div>
