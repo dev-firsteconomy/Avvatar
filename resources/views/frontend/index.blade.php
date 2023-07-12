@@ -162,39 +162,27 @@
 				<div class="col-md-11 row justify-content-center">
 					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
 						<img src="assets/images/new/homepage/sugarfree-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% Freshest Protein of India</p>
+						<p class="mb-0">Suger Free</p>
 					</div>
 					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
 						<img src="assets/images/new/homepage/cholesterol-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% Natural Flavours</p>
+						<p class="mb-0">Low Cholesterol</p>
 					</div>
 					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
 						<img src="assets/images/new/homepage/gmo-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% made of cow milk</p>
+						<p class="mb-0">GMo Free</p>
 					</div>
 					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
 						<img src="assets/images/new/homepage/gluten-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% Vegetarian</p>
+						<p class="mb-0">Gluten Free</p>
 					</div>
 					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
 						<img src="assets/images/new/homepage/soy-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% Certified</p>
+						<p class="mb-0">Soy Free</p>
 					</div>
 					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
 						<img src="assets/images/new/homepage/lowfat-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% Counterfiet proof</p>
-					</div>
-					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-						<img src="assets/images/new/homepage/gluten-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% free from preservatives</p>
-					</div>
-					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-						<img src="assets/images/new/homepage/soy-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% free from amino spiking</p>
-					</div>
-					<div class="d-flex flex-column align-items-center col-4 col-md-2 aboutAvvatarBox">
-						<img src="assets/images/new/homepage/lowfat-Icon.png" alt="" class="img-fluid">
-						<p class="mb-0">100% free from artificial digestive enzymes</p>
+						<p class="mb-0">Low Fat</p>
 					</div>
 				</div>
 			</div>
