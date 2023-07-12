@@ -142,4 +142,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/payment-initiate/{order_number}','RazorpayPaymentController@payment_initiate');
     Route::post('/payment-response','RazorpayPaymentController@payment_response')->name('payment-response');
     Route::get('/invoice/{order_id}','InvoiceController@invoice')->name('invoice')->middleware('user');
+    Route::get('payment/response', 'PaymentController@response');
+    Route::post('payment/success', 'PaymentController@response');
+    Route::post('payment/cancel', 'PaymentController@response');
 });
