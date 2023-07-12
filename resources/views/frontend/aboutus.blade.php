@@ -93,33 +93,36 @@
 
 		<section class="goodnessAvvatar patternBgTop">
 			<div class="container">
+				<div class="heading text-center mb-3 mb-md-5">
+					<h2 class="title text-uppercase">Goodness of<span class="fw-bold">Avvatar</span></h2>
+				</div>
 				<div class="goodnessAvvatarImg d-none d-md-block">
-					<img src="assets/images/new/about/goodnessAvatarImg.png" class="img-fluid" alt="aboutBanner">
+					<img src="assets/images/new/about/goodnessAvatarImgNew.png" class="img-fluid" alt="aboutBanner">
 				</div>
 				<div class="row">
 					<div class="col-md-3 goodnessAvatarBoxOuter">
-						<div class="goodnessAvatarBox">
+						<div class="goodnessAvatarBox px-0">
 							<h3 class="fw-bold">Formula to Fit – Take Pure Whey Protein Isolate Powder</h3>
 							<p>100% pure whey protein, packed with both concentrate & isolate, and boosted with natural BCAA, EAA, Glutamic Acid & Calcium to maximise your health benefits.</p>
 						</div>
 					</div>
 
 					<div class="col-md-3 goodnessAvatarBoxOuter">
-						<div class="goodnessAvatarBox">
+						<div class="goodnessAvatarBox px-0">
 							<h3 class="fw-bold">Whey Concentrate Protein Powder Quality</h3>
 							<p>Stringent quality checks, right from the milk extraction from well-fed cows, to the fully automated whey processing plant, with the company having full control over the entire process.</p>
 						</div>
 					</div>
 
 					<div class="col-md-3 goodnessAvatarBoxOuter">
-						<div class="goodnessAvatarBox">
+						<div class="goodnessAvatarBox px-0">
 							<h3 class="fw-bold">The Commitment to Freshness of our Product</h3>
 							<p>Milked, processed and packed within 24 hrs, in the same plant, for zero loss of intrinsic nutrients and absolute freshness.</p>
 						</div>
 					</div>
 
 					<div class="col-md-3 goodnessAvatarBoxOuter">
-						<div class="goodnessAvatarBox">
+						<div class="goodnessAvatarBox px-0">
 							<h3 class="fw-bold">Zero Adulteration Pure Vegetarian Protein Powder</h3>
 							<p>A 100% vegetarian product, perfect for both vegetarians and non-vegetarians. Made with addition of microbial enzymes in milk, rather than non-vegetarian rennet, like other brands.</p>
 						</div>
@@ -131,7 +134,7 @@
 		<section class="aboutParafFood patternBgTop">
 			<div class="container">
 				<div class="heading text-center mb-3 mb-md-5">
-					<h2 class="title text-uppercase">About <span class="fw-bold">Parag Foods</span></h2>
+					<h2 class="title text-uppercase">About <span class="fw-bold">Parag Milk Foods</span></h2>
 				</div><!-- End .heading -->
 				<div class="row justify-content-center">
 					<div class="col-lg-9">

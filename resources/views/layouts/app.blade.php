@@ -80,7 +80,7 @@
 
 	<div id="preloaderWrapper">
 		<div class="preloaderInner">
-			<img src="{{URL::asset('assets/images/new/logo.png')}}" class="img-fluid" alt="">
+			<img src="{{URL::asset('assets/images/new/loader.gif')}}" class="img-fluid" alt="">
 			<p class="m-0">Loading...</p>
 		</div>
 	</div>

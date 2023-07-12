@@ -8552,7 +8552,7 @@ p {
 	color: #343232;
 	text-decoration: line-through;
 	font-weight: 300;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .out-price {
@@ -14230,7 +14230,8 @@ button:focus {
 }
 
 .details-action-wrapper .btn-product.btn-wishlist:before {
-	margin-top: -.2rem
+	margin-top: -.2rem;
+	display: none;
 }
 
 .details-action-wrapper .btn-product span {
@@ -22233,4 +22234,9 @@ p.footer-copyright a {
 
 .youMaylike .owl-stage-outer {
 	padding: 10px;
+}
+
+.brandAdvantage img {
+	width: 180px;
+	margin: 0 auto;
 }

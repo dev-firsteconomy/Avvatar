@@ -5,9 +5,9 @@
 <main class="main">
 	<div class="page-header p-0 text-center">
 		<picture>
-			<source media="(max-width:767px)" srcset="assets/images/new/about/about-banner.png">
-			<source media="(min-width:768px)" srcset="assets/images/new/about/about-banner.png">
-			<img src="assets/images/new/about/about-banner.png" class="img-fluid" alt="aboutBanner">
+			<source media="(max-width:767px)" srcset="assets/images/new/about/about-parag-food-banner.png">
+			<source media="(min-width:768px)" srcset="assets/images/new/about/about-parag-food-banner.png">
+			<img src="assets/images/new/about/about-parag-food-banner.png" class="img-fluid" alt="aboutBanner">
 		</picture>
 	</div>
 
@@ -209,30 +209,74 @@
 
 				<div class="row brandAdvantageBox">
 					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
-						<img src="" alt="" class="img-fluid">
+						<img src="assets/images/new/about/advantage-1.png" alt="" class="img-fluid">
 						<h3>A Stock Exchange <br class="d-none d-md-block"> Listed Company</h3>
 					</div>
 					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
-						<img src="" alt="" class="img-fluid">
+						<img src="assets/images/new/about/advantage-2.png" alt="" class="img-fluid">
 						<h3>ISO 22000 <br class="d-none d-md-block"> Certified Facility</h3>
 					</div>
 					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
-						<img src="" alt="" class="img-fluid">
+						<img src="assets/images/new/about/advantage-3.png" alt="" class="img-fluid">
 						<h3>India’s 1st Whey <br class="d-none d-md-block"> Manufacturing Plant</h3>
 					</div>
 					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
-						<img src="" alt="" class="img-fluid">
+						<img src="assets/images/new/about/advantage-4.png" alt="" class="img-fluid">
 						<h3>Fully <br class="d-none d-md-block"> Automated Plant</h3>
 					</div>
 					<div class="col-6 p-md-0 brandAdvantage d-flex flex-column align-items-center text-center">
-						<img src="" alt="" class="img-fluid">
+						<img src="assets/images/new/about/advantage-5.png" alt="" class="img-fluid">
 						<h3>World Class <br class="d-none d-md-block"> Quality Norms</h3>
 					</div>
 				</div>
 			</div>
 		</section>
 
+		<section class="globalPresence">
+			<div class="container">
+				<div class="heading text-center mb-3 mb-md-5">
+					<h2 class="title text-uppercase">Global <span class="fw-bold">Presence</span></h2>
+				</div><!-- End .heading -->
 
+				<div class="tabsSliderWrapper position-relative">
+					<div class="tabsSlider">
+						<div class="item">
+							<div class="box"><span>All Locations</span></div>
+						</div>
+						<div class="item">
+							<div class="box"><span>Asia</span></div>
+						</div>
+						<div class="item">
+							<div class="box"><span>Europe</span></div>
+						</div>
+						<div class="item">
+							<div class="box"><span>America</span></div>
+						</div>
+						<div class="item">
+							<div class="box"><span>Africa</span></div>
+						</div>
+						<div class="item">
+							<div class="box"><span>Astrlia</span></div>
+						</div>
+					</div>
+					<ul>
+						<li class="arrows prev-slick-arrow"><i class='bx bx-chevron-left'></i></li>
+						<li class="arrows next-slick-arrow"><i class='bx bx-chevron-right'></i></li>
+					</ul>
+				</div>
+				<div class="tabsImgSlider">
+					<div class="item"><img src="assets/images/new/about/map-image.png" alt="" class="img-fluid"></div>
+					<div class="item"><img src="assets/images/new/about/map-image.png" alt="" class="img-fluid"></div>
+					<div class="item"><img src="assets/images/new/about/map-image.png" alt="" class="img-fluid"></div>
+					<div class="item"><img src="assets/images/new/about/map-image.png" alt="" class="img-fluid"></div>
+					<div class="item"><img src="assets/images/new/about/map-image.png" alt="" class="img-fluid"></div>
+					<div class="item"><img src="assets/images/new/about/map-image.png" alt="" class="img-fluid"></div>
+				</div>
+				
+			</div>
+
+
+		</section>
 	</div>
 </main>
 @endsection
