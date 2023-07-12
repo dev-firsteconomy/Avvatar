@@ -148,10 +148,9 @@
 											@endphp
 										<tr>
 											<td>
-												<!--												{{$cart['quantity']}}-->
 												<div class="checkoutSummary">
 													<img src="{{asset(@$cart['image'])}}" alt="Product image">
-													<a href="#">{{$cart['product']['name']}}</a>
+													<a href="#">{{$cart['product']['name']}} </a> <strong> x {{$cart['quantity']}} </strong>
 												</div>
 											</td>
 											<td> {!! $rupee !!} {{round($total) }}</td>
